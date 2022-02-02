@@ -24,6 +24,13 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
+
+        if(config('app.env') == 'local'){
+            Artisan::call('db:seed', [
+                '--class' => 'UserSeeder',
+                '--force' => true
+            ]);
+        };
     }
 
     /**
