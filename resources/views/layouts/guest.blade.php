@@ -55,8 +55,6 @@
 
                                     {{ $slot }}
 
-                                    @include('partials.auth.social')
-
                                 </div>
                             </div>
                             <!-- /Login basic -->
