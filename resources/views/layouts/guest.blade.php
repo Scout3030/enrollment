@@ -58,17 +58,6 @@
 
                                     {{ $slot }}
 
-                                    <p class="text-center mt-2">
-                                        <span>{{ __('New on our platform?') }}</span>
-                                        <a href="{{ route('register') }}">
-                                            <span>{{ __('Create an account') }}</span>
-                                        </a>
-                                    </p>
-
-                                    <div class="divider my-2">
-                                        <div class="divider-text">{{ __('or') }}</div>
-                                    </div>
-
                                     @include('partials.auth.social')
 
                                 </div>

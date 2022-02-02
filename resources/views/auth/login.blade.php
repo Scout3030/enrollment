@@ -51,4 +51,11 @@
             {{ __('Log in') }}
         </x-jet-button>
     </form>
+
+    <p class="text-center mt-2">
+        <span>{{ __('New on our platform?') }}</span>
+        <a href="{{ route('register') }}">
+            <span>{{ __('Create an account') }}</span>
+        </a>
+    </p>
 </x-guest-layout>
