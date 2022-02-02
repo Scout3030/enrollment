@@ -1,6 +1,13 @@
 @section('title', __('Register Page'))
 
 <x-guest-layout>
+
+    <h4 class="card-title mb-1">{{ __('Adventure starts here') }} 🚀</h4>
+
+    <div class="mb-4 text-sm text-gray-600">
+        {{ __('Make your app management easy and fun!') }}
+    </div>
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 

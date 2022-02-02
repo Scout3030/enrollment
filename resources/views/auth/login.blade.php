@@ -1,6 +1,13 @@
 @section('title', __('Login Page'))
 
 <x-guest-layout>
+
+    <h4 class="card-title mb-1">{{ __('Welcome to Vuexy!') }} 👋</h4>
+
+    <div class="mb-4 text-sm text-gray-600">
+        {{ __('Please sign-in to your account and start the adventure') }}
+    </div>
+
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="mb-1">

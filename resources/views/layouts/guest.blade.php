@@ -48,13 +48,10 @@
                                     <x-jet-validation-errors class="mb-4" />
 
                                     @if (session('status'))
-                                        <div class="mb-4 font-medium text-sm text-green-600">
-                                            {{ session('status') }}
+                                        <div class="alert alert-success" role="alert">
+                                            <h4 class="alert-heading">{{ session('status') }}</h4>
                                         </div>
                                     @endif
-
-                                    <h4 class="card-title mb-1">{{ __('Welcome to Vuexy!') }} 👋</h4>
-                                    <p class="card-text mb-2">{{ __('Please sign-in to your account and start the adventure') }}</p>
 
                                     {{ $slot }}
 
