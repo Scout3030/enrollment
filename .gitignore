@@ -13,3 +13,15 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
+/public/data
+/public/fonts
+/public/images
+/public/js
+/public/css
+/public/css-rtl
+/public/vendors
+/vuexy-shell-scripts
+supervisord.log
+supervisord.pid
+
