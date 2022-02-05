@@ -13,15 +13,17 @@
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logo/favicon.ico')}}">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
-        {{-- Include core + vendor Styles --}}
-        @include('panels.styles')
-        {{-- Include core + vendor Styles --}}
-        @include('panels.styles')
+        <link rel="stylesheet" href="{{ asset('vendors/css/vendors.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/core.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/base/themes/dark-layout.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/base/themes/bordered-layout.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/base/themes/semi-dark-layout.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/base/core/menu/menu-types/vertical-menu.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/overrides.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
         @stack('styles')
-        <!-- Styles -->
         <link rel="stylesheet" href="{{ asset(mix('css/base/plugins/forms/form-validation.css')) }}">
         <link rel="stylesheet" href="{{ asset(mix('css/base/pages/authentication.css')) }}">
-        <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
 
     </head>
@@ -63,10 +65,13 @@
                 </div>
             </div>
         </div>
-        <!-- End: Content-->
-        {{-- include default scripts --}}
-        @include('panels.scripts')
 
+        <script src="{{ asset('vendors/js/vendors.min.js') }}"></script>
+        <script src="{{asset('vendors/js/ui/jquery.sticky.js')}}"></script>
+        <script src="{{ asset('js/core/app-menu.js') }}"></script>
+        <script src="{{ asset('js/core/app.js') }}"></script>
+        <script src="{{ asset('js/core/scripts.js') }}"></script>
+        <script src="{{ asset('js/scripts/customizer.js') }}"></script>
         <script type="text/javascript">
             $(window).on('load', function() {
                 if (feather) {
