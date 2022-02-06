@@ -26,11 +26,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::post('/store', [UserController::class, 'store'])
             ->name('users.store')
             ->can('create users');
-        Route::get('/show/{user}', [UserController::class, 'show'])
+        Route::get('/{user}', [UserController::class, 'show'])
             ->name('users.show')
             ->can('view users');
-        Route::put('/update/{user}', [UserController::class, 'update'])
+        Route::put('/{user}', [UserController::class, 'update'])
             ->name('users.update')
             ->can('edit users');
+        Route::delete('/{user}', [UserController::class, 'destroy'])
+            ->name('users.destroy')
+            ->can('delete users');
     });
 });

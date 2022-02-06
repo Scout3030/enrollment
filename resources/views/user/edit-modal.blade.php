@@ -76,25 +76,3 @@
     </div>
 </div>
 <!--/ Edit User Modal -->
-
-@push('scripts')
-    <script>
-        $(document).ready(function(){
-            $('#user-table').on('click',  'tbody .editUser', function () {
-                let userId = $(this).data('id');
-                let $form = $('#editUserForm')
-                $.ajax({
-                    url: `{{ route('users.index') }}/show/${userId}`,
-                    type: 'GET',
-                    headers: {
-                        'x-csrf-token': $("meta[name=csrf-token]").attr('content')
-                    },
-                    success: (data) => {
-                        populateForm($form, data.data)
-                    }
-                })
-                $form.attr('action', `{{ route('users.index') }}/update/${userId}`)
-            });
-        })
-    </script>
-@endpush

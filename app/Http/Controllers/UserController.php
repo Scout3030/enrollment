@@ -66,4 +66,14 @@ class UserController extends Controller
 
         return back()->with('message', ['type' => 'success', 'description' => __('User edited successfully')]);
     }
+
+    /**
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(User $user): \Illuminate\Http\JsonResponse
+    {
+        $user->delete();
+        return response()->json(__('User deleted successfully'));
+    }
 }

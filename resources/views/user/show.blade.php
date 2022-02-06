@@ -83,17 +83,9 @@
                 </div>
             </div>
             <div class="card-datatable table-responsive pt-0">
-                {!! $dataTable->table() !!}
+
             </div>
         </div>
-
-        @can('create users')
-            @include('user.create-modal')
-        @endcan
-
-        @can('edit users')
-            @include('user.edit-modal')
-        @endcan
     </section>
 @endsection
 
@@ -114,47 +106,3 @@
     <script src="{{ asset('vendors/js/forms/cleave/cleave.min.js') }}"></script>
     <script src="{{ asset('vendors/js/forms/cleave/addons/cleave-phone.us.js') }}"></script>
 @endpush
-
-@push('scripts')
-    <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
-    {!! $dataTable->scripts() !!}
-    <script>
-        $(document).ready(function(){
-            const userDatatable = $('#user-table').DataTable()
-            userDatatable.on('click',  'tbody .editUser', function () {
-                let userId = $(this).data('id');
-                let $form = $('#editUserForm')
-                $.ajax({
-                    url: `{{ route('users.index') }}/${userId}`,
-                    type: 'GET',
-                    headers: {
-                        'x-csrf-token': $("meta[name=csrf-token]").attr('content')
-                    },
-                    success: (data) => {
-                        populateForm($form, data.data)
-                    }
-                })
-                $form.attr('action', `{{ route('users.index') }}/${userId}`)
-            });
-
-            @can('delete users')
-            userDatatable.on('click',  'tbody .deleteUser', function () {
-                let userId = $(this).data('id');
-                $.ajax({
-                    url: `{{ route('users.index') }}/${userId}`,
-                    type: 'DELETE',
-                    headers: {
-                        'x-csrf-token': $("meta[name=csrf-token]").attr('content')
-                    },
-                    success: (data, textStatus, xhr) => {
-                        if(xhr.status === 200) {
-                            userDatatable.ajax.reload();
-                        }
-                    }
-                })
-            });
-            @endcan
-        })
-    </script>
-@endpush
-
