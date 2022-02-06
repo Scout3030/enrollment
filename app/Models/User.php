@@ -44,6 +44,16 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int|null $current_team_id
+ * @property string|null $profile_photo_path
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
+ * @property-read int|null $roles_count
+ * @method static \Illuminate\Database\Eloquent\Builder|User permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|User role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCurrentTeamId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereProfilePhotoPath($value)
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -53,6 +63,9 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use TwoFactorAuthenticatable;
     use hasRoles;
+
+    const INACTIVE = 0;
+    const ACTIVE = 1;
 
     /**
      * The attributes that are mass assignable.
@@ -84,6 +97,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at' => 'datetime:Y-m-d H:i',
     ];
 
     /**

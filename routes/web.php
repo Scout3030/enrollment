@@ -17,5 +17,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
-    Route::resource('users', UserController::class);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    Route::group(['prefix' => "users"], function() {
+        Route::get('/', [UserController::class, 'index'])
+            ->name('users.index')
+            ->can('view users');
+        Route::post('/store', [UserController::class, 'store'])
+            ->name('users.store')
+            ->can('create users');
+        Route::get('/show/{user}', [UserController::class, 'show'])
+            ->name('users.show')
+            ->can('view users');
+        Route::put('/update/{user}', [UserController::class, 'update'])
+            ->name('users.update')
+            ->can('edit users');
+    });
 });

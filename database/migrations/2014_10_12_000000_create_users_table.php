@@ -20,17 +20,16 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->integer('status')->default(\App\Models\User::ACTIVE);
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
 
-        if(config('app.env') == 'local'){
-            Artisan::call('db:seed', [
-                '--class' => 'UserSeeder',
-                '--force' => true
-            ]);
-        };
+        Artisan::call('db:seed', [
+            '--class' => 'UserSeeder',
+            '--force' => true
+        ]);
     }
 
     /**

@@ -123,6 +123,13 @@ class CreatePermissionTables extends Migration
             '--class' => 'RoleSeeder',
             '--force' => true
         ]);
+
+        if(config('app.env') == 'local'){
+            Artisan::call('db:seed', [
+                '--class' => 'UserRoleSeeder',
+                '--force' => true
+            ]);
+        };
     }
 
     /**

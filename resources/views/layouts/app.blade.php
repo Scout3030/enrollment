@@ -49,7 +49,10 @@
             <div class="header-navbar-shadow"></div>
             <div class="content-wrapper container-xxl p-0">
                 <div class="content-body">
+
+                    @include('layouts.partials.messages')
                     @yield('content')
+
                 </div>
             </div>
         </div>
@@ -68,6 +71,7 @@
         <script src="{{ asset('js/core/app.js') }}"></script>
         <script src="{{ asset('js/core/scripts.js') }}"></script>
         <script src="{{ asset('js/scripts/customizer.js') }}"></script>
+        <script src="{{ asset('js/scripts/utils.js') }}"></script>
         <script type="text/javascript">
             $(window).on('load', function() {
                 if (feather) {

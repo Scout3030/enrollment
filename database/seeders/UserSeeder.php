@@ -19,13 +19,10 @@ class UserSeeder extends Seeder
             User::factory()
                 ->count(1)
                 ->create([
-                    'name' => 'Roberth',
+                    'name' => 'Admin',
                     'email' => 'admin@mail.com',
-                    'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG'
+                    'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
                 ]);
         }
-        User::factory()
-            ->count(20)
-            ->create();
     }
 }

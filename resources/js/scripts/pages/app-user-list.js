@@ -187,11 +187,6 @@ $(function () {
         '<"col-sm-12 col-md-6"i>' +
         '<"col-sm-12 col-md-6"p>' +
         '>',
-      language: {
-        sLengthMenu: 'Show _MENU_',
-        search: 'Search',
-        searchPlaceholder: 'Search..'
-      },
       // Buttons with Dropdown
       buttons: [
         {
@@ -287,7 +282,10 @@ $(function () {
           // remove previous & next text from pagination
           previous: '&nbsp;',
           next: '&nbsp;'
-        }
+        },
+          sLengthMenu: 'Show _MENU_',
+          search: 'Search',
+          searchPlaceholder: 'Search..'
       },
       initComplete: function () {
         // Adding role filter once table initialized

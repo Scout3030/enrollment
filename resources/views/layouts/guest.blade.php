@@ -47,14 +47,7 @@
 
                                     <x-jet-authentication-card-logo />
 
-                                    <x-jet-validation-errors class="mb-4" />
-
-                                    @if (session('status'))
-                                        <div class="alert alert-success" role="alert">
-                                            <h4 class="alert-heading">{{ session('status') }}</h4>
-                                        </div>
-                                    @endif
-
+                                    @include('layouts.partials.messages')
                                     {{ $slot }}
 
                                 </div>

@@ -155,6 +155,7 @@
     "/js/scripts/tables/table-datatables-advanced.js": "/js/scripts/tables/table-datatables-advanced.js",
     "/js/scripts/tables/table-datatables-basic.js": "/js/scripts/tables/table-datatables-basic.js",
     "/js/scripts/ui/ui-feather.js": "/js/scripts/ui/ui-feather.js",
+    "/js/scripts/utils.js": "/js/scripts/utils.js",
     "/vendors/js/alpinejs/alpine.js": "/vendors/js/alpinejs/alpine.js",
     "/vendors/js/blockui/blockui.min.js": "/vendors/js/blockui/blockui.min.js",
     "/vendors/js/bootstrap/bootstrap.min.js": "/vendors/js/bootstrap/bootstrap.min.js",
