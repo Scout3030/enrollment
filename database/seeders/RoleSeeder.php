@@ -32,11 +32,24 @@ class RoleSeeder extends Seeder
         $adminRole = Role::whereName('administrator')->first();
 
         $permissions = [
+            //User permissions
             'view users',
             'create users',
             'edit users',
             'delete users',
             'restore users',
+            //Course permissions
+            'view courses',
+            'create courses',
+            'edit courses',
+            'delete courses',
+            'restore courses',
+            //Level permissions
+            'view levels',
+            //Grade permissions
+            'view grades',
+            //Section permissions
+            'view sections',
         ];
 
         foreach ($permissions as $permission){

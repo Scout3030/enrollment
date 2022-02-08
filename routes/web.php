@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,5 +37,38 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::delete('/{user}', [UserController::class, 'destroy'])
             ->name('users.destroy')
             ->can('delete users');
+    });
+
+    Route::group(['prefix' => "courses"], function() {
+        Route::get('/', [CourseController::class, 'index'])
+            ->name('courses.index')
+            ->can('view courses');
+        Route::get('/create', [CourseController::class, 'create'])
+            ->name('courses.create')
+            ->can('create courses');
+        Route::post('/store', [CourseController::class, 'store'])
+            ->name('courses.store')
+            ->can('create courses');
+        Route::get('/{course}', [CourseController::class, 'show'])
+            ->name('courses.show')
+            ->can('view courses');
+        Route::get('/{course}/edit', [CourseController::class, 'edit'])
+            ->name('courses.edit')
+            ->can('edit courses');
+        Route::put('/{course}', [CourseController::class, 'update'])
+            ->name('courses.update')
+            ->can('edit courses');
+        Route::delete('/{course}', [CourseController::class, 'destroy'])
+            ->name('courses.destroy')
+            ->can('delete courses');
+    });
+
+    Route::group(['prefix' => "grades"], function() {
+        Route::get('/', [GradeController::class, 'index'])
+            ->name('grades.index')
+            ->can('view grades');
+        Route::get('level/{level}', [GradeController::class, 'gradesByLevel'])
+            ->name('grades.byLevel')
+            ->can('view grades');
     });
 });
