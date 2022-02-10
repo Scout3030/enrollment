@@ -85,6 +85,21 @@
 
             <li class="nav-item  ">
                 <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
+                    <i data-feather='users'></i>
+                    <span class="menu-title text-truncate">{{ __('Students') }}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="@if (Request::url() == route('students.index')) active @endif">
+                        <a href="{{ route('students.index') }}" class="d-flex align-items-center" target="_self">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate">{{ __('List') }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item  ">
+                <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
                     <i data-feather="file-text"></i>
                     <span class="menu-title text-truncate">{{ __('Courses') }}</span>
                 </a>

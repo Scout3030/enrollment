@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,29 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::delete('/{user}', [UserController::class, 'destroy'])
             ->name('users.destroy')
             ->can('delete users');
+    });
+
+    Route::group(['prefix' => "user"], function() {
+        Route::view('/profile/edit', 'user.profile.edit')
+            ->name('user.profile.edit');
+    });
+
+    Route::group(['prefix' => "students"], function() {
+        Route::get('/', [StudentController::class, 'index'])
+            ->name('students.index')
+            ->can('view students');
+        Route::post('/store', [StudentController::class, 'store'])
+            ->name('students.store')
+            ->can('create students');
+        Route::get('/{user}', [StudentController::class, 'show'])
+            ->name('students.show')
+            ->can('view students');
+        Route::put('/{user}', [StudentController::class, 'update'])
+            ->name('students.update')
+            ->can('edit students');
+        Route::delete('/{user}', [StudentController::class, 'destroy'])
+            ->name('students.destroy')
+            ->can('delete students');
     });
 
     Route::group(['prefix' => "courses"], function() {

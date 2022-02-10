@@ -116,5 +116,24 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $appends = [
         'profile_photo_url',
+        'role',
+        'full_name'
     ];
+
+    public function getFullNameAttribute(): string
+    {
+        if($this->hasRole('student')){
+            return "{$this->name} {$this->student->middle_name} {$this->student->paternal_surname} {$this->student->maternal_surname}";
+        }
+        return "{$this->name}";
+    }
+
+    public function getRoleAttribute()
+    {
+        return $this->roles->first()->name;
+    }
+
+    public function student(){
+        return $this->hasOne(Student::class);
+    }
 }

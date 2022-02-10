@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -23,14 +24,6 @@ class UserRoleSeeder extends Seeder
 
         foreach ($users as $user){
             $user->assignRole('manager');
-        }
-
-        $users = User::factory()
-            ->count(20)
-            ->create();
-
-        foreach ($users as $user){
-            $user->assignRole('student');
         }
     }
 }

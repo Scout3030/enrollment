@@ -50,6 +50,8 @@ class RoleSeeder extends Seeder
             'view grades',
             //Section permissions
             'view sections',
+            //Student permissions
+            'view students',
         ];
 
         foreach ($permissions as $permission){

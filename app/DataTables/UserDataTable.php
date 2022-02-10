@@ -35,7 +35,9 @@ class UserDataTable extends DataTable
      */
     public function query(User $model)
     {
-        return $model->with(['roles'])->newQuery();
+        return $model->with(['roles'])
+            ->role(['administrator', 'manager'])
+            ->newQuery();
     }
 
     /**
