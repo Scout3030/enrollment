@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::group(['prefix' => "user"], function() {
         Route::view('/profile/edit', 'user.profile.edit')
             ->name('user.profile.edit');
+
+        Route::put('profile/{id}', [ProfileController::class, 'update'])->name('user.profile.update');
     });
 
     Route::group(['prefix' => "students"], function() {
