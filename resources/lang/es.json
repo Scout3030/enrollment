@@ -793,9 +793,10 @@
     "No requested": "No solicitado",
     "Route": "Ruta",
     "Bus stop": "Parada",
-    "Middle Name": "Segundo Nombre",
-    "Paternal Surname": "Apellido Paterno",
-    "Maternal Surname": "Apellido Materno",
+    "Middle name": "Segundo nombre",
+    "Paternal surname": "Apellido paterno",
+    "Maternal surname": "Apellido materno",
     "Birth": "Fecha de nacimiento",
-    "Postal Code": "Código Postal"
+    "Postal code": "Código postal",
+    "Profile edited successfully": "Perfil editado correctamente"
 }

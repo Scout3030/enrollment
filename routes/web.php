@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::view('/profile/edit', 'user.profile.edit')
             ->name('user.profile.edit');
 
-        Route::put('profile/{id}', [ProfileController::class, 'update'])->name('user.profile.update');
+        Route::put('profile', [StudentController::class, 'profile'])->name('user.profile.update');
     });
 
     Route::group(['prefix' => "students"], function() {
