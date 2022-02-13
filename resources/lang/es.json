@@ -724,7 +724,7 @@
     "or": "o",
     "Whoops! Something went wrong": "Whoops! Algo fue mal",
     "Sign in instead": "Ingresa",
-    "Forgot Password?": "Olvidaste tu contraseña?",
+    "Forgot Password?": "¿Olvidaste tu contraseña?",
     "Student": "Estudiante",
     "Students": "Estudiantes",
     "Administrators": "Administradores",
@@ -798,5 +798,14 @@
     "Maternal surname": "Apellido materno",
     "Birth": "Fecha de nacimiento",
     "Postal code": "Código postal",
-    "Profile edited successfully": "Perfil editado correctamente"
+    "Profile edited successfully": "Perfil editado correctamente",
+    "Edit profile": "Editar perfil",
+    "Create your enrollment": "Crea tu matricula",
+    "Select your level and grade": "Selecciona tu nivel y grado",
+    "Level courses": "Cursos de nivel",
+    "Optional courses": "Cursos opcionales",
+    "Request transportation?": "¿Solicita transporte?",
+    "Select level and grade": "Seleccione nivel y grado",
+    "Route and bus stop": "Ruta y parada de bus",
+    "Registration process successfully finished": "Proceso de matricula finalizado correctamente"
 }

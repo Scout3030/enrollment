@@ -45,10 +45,6 @@
                                     <span>{{ auth()->user()->student->country ? auth()->user()->student->country->name : '-' }}</span>
                                 </li>
                                 <li class="mb-75">
-                                    <span class="fw-bolder me-25">{{ __('Place of birth') }}:</span>
-                                    <span>Lima</span>
-                                </li>
-                                <li class="mb-75">
                                     <span class="fw-bolder me-25">{{ __('Address') }}:</span>
                                     <span>{{ auth()->user()->student->address ?? '-' }}</span>
                                     <span><b>{{ __('Door') }}</b> {{ auth()->user()->student->door ?? '-' }}</span>

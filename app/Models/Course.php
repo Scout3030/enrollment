@@ -34,6 +34,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|Course withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Course withoutTrashed()
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Enrollment[] $enrollments
+ * @property-read int|null $enrollments_count
  */
 class Course extends Model
 {
@@ -55,5 +57,10 @@ class Course extends Model
     public function grade()
     {
         return $this->belongsTo(Grade::class);
+    }
+
+    public function enrollments()
+    {
+        return $this->belongsToMany(Enrollment::class);
     }
 }

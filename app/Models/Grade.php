@@ -24,6 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Grade whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \App\Models\Level $level
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Course[] $courses
+ * @property-read int|null $courses_count
  */
 class Grade extends Model
 {
@@ -37,5 +39,10 @@ class Grade extends Model
     public function level()
     {
         return $this->belongsTo(Level::class);
+    }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
     }
 }

@@ -82,6 +82,16 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected static function boot () {
+        parent::boot();
+        static::created(function (Student $student) {
+            $student->user->givePermissionTo('create enrollment');
+            $student->user->givePermissionTo('view levels');
+            $student->user->givePermissionTo('view grades');
+            $student->user->givePermissionTo('view bus stops');
+        });
+    }
+
     protected $fillable = ['user_id'];
 
     protected $casts = [

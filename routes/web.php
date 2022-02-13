@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\BusStopController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -89,6 +92,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             ->can('delete courses');
     });
 
+    Route::group(['prefix' => "levels"], function() {
+        Route::get('/', [LevelController::class, 'index'])
+            ->name('levels.index')
+            ->can('view levels');
+    });
+
     Route::group(['prefix' => "grades"], function() {
         Route::get('/', [GradeController::class, 'index'])
             ->name('grades.index')
@@ -96,5 +105,23 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('level/{level}', [GradeController::class, 'gradesByLevel'])
             ->name('grades.byLevel')
             ->can('view grades');
+    });
+
+    Route::group(['prefix' => "bus-stop"], function() {
+        Route::get('/', [BusStopController::class, 'index'])
+            ->name('busStop.index')
+            ->can('view bus stops');
+        Route::get('route/{route}', [BusStopController::class, 'busStopByRoute'])
+            ->name('busStop.byLevel')
+            ->can('view bus stops');
+    });
+
+    Route::group(['prefix' => "enrollment"], function() {
+        Route::view('/', 'enrollment.index')
+            ->name('enrollment.index')
+            ->can('create enrollment');
+        Route::post('/store', [EnrollmentController::class, 'store'])
+            ->name('enrollment.store')
+            ->can('create enrollment');
     });
 });

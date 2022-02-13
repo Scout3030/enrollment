@@ -32,6 +32,11 @@ class Level extends Model
     const HIGH_SCHOOL = 2;
     const PROFESSIONAL_TRAINING = 3;
 
+    public function getNameAttribute($value)
+    {
+        return __($value);
+    }
+
     public function grades()
     {
         return $this->hasMany(Grade::class);

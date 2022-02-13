@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('vendor-styles')
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+@endpush
+
 @section('content')
 @role('student')
 <section id="basic-horizontal-layouts">
@@ -174,7 +178,7 @@
                                         <label class="col-form-label" for="country_id">{{ __('Country') }}</label>
                                     </div>
                                     <div class="col-sm-10">
-                                        <select id="country_id" class="form-control" name="country_id">
+                                        <select id="country_id" class="form-control select2" name="country_id">
                                             @foreach ( App\Models\Country::all() as $country )
                                                 <option value="{{ $country->id }}" @if( old('country_id', auth()->user()->student->country_id) == $country->id) selected @endif>{{ $country->name }}</option>
                                             @endforeach
@@ -331,3 +335,12 @@
 </section>
 @endrole
 @endsection
+
+@push('vendor-scripts')
+    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+@endpush
