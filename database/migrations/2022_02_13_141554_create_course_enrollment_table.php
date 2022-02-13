@@ -16,6 +16,7 @@ class CreateCourseEnrollmentTable extends Migration
         Schema::create('course_enrollment', function (Blueprint $table) {
             $table->foreignId('course_id')->constrained();
             $table->foreignId('enrollment_id')->constrained();
+            $table->tinyInteger('order')->nullable();
         });
 
         if(config('app.env') == 'local'){

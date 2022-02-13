@@ -19,7 +19,9 @@ class CourseFactory extends Factory
             'grade_id' => Grade::all()->random()->id,
             'name' => $this->faker->sentence(3),
             'description' => $this->faker->text,
-            'type' => $this->faker->randomElement([Course::MANDATORY, Course::OPTIONAL])
+            'type' => $this->faker->randomElement([
+                Course::MANDATORY, Course::MANDATORY_OPTIONAL, Course::OPTIONAL
+            ])
         ];
     }
 }

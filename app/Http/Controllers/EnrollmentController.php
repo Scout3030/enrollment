@@ -10,6 +10,11 @@ class EnrollmentController extends Controller
 {
     public function store(EnrollmentRequest $request)
     {
+        auth()->user()->student->fill([
+            'grade_id' => $request->grade_id,
+            'bus_stop_id' => $request->transportation == 1 ? $request->bus_stop_id : null
+        ])->save();
+
         $enrollment = Enrollment::create([
             'student_id' => auth()->user()->student->id,
             'grade_id' => $request->grade_id,
@@ -20,7 +25,9 @@ class EnrollmentController extends Controller
             ->whereType(Course::MANDATORY)
             ->get();
 
-//        $enrollment->courses()->attach($levelCourses);
+        $enrollment->courses()->attach($levelCourses);
+        $enrollment->courses()->attach($request->mandatory_optional_course);
+        $enrollment->courses()->attach($request->optional_courses);
 
         return back()->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
     }

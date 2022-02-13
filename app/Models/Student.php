@@ -92,7 +92,11 @@ class Student extends Model
         });
     }
 
-    protected $fillable = ['user_id'];
+    protected $fillable = [
+        'user_id',
+        'grade_id',
+        'bus_stop_id'
+    ];
 
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i',
@@ -108,5 +112,10 @@ class Student extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    public function busStop()
+    {
+        return $this->belongsTo(BusStop::class);
     }
 }

@@ -26,7 +26,7 @@
                                     </g>
                                 </g>
                             </g>
-                            </svg>
+                        </svg>
                     </span>
                     <h2 class="brand-text">Vuexy</h2>
                 </a>
@@ -42,32 +42,18 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="nav-item  ">
-                <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
+            <li class="nav-item @if (Request::url() == route('dashboard.index')) active @endif">
+                <a href="{{ route('dashboard.index') }}" class="d-flex align-items-center" target="_self">
                     <i data-feather="home"></i>
-                    <span class="menu-title text-truncate">Dashboards</span>
-                    <span class="badge badge-light-warning rounded-pill ms-auto me-1">2</span>
+                    <span class="menu-title text-truncate">Dashboard</span>
                 </a>
-                <ul class="menu-content">
-                    <li >
-                        <a href="https://registrations.test/dashboard/analytics" class="d-flex align-items-center" target="_self">
-                            <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate">Analytics</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="https://registrations.test" class="d-flex align-items-center" target="_self">
-                            <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate">eCommerce</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li class="navigation-header">
-                <span>Apps &amp; Pages</span>
+                <span>{{ __('Modules') }}</span>
                 <i data-feather="more-horizontal"></i>
             </li>
 
+            @can('view users')
             <li class="nav-item  ">
                 <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
                     <i data-feather="user"></i>
@@ -82,7 +68,9 @@
                     </li>
                 </ul>
             </li>
+            @endcan
 
+            @can('view students')
             <li class="nav-item  ">
                 <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
                     <i data-feather='users'></i>
@@ -97,7 +85,9 @@
                     </li>
                 </ul>
             </li>
+            @endcan
 
+            @can('view courses')
             <li class="nav-item  ">
                 <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
                     <i data-feather="file-text"></i>
@@ -118,7 +108,16 @@
                     </li>
                 </ul>
             </li>
+            @endcan
 
+            @can('create enrollment')
+                <li class="nav-item @if (Request::url() == route('enrollment.index')) active @endif">
+                    <a href="{{ route('enrollment.index') }}" class="d-flex align-items-center" target="_self">
+                        <i data-feather="file-text"></i>
+                        <span class="menu-title text-truncate">{{ __('Enrollment') }}</span>
+                    </a>
+                </li>
+            @endcan
         </ul>
     </div>
 </div>

@@ -807,5 +807,14 @@
     "Request transportation?": "¿Solicita transporte?",
     "Select level and grade": "Seleccione nivel y grado",
     "Route and bus stop": "Ruta y parada de bus",
-    "Registration process successfully finished": "Proceso de matricula finalizado correctamente"
+    "Registration process successfully finished": "Proceso de matricula finalizado correctamente",
+    "Important!": "¡Importante!",
+    "Continue": "Continuar",
+    "enrollment_message": "Revisa que los datos sean correctos. Una vez enviados, no pueden ser editados.",
+    "Select one option": "Seleccione una opción",
+    "Modules": "Modulos",
+    "Enrollment": "Matricula",
+    "Total courses": "Cursos totales",
+    "optional courses info": "Numerar por orden de referencia",
+    "Please provide a right order for optional courses": "Por favor provee un orden correcto para los cursos opcionales"
 }

@@ -27,4 +27,9 @@ use Illuminate\Database\Eloquent\Model;
 class BusStop extends Model
 {
     use HasFactory;
+
+    public function route()
+    {
+        return $this->belongsTo(Route::class);
+    }
 }

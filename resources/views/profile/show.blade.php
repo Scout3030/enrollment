@@ -131,7 +131,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        @if(auth()->user()->student->transportation)
+                        @if(auth()->user()->student->bus_stop_id)
                         <div class="d-flex justify-content-around my-2 pt-75">
                             <div class="d-flex align-items-start me-2">
                                 <span class="badge bg-light-primary p-75 rounded">
@@ -149,11 +149,11 @@
                             <ul class="list-unstyled">
                                 <li class="mb-75">
                                     <span class="fw-bolder me-25">{{ __('Route') }}</span>
-                                    <span>{{ auth()->user()->student->route }}</span>
+                                    <span>{{ auth()->user()->student->bus_stop_id ? auth()->user()->student->busStop->route->name : null }}</span>
                                 </li>
                                 <li class="mb-75">
                                     <span class="fw-bolder me-25">{{ __('Bus stop') }}</span>
-                                    <span>{{ auth()->user()->student->bus_stop }}</span>
+                                    <span>{{ auth()->user()->student->bus_stop_id ? auth()->user()->student->busStop->name : null }}</span>
                                 </li>
                             </ul>
                         </div>

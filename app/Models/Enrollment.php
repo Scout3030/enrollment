@@ -38,6 +38,6 @@ class Enrollment extends Model
 
     public function courses()
     {
-        $this->belongsToMany(Course::class);
+        return $this->belongsToMany(Course::class);
     }
 }

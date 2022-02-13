@@ -2,6 +2,7 @@
 
 @push('vendor-styles')
     <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/spinner/jquery.bootstrap-touchspin.css') }}">
     @livewireStyles
 @endpush
 
@@ -23,6 +24,7 @@
 @push('vendor-scripts')
     @livewireScripts
     <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/spinner/jquery.bootstrap-touchspin.js') }}"></script>
     <script>
         $(document).ready(function() {
             const levelNode = $('#level_id')
@@ -31,8 +33,10 @@
             const busStopNode = $("#bus_stop_id")
             $('.select2').select2();
 
+            @if(!auth()->user()->student->grade_id)
             let firstLevelId = levelNode.select2().val()
             populateSelect(firstLevelId)
+            @endif
 
             let firstRouteId = routeNode.select2().val()
             populateBusStopSelect(firstRouteId)
@@ -45,6 +49,35 @@
             routeNode.on('change', function(){
                 const levelId = $(this).val()
                 populateBusStopSelect(levelId)
+            })
+
+            $('input[name=transportation]').change(function(){
+                let value = $( 'input[name=transportation]:checked' ).val();
+                const transportationBlockNode = $('#transportationBlock')
+                if(parseInt(value) === 1){
+                    transportationBlockNode.removeClass('d-none')
+                }else{
+                    transportationBlockNode.addClass('d-none')
+                }
+            });
+
+            gradeNode.on('change', function(){
+                const gradeId = $(this).val()
+                Livewire.emit('getCourses', gradeId)
+                let levelId = levelNode.select2().val() || levelNode.val()
+                setTimeout(function (){
+                    populateLevelSelect()
+                    populateSelect(levelId)
+                    console.log('levelId', levelId)
+                    // setTimeout(function (){
+                    //     levelNode.val(2).trigger('change')
+                    // }, 200)
+                    // gradeNode.val(gradeId).trigger('change')
+                }, 200)
+            })
+
+            $('#confirmEnrollmentButton').on('click', function(){
+                $('#enrollmentForm').submit()
             })
 
             function populateSelect(levelId){
@@ -82,9 +115,7 @@
                     url: `{{ route('busStop.index') }}/route/${routeId}`,
                     type: 'GET',
                     success: (data, textStatus, xhr) => {
-                        console.log('here1')
                         if(xhr.status === 200) {
-                            console.log('here2')
                             busStopNode.empty();
                             busStopNode.select2({
                                 data: data.data
@@ -93,31 +124,6 @@
                     }
                 })
             }
-
-            $('input[name=transportation]').change(function(){
-                let value = $( 'input[name=transportation]:checked' ).val();
-                const transportationBlockNode = $('#transportationBlock')
-                if(parseInt(value) === 1){
-                    transportationBlockNode.removeClass('d-none')
-                }else{
-                    transportationBlockNode.addClass('d-none')
-                }
-            });
-
-            gradeNode.on('change', function(){
-                const gradeId = $(this).val()
-                Livewire.emit('getCourses', gradeId)
-                let levelId = levelNode.select2().val() || levelNode.val()
-                setTimeout(function (){
-                    populateLevelSelect()
-                    populateSelect(levelId)
-                    console.log('levelId', levelId)
-                    // setTimeout(function (){
-                    //     levelNode.val(2).trigger('change')
-                    // }, 200)
-                    // gradeNode.val(gradeId).trigger('change')
-                }, 200)
-            })
         });
     </script>
 @endpush

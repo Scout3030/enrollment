@@ -43,7 +43,8 @@ class Course extends Model
     use SoftDeletes;
 
     const MANDATORY = 1;
-    const OPTIONAL = 2;
+    const MANDATORY_OPTIONAL = 2;
+    const OPTIONAL = 3;
 
     protected $fillable = [
         'name', 'grade_id',

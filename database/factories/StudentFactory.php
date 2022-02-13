@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\BusStop;
 use App\Models\Country;
+use App\Models\Grade;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,6 +20,7 @@ class StudentFactory extends Factory
         return [
             'user_id' => User::all()->random()->id,
             'country_id' => Country::all()->random()->id,
+            'grade_id' => $this->faker->boolean ? Grade::all()->random()->id : null,
             'middle_name' => $this->faker->name,
             'paternal_surname' => $this->faker->lastName,
             'maternal_surname' => $this->faker->lastName,
@@ -40,9 +43,7 @@ class StudentFactory extends Factory
             'second_tutor_phone_number' => $this->faker->phoneNumber,
             'second_tutor_email' => $this->faker->email,
             'second_tutor_address' => $this->faker->address,
-            'transportation' => $this->faker->boolean,
-            'route' => $this->faker->sentence,
-            'bus_stop' => $this->faker->sentence,
+            'bus_stop_id' => $this->faker->boolean ? BusStop::all()->random()->id : null,
         ];
     }
 }

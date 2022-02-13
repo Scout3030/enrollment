@@ -17,6 +17,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('country_id')->nullable()->constrained();
+            $table->foreignId('grade_id')->nullable()->constrained();
             $table->string('middle_name')->nullable();
             $table->string('paternal_surname')->nullable();
             $table->string('maternal_surname')->nullable();
@@ -39,9 +40,7 @@ class CreateStudentsTable extends Migration
             $table->string('second_tutor_phone_number')->nullable();
             $table->string('second_tutor_email')->nullable();
             $table->string('second_tutor_address')->nullable();
-            $table->boolean('transportation')->nullable();
-            $table->string('route')->nullable();
-            $table->string('bus_stop')->nullable();
+            $table->string('bus_stop_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
