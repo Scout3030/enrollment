@@ -62,6 +62,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
+ * @property-read string $full_name
+ * @property-read mixed $role
+ * @property-read \App\Models\Student|null $student
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

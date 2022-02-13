@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Level whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Level whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Grade[] $grades
+ * @property-read int|null $grades_count
  */
 class Level extends Model
 {

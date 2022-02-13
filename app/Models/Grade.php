@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Grade whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Grade whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Level $level
  */
 class Grade extends Model
 {

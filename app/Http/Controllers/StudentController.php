@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\DataTables\StudentDataTable;
 use App\Http\Requests\ProfileRequest;
-use App\Models\Student;
-use App\Models\User;
 
 class StudentController extends Controller
 {
@@ -18,61 +16,13 @@ class StudentController extends Controller
         return $dataTable->render('student.index');
     }
 
-    /**
-     * @param Student $student
-     * @return UserResource|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function show(Student $student)
-    {
-        if(request()->ajax()){
-            return new UserResource($student);
-        }
-        return view('student.show', $student);
-    }
-
-    /**
-     * @param UserRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(UserRequest $request): \Illuminate\Http\RedirectResponse
-    {
-        $student = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        $student->assignRole($request->role);
-
-        return back()->with('message', ['type' => 'success', 'description' => __('User created successfully')]);
-    }
-
-    /**
-     * @param UserRequest $request
-     * @param User $student
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(UserRequest $request, User $student): \Illuminate\Http\RedirectResponse
-    {
-        $data = ['name' => $request->name];
-
-        if($request->filled('password')){
-            $data['password'] = Hash::make($request->password);
-        }
-
-        $student->fill($data)->save();
-        $student->assignRole($request->role);
-
-        return back()->with('message', ['type' => 'success', 'description' => __('User edited successfully')]);
-    }
-
     public function profile(ProfileRequest $request)
     {
-        $user = User::find(auth()->id());
+        $user = auth()->user();
         $user->name = $request->name;
         $user->save();
 
-        $student = Student::where('user_id', auth()->id())->first();
+        $student = $user->student;
         $student->country_id = $request->country_id;
         $student->middle_name = $request->middle_name;
         $student->paternal_surname = $request->paternal_surname;
@@ -98,16 +48,8 @@ class StudentController extends Controller
         $student->second_tutor_address = $request->second_tutor_address;
         $student->save();
 
-        return redirect()->route('profile.show')->with('message', ['type' => 'success', 'description' => __('Profile edited successfully')]);
-    }
-
-    /**
-     * @param User $student
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function destroy(User $student): \Illuminate\Http\JsonResponse
-    {
-        $student->delete();
-        return response()->json(__('User deleted successfully'));
+        return redirect()->route('profile.show')->with('message', [
+            'type' => 'success', 'description' => __('Profile edited successfully')
+        ]);
     }
 }
