@@ -9,5 +9,9 @@ class CourseType extends Model
 {
     use HasFactory;
 
+    const MANDATORY = 1;
+    const MANDATORY_OPTIONAL = 2;
+    const OPTIONAL = 3;
+
     protected $fillable = ['name'];
 }

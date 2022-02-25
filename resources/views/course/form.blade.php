@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+{{ __('Create a course') }}
+@endsection
+
 @push('vendor-styles')
     <link rel="stylesheet" href="{{ asset('vendors/css/vendors.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
@@ -86,14 +90,46 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <select class="select2 form-select" id="type" name="type">
-                                                <option value="{{ \App\Models\Course::MANDATORY }}">{{ __('Regular') }}</option>
-                                                <option value="{{ \App\Models\Course::MANDATORY_OPTIONAL }}">{{ __('Optional') }}</option>
-                                                <option value="{{ \App\Models\Course::OPTIONAL }}">{{ __('Optional') }}</option>
+                                                <option value="{{ \App\Models\CourseType::MANDATORY }}">{{ __('Regular') }}</option>
+                                                <option value="{{ \App\Models\CourseType::MANDATORY_OPTIONAL }}">{{ __('Optional') }}</option>
+                                                <option value="{{ \App\Models\CourseType::OPTIONAL }}">{{ __('Optional') }}</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-10 offset-sm-2">
+                                <div class="col-12">
+                                    <div class="mb-1 row">
+                                        <div class="col-sm-2">
+                                            <label class="col-form-label" for="type">{{ __('Bilingual') }}</label>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="demo-inline-spacing">
+                                                <div class="form-check form-check-inline">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="bilingual"
+                                                        id="bilingual_yes"
+                                                        value="1"
+                                                    />
+                                                    <label class="form-check-label" for="bilingual_yes">{{ __('Yes') }}</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="bilingual"
+                                                        id="bilingual_no"
+                                                        value="0"
+                                                        checked
+                                                    />
+                                                    <label class="form-check-label" for="bilingual_no">{{ __('No') }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 offset-sm-2 pt-2">
                                     <button type="submit" class="btn btn-primary me-1">{{ __('Save') }}</button>
                                     @if(!$course->id)
                                     <button type="reset" class="btn btn-outline-info">{{ __('Reset') }}</button>

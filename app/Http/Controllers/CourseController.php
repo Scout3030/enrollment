@@ -27,18 +27,6 @@ class CourseController extends Controller
     }
 
     /**
-     * @param Course $course
-     * @return UserResource|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function show(Course $course)
-    {
-        if(request()->ajax()){
-            return new UserResource($user);
-        }
-        return view('course.show', $user);
-    }
-
-    /**
      * @param CourseRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -49,6 +37,7 @@ class CourseController extends Controller
             'type' => $request->type,
             'grade_id' => $request->grade_id,
             'description' => $request->description,
+            'bilingual' => $request->bilingual,
         ]);
 
         return back()->with('message', ['type' => 'success', 'description' => __('Course created successfully')]);
