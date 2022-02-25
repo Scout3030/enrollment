@@ -22,6 +22,8 @@ class GradeSeeder extends Seeder
             ['name' => 'Fourth', 'level_id' => Level::MIDDLE_SCHOOL],
             ['name' => 'First', 'level_id' => Level::HIGH_SCHOOL],
             ['name' => 'Second', 'level_id' => Level::HIGH_SCHOOL],
+            ['name' => 'First', 'level_id' => Level::PROFESSIONAL_TRAINING],
+            ['name' => 'Second', 'level_id' => Level::PROFESSIONAL_TRAINING],
         ];
 
         foreach ($grades as $grade){

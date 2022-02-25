@@ -77,6 +77,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereUserId($value)
  * @mixin \Eloquent
+ * @property int|null $grade_id
+ * @property string|null $bus_stop_id
+ * @property-read \App\Models\BusStop|null $busStop
+ * @method static \Illuminate\Database\Eloquent\Builder|Student whereBusStopId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Student whereGradeId($value)
  */
 class Student extends Model
 {
@@ -85,10 +90,7 @@ class Student extends Model
     protected static function boot () {
         parent::boot();
         static::created(function (Student $student) {
-            $student->user->givePermissionTo('create enrollment');
-            $student->user->givePermissionTo('view levels');
-            $student->user->givePermissionTo('view grades');
-            $student->user->givePermissionTo('view bus stops');
+            $student->user->assignRole('student');
         });
     }
 

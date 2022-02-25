@@ -18,6 +18,9 @@ class CreateEnrollmentsTable extends Migration
             $table->foreignId('student_id')->constrained();
             $table->foreignId('grade_id')->constrained();
             $table->foreignId('bus_stop_id')->nullable()->constrained();
+            $table->tinyInteger('bilingual')->default(config('constants.NO'));
+            $table->string('previous_school')->nullable();
+            $table->tinyInteger('repeat_course')->default(config('constants.NO'));
             $table->timestamps();
         });
     }

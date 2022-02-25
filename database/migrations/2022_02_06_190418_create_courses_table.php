@@ -19,6 +19,7 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->tinyInteger('type');
+            $table->tinyInteger('bilingual');
             $table->timestamps();
             $table->softDeletes();
         });

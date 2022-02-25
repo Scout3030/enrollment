@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\EnrollmentDataTable;
 use App\Http\Requests\EnrollmentRequest;
 use App\Models\Course;
 use App\Models\Enrollment;
 
 class EnrollmentController extends Controller
 {
+    /**
+     * @param EnrollmentDataTable $dataTable
+     * @return mixed
+     */
+    public function index(EnrollmentDataTable $dataTable)
+    {
+        return $dataTable->render('enrollment.index');
+    }
+
     public function store(EnrollmentRequest $request)
     {
         auth()->user()->student->fill([
@@ -29,6 +39,6 @@ class EnrollmentController extends Controller
         $enrollment->courses()->attach($request->mandatory_optional_course);
         $enrollment->courses()->attach($request->optional_courses);
 
-        return back()->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
+        return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
     }
 }

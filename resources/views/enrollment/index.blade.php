@@ -2,128 +2,68 @@
 
 @push('vendor-styles')
     <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/css/forms/spinner/jquery.bootstrap-touchspin.css') }}">
-    @livewireStyles
+    <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/responsive.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/buttons.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/rowGroup.bootstrap5.min.css') }}">
 @endpush
 
 @section('content')
-
-    <div class="content-header-left col-md-9 col-12 mb-2">
-        <div class="row breadcrumbs-top">
-            <div class="col-12">
-                <h2 class="content-header-title float-start mb-0">{{ __('Create your enrollment') }}</h2>
+    <section class="app-user-list">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <h3 class="fw-bolder mb-75">{{ App\Models\User::role('student')->get()->count() }}</h3>
+                            <span>{{ __('Students') }}</span>
+                        </div>
+                        <div class="avatar bg-light-warning p-50">
+                            <span class="avatar-content">
+                              <i data-feather="user-x" class="font-medium-4"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <section id="basic-horizontal-layouts">
-        @livewire('enrollment-form')
+        <!-- list and filter start -->
+        <div class="card">
+            <div class="card-body border-bottom">
+                <h4 class="card-title">{{ __('Search & Filter')}} </h4>
+                <div class="row">
+                    <div class="col-md-4 user_role"></div>
+                    <div class="col-md-4 user_plan"></div>
+                    <div class="col-md-4 user_status"></div>
+                </div>
+            </div>
+            <div class="card-datatable table-responsive pt-0">
+                {!! $dataTable->table() !!}
+            </div>
+        </div>
     </section>
 @endsection
 
 @push('vendor-scripts')
-    @livewireScripts
     <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
-    <script src="{{ asset('vendors/js/forms/spinner/jquery.bootstrap-touchspin.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            const levelNode = $('#level_id')
-            const gradeNode = $("#grade_id")
-            const routeNode = $("#route_id")
-            const busStopNode = $("#bus_stop_id")
-            $('.select2').select2();
-
-            @if(!auth()->user()->student->grade_id)
-            let firstLevelId = levelNode.select2().val()
-            populateSelect(firstLevelId)
-            @endif
-
-            let firstRouteId = routeNode.select2().val()
-            populateBusStopSelect(firstRouteId)
-
-            levelNode.on('change', function(){
-                const levelId = $(this).val()
-                populateSelect(levelId)
-            })
-
-            routeNode.on('change', function(){
-                const levelId = $(this).val()
-                populateBusStopSelect(levelId)
-            })
-
-            $('input[name=transportation]').change(function(){
-                let value = $( 'input[name=transportation]:checked' ).val();
-                const transportationBlockNode = $('#transportationBlock')
-                if(parseInt(value) === 1){
-                    transportationBlockNode.removeClass('d-none')
-                }else{
-                    transportationBlockNode.addClass('d-none')
-                }
-            });
-
-            gradeNode.on('change', function(){
-                const gradeId = $(this).val()
-                Livewire.emit('getCourses', gradeId)
-                let levelId = levelNode.select2().val() || levelNode.val()
-                setTimeout(function (){
-                    populateLevelSelect()
-                    populateSelect(levelId)
-                    console.log('levelId', levelId)
-                    // setTimeout(function (){
-                    //     levelNode.val(2).trigger('change')
-                    // }, 200)
-                    // gradeNode.val(gradeId).trigger('change')
-                }, 200)
-            })
-
-            $('#confirmEnrollmentButton').on('click', function(){
-                $('#enrollmentForm').submit()
-            })
-
-            function populateSelect(levelId){
-                $.ajax({
-                    url: `{{ route('grades.index') }}/level/${levelId}`,
-                    type: 'GET',
-                    success: (data, textStatus, xhr) => {
-                        if(xhr.status === 200) {
-                            gradeNode.empty();
-                            gradeNode.select2({
-                                data: data.data
-                            });
-                        }
-                    }
-                })
-            }
-
-            function populateLevelSelect(){
-                $.ajax({
-                    url: `{{ route('levels.index') }}`,
-                    type: 'GET',
-                    success: (data, textStatus, xhr) => {
-                        if(xhr.status === 200) {
-                            levelNode.empty();
-                            levelNode.select2({
-                                data: data.data
-                            });
-                        }
-                    }
-                })
-            }
-
-            function populateBusStopSelect(routeId){
-                $.ajax({
-                    url: `{{ route('busStop.index') }}/route/${routeId}`,
-                    type: 'GET',
-                    success: (data, textStatus, xhr) => {
-                        if(xhr.status === 200) {
-                            busStopNode.empty();
-                            busStopNode.select2({
-                                data: data.data
-                            });
-                        }
-                    }
-                })
-            }
-        });
-    </script>
+    <script src="{{ asset('vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/responsive.bootstrap5.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/datatables.buttons.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/jszip.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/tables/datatable/dataTables.rowGroup.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/cleave/cleave.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/cleave/addons/cleave-phone.us.js') }}"></script>
 @endpush
+
+@push('scripts')
+    <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
+    {!! $dataTable->scripts() !!}
+@endpush
+

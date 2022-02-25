@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|BusStop whereRouteId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BusStop whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Route $route
  */
 class BusStop extends Model
 {

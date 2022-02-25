@@ -21,7 +21,8 @@ class CourseFactory extends Factory
             'description' => $this->faker->text,
             'type' => $this->faker->randomElement([
                 Course::MANDATORY, Course::MANDATORY_OPTIONAL, Course::OPTIONAL
-            ])
+            ]),
+            'bilingual' => $this->faker->boolean,
         ];
     }
 }

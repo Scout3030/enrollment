@@ -197,6 +197,90 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
+                <div class="card-header d-block">
+                    <h4 class="card-title">{{ __('Bilingual english') }} <span style="font-size: 14px; font-weight: normal">({{ __('Courses with *') }})</span></h4>
+                </div>
+                <div class="card-body">
+                    <div class="col-12">
+                        <div class="mb-1 row">
+                            <div class="demo-inline-spacing">
+                                <div class="form-check form-check-inline">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="bilingual"
+                                        id="bilingual_yes"
+                                        value="1"
+                                    />
+                                    <label class="form-check-label" for="bilingual_yes">{{ __('Yes') }}</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="bilingual"
+                                        id="bilingual_no"
+                                        value="0"
+                                        checked
+                                    />
+                                    <label class="form-check-label" for="bilingual_no">{{ __('No') }}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-block">
+                    <h4 class="card-title">{{ __('Course repeated?') }}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="col-12">
+                        <div class="mb-1 row">
+                            <div class="demo-inline-spacing">
+                                <div class="form-check form-check-inline">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="repeat_course"
+                                        id="repeat_course_yes"
+                                        value="1"
+                                    />
+                                    <label class="form-check-label" for="repeat_course_yes">{{ __('Yes') }}</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="repeat_course"
+                                        id="repeat_course_no"
+                                        value="0"
+                                        checked
+                                    />
+                                    <label class="form-check-label" for="repeat_course_no">{{ __('No') }}</label>
+                                </div>
+                                <div class="offset-xl-1 col-xl-6 col-md-6 col-12">
+                                    <div class="mb-1">
+                                        <label class="form-label" for="basicInput">{{ __('Previous school') }}</label>
+                                        <input type="text" class="form-control" id="basicInput" placeholder="{{ __('Type...') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
                 <div class="card-body">
                     <div class="row">
 {{--                        <div class="d-grid col-lg-12 col-md-12 mb-1 mb-lg-0">--}}

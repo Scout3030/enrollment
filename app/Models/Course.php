@@ -48,7 +48,8 @@ class Course extends Model
 
     protected $fillable = [
         'name', 'grade_id',
-        'type', 'description'
+        'type', 'description',
+        'bilingual'
     ];
 
     protected $casts = [

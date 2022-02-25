@@ -117,11 +117,17 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     });
 
     Route::group(['prefix' => "enrollment"], function() {
-        Route::view('/', 'enrollment.index')
-            ->name('enrollment.index')
+        Route::view('/', 'enrollment.create')
+            ->name('enrollment.create')
             ->can('create enrollment');
         Route::post('/store', [EnrollmentController::class, 'store'])
             ->name('enrollment.store')
             ->can('create enrollment');
+    });
+
+    Route::group(['prefix' => "enrollments"], function() {
+        Route::view('/', 'enrollment.index')
+            ->name('enrollments.index')
+            ->can('view enrollments');
     });
 });

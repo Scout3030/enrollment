@@ -20,6 +20,9 @@ class EnrollmentFactory extends Factory
             'student_id' => Student::all()->random()->id,
             'grade_id' => Grade::all()->random()->id,
             'bus_stop_id' => $this->faker->boolean ? BusStop::all()->random()->id : null,
+            'bilingual' => $this->faker->boolean,
+            'previous_school' => $this->faker->sentence,
+            'repeat_course' => $this->faker->boolean,
         ];
     }
 }

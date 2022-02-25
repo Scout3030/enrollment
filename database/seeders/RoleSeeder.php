@@ -54,6 +54,8 @@ class RoleSeeder extends Seeder
             //Student permissions
             'view students',
             'view bus stops',
+            //Enrollment permissions
+            'view enrollments'
         ];
 
         foreach ($permissions as $permission){
@@ -66,14 +68,20 @@ class RoleSeeder extends Seeder
 
         // Student permissions
         $permissions = [
-            'create enrollment'
+            'create enrollment',
+            'view levels',
+            'view grades',
+            'view bus stops'
         ];
+
+        $studentRole = Role::whereName('student')->first();
 
         foreach ($permissions as $permission){
             $permissionExist = Permission::whereName($permission)->first();
             if(!$permissionExist){
-                Permission::create(['guard_name' => 'web', 'name' => $permission]);
+                $permissionExist = Permission::create(['guard_name' => 'web', 'name' => $permission]);
             }
+            $studentRole->givePermissionTo($permissionExist->name);
         }
     }
 }

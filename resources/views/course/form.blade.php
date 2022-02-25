@@ -87,6 +87,7 @@
                                         <div class="col-sm-10">
                                             <select class="select2 form-select" id="type" name="type">
                                                 <option value="{{ \App\Models\Course::MANDATORY }}">{{ __('Regular') }}</option>
+                                                <option value="{{ \App\Models\Course::MANDATORY_OPTIONAL }}">{{ __('Optional') }}</option>
                                                 <option value="{{ \App\Models\Course::OPTIONAL }}">{{ __('Optional') }}</option>
                                             </select>
                                         </div>
