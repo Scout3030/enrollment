@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Grade[] $grades
  * @property-read int|null $grades_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CourseType[] $courseTypes
+ * @property-read int|null $course_types_count
  */
 class Level extends Model
 {

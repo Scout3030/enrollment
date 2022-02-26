@@ -36,6 +36,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Enrollment[] $enrollments
  * @property-read int|null $enrollments_count
+ * @property int $course_type_id
+ * @property int $bilingual
+ * @method static \Illuminate\Database\Eloquent\Builder|Course whereBilingual($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Course whereCourseTypeId($value)
  */
 class Course extends Model
 {
@@ -44,7 +48,7 @@ class Course extends Model
 
     protected $fillable = [
         'name', 'grade_id',
-        'type', 'description',
+        'course_type_id', 'description',
         'bilingual'
     ];
 

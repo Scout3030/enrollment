@@ -15,14 +15,14 @@ class CourseTypeSeeder extends Seeder
     public function run()
     {
         $types = [
-            'common',
-            'common optional',
-            'elective',
-            'academic',
-            'applied',
-            'free configuration',
-            'core',
-            'specific'
+            'Common',
+            'Common optional',
+            'Elective',
+            'Academic',
+            'Applied',
+            'Free configuration',
+            'Core',
+            'Specific'
         ];
 
         foreach ($types as $type){

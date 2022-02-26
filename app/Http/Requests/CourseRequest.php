@@ -25,9 +25,10 @@ class CourseRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'type' => 'required',
             'description' => 'required',
-            'grade_id' => ['required', 'exists:grades,id']
+            'grade_id' => ['required', 'exists:grades,id'],
+            'course_type_id' => 'required|exists:course_types,id',
+            'bilingual' => 'required'
         ];
     }
 }

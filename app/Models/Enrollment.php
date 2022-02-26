@@ -27,6 +27,12 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Course[] $courses
  * @property-read int|null $courses_count
+ * @property int $bilingual
+ * @property string|null $previous_school
+ * @property int $repeat_course
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereBilingual($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment wherePreviousSchool($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereRepeatCourse($value)
  */
 class Enrollment extends Model
 {

@@ -34,9 +34,9 @@ class CourseController extends Controller
     {
         Course::create([
             'name' => $request->name,
-            'type' => $request->type,
             'grade_id' => $request->grade_id,
             'description' => $request->description,
+            'course_type_id' => $request->course_type_id,
             'bilingual' => $request->bilingual,
         ]);
 

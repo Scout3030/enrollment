@@ -16,9 +16,9 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('grade_id')->constrained();
+            $table->foreignId('course_type_id')->constrained();
             $table->string('name');
             $table->text('description');
-            $table->foreignId('course_type_id')->constrained();
             $table->tinyInteger('bilingual');
             $table->timestamps();
             $table->softDeletes();

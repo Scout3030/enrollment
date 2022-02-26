@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-{{ __('Create a course') }}
+    {{ $course->id ? __('Edit course') : __('Create a course') }}
 @endsection
 
 @push('vendor-styles')
@@ -16,7 +16,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">{{ __('Add course') }}</h4>
+                        <h4 class="card-title">{{ $course->id ? __('Edit course') : __('Add course') }}</h4>
                     </div>
                     <div class="card-body">
                         <form class="form form-horizontal"
@@ -86,14 +86,10 @@
                                 <div class="col-12">
                                     <div class="mb-1 row">
                                         <div class="col-sm-2">
-                                            <label class="col-form-label" for="type">{{ __('Type') }}</label>
+                                            <label class="col-form-label" for="course_type_id">{{ __('Type') }}</label>
                                         </div>
                                         <div class="col-sm-10">
-                                            <select class="select2 form-select" id="type" name="type">
-                                                <option value="{{ \App\Models\CourseType::MANDATORY }}">{{ __('Regular') }}</option>
-                                                <option value="{{ \App\Models\CourseType::MANDATORY_OPTIONAL }}">{{ __('Optional') }}</option>
-                                                <option value="{{ \App\Models\CourseType::OPTIONAL }}">{{ __('Optional') }}</option>
-                                            </select>
+                                            <select class="select2 form-select" id="course_type_id" name="course_type_id"></select>
                                         </div>
                                     </div>
                                 </div>
@@ -111,6 +107,7 @@
                                                         name="bilingual"
                                                         id="bilingual_yes"
                                                         value="1"
+                                                        {{ $course->id ? ($course->bilingual ? 'checked' : '') : '' }}
                                                     />
                                                     <label class="form-check-label" for="bilingual_yes">{{ __('Yes') }}</label>
                                                 </div>
@@ -121,7 +118,7 @@
                                                         name="bilingual"
                                                         id="bilingual_no"
                                                         value="0"
-                                                        checked
+                                                        {{ $course->id ? (!$course->bilingual ? 'checked' : '') : 'checked' }}
                                                     />
                                                     <label class="form-check-label" for="bilingual_no">{{ __('No') }}</label>
                                                 </div>
@@ -153,14 +150,16 @@
         $(document).ready(function(){
             const levelNode = $('#level_id')
             const gradeNode = $("#grade_id")
-            const typeNode = $("#type")
+            const typeNode = $("#course_type_id")
 
             let firstLevelId = levelNode.select2().val()
             populateSelect(firstLevelId)
+            populateTypesSelect(firstLevelId)
 
             levelNode.on('change', function(){
                 const levelId = $(this).val()
                 populateSelect(levelId)
+                populateTypesSelect(levelId)
             })
 
             function populateSelect(levelId){
@@ -178,11 +177,26 @@
                 })
             }
 
+            function populateTypesSelect(levelId){
+                $.ajax({
+                    url: `{{ route('courseTypes.index') }}/level/${levelId}`,
+                    type: 'GET',
+                    success: (data, textStatus, xhr) => {
+                        if(xhr.status === 200) {
+                            typeNode.empty();
+                            typeNode.select2({
+                                data: data.data
+                            });
+                        }
+                    }
+                })
+            }
+
             @if($course->id)
                 levelNode.val({{$course->grade ? $course->grade->level->id : 3}}).trigger('change')
-                typeNode.val({{$course->type}}).trigger('change')
                 setTimeout(function(){
                     gradeNode.val({{$course->grade_id}}).trigger('change')
+                    typeNode.val({{$course->course_type_id}}).trigger('change')
                 }, 500)
             @endif
         })

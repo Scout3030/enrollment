@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ __('Courses') }}
+@endsection
+
 @push('vendor-styles')
     <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/dataTables.bootstrap5.min.css') }}">
@@ -31,7 +35,7 @@
                 <div class="card">
                     <div class="card-body d-flex align-items-center justify-content-between">
                         <div>
-                            <h3 class="fw-bolder mb-75">{{ App\Models\Course::whereType(\App\Models\Course::MANDATORY)->get()->count() }}</h3>
+                            <h3 class="fw-bolder mb-75">{{ App\Models\Course::whereCourseTypeId(\App\Models\CourseType::COMMON_OPTIONAL)->get()->count() }}</h3>
                             <span>{{ __('Optional courses') }}</span>
                         </div>
                         <div class="avatar bg-light-danger p-50">
@@ -46,7 +50,7 @@
                 <div class="card">
                     <div class="card-body d-flex align-items-center justify-content-between">
                         <div>
-                            <h3 class="fw-bolder mb-75">{{ App\Models\Course::whereType(\App\Models\Course::OPTIONAL)->get()->count() }}</h3>
+                            <h3 class="fw-bolder mb-75">{{ App\Models\Course::whereCourseTypeId(\App\Models\CourseType::ELECTIVE)->get()->count() }}</h3>
                             <span>{{ __('Optional courses') }}</span>
                         </div>
                         <div class="avatar bg-light-success p-50">

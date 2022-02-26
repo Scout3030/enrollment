@@ -109,6 +109,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     });
 
     Route::group(['prefix' => "course-types"], function() {
+        Route::get('/', [CourseTypeController::class, 'index'])
+            ->name('courseTypes.index')
+            ->can('view course types');
         Route::get('level/{level}', [CourseTypeController::class, 'courseTypesByLevel'])
             ->name('courseTypes.byLevel')
             ->can('view course types');
