@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BusStopController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseTypeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\GradeController;
@@ -105,6 +106,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('level/{level}', [GradeController::class, 'gradesByLevel'])
             ->name('grades.byLevel')
             ->can('view grades');
+    });
+
+    Route::group(['prefix' => "course-types"], function() {
+        Route::get('level/{level}', [CourseTypeController::class, 'courseTypesByLevel'])
+            ->name('courseTypes.byLevel')
+            ->can('view course types');
     });
 
     Route::group(['prefix' => "bus-stop"], function() {

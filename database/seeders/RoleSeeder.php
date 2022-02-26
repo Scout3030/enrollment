@@ -55,7 +55,9 @@ class RoleSeeder extends Seeder
             'view students',
             'view bus stops',
             //Enrollment permissions
-            'view enrollments'
+            'view enrollments',
+            // Course type permission
+            'view course types',
         ];
 
         foreach ($permissions as $permission){
@@ -71,7 +73,8 @@ class RoleSeeder extends Seeder
             'create enrollment',
             'view levels',
             'view grades',
-            'view bus stops'
+            'view bus stops',
+            'view course types',
         ];
 
         $studentRole = Role::whereName('student')->first();

@@ -41,4 +41,9 @@ class Level extends Model
     {
         return $this->hasMany(Grade::class);
     }
+
+    public function courseTypes()
+    {
+        return $this->belongsToMany(CourseType::class);
+    }
 }

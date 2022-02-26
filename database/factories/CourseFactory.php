@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Course;
 use App\Models\Grade;
+use App\Models\Level;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CourseFactory extends Factory
@@ -19,9 +19,7 @@ class CourseFactory extends Factory
             'grade_id' => Grade::all()->random()->id,
             'name' => $this->faker->sentence(3),
             'description' => $this->faker->text,
-            'type' => $this->faker->randomElement([
-                Course::MANDATORY, Course::MANDATORY_OPTIONAL, Course::OPTIONAL
-            ]),
+            'course_type_id' => Level::all()->random()->courseTypes->random()->id,
             'bilingual' => $this->faker->boolean,
         ];
     }

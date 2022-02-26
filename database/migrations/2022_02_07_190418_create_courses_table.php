@@ -18,7 +18,7 @@ class CreateCoursesTable extends Migration
             $table->foreignId('grade_id')->constrained();
             $table->string('name');
             $table->text('description');
-            $table->tinyInteger('type');
+            $table->foreignId('course_type_id')->constrained();
             $table->tinyInteger('bilingual');
             $table->timestamps();
             $table->softDeletes();
