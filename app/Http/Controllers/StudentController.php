@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\DataTables\StudentDataTable;
 use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\StudentRequest;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
@@ -16,7 +18,42 @@ class StudentController extends Controller
         return $dataTable->render('student.index');
     }
 
-    public function profile(ProfileRequest $request)
+    /**
+     * @param Student $student
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function show(Student $student){
+        $student->load('user')->get();
+        return view('student.show', compact('student'));
+    }
+
+    /**
+     * @param Student $student
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function edit(Student $student){
+        $student->load('user')->get();
+        return view('student.edit', compact('student'));
+    }
+
+    /**
+     * @param StudentRequest $request
+     * @param Student $student
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(StudentRequest $request, Student $student): \Illuminate\Http\RedirectResponse
+    {
+        $student->fill($request->input())->save();
+        return back()->with('message', [
+            'type' => 'success', 'description' => __('Student edited successfully')
+        ]);
+    }
+
+    /**
+     * @param ProfileRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function profile(ProfileRequest $request): \Illuminate\Http\RedirectResponse
     {
         $user = auth()->user();
         $user->name = $request->name;

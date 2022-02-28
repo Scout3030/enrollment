@@ -43,47 +43,45 @@
                 </div>
                 <div class="card-body">
                     <div class="row custom-options-checkable g-1">
-                        @forelse($levelCourses as $course)
+                        @forelse($commonCourses as $course)
                         <div class="col-md-3">
                             <input
                                 class="custom-option-item-check"
                                 type="checkbox"
-                                name="level_courses[]"
-                                id="level_course_{{ $course->id }}"
+                                name="common_courses[]"
+                                id="common_course_{{ $course->id }}"
                                 checked
                                 disabled
                             />
-                            <label class="custom-option-item p-1" for="level_course_{{ $course->id }}">
+                            <label class="custom-option-item p-1" for="common_course_{{ $course->id }}">
                                 <span class="d-flex justify-content-between flex-wrap mb-50">
-                                    <span class="fw-bolder">{{ $course->name }}</span>
+                                    <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
                                 </span>
-                                <small class="d-block">Get 20% off on your next purchase.</small>
                             </label>
                         </div>
                         @empty
                             {{ __('Select level and grade') }}
                         @endforelse
                     </div>
-                    @if(count($mandatoryOptionalCourses) > 0)
+                    @if(count($commonOptionalCourses) > 0)
                     <div class="row custom-options-checkable g-1">
                         <div class="col-md-12 pt-2">
                         {{ __('Select one option') }}
                         </div>
-                        @foreach($mandatoryOptionalCourses as $course)
+                        @foreach($commonOptionalCourses as $course)
                         <div class="col-md-3">
                             <input
                                 class="custom-option-item-check"
                                 type="radio"
-                                name="mandatory_optional_course"
-                                id="mandatory_optional_course_{{ $course->id }}"
+                                name="common_optional_course"
+                                id="common_optional_course_{{ $course->id }}"
                                 value="{{ $course->id }}"
                                 @once checked @endonce
                             />
-                            <label class="custom-option-item p-1" for="mandatory_optional_course_{{ $course->id }}">
+                            <label class="custom-option-item p-1" for="common_optional_course_{{ $course->id }}">
                                 <span class="d-flex justify-content-between flex-wrap mb-50">
-                                    <span class="fw-bolder">{{ $course->name }}</span>
+                                    <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
                                 </span>
-                                <small class="d-block">Get 20% off on your next purchase.</small>
                             </label>
                         </div>
                         @endforeach
@@ -105,19 +103,19 @@
                 </div>
                 <div class="card-body">
                     <div class="row custom-options-checkable g-1">
-                        @forelse($optionalCourses as $key => $course)
+                        @forelse($electiveCourses as $key => $course)
                         <div class="col-md-3">
                             <input
                                 class="custom-option-item-check"
                                 type="checkbox"
-                                name="optional_courses[]"
-                                id="optional_course_{{ $course->id }}"
+                                name="elective_courses[]"
+                                id="elective_course_{{ $course->id }}"
                                 value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
                                 checked
                             />
-                            <label class="custom-option-item p-1" for="optional_course_{{ $course->id }}">
+                            <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
                                 <span class="d-flex justify-content-between flex-wrap mb-50">
-                                    <span class="fw-bolder">{{ $course->name }}</span>
+                                    <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
                                 </span>
                                 <small class="d-block">
                                     <div class="input-group">
@@ -266,8 +264,8 @@
                                 </div>
                                 <div class="offset-xl-1 col-xl-6 col-md-6 col-12">
                                     <div class="mb-1">
-                                        <label class="form-label" for="basicInput">{{ __('Previous school') }}</label>
-                                        <input type="text" class="form-control" id="basicInput" placeholder="{{ __('Type...') }}" />
+                                        <label class="form-label" for="previous_school">{{ __('Previous school') }}</label>
+                                        <input type="text" class="form-control" id="previous_school" name="previous_school" placeholder="{{ __('Type...') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -306,34 +304,7 @@
     </div>
 </form>
 
-<!-- Modal -->
-<div
-    class="modal fade"
-    id="enrollmentModal"
-    tabindex="-1"
-    aria-labelledby="enrollmentModal"
-    aria-hidden="true"
->
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="enrollmentModal">{{ __('Important!') }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    {{ __('enrollment_message') }}
-                </p>
-            </div>
-            <div class="modal-footer">
-                <div class="d-grid col-lg-12 col-md-12 mb-1 mb-lg-0">
-                    <button id="confirmEnrollmentButton" type="button" class="btn btn-primary">{{ __('OK') }}, {{ __('Confirm') }}</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Vertical modal end-->
+@include('livewire.enrollment.components.modal')
 
 @push('scripts')
     <script>// Default Spin
@@ -353,7 +324,7 @@
         // Min - Max
         var touchspinValue = $('.touchspin-min-max'),
             counterMin = 1,
-            counterMax = {{ count($optionalCourses) }};
+            counterMax = {{ count($electiveCourses) }};
         if (touchspinValue.length > 0) {
             touchspinValue
                 .TouchSpin({
@@ -384,6 +355,7 @@
                         $(this).siblings().find('.bootstrap-touchspin-up').addClass('disabled-max-min');
                     }
                 });
-        }</script>
+        }
+    </script>
 @endpush
 

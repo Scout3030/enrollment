@@ -97,13 +97,36 @@ class Student extends Model
     protected $fillable = [
         'user_id',
         'grade_id',
-        'bus_stop_id'
+        'bus_stop_id',
+        'country_id',
+        'bus_stop_id',
+        'middle_name',
+        'paternal_name',
+        'maternal_name',
+        'dni',
+        'birth',
+        'address',
+        'address_number',
+        'door',
+        'stair',
+        'floor',
+        'letter',
+        'postal_code',
+        'first_tutor_dni',
+        'first_tutor_full_name',
+        'first_tutor_phone_number',
+        'first_tutor_email',
+        'first_tutor_address',
+        'second_tutor_dni',
+        'second_tutor_full_name',
+        'second_tutor_phone_number',
+        'second_tutor_email',
+        'second_tutor_address',
     ];
 
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i',
         'birth' => 'date',
-        'transportation' => 'boolean'
     ];
 
     public function user()
@@ -119,5 +142,10 @@ class Student extends Model
     public function busStop()
     {
         return $this->belongsTo(BusStop::class);
+    }
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class);
     }
 }

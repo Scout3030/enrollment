@@ -15,7 +15,7 @@
                         </div>
                         <div class="text-center">
                             <h1 class="mb-1 text-white">{{ __('You have a pending enrollment process') }}</h1>
-                            <a href="{{ route('enrollment.index') }}" class="btn btn-relief-info">{{ __('Start here') }}</a>
+                            <a href="{{ route('enrollment.create') }}" class="btn btn-relief-info">{{ __('Start here') }}</a>
                         </div>
                     </div>
                 </div>

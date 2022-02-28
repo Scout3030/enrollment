@@ -58,10 +58,13 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::post('/store', [StudentController::class, 'store'])
             ->name('students.store')
             ->can('create students');
-        Route::get('/{user}', [StudentController::class, 'show'])
+        Route::get('/{student}', [StudentController::class, 'show'])
             ->name('students.show')
             ->can('view students');
-        Route::put('/{user}', [StudentController::class, 'update'])
+        Route::get('/{student}/edit', [StudentController::class, 'edit'])
+            ->name('students.edit')
+            ->can('edit students');
+        Route::put('/{student}', [StudentController::class, 'update'])
             ->name('students.update')
             ->can('edit students');
         Route::delete('/{user}', [StudentController::class, 'destroy'])

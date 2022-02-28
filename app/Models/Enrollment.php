@@ -41,7 +41,10 @@ class Enrollment extends Model
     protected $fillable = [
         'student_id',
         'grade_id',
-        'bus_stop_id'
+        'bus_stop_id',
+        'repeat_course',
+        'bilingual',
+        'previous_school',
     ];
 
     public function courses()

@@ -39,6 +39,8 @@ class RoleSeeder extends Seeder
             'edit users',
             'delete users',
             'restore users',
+            // Student permissions
+            'edit students',
             //Course permissions
             'view courses',
             'create courses',
