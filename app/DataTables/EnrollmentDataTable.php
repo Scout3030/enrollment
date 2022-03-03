@@ -21,7 +21,14 @@ class EnrollmentDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'enrollment.action');
+            ->addColumn('student', function (Enrollment $enrollment){
+                return $enrollment->student->user->full_name;
+            })
+            ->addColumn('grade', function (Enrollment $enrollment){
+                return __($enrollment->grade->name). "/" .__($enrollment->grade->level->name);
+            })
+            ->addColumn('action', 'enrollment.datatable.action')
+            ->rawColumns(['action']);
     }
 
     /**
@@ -65,15 +72,29 @@ class EnrollmentDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
             Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('student')
+                ->title(__('Student'))
+                ->searchable(true)
+                ->orderable(true)
+                ->footer(__('Student')),
+            Column::make('grade')
+                ->title(__('Grade/Level'))
+                ->searchable(true)
+                ->orderable(true)
+                ->footer(__('Grade/Level')),
+            Column::make('created_at')
+                ->title(__('Created'))
+                ->searchable(true)
+                ->orderable(true)
+                ->addClass('text-center')
+                ->footer(__('Created')),
+            Column::computed('action')
+                ->title(__('Actions'))
+                ->exportable(false)
+                ->printable(false)
+                ->addClass('text-center')
+                ->footer(__('Actions')),
         ];
     }
 

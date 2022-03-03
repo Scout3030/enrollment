@@ -19,6 +19,10 @@ class EnrollmentController extends Controller
         return $dataTable->render('enrollment.index');
     }
 
+    /**
+     * @param EnrollmentRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(EnrollmentRequest $request)
     {
         auth()->user()->student->fill([
@@ -44,5 +48,14 @@ class EnrollmentController extends Controller
         $enrollment->courses()->attach($request->optional_courses);
 
         return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
+    }
+
+    public function show(Enrollment $enrollment){
+        $courses = $enrollment->courses;
+        $levelCourses = $courses->filter(function ($value) {
+            return $value->course_type_id == CourseType::COMMON;
+        });
+//        dd($levelCourses, $courses);
+        return view('enrollment.show', compact('enrollment', 'levelCourses'));
     }
 }

@@ -47,8 +47,22 @@ class Enrollment extends Model
         'previous_school',
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i',
+    ];
+
     public function courses()
     {
         return $this->belongsToMany(Course::class);
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class);
     }
 }
