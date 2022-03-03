@@ -2,11 +2,11 @@
 
 <x-guest-layout>
 
-    <h4 class="card-title mb-1">{{ __('Welcome to Vuexy!') }} 👋</h4>
+{{--    <h4 class="card-title mb-1">{{ __('Welcome to Vuexy!') }} 👋</h4>--}}
 
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Please sign-in to your account and start the adventure') }}
-    </div>
+{{--    <div class="mb-4 text-sm text-gray-600">--}}
+{{--        {{ __('Please sign-in to your account and start the adventure') }}--}}
+{{--    </div>--}}
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -19,7 +19,7 @@
                 id="email"
                 type="email"
                 name="email"
-                placeholder="john@example.com"
+                placeholder="john@mail.com"
                 :value="old('email')"
                 autofocus
             />
