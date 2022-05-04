@@ -130,7 +130,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     });
 
     Route::group(['prefix' => "enrollment"], function() {
-        Route::view('/', 'enrollment.create')
+        Route::get('/', [EnrollmentController::class, 'create'])
             ->name('enrollment.create')
             ->can('create enrollment');
         Route::post('/store', [EnrollmentController::class, 'store'])

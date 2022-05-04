@@ -95,12 +95,12 @@
                 </li>
             @endcan
 
-            <li class="navigation-header">
-                <span>{{ __('Modules') }}</span>
-                <i data-feather="more-horizontal"></i>
-            </li>
-
             @can('view enrollments')
+                <li class="navigation-header">
+                    <span>{{ __('Modules') }}</span>
+                    <i data-feather="more-horizontal"></i>
+                </li>
+
                 <li class="nav-item @if (Request::url() == route('enrollments.index')) active @endif">
                     <a href="{{ route('enrollments.index') }}" class="d-flex align-items-center" target="_self">
                         <i data-feather="file-text"></i>

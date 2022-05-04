@@ -20,7 +20,7 @@ class StudentFactory extends Factory
         return [
             'user_id' => User::all()->random()->id,
             'country_id' => Country::all()->random()->id,
-            'grade_id' => $this->faker->boolean ? Grade::all()->random()->id : null,
+            'grade_id' => Grade::all()->random()->id,
             'middle_name' => $this->faker->name,
             'paternal_surname' => $this->faker->lastName,
             'maternal_surname' => $this->faker->lastName,

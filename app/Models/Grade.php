@@ -31,6 +31,11 @@ class Grade extends Model
 {
     use HasFactory;
 
+    const FIRST_MIDDLE_SCHOOL = 1;
+    const SECOND_MIDDLE_SCHOOL = 2;
+    const THIRD_MIDDLE_SCHOOL = 3;
+    const FOURTH_MIDDLE_SCHOOL = 4;
+
     public function getNameAttribute($value)
     {
         return __($value);
