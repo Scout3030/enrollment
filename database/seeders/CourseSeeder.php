@@ -254,5 +254,100 @@ class CourseSeeder extends Seeder
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
+
+        // core courses high school
+        Course::factory()
+            ->create([
+                'name' => 'Biologia y geologia',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::CORE,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Dibujo tecnico I',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::CORE,
+            ]);
+
+        // specific and free configuration
+        Course::factory()
+            ->create([
+                'name' => 'Anatomia aplicada',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 4
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Biologia y geologia',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 4
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Dibujo tecnico I',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 4
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Tecnologia industrial I',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 4
+            ]);
+
+        Course::factory()
+            ->create([
+                'name' => 'Cultura cientifica',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 3
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Segunda lengua extranjera I: Frances',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 3
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Tecnologia de la informacion y comunicacion I',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 3
+            ]);
+
+        Course::factory()
+            ->create([
+                'name' => 'Lengua asturiana y literatura I',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 1
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Protocolo, orientacion e insercion profesional',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 1
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Proyecto de investigacion I: semiotica y estetica del cine I',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 1
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Religion',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 1
+            ]);
     }
 }

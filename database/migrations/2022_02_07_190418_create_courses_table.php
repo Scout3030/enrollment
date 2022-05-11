@@ -20,6 +20,7 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->tinyInteger('bilingual');
+            $table->tinyInteger('duration')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

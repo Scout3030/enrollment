@@ -82,6 +82,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\BusStop|null $busStop
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereBusStopId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereGradeId($value)
+ * @property-read \App\Models\Grade|null $grade
  */
 class Student extends Model
 {

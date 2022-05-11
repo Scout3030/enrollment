@@ -40,6 +40,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $bilingual
  * @method static \Illuminate\Database\Eloquent\Builder|Course whereBilingual($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Course whereCourseTypeId($value)
+ * @property int|null $duration
+ * @method static \Illuminate\Database\Eloquent\Builder|Course whereDuration($value)
  */
 class Course extends Model
 {
@@ -47,9 +49,12 @@ class Course extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'grade_id',
-        'course_type_id', 'description',
-        'bilingual'
+        'name',
+        'grade_id',
+        'course_type_id',
+        'description',
+        'bilingual',
+        'duration',
     ];
 
     protected $casts = [

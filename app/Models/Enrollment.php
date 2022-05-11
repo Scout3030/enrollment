@@ -33,6 +33,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereBilingual($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Enrollment wherePreviousSchool($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereRepeatCourse($value)
+ * @property-read \App\Models\Grade $grade
+ * @property-read \App\Models\Student $student
  */
 class Enrollment extends Model
 {

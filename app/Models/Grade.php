@@ -36,6 +36,9 @@ class Grade extends Model
     const THIRD_MIDDLE_SCHOOL = 3;
     const FOURTH_MIDDLE_SCHOOL = 4;
 
+    const FIRST_HIGH_SCHOOL = 5;
+    const SECOND_HIGH_SCHOOL = 6;
+
     public function getNameAttribute($value)
     {
         return __($value);

@@ -30,12 +30,12 @@ class EnrollmentController extends Controller
         $levelId = $student->grade->level->id;
         $courses = [];
 
+        $commonCourses = Course::whereGradeId($gradeId)
+            ->whereCourseTypeId(CourseType::COMMON)
+            ->get();
+
         switch ($levelId) {
             case Level::MIDDLE_SCHOOL: {
-                $commonCourses = Course::whereGradeId($gradeId)
-                    ->whereCourseTypeId(CourseType::COMMON)
-                    ->get();
-
                 $commonOptionalCourses = Course::whereGradeId($gradeId)
                     ->whereCourseTypeId(CourseType::COMMON_OPTIONAL)
                     ->get();
@@ -65,7 +65,28 @@ class EnrollmentController extends Controller
                         'freeConfigurationCourses', 'appliedCourses', 'academicCourses'));
             }
             case Level::HIGH_SCHOOL: {
-                return view('enrollment.create.high-school', compact('courses'));
+                $coreCourses = Course::whereGradeId($gradeId)
+                    ->whereCourseTypeId(CourseType::CORE)
+                    ->get();
+
+                $hours4Courses = Course::whereGradeId($gradeId)
+                    ->whereCourseTypeId(CourseType::SPECIFIC_FREE_CONFIGURATION)
+                    ->whereDuration(4)
+                    ->get();
+
+                $hours3Courses = Course::whereGradeId($gradeId)
+                    ->whereCourseTypeId(CourseType::SPECIFIC_FREE_CONFIGURATION)
+                    ->whereDuration(3)
+                    ->get();
+
+                $hours1Courses = Course::whereGradeId($gradeId)
+                    ->whereCourseTypeId(CourseType::SPECIFIC_FREE_CONFIGURATION)
+                    ->whereDuration(1)
+                    ->get();
+
+                return view('enrollment.create.high-school',
+                    compact('commonCourses', 'coreCourses', 'hours4Courses',
+                        'hours3Courses', 'hours1Courses'));
             }
             case Level::PROFESSIONAL_TRAINING: {
                 return view('enrollment.create.professional-training', compact('courses'));

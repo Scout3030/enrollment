@@ -23,11 +23,8 @@ class CourseTypeLevelSeeder extends Seeder
 
         $highSchoolCourseTypes = [
             CourseType::COMMON,
-            CourseType::COMMON_OPTIONAL,
-            CourseType::ELECTIVE,
-            CourseType::ACADEMIC,
-            CourseType::APPLIED,
-            CourseType::FREE_CONFIGURATION,
+            CourseType::CORE,
+            CourseType::SPECIFIC_FREE_CONFIGURATION,
         ];
 
         $professionalTrainingCourseTypes = [

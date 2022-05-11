@@ -843,5 +843,12 @@
     "Preference": "Preferencia",
     "Free configuration courses": "Cursos de libre configuracion",
     "Applied courses": "Cursos aplicados",
-    "Academic courses": "Cursos academicos"
+    "Academic courses": "Cursos academicos",
+    "Core courses": "Cursos troncales",
+    "Specific courses": "Cursos especificos",
+    "One hour courses": "Cursos de una hora",
+    "Three hours courses": "Cursos de tres horas",
+    "Four hours courses": "Cursos de cuatro horas",
+    "Option 2 (3+3+1)": "Opcion 2 (3+3+1)",
+    "Option 1 (4+3)": "Opcion 1 (4+3)"
 }
