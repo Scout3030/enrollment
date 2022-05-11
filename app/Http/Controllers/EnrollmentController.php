@@ -102,15 +102,16 @@ class EnrollmentController extends Controller
      */
     public function store(EnrollmentRequest $request)
     {
-        $grade = auth()->user()->student->grade;
+        $student = auth()->user()->student;
+        $grade = $student->grade;
 
-        auth()->user()->student->fill([
+        $student->fill([
             'grade_id' => $grade->id,
             'bus_stop_id' => $request->transportation == 1 ? $request->bus_stop_id : null,
         ])->save();
 
         $enrollment = Enrollment::create([
-            'student_id' => auth()->user()->student->id,
+            'student_id' => $student->id,
             'grade_id' => $grade->id,
             'bus_stop_id' => $request->transportation == 1 ? $request->bus_stop_id : null,
             'repeat_course' => $request->repeat_course,
@@ -118,13 +119,16 @@ class EnrollmentController extends Controller
             'previous_school' => $request->previous_school,
         ]);
 
-        $levelCourses = Course::whereGradeId($request->grade_id)
+        $levelCourses = Course::whereGradeId($student->grade_id)
             ->whereCourseTypeId(CourseType::COMMON)
             ->get();
 
         $enrollment->courses()->attach($levelCourses);
-        $enrollment->courses()->attach($request->mandatory_optional_course);
-        $enrollment->courses()->attach($request->elective_courses);
+
+        if($grade->level->id == Level::MIDDLE_SCHOOL) {
+            $enrollment->courses()->attach($request->common_optional_course);
+            $enrollment->courses()->attach($request->elective_courses);
+        }
 
         if($grade->id == Grade::FOURTH_MIDDLE_SCHOOL){
             $enrollment->courses()->attach($request->academic_courses);
@@ -133,8 +137,8 @@ class EnrollmentController extends Controller
         }
 
         if($grade->level->id == Level::HIGH_SCHOOL){
-            $enrollment->courses()->attach($request->core_courses);
-            $enrollment->courses()->attach($request->specific_free_configuration_course);
+            $enrollment->courses()->attach($request->core_course);
+            $enrollment->courses()->attach($request->specific_free_configuration_courses);
         }
 
         return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
@@ -143,8 +147,37 @@ class EnrollmentController extends Controller
     public function show(Enrollment $enrollment){
         $courses = $enrollment->courses;
         $levelCourses = $courses->filter(function ($value) {
-            return $value->course_type_id == CourseType::COMMON;
+            return $value->course_type_id == CourseType::COMMON || $value->course_type_id == CourseType::COMMON_OPTIONAL;
         });
-        return view('enrollment.show', compact('enrollment', 'levelCourses'));
+
+        $electiveCourses = $courses->filter(function ($value) {
+            return $value->course_type_id == CourseType::ELECTIVE;
+        });
+
+        $academicCourses = $courses->filter(function ($value) {
+            return $value->course_type_id == CourseType::ACADEMIC;
+        });
+
+        $appliedCourses = $courses->filter(function ($value) {
+            return $value->course_type_id == CourseType::APPLIED;
+        });
+
+        $freeConfigurationCourses = $courses->filter(function ($value) {
+            return $value->course_type_id == CourseType::FREE_CONFIGURATION;
+        });
+
+        $specificFreeConfigurationCourses = $courses->filter(function ($value) {
+            return $value->course_type_id == CourseType::SPECIFIC_FREE_CONFIGURATION;
+        });
+
+        $coreCourses = $courses->filter(function ($value) {
+            return $value->course_type_id == CourseType::CORE;
+        });
+
+        return view('enrollment.show',
+            compact('enrollment', 'levelCourses',
+                'electiveCourses', 'academicCourses', 'appliedCourses', 'freeConfigurationCourses',
+                'specificFreeConfigurationCourses', 'coreCourses')
+        );
     }
 }

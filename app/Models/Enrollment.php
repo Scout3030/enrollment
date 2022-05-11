@@ -55,7 +55,7 @@ class Enrollment extends Model
 
     public function courses()
     {
-        return $this->belongsToMany(Course::class);
+        return $this->belongsToMany(Course::class)->withPivot('order');
     }
 
     public function student()

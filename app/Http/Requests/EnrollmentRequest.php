@@ -79,22 +79,18 @@ class EnrollmentRequest extends FormRequest
             if($this->hour_4_course && $this->hour_3_course) {
                 $hour4Course = json_decode($this->hour_4_course);
                 $specificFreeConfigurationCourses[0]['course_id'] = $hour4Course->id;
-                $specificFreeConfigurationCourses[0]['order'] = $hour4Course->order;
 
                 $hour3Course = json_decode($this->hour_3_course);
                 $specificFreeConfigurationCourses[1]['course_id'] = $hour3Course->id;
-                $specificFreeConfigurationCourses[1]['order'] = $hour3Course->order;
             }
 
             if($this->b_hour_1_course && $this->b_hour_3_courses) {
                 $bHour1Course = json_decode($this->b_hour_1_course);
                 $specificFreeConfigurationCourses[0]['course_id'] = $bHour1Course->id;
-                $specificFreeConfigurationCourses[0]['order'] = $bHour1Course->order;
 
                 foreach($this->b_hour_3_courses as $key => $bHour3Course){
                     $bHour3Course = json_decode($bHour3Course);
                     $specificFreeConfigurationCourses[$key + 1]['course_id'] = $bHour3Course->id;
-                    $specificFreeConfigurationCourses[$key + 1]['order'] = $bHour3Course->order;
                 }
             }
 
@@ -131,6 +127,7 @@ class EnrollmentRequest extends FormRequest
                 'bus_stop_id' => [Rule::requiredIf(function () {
                     return $this->transportation == 1;
                 }), 'exists:bus_stops,id'],
+                'common_optional_course' => ['required', 'exists:courses,id'],
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
             ];

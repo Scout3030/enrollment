@@ -103,7 +103,7 @@
                                             type="radio"
                                             name="hour_4_course"
                                             id="hour_4_course_{{ $course->id }}"
-                                            value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                            value='{"id":"{{ $course->id }}"}'
                                         />
                                         <label class="custom-option-item p-1" for="hour_4_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
@@ -124,7 +124,7 @@
                                             type="radio"
                                             name="hour_3_course"
                                             id="hour_3_course_{{ $course->id }}"
-                                            value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                            value='{"id":"{{ $course->id }}"}'
                                         />
                                         <label class="custom-option-item p-1" for="hour_3_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
@@ -157,7 +157,7 @@
                                             type="checkbox"
                                             name="b_hour_3_courses[]"
                                             id="b_hour_3_course_{{ $course->id }}"
-                                            value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                            value='{"id":"{{ $course->id }}"}'
                                         />
                                         <label class="custom-option-item p-1" for="b_hour_3_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
@@ -178,7 +178,7 @@
                                             type="radio"
                                             name="b_hour_1_course"
                                             id="b_hour_1_course_{{ $course->id }}"
-                                            value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                            value='{"id":"{{ $course->id }}"}'
                                         />
                                         <label class="custom-option-item p-1" for="b_hour_1_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">

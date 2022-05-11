@@ -853,5 +853,10 @@
     "Option 1 (4+3)": "Opcion 1 (4+3)",
     "You have been registered for the current enrollment process": "Te has matriculado con exito anteriormente",
     "You have registered successfully": "Te has matriculado exitosamente",
-    "Please provide a right combination of specific and free configuration courses": "Por favor provee una correcta combinacion para los cursos especificos y de libre configuracion, el numero de horas totales debe ser 7"
+    "Please provide a right combination of specific and free configuration courses": "Por favor provee una correcta combinacion para los cursos especificos y de libre configuracion, el numero de horas totales debe ser 7",
+    "Duration": "Duracion",
+    "Specific and free configuration courses": "Cursos especificos y de libre configuracion",
+    "Course": "Curso",
+    "Elective courses": "Cursos electivos",
+    "Ethical values": "Valores eticos"
 }
