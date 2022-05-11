@@ -134,5 +134,9 @@ return [
         'password' => [
             'min' => 'La :attribute debe contener más de :min caracteres',
         ],
-    ]
+    ],
+
+    'attributes' => [
+        'specific_free_configuration_courses' => 'cursos especificos y de libre configuracion'
+    ],
 ];

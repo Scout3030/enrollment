@@ -149,4 +149,14 @@ class Student extends Model
     {
         return $this->belongsTo(Grade::class);
     }
+
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
+    }
+
+    public function hasActiveProcess()
+    {
+        return !$this->enrollments->contains('grade_id', $this->grade_id);
+    }
 }

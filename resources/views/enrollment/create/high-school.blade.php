@@ -67,12 +67,12 @@
                                         <input
                                             class="custom-option-item-check"
                                             type="radio"
-                                            name="common_optional_course"
-                                            id="common_optional_course_{{ $course->id }}"
+                                            name="core_course"
+                                            id="core_course_{{ $course->id }}"
                                             value="{{ $course->id }}"
                                             @once checked @endonce
                                         />
-                                        <label class="custom-option-item p-1" for="common_optional_course_{{ $course->id }}">
+                                        <label class="custom-option-item p-1" for="core_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
                                                 <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
                                             </span>

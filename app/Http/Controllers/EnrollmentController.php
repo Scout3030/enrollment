@@ -102,16 +102,16 @@ class EnrollmentController extends Controller
      */
     public function store(EnrollmentRequest $request)
     {
-        $gradeId = auth()->user()->student->grade_id;
+        $grade = auth()->user()->student->grade;
 
         auth()->user()->student->fill([
-            'grade_id' => $gradeId,
+            'grade_id' => $grade->id,
             'bus_stop_id' => $request->transportation == 1 ? $request->bus_stop_id : null,
         ])->save();
 
         $enrollment = Enrollment::create([
             'student_id' => auth()->user()->student->id,
-            'grade_id' => $gradeId,
+            'grade_id' => $grade->id,
             'bus_stop_id' => $request->transportation == 1 ? $request->bus_stop_id : null,
             'repeat_course' => $request->repeat_course,
             'bilingual' => $request->bilingual,
@@ -126,10 +126,15 @@ class EnrollmentController extends Controller
         $enrollment->courses()->attach($request->mandatory_optional_course);
         $enrollment->courses()->attach($request->elective_courses);
 
-        if($gradeId == Grade::FOURTH_MIDDLE_SCHOOL){
+        if($grade->id == Grade::FOURTH_MIDDLE_SCHOOL){
             $enrollment->courses()->attach($request->academic_courses);
             $enrollment->courses()->attach($request->applied_courses);
             $enrollment->courses()->attach($request->free_configuration_courses);
+        }
+
+        if($grade->level->id == Level::HIGH_SCHOOL){
+            $enrollment->courses()->attach($request->core_courses);
+            $enrollment->courses()->attach($request->specific_free_configuration_course);
         }
 
         return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
@@ -140,7 +145,6 @@ class EnrollmentController extends Controller
         $levelCourses = $courses->filter(function ($value) {
             return $value->course_type_id == CourseType::COMMON;
         });
-//        dd($levelCourses, $courses);
         return view('enrollment.show', compact('enrollment', 'levelCourses'));
     }
 }
