@@ -9,6 +9,7 @@ use App\Models\CourseType;
 use App\Models\Enrollment;
 use App\Models\Grade;
 use App\Models\Level;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class EnrollmentController extends Controller
 {
@@ -179,5 +180,11 @@ class EnrollmentController extends Controller
                 'electiveCourses', 'academicCourses', 'appliedCourses', 'freeConfigurationCourses',
                 'specificFreeConfigurationCourses', 'coreCourses')
         );
+    }
+
+    public function export(Enrollment $enrollment){
+      $enrollment->student();
+      $pdf = PDF::loadView('template_pdf.enrollment',['enrollment' => $enrollment]);
+        return $pdf->download('file-pdf.pdf');
     }
 }

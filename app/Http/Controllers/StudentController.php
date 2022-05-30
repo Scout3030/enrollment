@@ -6,6 +6,9 @@ use App\DataTables\StudentDataTable;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\StudentRequest;
 use App\Models\Student;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\UsersImport;
 
 class StudentController extends Controller
 {
@@ -34,6 +37,21 @@ class StudentController extends Controller
     public function edit(Student $student){
         $student->load('user')->get();
         return view('student.edit', compact('student'));
+    }
+
+    public function view_import(){
+        return view('student.import');
+    }
+
+     /**
+    * @return \Illuminate\Support\Collection
+    */
+
+    public function import(Request $request){
+        Excel::import(new UsersImport, $request->file('file'));
+        return redirect()->route('students.view_import')->with('message', [
+        'type' => 'success', 'description' => __('File import successfully')
+    ]);
     }
 
     /**

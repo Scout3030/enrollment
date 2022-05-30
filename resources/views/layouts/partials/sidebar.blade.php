@@ -60,6 +60,14 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="menu-content">
+                    <li class="@if (Request::url() == route('students.view_import')) active @endif">
+                        <a href="{{ route('students.view_import') }}" class="d-flex align-items-center" target="_self">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate">{{ __('Import') }}</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             @endcan
 
