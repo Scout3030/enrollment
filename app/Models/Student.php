@@ -88,6 +88,10 @@ class Student extends Model
 {
     use HasFactory;
 
+    const SEPARATED = 0;
+    const MARRIED = 1;
+    const COHABITANTS = 2;
+
     protected static function boot () {
         parent::boot();
         static::created(function (Student $student) {
@@ -123,6 +127,7 @@ class Student extends Model
         'second_tutor_phone_number',
         'second_tutor_email',
         'second_tutor_address',
+        'parents_condition',
     ];
 
     protected $casts = [

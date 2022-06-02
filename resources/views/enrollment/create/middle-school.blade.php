@@ -16,7 +16,7 @@
     </div>
 
     <section id="basic-horizontal-layouts">
-        <form id="enrollmentForm" class="form form-horizontal" method="POST" action="{{ route('enrollment.store') }}">
+        <form id="enrollmentForm" class="form form-horizontal" method="POST"  enctype="multipart/form-data" action="{{ route('enrollment.store') }}">
             @csrf
             @if(!auth()->user()->student->grade_id)
                 <div class="row">
@@ -409,6 +409,7 @@
                                             <div class="mb-1">
                                                 <label class="form-label" for="previous_school">{{ __('Previous school') }}</label>
                                                 <input type="text" class="form-control" id="previous_school" name="previous_school" placeholder="{{ __('Type...') }}" />
+                                                <input type="hidden" class="form-control" id="sign" name="sign"/>
                                             </div>
                                         </div>
                                     </div>
@@ -418,7 +419,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -428,7 +428,7 @@
                                     <button
                                         type="button"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#enrollmentModal"
+                                        data-bs-target="#updateSignature"
                                         class="btn btn-outline-primary"
                                     >{{ __('Continue') }}</button>
                                 </div>
@@ -437,9 +437,8 @@
                     </div>
                 </div>
             </div>
-        </form>
-
-        @include('livewire.enrollment.components.modal')
+        </form>       
+         @include('livewire.enrollment.components.modal-signature')
 
     </section>
 @endsection
@@ -449,6 +448,7 @@
     <script src="{{ asset('vendors/js/forms/spinner/jquery.bootstrap-touchspin.js') }}"></script>
     <script>
         $(document).ready(function() {
+            document.getElementById('confirmEnrollmentButton').disabled = true;
             const levelNode = $('#level_id')
             const gradeNode = $("#grade_id")
             const routeNode = $("#route_id")

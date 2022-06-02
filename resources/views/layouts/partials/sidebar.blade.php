@@ -116,6 +116,14 @@
                     </a>
                 </li>
             @endcan
+                 @can('edit settings')
+                <li class="nav-item @if (Request::url() == route('settings.index')) active @endif">
+                    <a href="{{ route('settings.index') }}" class="d-flex align-items-center" target="_self">
+                        <i data-feather="file-text"></i>
+                        <span class="menu-title text-truncate">{{ __('Settings') }}</span>
+                    </a>
+                </li>
+            @endcan
         </ul>
     </div>
 </div>

@@ -1,0 +1,590 @@
+   
+
+.signature-card {
+    padding: 3em 1em !important;
+}
+
+.signature-card h2 {
+    font-weight: 300;
+}
+
+.signature-holder {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #e6eaee;
+    border-radius: 5px;
+}
+.signature-body {
+    width: 100%;
+    padding: 30px;
+    border: 2px dashed rgba(206,208,218,.5);
+    border-radius: 5px;
+}
+.signature-body img {
+    width: 100%;
+}
+
+.signature-btn-holder {
+    margin: 30px auto;
+    border: none;
+}
+.draw-signature-holder {
+    width: 404px;
+    display: inline-block;
+    border: 2px solid #e6eaee;
+    border-radius: 5px;
+    background-color: #fff !important;
+}
+canvas#draw-signature {
+    border-radius: 5px;
+    background-color: transparent !important;
+    cursor: pointer;
+}
+
+#updateSignature ul {
+    overflow: hidden;
+    border: 1px solid #e6eaee;
+    border-radius: 5px;
+    padding: 0;
+}
+
+#updateSignature ul.head-links li {
+    width: 33.3333%;
+    float: left;
+    list-style: none;
+    text-align: center;
+    background: #E4ECEF;
+}
+
+#updateSignature ul.head-links li.active {
+    background: #fff;
+}
+
+#updateSignature ul.head-links li:nth-child(1) {
+    border-radius: 5px 0 0 0;
+}
+
+#updateSignature ul.head-links li:nth-child(2) {
+    border-left: 1px solid #e6eaee;
+    border-right: 1px solid #e6eaee;
+}
+
+#updateSignature ul.head-links li:nth-child(3) {
+    border-radius: 0 5px 0 0;
+}
+
+#updateSignature ul.head-links li a {
+    padding: 15px 15px;
+    display: block;
+    color: #777;
+}
+
+#updateSignature ul.head-links li a:hover,
+#updateSignature ul.head-links li a:focus {
+    text-decoration: none;
+}
+
+.text-signature-preview {
+    text-align: center;
+    font-size: 38px;
+    border: 1px dashed #ddd;
+}
+
+.text-signature {
+    width: 400px;
+    height: 150px;
+    margin: 1px auto;
+    padding-top: 40px;
+}
+
+.center-notify {
+    text-align: center;
+    padding: 4pc 0 4pc 0;
+    color: #777;
+}
+
+.center-notify i {
+    font-size: 68px;
+}
+
+.password-trigger {
+    cursor: pointer;
+}
+
+
+/*signer overlay*/
+.signer-overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    background: #F7F8FE;
+    top: 0;
+    overflow-x: auto;
+    display: none;
+    padding: 15px;
+}
+body.editor .signer-overlay {
+    display: block;
+}
+.signer-overlay-header, .signer-more-tools {
+    background: #fff;
+    height: 70px;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    border-bottom: 1px solid #e6eaee;
+    margin-left: -15px;
+    margin-top: -15px;
+}
+.signer-overlay-logo {
+    width: 160px;
+    float: left;
+}
+.signer-overlay-action {
+    width: 220px;
+    float: right;
+    text-align: right;
+}
+.signer-header-tools {
+    width: 620px;
+    margin: 0 auto;
+    text-align: center;
+}
+.signer-more-tools {
+    top: 85px;
+    text-align: center;
+}
+.signer-tool, .signature-tool-item {
+    text-align: center;
+    font-size: 12px;
+    display: inline-block;
+    cursor: pointer;
+    min-width: 50px;
+    margin: 0 6px;
+}
+.signature-tool-item {
+    width: 40px;
+    height: 30px;
+    padding-top: 6px;
+    overflow: hidden;
+}
+.signature-tool-item button {    
+
+}
+.signer-tool p {
+    color: #7f8fa4;
+    display: block;
+    margin-bottom: 0;
+    margin-top: -2px;
+}
+.signer-tool .tool-icon, .signature-tool-item .tool-icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+.signer-tool:hover .tool-icon, .signature-tool-item:hover .tool-icon, .signer-tool.active .tool-icon {
+    background-color: #3DA4FF !important;
+}
+.signer-tool:hover p, .signer-tool.active p {
+    color: #3DA4FF !important;
+}
+.signer-overlay-previewer {
+    float: none;
+    margin: 0 auto;
+    margin-top: 100px;
+    box-shadow: none;
+    border: 1px solid #e6eaee;
+    margin-bottom: 30px;
+}
+.signer-tool .tool-icon.tool-signature {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/signature.svg) no-repeat center;
+    mask: url(../images/signature.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-text {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/text.svg) no-repeat center;
+    mask: url(../images/text.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-draw {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/draw.svg) no-repeat center;
+    mask: url(../images/draw.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-image {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/image.svg) no-repeat center;
+    mask: url(../images/image.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-symbols {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/symbols.svg) no-repeat center;
+    mask: url(../images/symbols.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-shapes {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/shapes.svg) no-repeat center;
+    mask: url(../images/shapes.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-erase {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/erase.svg) no-repeat center;
+    mask: url(../images/erase.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-fields {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/fields.svg) no-repeat center;
+    mask: url(../images/fields.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-link {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/link.svg) no-repeat center;
+    mask: url(../images/link.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-rotate {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/rotate.svg) no-repeat center;
+    mask: url(../images/rotate.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-textinput {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/textinput.svg) no-repeat center;
+    mask: url(../images/textinput.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-alignleft {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/alignleft.svg) no-repeat center;
+    mask: url(../images/alignleft.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-aligncenter {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/aligncenter.svg) no-repeat center;
+    mask: url(../images/aligncenter.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-alignright {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/alignright.svg) no-repeat center;
+    mask: url(../images/alignright.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-bold {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/bold.svg) no-repeat center;
+    mask: url(../images/bold.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-italic {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/italic.svg) no-repeat center;
+    mask: url(../images/italic.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-underline {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/underline.svg) no-repeat center;
+    mask: url(../images/underline.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-strikethrough {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/strikethrough.svg) no-repeat center;
+    mask: url(../images/strikethrough.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-duplicate {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/duplicate.svg) no-repeat center;
+    mask: url(../images/duplicate.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-highlight {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/highlight.svg) no-repeat center;
+    mask: url(../images/highlight.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-font {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/font.svg) no-repeat center;
+    mask: url(../images/font.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-delete {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/delete.svg) no-repeat center;
+    mask: url(../images/delete.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signature-tool-item .tool-icon.tool-undo {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/undo.svg) no-repeat center;
+    mask: url(../images/undo.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signature-tool-item .tool-icon.tool-erase {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/erase.svg) no-repeat center;
+    mask: url(../images/erase.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signature-tool-item .tool-icon.tool-stroke {
+    background-color: #7f8fa4;
+    -webkit-mask: url(../images/stroke.svg) no-repeat center;
+    mask: url(../images/stroke.svg) no-repeat center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+}
+.signer-tool .tool-icon.tool-colorfill, .signer-tool:hover .tool-icon.tool-colorfill {
+    background-color: transparent !important;
+    border-radius: 50%;
+}
+.signer-tool .tool-icon.tool-fontsize {
+    background-color: transparent !important;
+    width: auto;
+}
+.signer-tool.disabled p {
+    color: rgba(53,64,82,.3) !important;
+}
+.signer-tool.disabled {
+    cursor: not-allowed;
+}
+.signer-tool.disabled .tool-icon {
+    background-color: rgba(53,64,82,.3) !important;
+}
+.signer-tool.disabled .tool-icon.tool-fontsize {
+    background-color: transparent !important;
+}
+.signer-tool.disabled button, .signer-tool.disabled .numberInput {
+    opacity: 0.4;
+}
+
+
+/*builder*/
+.signer-element {
+    padding: 5px;
+    position: fixed;
+    border: 1px solid transparent;
+}
+.signer-element[type="text"][group="input"], .signer-element[type="text"][group="field"] {
+    border: 1px solid #e6eaee;
+    width: 163px;
+}
+.signer-element[type="signature"][group="field"] {
+    cursor: pointer;
+}
+.signer-element img, .signer-element svg {
+    max-width: 100% !important;
+}
+.signer-element svg {
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+.signer-element.selected-element {
+    border: 1px dashed #ff0000 !important;
+}
+.signer-element:hover {
+    border: 1px dashed #3DA4FF;
+}
+.signer-element:hover .ui-resizable-handle.ui-resizable-nw, 
+.signer-element:hover .ui-resizable-handle.ui-resizable-ne,
+.signer-element:hover .ui-resizable-handle.ui-resizable-sw,
+.signer-element:hover .ui-resizable-handle.ui-resizable-se {
+    background: #3DA4FF;
+}
+.selected-element .ui-resizable-handle.ui-resizable-nw, 
+.selected-element .ui-resizable-handle.ui-resizable-ne,
+.selected-element .ui-resizable-handle.ui-resizable-sw,
+.selected-element .ui-resizable-handle.ui-resizable-se {
+    background: #ff0000 !important;
+}
+.ui-resizable-se {
+    cursor: se-resize;
+    width: 9px;
+    height: 9px;
+    right: -5px;
+    bottom: -5px;
+}
+.signer-element[bold="true"] .writing-pad {
+    font-weight: bold;
+}
+.signer-element[italic="true"] .writing-pad {
+    font-style: italic;
+}
+.signer-element[underline="true"] .writing-pad {
+    text-decoration: underline;
+}
+.signer-element[strikethrough="true"] .writing-pad {
+    text-decoration: line-through;
+}
+.signer-element[align="left"] .writing-pad {
+    text-align: left;
+}
+.signer-element[align="right"] .writing-pad {
+    text-align: right;
+}
+.signer-element[align="center"] .writing-pad {
+    text-align: center;
+}
+.font-item, .field-item, .input-field-item {
+    width: 91%;
+    padding: 8px;
+    font-size: 16px;
+    border-bottom: 1px dashed #e6eaee;
+    cursor: pointer;
+}
+.input-field-item:hover, .field-item:hover, .font-item:hover, .font-item.selected {
+    color: #3DA4FF;
+}
+a.delete-field, a.delete-input-field {
+    float: right;
+    margin-top: 9px;
+    margin-right: 14px;
+    font-size: 20px;
+    display: none;
+    color: #777;
+}
+a.delete-input-field {
+    margin-top: -4px;
+}
+.field-item:hover a.delete-field, .input-field-item:hover a.delete-input-field {
+    display: block;
+}
+a.delete-field:hover, a.delete-input-field:hover {
+    color: #ff0000;
+}
+.symbol-item, .shape-item {
+    width: 50px;
+    height: 50px;
+    float: left;
+    padding: 8px;
+    cursor: pointer;
+    border: 1px dashed #e6eaee;
+}
+.shape-item {
+    width: 50px;
+    height: 50px;;
+}
+.symbol-item:hover, .symbol-item.selected, .shape-item:hover, .shape-item.selected {
+    border: 1px dashed #3DA4FF;
+}
+.symbol-item svg, .shape-item svg {
+    width: 100%;
+    height: 100%;
+}
+button.jscolor {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin: 0 0 0 0 !important;
+    padding: 0;
+    border: 0 !important;
+}
+.numberInput {
+  width: 45px;
+  height: 30px;
+  position: relative;
+  border: 1px solid #e6eaee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.numberInput input {
+  border: none;
+  outline: 0;
+  width: 100%;
+  height: 100%;
+  padding: 3px 15px 0px 4px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.arrow {
+  background: #f2f4f7;
+  height: 50%;
+  width: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  cursor: pointer;
+}
+.arrow:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  transform: translate(-50%, -50%);
+}
+.arrow:hover {
+  background: #d0d7e2;
+}
+.arrow:active {
+  background: #ccc;
+}
+.arrow.down {
+  bottom: 0;
+  top: auto;
+  border-top: 1px solid #e6eaee;
+}
+.arrow.up:after {
+  border-bottom: 4px solid #7f8fa4;
+}
+.arrow.down:after {
+  border-top: 4px solid #7f8fa4;
+}
+.arrow:hover:after {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+
+
+
+        .signature-btn-holder,
+        .signature-holder {
+            width: 100%;
+        }
+        
+    

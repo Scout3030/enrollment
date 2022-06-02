@@ -74,6 +74,7 @@
         <script src="{{ asset('js/scripts/utils.js') }}"></script>
         <script type="text/javascript">
             $(window).on('load', function() {
+               
                 if (feather) {
                     feather.replace({
                         width: 14, height: 14

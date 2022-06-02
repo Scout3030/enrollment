@@ -38,6 +38,7 @@ class Grade extends Model
 
     const FIRST_HIGH_SCHOOL = 5;
     const SECOND_HIGH_SCHOOL = 6;
+    const THIRD_HIGH_SCHOOL = 7;
 
     public function getNameAttribute($value)
     {

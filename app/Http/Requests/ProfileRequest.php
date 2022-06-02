@@ -50,6 +50,8 @@ class ProfileRequest extends FormRequest
             'second_tutor_phone_number' => 'nullable|string|min:6',
             'second_tutor_email' => 'nullable|email',
             'second_tutor_address' => 'nullable|string|min:3',
+
+            'parents_condition' => 'required'
         ];
     }
 }

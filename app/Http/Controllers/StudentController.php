@@ -78,6 +78,7 @@ class StudentController extends Controller
         $user->save();
 
         $student = $user->student;
+        $student->parents_condition = $request->parents_condition;
         $student->country_id = $request->country_id;
         $student->middle_name = $request->middle_name;
         $student->paternal_surname = $request->paternal_surname;

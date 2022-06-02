@@ -62,6 +62,48 @@
                     </div>
                 </div>
                 <!-- /User Card -->
+                <div class="card">
+                    <div class="card-body">
+                        @if( auth()->user()->student->parents_condition)
+                            <div class="d-flex justify-content-around my-2 pt-75">
+                                <div class="d-flex align-items-start me-2">
+                                <span class="badge bg-light-primary p-75 rounded">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check font-medium-2">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </span>
+                                    <div class="ms-75">
+                                        <h4 class="mb-0">{{ __('Fathers') }}</h4>
+                                         @if( auth()->user()->student->parents_condition == \App\Models\Student::SEPARATED)
+                                         <small>{{ __('Separated') }}</small>
+                                         @endif
+                                           @if( auth()->user()->student->parents_condition == \App\Models\Student::MARRIED)
+                                         <small>{{ __('Married') }}</small>
+                                         @endif
+                                           @if( auth()->user()->student->parents_condition == \App\Models\Student::COHABITANTS)
+                                         <small>{{ __('Cohabitants') }}</small>
+                                         @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                            <div class="d-flex justify-content-around my-2 pt-75">
+                                <div class="d-flex align-items-start me-2">
+                            <span class="badge bg-light-primary p-75 rounded">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </span>
+                                    <div class="ms-75">
+                                        <h4 class="mb-0">{{ __('Fathers') }}</h4>
+                                        <small>{{ __('No information') }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
             </div>
             <!--/ User Sidebar -->
 

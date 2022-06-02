@@ -47,6 +47,7 @@ class Enrollment extends Model
         'repeat_course',
         'bilingual',
         'previous_school',
+        'signature'
     ];
 
     protected $casts = [

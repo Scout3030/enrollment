@@ -9,6 +9,7 @@ use App\Http\Controllers\GradeController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,15 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+  
+
+    Route::get('/settings', [SettingController::class, 'index'])
+            ->can('edit settings')
+            ->name('settings.index');
+    Route::post('/settings', [SettingController::class, 'store'])   
+            ->can('edit settings')
+            ->name('settings.store');
 
     Route::group(['prefix' => "users"], function() {
         Route::get('/', [UserController::class, 'index'])
@@ -143,6 +153,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::post('/store', [EnrollmentController::class, 'store'])
             ->name('enrollment.store')
             ->can('create enrollment');
+        Route::post('/signature', [EnrollmentController::class, 'signature'])
+            //  ->can('edit settings')
+              ->name('enrollment.signature');
     });
 
     Route::group(['prefix' => "enrollments"], function() {
