@@ -9,8 +9,8 @@ use App\Models\CourseType;
 use App\Models\Enrollment;
 use App\Models\Grade;
 use App\Models\Level;
-use Barryvdh\DomPDF\Facade as PDF;
 use Str;
+use Storage;
 
 class EnrollmentController extends Controller
 {
@@ -106,7 +106,6 @@ class EnrollmentController extends Controller
     {
         $student = auth()->user()->student;
         $grade = $student->grade;
-
         $student->fill([
             'grade_id' => $grade->id,
             'bus_stop_id' => $request->transportation == 1 ? $request->bus_stop_id : null,
@@ -119,6 +118,7 @@ class EnrollmentController extends Controller
             'repeat_course' => $request->repeat_course,
             'bilingual' => $request->bilingual,
             'previous_school' => $request->previous_school,
+            'signature' => $request->sign,
         ]);
 
         $levelCourses = Course::whereGradeId($student->grade_id)
@@ -184,8 +184,18 @@ class EnrollmentController extends Controller
     }
 
     public function export(Enrollment $enrollment){
-        $pdf = PDF::loadView('template_pdf.enrollment', ['enrollment' => $enrollment]);
+        $pdf = \PDF::loadView('template_pdf.enrollment', ['enrollment' => $enrollment]);
         $pdfName = Str::slug($enrollment->student->user->name.' '.$enrollment->student->paternal_surname.' '.$enrollment->student->maternal_surname,'-');
         return $pdf->download($pdfName.'.pdf');
+    }
+
+    public function signature()
+    {
+        $baseFrom = request()->sign;
+        $img = getB64Image($baseFrom);
+        $extension = getB64Extension($baseFrom);
+        $imageName = 'sign'. time() . '.' . $extension;
+        Storage::put('signatures/' . $imageName, $img);
+        return response()->json(['status' => __('Signature register successfully'), 'name'=> $imageName]);
     }
 }

@@ -41,6 +41,7 @@ class CreateStudentsTable extends Migration
             $table->string('second_tutor_phone_number')->nullable();
             $table->string('second_tutor_email')->nullable();
             $table->string('second_tutor_address')->nullable();
+            $table->tinyInteger('parents_condition')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

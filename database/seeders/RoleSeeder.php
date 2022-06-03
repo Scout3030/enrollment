@@ -61,6 +61,8 @@ class RoleSeeder extends Seeder
             'view enrollments',
             // Course type permission
             'view course types',
+
+            'edit settings',
         ];
 
         foreach ($permissions as $permission){

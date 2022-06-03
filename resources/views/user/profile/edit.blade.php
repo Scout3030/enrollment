@@ -199,6 +199,59 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="card-header">
+                            <h4 class="card-title">{{ __('Parents') }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="mb-1 row">
+                                       <div class="col-sm-12">
+                                            <div class="demo-inline-spacing">
+                                                <div class="form-check form-check-inline">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="parents_condition"
+                                                        id="parents_condition_separated"
+                                                        value="0"
+                                                        {{ auth()->user()->student->id ? (auth()->user()->student->parents_condition == \App\Models\Student::SEPARATED? 'checked' : '') : '' }}
+                                                    />
+                                                    <label class="form-check-label" for="parents_condition_separated">{{ __('Separated') }}</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                       name="parents_condition"
+                                                        id="parents_condition_married"
+                                                        value="1"
+                                                         {{ auth()->user()->student->id ? (auth()->user()->student->parents_condition == \App\Models\Student::MARRIED? 'checked' : '') : '' }}
+                                                    />
+                                                    <label class="form-check-label" for="parents_condition_married">{{ __('Married') }}</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input
+                                                        class="form-check-input"
+                                                        type="radio"
+                                                        name="parents_condition"
+                                                        id="parents_condition_cohabitants"
+                                                        value="2"
+                                                          {{ auth()->user()->student->id ? (auth()->user()->student->parents_condition == \App\Models\Student::COHABITANTS? 'checked' : '') : '' }}
+                                                    />
+                                                    <label class="form-check-label" for="parents_condition_cohabitants">{{ __('Cohabitants') }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="card-header">
                             <h4 class="card-title">{{ __('Tutor 01 details') }}</h4>
                         </div>
                         <div class="card-body">
