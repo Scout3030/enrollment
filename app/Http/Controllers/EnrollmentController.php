@@ -9,9 +9,8 @@ use App\Models\CourseType;
 use App\Models\Enrollment;
 use App\Models\Grade;
 use App\Models\Level;
-use Illuminate\Http\Request;
-use App\Helpers\Helper;
 use Barryvdh\DomPDF\Facade as PDF;
+use Storage;
 
 class EnrollmentController extends Controller
 {
@@ -190,19 +189,13 @@ class EnrollmentController extends Controller
         return $pdf->download('file-pdf.pdf');
     }
 
-   
-
-    public function signature(Request $request)
+    public function signature()
     {
-            $path = 'signatures';
-            $baseFrom = $request->sign;
-            $img = Helper::getB64Image($baseFrom);
-            $img_extension = Helper::getB64Extension($baseFrom);
-            $img_name = 'sign'. time() . '.' . $img_extension;   
-           
-            \Illuminate\Support\Facades\Storage::disk('public')->put($path . '/' . $img_name, $img);
-
-            return response()->json(['status' => __('Signature register successfully'), 'name'=> $img_name]);
-
+        $baseFrom = request()->sign;
+        $img = getB64Image($baseFrom);
+        $extension = getB64Extension($baseFrom);
+        $imageName = 'sign'. time() . '.' . $extension;
+        Storage::put('signatures/' . $imageName, $img);
+        return response()->json(['status' => __('Signature register successfully'), 'name'=> $imageName]);
     }
 }

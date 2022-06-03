@@ -26,3 +26,19 @@ if (! function_exists('uploadFile')) {
         return request()->file($key)->hashName();
     }
 }
+
+if (! function_exists('getB64Extension')) {
+    function getB64Extension($base64_image, $full = null)
+    {
+        preg_match("/^data:image\/(.*);base64/i", $base64_image, $img_extension);
+        return ($full) ? $img_extension[0] : $img_extension[1];
+    }
+}
+
+if (! function_exists('getB64Image')) {
+    function getB64Image($base64_image)
+    {
+        $image_service_str = substr($base64_image, strpos($base64_image, ",") + 1);
+        return base64_decode($image_service_str);
+    }
+}

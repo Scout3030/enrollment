@@ -199,7 +199,7 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Fathers') }}</h4>
+                            <h4 class="card-title">{{ __('Parents') }}</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">

@@ -27,12 +27,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-  
-
-    Route::get('/settings', [SettingController::class, 'index'])
+    Route::view('/settings', 'settings.index')
             ->can('edit settings')
             ->name('settings.index');
-    Route::post('/settings', [SettingController::class, 'store'])   
+    Route::post('/settings', [SettingController::class, 'store'])
             ->can('edit settings')
             ->name('settings.store');
 
