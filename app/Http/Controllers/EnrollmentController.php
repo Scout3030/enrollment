@@ -10,6 +10,7 @@ use App\Models\Enrollment;
 use App\Models\Grade;
 use App\Models\Level;
 use Barryvdh\DomPDF\Facade as PDF;
+use Str;
 
 class EnrollmentController extends Controller
 {
@@ -183,8 +184,8 @@ class EnrollmentController extends Controller
     }
 
     public function export(Enrollment $enrollment){
-      $enrollment->student();
-      $pdf = PDF::loadView('template_pdf.enrollment',['enrollment' => $enrollment]);
-        return $pdf->download('file-pdf.pdf');
+        $pdf = PDF::loadView('template_pdf.enrollment', ['enrollment' => $enrollment]);
+        $pdfName = Str::slug($enrollment->student->user->name.' '.$enrollment->student->paternal_surname.' '.$enrollment->student->maternal_surname,'-');
+        return $pdf->download($pdfName.'.pdf');
     }
 }

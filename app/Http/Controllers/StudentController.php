@@ -9,6 +9,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
+use Storage;
 
 class StudentController extends Controller
 {
@@ -39,19 +40,17 @@ class StudentController extends Controller
         return view('student.edit', compact('student'));
     }
 
-    public function view_import(){
-        return view('student.import');
+    public function downloadFormat(){
+        return Storage::download('files/import-students-format.xlsx');
     }
 
-     /**
-    * @return \Illuminate\Support\Collection
-    */
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function import(Request $request){
         Excel::import(new UsersImport, $request->file('file'));
-        return redirect()->route('students.view_import')->with('message', [
-        'type' => 'success', 'description' => __('File import successfully')
-    ]);
+        return back()->with('message', ['type' => 'success', 'description' => __('Students imported successfully')]);
     }
 
     /**
