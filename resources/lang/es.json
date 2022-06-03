@@ -864,5 +864,6 @@
     "Elective courses": "Cursos electivos",
     "Ethical values": "Valores eticos",
     "Students imported successfully": "Estudiantes importados correctamente",
-    "File": "Archivo"
+    "File": "Archivo",
+    "Invalid excel format, please import a valid file.": "Formato de excel erroneo, por favor importe un excel valido."
 }
