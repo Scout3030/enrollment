@@ -20,7 +20,9 @@ class CreateEnrollmentsTable extends Migration
             $table->foreignId('bus_stop_id')->nullable()->constrained();
             $table->tinyInteger('bilingual')->default(config('constants.NO'));
             $table->string('previous_school')->nullable();
-            $table->string('signature')->nullable();
+            $table->string('student_signature')->nullable();
+            $table->string('second_tutor_signature')->nullable();
+            $table->string('first_tutor_signature')->nullable();
             $table->tinyInteger('repeat_course')->default(config('constants.NO'));
             $table->timestamps();
         });

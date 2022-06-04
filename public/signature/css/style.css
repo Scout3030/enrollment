@@ -34,8 +34,28 @@
     border: 2px solid #e6eaee;
     border-radius: 5px;
     background-color: #fff !important;
+    cursor: pointer;
 }
-canvas#draw-signature {
+
+.draw-signature-holdertutor1 {
+    width: 404px;
+    display: inline-block;
+    border: 2px solid #e6eaee;
+    border-radius: 5px;
+    background-color: #fff !important;
+    cursor: pointer;
+}
+
+.draw-signature-holdertutor2 {
+    width: 404px;
+    display: inline-block;
+    border: 2px solid #e6eaee;
+    border-radius: 5px;
+    background-color: #fff !important;
+    cursor: pointer;
+}
+
+canvas#draw-signaturetutor1 {
     border-radius: 5px;
     background-color: transparent !important;
     cursor: pointer;
@@ -512,6 +532,15 @@ a.delete-field:hover, a.delete-input-field:hover {
     height: 100%;
 }
 button.jscolor {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin: 0 0 0 0 !important;
+    padding: 0;
+    border: 0 !important;
+}
+
+button.jscolortutor1 {
     border-radius: 50%;
     width: 20px;
     height: 20px;
