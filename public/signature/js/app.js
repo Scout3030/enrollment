@@ -189,9 +189,25 @@ $(".reminders-holder").on("click",".delete-reminder",function(){
 $(".signature-input").keyup(function() {
     textSignature = $(this).val();
     if (textSignature == "") {
-        textSignature = "Your Name";
+        textSignature = "Firma estudiante";
     }
     $(".text-signature").text(textSignature);
+})
+
+$(".signature-inputtutor1").keyup(function() {
+    textSignaturetutor1 = $(this).val();
+    if (textSignaturetutor1 == "") {
+        textSignaturetutor1 = "Firma tutor 1";
+    }
+    $(".text-signaturetutor1").text(textSignaturetutor1);
+})
+
+$(".signature-inputtutor2").keyup(function() {
+    textSignaturetutor2 = $(this).val();
+    if (textSignaturetutor2 == "") {
+        textSignaturetutor2 = "Firma tutor 1";
+    }
+    $(".text-signaturetutor2").text(textSignaturetutor2);
 })
 
 /*
@@ -202,6 +218,17 @@ $(".signature-style").change(function() {
     $(".text-signature").css("font-style", signatureStyle);
 })
 
+$(".signature-style").change(function() {
+    var signatureStyletutor1 = $(this).val();
+    $(".text-signaturetutor1").css("font-style", signatureStyletutor1);
+})
+
+$(".signature-style").change(function() {
+    var signatureStyletutor2 = $(this).val();
+    $(".text-signaturetutor2").css("font-style", signatureStyletutor2);
+})
+
+
 /*
  * change signature color
  */
@@ -209,6 +236,17 @@ function updateSignatureColor(color) {
     $(".text-signature").css("color", "#"+color);
     $(".signature-color").css("color", "#"+color);
 }
+
+function updateSignatureColortutor1(color) {
+    $(".text-signaturetutor1").css("color", "#"+color);
+    $(".signature-colortutor1").css("color", "#"+color);
+}
+
+function updateSignatureColortutor2(color) {
+    $(".text-signaturetutor2").css("color", "#"+color);
+    $(".signature-colortutor2").css("color", "#"+color);
+}
+
 
 /*
  * Initilize signature drawing
@@ -228,12 +266,32 @@ $(".signature-weight").change(function() {
     $(".text-signature").css("font-weight", signatureWeight);
 })
 
+$(".signature-weight").change(function() {
+    var signatureWeight = $(this).val();
+    $(".text-signaturetutor1").css("font-weight", signatureWeight);
+})
+
+$(".signature-weight").change(function() {
+    var signatureWeight = $(this).val();
+    $(".text-signaturetutor2").css("font-weight", signatureWeight);
+})
+
 /*
  * change signature font
  */
 $(".signature-font").change(function() {
     var signatureFont = $(this).val();
     $(".text-signature").css("font-family", signatureFont);
+})
+
+$(".signature-font").change(function() {
+    var signatureFont = $(this).val();
+    $(".text-signaturetutor1").css("font-family", signatureFont);
+})
+
+$(".signature-font").change(function() {
+    var signatureFont = $(this).val();
+    $(".text-signaturetutor2").css("font-family", signatureFont);
 })
 
 /*
@@ -262,13 +320,34 @@ $("#signature-stroke").click(function() {
  * change signature font
  */
 $(".save-signature").click(function() {
-    signatureType = $("#updateSignature .head-links").find("li.active").attr("type");
+    signatureType = $(".head-links").find("li.active").attr("type");
     if (signatureType === "capture") {
         saveTextSignature();
     }else if(signatureType === "upload"){
         saveUploadSignature();
     }else if(signatureType === "draw"){
-        saveSignature($('#draw-signature').getCanvasImage('png'));
+    }
+});
+
+$(".save-signaturetutor1").click(function() {
+    signatureType = $(".head-links-tutor1").find("li.active").attr("type");
+    if (signatureType === "capturetutor1") {
+        saveTextSignaturetutor1();
+    }else if(signatureType === "uploadtutor1"){
+       
+        saveUploadSignaturetutor1();
+    }else if(signatureType === "drawtutor1"){
+    }
+});
+
+$(".save-signaturetutor2").click(function() {
+    signatureType = $(".head-links-tutor2").find("li.active").attr("type");
+    if (signatureType === "capturetutor2") {
+        saveTextSignaturetutor2();
+    }else if(signatureType === "uploadtutor2"){
+       // alert(22)
+        saveUploadSignaturetutor2();
+    }else if(signatureType === "drawtutor2"){
     }
 });
 
