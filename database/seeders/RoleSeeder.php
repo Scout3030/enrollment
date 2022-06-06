@@ -40,6 +40,8 @@ class RoleSeeder extends Seeder
             'delete users',
             'restore users',
             // Student permissions
+            'view students',
+            'create students',
             'edit students',
             //Course permissions
             'view courses',
@@ -54,7 +56,6 @@ class RoleSeeder extends Seeder
             //Section permissions
             'view sections',
             //Student permissions
-            'view students',
             'view bus stops',
             //Enrollment permissions
             'view enrollments',

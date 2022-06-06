@@ -20,12 +20,10 @@ class CreateBusStopsTable extends Migration
             $table->timestamps();
         });
 
-        if(config('app.env') == 'local'){
-            Artisan::call('db:seed', [
-                '--class' => 'BusStopSeeder',
-                '--force' => true
-            ]);
-        };
+        Artisan::call('db:seed', [
+            '--class' => 'BusStopSeeder',
+            '--force' => true
+        ]);
     }
 
     /**

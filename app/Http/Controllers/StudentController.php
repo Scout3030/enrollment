@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\DataTables\StudentDataTable;
 use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\StudentImportRequest;
 use App\Http\Requests\StudentRequest;
 use App\Models\Student;
-use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
+use Storage;
 
 class StudentController extends Controller
 {
@@ -39,19 +40,17 @@ class StudentController extends Controller
         return view('student.edit', compact('student'));
     }
 
-    public function view_import(){
-        return view('student.import');
+    public function downloadFormat(){
+        return Storage::download('files/import-students-format.xlsx');
     }
 
-     /**
-    * @return \Illuminate\Support\Collection
-    */
-
-    public function import(Request $request){
+    /**
+     * @param StudentImportRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function import(StudentImportRequest $request){
         Excel::import(new UsersImport, $request->file('file'));
-        return redirect()->route('students.view_import')->with('message', [
-        'type' => 'success', 'description' => __('File import successfully')
-    ]);
+        return back()->with('message', ['type' => 'success', 'description' => __('Students imported successfully')]);
     }
 
     /**
@@ -104,8 +103,6 @@ class StudentController extends Controller
         $student->second_tutor_address = $request->second_tutor_address;
         $student->save();
 
-        return redirect()->route('profile.show')->with('message', [
-            'type' => 'success', 'description' => __('Profile edited successfully')
-        ]);
+        return back()->with('message', ['type' => 'success', 'description' => __('Profile edited successfully')]);
     }
 }

@@ -66,12 +66,15 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::post('/store', [StudentController::class, 'store'])
             ->name('students.store')
             ->can('create students');
-        Route::post('/import', [StudentController::class, 'import'])
+        Route::view('/import', 'student.import')
             ->name('students.import')
             ->can('view students');
-        Route::get('/view_import', [StudentController::class, 'view_import'])
-            ->name('students.view_import')
-            ->can('view students');
+        Route::post('/import', [StudentController::class, 'import'])
+            ->name('students.import')
+            ->can('create students');
+        Route::get('/download-format', [StudentController::class, 'downloadFormat'])
+            ->name('students.downloadFormat')
+            ->can('create students');
         Route::get('/{student}', [StudentController::class, 'show'])
             ->name('students.show')
             ->can('view students');

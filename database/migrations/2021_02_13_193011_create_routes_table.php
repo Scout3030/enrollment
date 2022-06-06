@@ -18,13 +18,6 @@ class CreateRoutesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
-
-        if(config('app.env') == 'local'){
-            Artisan::call('db:seed', [
-                '--class' => 'RouteSeeder',
-                '--force' => true
-            ]);
-        };
     }
 
     /**
