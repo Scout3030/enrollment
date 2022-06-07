@@ -74,29 +74,51 @@ class EnrollmentRequest extends FormRequest
         }
 
         if(auth()->user()->student->grade->level->id == Level::HIGH_SCHOOL) {
-            $specificFreeConfigurationCourses = [];
-
-            if($this->hour_4_course && $this->hour_3_course) {
-                $hour4Course = json_decode($this->hour_4_course);
-                $specificFreeConfigurationCourses[0]['course_id'] = $hour4Course->id;
-
-                $hour3Course = json_decode($this->hour_3_course);
-                $specificFreeConfigurationCourses[1]['course_id'] = $hour3Course->id;
-            }
-
-            if($this->b_hour_1_course && $this->b_hour_3_courses) {
-                $bHour1Course = json_decode($this->b_hour_1_course);
-                $specificFreeConfigurationCourses[0]['course_id'] = $bHour1Course->id;
-
-                foreach($this->b_hour_3_courses as $key => $bHour3Course){
-                    $bHour3Course = json_decode($bHour3Course);
-                    $specificFreeConfigurationCourses[$key + 1]['course_id'] = $bHour3Course->id;
+           if($this->active==1){
+                $freeConfigurationCoursesHighschool_1 = [];
+                foreach($this->hour_4_course as $key => $free_configurationCourse_1){
+                    $free_configurationCourse_1 = json_decode($free_configurationCourse_1);
+                    $freeConfigurationCoursesHighschool_1[$key]['course_id'] = $free_configurationCourse_1->id;
+                    $freeConfigurationCoursesHighschool_1[$key]['order'] = $free_configurationCourse_1->order;
                 }
-            }
+                $this->merge([
+                    'free_configuration_courses_highschool_1' => $freeConfigurationCoursesHighschool_1,
+                ]);
 
-            $this->merge([
-                'specific_free_configuration_courses' => $specificFreeConfigurationCourses,
-            ]);
+                $freeConfigurationCoursesHighschool_2 = [];
+                foreach($this->hour_3_course as $key => $free_configurationCourse_2){
+                    $free_configurationCourse_2 = json_decode($free_configurationCourse_2);
+                    $freeConfigurationCoursesHighschool_2[$key]['course_id'] = $free_configurationCourse_2->id;
+                    $freeConfigurationCoursesHighschool_2[$key]['order'] = $free_configurationCourse_2->order;
+                }
+                $this->merge([
+                    'free_configuration_courses_highschool_2' => $freeConfigurationCoursesHighschool_2,
+                ]);
+            }
+            else
+            {
+                $freeConfigurationCoursesHighschool_1 = [];
+                foreach($this->b_hour_1_course as $key => $free_configurationCourse_1){
+                    $free_configurationCourse_1 = json_decode($free_configurationCourse_1);
+                    $freeConfigurationCoursesHighschool_1[$key]['course_id'] = $free_configurationCourse_1->id;
+                    $freeConfigurationCoursesHighschool_1[$key]['order'] = $free_configurationCourse_1->order;
+                }
+                $this->merge([
+                    'free_configuration_courses_highschool_1' => $freeConfigurationCoursesHighschool_1,
+                ]);
+
+                $freeConfigurationCoursesHighschool_2 = [];
+                foreach($this->b_hour_3_courses as $key => $free_configurationCourse_2){
+                    $free_configurationCourse_2 = json_decode($free_configurationCourse_2);
+                    $freeConfigurationCoursesHighschool_2[$key]['course_id'] = $free_configurationCourse_2->id;
+                    $freeConfigurationCoursesHighschool_2[$key]['order'] = $free_configurationCourse_2->order;
+                }
+                $this->merge([
+                    'free_configuration_courses_highschool_2' => $freeConfigurationCoursesHighschool_2,
+                ]);
+
+
+            }
         }
     }
 
@@ -138,8 +160,10 @@ class EnrollmentRequest extends FormRequest
                     return $this->transportation == 1;
                 }), 'exists:bus_stops,id'],
                 'core_course' => ['required', 'exists:courses,id'],
-                'specific_free_configuration_courses' => ['required', 'array', new ValidHoursRule()],
-                'specific_free_configuration_courses.*.course_id' => 'exists:courses,id',
+                'free_configuration_courses_highschool_2' => ['required', 'array'],
+                'free_configuration_courses_highschool_2.*.course_id' => 'exists:courses,id',
+                'free_configuration_courses_highschool_1' => ['required', 'array'],
+                'free_configuration_courses_highschool_1.*.course_id' => 'exists:courses,id',
             ];
         }
         return [];

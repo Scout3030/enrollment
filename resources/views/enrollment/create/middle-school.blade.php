@@ -597,7 +597,7 @@
                 }
             });
              function electiveCourse() {
-                $('.row4').each(function(index, element) {
+                $('.row3').each(function(index, element) {
                    document.getElementById("elective_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}" 
                 });
              }

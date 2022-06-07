@@ -142,7 +142,8 @@ class EnrollmentController extends Controller
 
         if($grade->level->id == Level::HIGH_SCHOOL){
             $enrollment->courses()->attach($request->core_course);
-            $enrollment->courses()->attach($request->specific_free_configuration_courses);
+            $enrollment->courses()->attach($request->free_configuration_courses_highschool_1);
+            $enrollment->courses()->attach($request->free_configuration_courses_highschool_2);
         }
 
         return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
