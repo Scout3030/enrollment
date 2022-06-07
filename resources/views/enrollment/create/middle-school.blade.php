@@ -60,7 +60,7 @@
                             <h4 class="card-title">{{ __('Level courses') }}</h4>
                         </div>
                         <div class="card-body">
-                            <div class="row custom-options-checkable g-1">
+                            <div  class="row custom-options-checkable g-1">
                                 @forelse($commonCourses as $course)
                                     <div class="col-md-3">
                                         <input
@@ -121,32 +121,35 @@
                                 <p>{{ __('optional courses info') }}</p>
                             </div>
                             <div class="card-body">
-                                <div class="row custom-options-checkable g-1">
-                                    @forelse($academicCourses as $key => $course)
-                                        <div class="col-md-6">
-                                            <input
-                                                class="custom-option-item-check"
-                                                type="checkbox"
-                                                name="academic_courses[]"
-                                                id="academic_course_{{ $course->id }}"
-                                                value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
-                                                checked
-                                            />
-                                            <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
-                                            <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
-                                            </span>
-                                                <small class="d-block">
-                                                    <div class="input-group">
-                                                        <input type="number" class="touchspin-min-max" value="{{ $key + 1 }}" />
-                                                    </div>
-                                                </small>
-                                            </label>
-                                        </div>
-                                    @empty
-                                        {{ __('Select level and grade') }}
-                                    @endforelse
-                                </div>
+                                <div id="sortable" class="row custom-options-checkable g-1">
+                                        @forelse($academicCourses as $key => $course)
+                                            <div class="row1" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                <div class="col-md-6">
+                                                    <input
+                                                        class="custom-option-item-check"
+                                                        type="checkbox"
+                                                        name="academic_courses[]"
+                                                        id="academic_course_{{ $course->id }}"
+                                                        value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                                        checked
+                                                    />
+                                                    <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
+                                                    <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                        <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                    </span>
+                                                        <small class="d-block">
+                                                            <div class="input-group">
+                                                                <input type="number" class="touchspin-min-max" value="{{ $key + 1 }}" />
+                                                            </div>
+                                                        </small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="divider"></div>
+                                        @empty
+                                            {{ __('Select level and grade') }}
+                                        @endforelse
+                                 </div>
                             </div>
                         </div>
                     </div>
@@ -160,31 +163,34 @@
                                 <p>{{ __('optional courses info') }}</p>
                             </div>
                             <div class="card-body">
-                                <div class="row custom-options-checkable g-1">
+                                <div id="sortable1" class="row custom-options-checkable g-1">
                                     @forelse($appliedCourses as $key => $course)
-                                        <div class="col-md-6">
-                                            <input
-                                                class="custom-option-item-check"
-                                                type="checkbox"
-                                                name="applied_courses[]"
-                                                id="applied_course_{{ $course->id }}"
-                                                value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
-                                                checked
-                                            />
-                                            <label class="custom-option-item p-1" for="applied_course_{{ $course->id }}">
-                                            <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
-                                            </span>
-                                                <small class="d-block">
-                                                    <div class="input-group">
-                                                        <input type="number" class="touchspin-min-max" value="{{ $key + 1 }}" />
-                                                    </div>
-                                                </small>
-                                            </label>
+                                        <div class="row2" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                            <div class="col-md-6">
+                                                <input
+                                                    class="custom-option-item-check"
+                                                    type="checkbox"
+                                                    name="applied_courses[]"
+                                                    id="applied_course_{{ $course->id }}"
+                                                    value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                                    checked
+                                                />
+                                                <label class="custom-option-item p-1" for="applied_course_{{ $course->id }}">
+                                                <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                    <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                </span>
+                                                    <small class="d-block">
+                                                        <div class="input-group">
+                                                            <input type="number" class="touchspin-min-max" value="{{ $key + 1 }}" />
+                                                        </div>
+                                                    </small>
+                                                </label>
+                                            </div>
                                         </div>
-                                    @empty
-                                        {{ __('Select level and grade') }}
-                                    @endforelse
+                                                <div class="divider"></div>
+                                            @empty
+                                            {{ __('Select level and grade') }}
+                                        @endforelse                                    
                                 </div>
                             </div>
                         </div>
@@ -202,28 +208,31 @@
                             <p>{{ __('optional courses info') }}</p>
                         </div>
                         <div class="card-body">
-                            <div class="row custom-options-checkable g-1">
+                            <div id="sortable2" class="row custom-options-checkable g-1">
                                 @forelse($electiveCourses as $key => $course)
-                                    <div class="col-md-3">
-                                        <input
-                                            class="custom-option-item-check"
-                                            type="checkbox"
-                                            name="elective_courses[]"
-                                            id="elective_course_{{ $course->id }}"
-                                            value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
-                                            checked
-                                        />
-                                        <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
-                                            <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
-                                            </span>
-                                            <small class="d-block">
-                                                <div class="input-group">
-                                                    <input type="number" class="touchspin-min-max" value="{{ $key + 1 }}" />
-                                                </div>
-                                            </small>
-                                        </label>
+                                    <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                        <div class="col-md-6">
+                                            <input
+                                                class="custom-option-item-check"
+                                                type="checkbox"
+                                                name="elective_courses[]"
+                                                id="elective_course_{{ $course->id }}"
+                                                value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                                checked
+                                            />
+                                            <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
+                                                <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                    <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                </span>
+                                                <small class="d-block">
+                                                    <div class="input-group">
+                                                        <input type="number" class="touchspin-min-max" value="{{ $key + 1 }}" />
+                                                    </div>
+                                                </small>
+                                            </label>
+                                        </div>
                                     </div>
+                                     <div class="divider"></div>
                                 @empty
                                     {{ __('Select level and grade') }}
                                 @endforelse
@@ -244,9 +253,10 @@
                                 <p>{{ __('free configuration courses info') }}</p>
                             </div>
                             <div class="card-body">
-                                <div class="row custom-options-checkable g-1">
+                                <div id="sortable3" class="row custom-options-checkable g-1">
                                     @forelse($freeConfigurationCourses as $key => $course)
-                                        <div class="col-md-3">
+                                    <div class="row4" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                        <div class="col-md-6">
                                             <input
                                                 class="custom-option-item-check"
                                                 type="checkbox"
@@ -266,6 +276,8 @@
                                                 </small>
                                             </label>
                                         </div>
+                                    </div>
+                                     <div class="divider"></div>
                                     @empty
                                         {{ __('Select level and grade') }}
                                     @endforelse
@@ -552,7 +564,55 @@
 @endpush
 
 @push('scripts')
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script>// Default Spin
+    
+        $(function() {
+            $("#sortable").sortable({
+               update: function() {
+                    academicCourse();
+                }
+            });
+            function academicCourse() {
+                $('.row1').each(function(index, element) {
+                   document.getElementById("academic_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}" 
+                });
+            }            
+      
+            $("#sortable1").sortable({
+               update: function() {
+                    appliedCourses();
+                }
+            });
+             function appliedCourses() {
+                $('.row2').each(function(index, element) {
+                   document.getElementById("applied_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}" 
+                });
+            }
+              $("#sortable2").sortable({
+               update: function() {
+                    electiveCourse();
+                }
+            });
+             function electiveCourse() {
+                $('.row4').each(function(index, element) {
+                   document.getElementById("elective_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}" 
+                });
+             }
+            
+            $("#sortable3").sortable({
+               update: function() {
+                    freeConfigurationCourses();
+                }
+            });
+             function freeConfigurationCourses() {
+                $('.row4').each(function(index, element) {
+                   document.getElementById("free_configuration_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}" 
+                });
+            }
+        });
         $('.touchspin').TouchSpin({
             buttondown_class: 'btn btn-primary',
             buttonup_class: 'btn btn-primary',

@@ -118,7 +118,9 @@ class EnrollmentController extends Controller
             'repeat_course' => $request->repeat_course,
             'bilingual' => $request->bilingual,
             'previous_school' => $request->previous_school,
-            'signature' => $request->sign,
+            'student_signature' => $request->student_signature,
+            'second_tutor_signature' => $request->second_tutor_signature,
+            'first_tutor_signature' => $request->first_tutor_signature,
         ]);
 
         $levelCourses = Course::whereGradeId($student->grade_id)

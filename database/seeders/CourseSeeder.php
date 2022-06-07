@@ -464,6 +464,205 @@ class CourseSeeder extends Seeder
                 'name' => 'Ethical values',
                 'duration'=>'1',
                 'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-            ]);        
+            ]); 
+            
+            // electives fourth
+        Course::factory()
+            ->create([
+                'name' => 'Artes escenicas y danza',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::ELECTIVE,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Cultura cientifica',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::ELECTIVE,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Cultura clasica',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::ELECTIVE,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Educacion plastica visual',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::ELECTIVE,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Segunda lengua extranjera, frances',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::ELECTIVE,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Music',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::ELECTIVE,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Tecnologias de la informacion y comunicacion',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::ELECTIVE,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Philosophy',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::ELECTIVE,
+            ]);
+
+        // academic fourth
+        Course::factory()
+            ->create([
+                'name' => 'Biologia y geologia + fisica y quimica',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::ACADEMIC,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Latin + economia',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::ACADEMIC,
+            ]);
+
+        // applied fourth
+        Course::factory()
+            ->create([
+                'name' => 'Ciencias aplicadas a la actividad profesional',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::APPLIED,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Iniciacion a la actividad emprendedora y empresarial',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::APPLIED,
+            ]);
+
+        // free configuration fourth
+        Course::factory()
+            ->create([
+                'name' => 'Electronica, robotica y control',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::FREE_CONFIGURATION,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Fotografia, video y creacion digital',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::FREE_CONFIGURATION,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Lengua asturiana y su literatura',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::FREE_CONFIGURATION,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Especifica no elegida en el cuadro anterior (indicar cual)',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::FREE_CONFIGURATION,
+            ]);
+
+        // core courses high school
+        Course::factory()
+            ->create([
+                'name' => 'Biologia y geologia',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::CORE,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Dibujo tecnico I',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::CORE,
+            ]);
+
+        // specific and free configuration
+        Course::factory()
+            ->create([
+                'name' => 'Anatomia aplicada',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 4
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Biologia y geologia',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 4
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Dibujo tecnico I',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 4
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Tecnologia industrial I',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 4
+            ]);
+
+        Course::factory()
+            ->create([
+                'name' => 'Cultura cientifica',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 3
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Segunda lengua extranjera I: Frances',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 3
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Tecnologia de la informacion y comunicacion I',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 3
+            ]);
+
+        Course::factory()
+            ->create([
+                'name' => 'Lengua asturiana y literatura I',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 1
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Protocolo, orientacion e insercion profesional',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 1
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Proyecto de investigacion I: semiotica y estetica del cine I',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 1
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Religion',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'duration' => 1
+            ]);
     }
 }
