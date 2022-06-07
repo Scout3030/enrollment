@@ -3,6 +3,13 @@
 @push('vendor-styles')
     <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/css/forms/spinner/jquery.bootstrap-touchspin.css') }}">
+    <style>
+        @media screen and (max-width: 480px) {
+            .draw-signature-holder, .draw-signature-holdertutor1, .draw-signature-holdertutor2, .text-signature  {
+                max-width: 100% !important;
+            }
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -88,14 +95,14 @@
 
             <div class="row">
                 <!-- custom option checkbox -->
-                <div class="col-6">
+                <div class="col-sm-12 col-xl-6">
                     <div class="card">
-                        <div class="mb-1 row">                                     
+                        <div class="mb-1 row">
                             <div class="col-sm-10">
                                 <div class="demo-inline-spacing">
-                                        <div class="card-header">
-                                           <h4 class="card-title">{{ __('Option 1 (4+3)') }}</h4>
-                                        </div>
+                                    <div class="card-header">
+                                        <h4 class="card-title">{{ __('Option 1 (4+3)') }}</h4>
+                                    </div>
                                     <div class="form-check form-check-inline" onclick="active()">
                                         <input
                                             class="form-check-input"
@@ -104,55 +111,54 @@
                                             id="active_si"
                                             value="1"
                                         />
-                                        <label class="form-check-label" for="active_si">{{ __('Active') }}</label>
+                                        <label class="form-check-label" for="active_si">{{ __('Select') }}</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
                             <div id="sortable" class="row custom-options-checkable g-1">
-                                    <h3>{{ __('Four hours courses') }}</h3>
-                                    @forelse($hours4Courses as $key => $course)
-                                        <div class="row1" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                            <div class="col-md-6">
-                                                <input
-                                                    class="custom-option-item-check"
-                                                    type="checkbox"
-                                                    name="hour_4_course[]"
-                                                    id="hour_4_course_{{ $course->id }}"
-                                                    value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
-                                                    
-                                                />
-                                                <label class="custom-option-item p-1" for="hour_4_course_{{ $course->id }}">
-                                                    <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                        <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
-                                                    </span>
-                                                </label>
-                                            </div>
+                                <h3>{{ __('Four hours courses') }}</h3>
+                                @forelse($hours4Courses as $key => $course)
+                                    <div class="row1" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                        <div class="col-md-12">
+                                            <input
+                                                class="custom-option-item-check"
+                                                type="checkbox"
+                                                name="hour_4_course[]"
+                                                id="hour_4_course_{{ $course->id }}"
+                                                value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                            />
+                                            <label class="custom-option-item p-1" for="hour_4_course_{{ $course->id }}">
+                                                <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                    <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                </span>
+                                            </label>
                                         </div>
-                                    @empty
-                                        {{ __('Select level and grade') }}
-                                    @endforelse
+                                    </div>
+                                @empty
+                                    {{ __('Select level and grade') }}
+                                @endforelse
                             </div>
                             <div id="sortable1" class="row custom-options-checkable g-1 pt-2">
                                 <h3>{{ __('Three hours courses') }}</h3>
                                 @forelse($hours3Courses as $key => $course)
-                                 <div class="row2" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                    <div class="col-md-6">
-                                        <input
-                                            class="custom-option-item-check"
-                                            type="checkbox"
-                                            name="hour_3_course[]"
-                                            id="hour_3_course_{{ $course->id }}"
-                                            value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'                                            
-                                        />
-                                        <label class="custom-option-item p-1" for="hour_3_course_{{ $course->id }}">
+                                    <div class="row2" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                        <div class="col-md-12">
+                                            <input
+                                                class="custom-option-item-check"
+                                                type="checkbox"
+                                                name="hour_3_course[]"
+                                                id="hour_3_course_{{ $course->id }}"
+                                                value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                            />
+                                            <label class="custom-option-item p-1" for="hour_3_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
                                                 <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
                                             </span>
-                                        </label>
+                                            </label>
+                                        </div>
                                     </div>
-                                 </div>
                                 @empty
                                     {{ __('Select level and grade') }}
                                 @endforelse
@@ -163,14 +169,14 @@
                 <!-- / basic custom options -->
 
                 <!-- custom option checkbox -->
-                <div class="col-6">
+                <div class="col-sm-12 col-xl-6">
                     <div class="card">
-                        <div class="mb-1 row">                                     
+                        <div class="mb-1 row">
                             <div class="col-sm-10">
                                 <div class="demo-inline-spacing">
-                                        <div class="card-header">
-                                            <h4 class="card-title">{{ __('Option 2 (3+3+1)') }}</h4>
-                                        </div>
+                                    <div class="card-header">
+                                        <h4 class="card-title">{{ __('Option 2 (3+3+1)') }}</h4>
+                                    </div>
                                     <div class="form-check form-check-inline" onclick="active()">
                                         <input
                                             class="form-check-input"
@@ -179,17 +185,17 @@
                                             id="active_no"
                                             value="0"
                                         />
-                                        <label class="form-check-label" for="active_no">{{ __('Active') }}</label>
+                                        <label class="form-check-label" for="active_no">{{ __('Select') }}</label>
                                     </div>
                                 </div>
                             </div>
-                        </div>                      
+                        </div>
                         <div class="card-body">
                             <div id="sortable2" class="row custom-options-checkable g-1">
                                 <h3>{{ __('Three hours courses') }}</h3>
                                 @forelse($hours3Courses as $key => $course)
                                     <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <input
                                                 class="custom-option-item-check"
                                                 type="checkbox"
@@ -211,23 +217,23 @@
                             <div id="sortable3" class="row custom-options-checkable g-1 pt-2">
                                 <h3>{{ __('One hour courses') }}</h3>
                                 @forelse($hours1Courses as $key => $course)
-                                 <div class="row4" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                    <div class="col-md-6">
-                                        <input
-                                            class="custom-option-item-check"
-                                            type="checkbox"
-                                            name="b_hour_1_course[]"
-                                            id="b_hour_1_course_{{ $course->id }}"
-                                            value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
-                                            
-                                        />
-                                        <label class="custom-option-item p-1" for="b_hour_1_course_{{ $course->id }}">
+                                    <div class="row4" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                        <div class="col-md-12">
+                                            <input
+                                                class="custom-option-item-check"
+                                                type="checkbox"
+                                                name="b_hour_1_course[]"
+                                                id="b_hour_1_course_{{ $course->id }}"
+                                                value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+
+                                            />
+                                            <label class="custom-option-item p-1" for="b_hour_1_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
                                                 <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
                                             </span>
-                                        </label>
+                                            </label>
+                                        </div>
                                     </div>
-                                </div>
                                 @empty
                                     {{ __('Select level and grade') }}
                                 @endforelse
@@ -514,186 +520,116 @@
 @endpush
 
 @push('scripts')
-     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script>// Default Spin
-        $( "#sortable" ).sortable({ 
+        $( "#sortable" ).sortable({
             disabled: true,
         });
-        $( "#sortable1" ).sortable({ 
+        $( "#sortable1" ).sortable({
             disabled: true,
         });
-        $( "#sortable2" ).sortable({ 
+        $( "#sortable2" ).sortable({
             disabled: true,
         });
-        $( "#sortable3" ).sortable({ 
+        $( "#sortable3" ).sortable({
             disabled: true,
         });
-    function active(){
-       
-        if($('input:radio[name=active]:checked').val()==1){ 
-        $( "#sortable" ).sortable();
-        $( "#sortable1" ).sortable();
-        $( "#sortable" ).sortable( "option", "disabled", false );
-        $( "#sortable" ).disableSelection();
-        $( "#sortable1" ).sortable( "option", "disabled", false );
-        $( "#sortable1" ).disableSelection();
-        $('.row1').each(function(index, element) {
-            document.getElementById("hour_4_course_"+$(this).attr('course_id')).checked = true;               
-        });
-        $('.row2').each(function(index, element) {
-            document.getElementById("hour_3_course_"+$(this).attr('course_id')).checked = true;               
-        });
-         $( "#sortable2" ).sortable({ 
-            disabled: true,
-        });
-        $( "#sortable3" ).sortable({ 
-            disabled: true,
-        });
-          $('.row3').each(function(index, element) {
-            document.getElementById("b_hour_3_course_"+$(this).attr('course_id')).checked = false;               
-        });
-        $('.row4').each(function(index, element) {
-            document.getElementById("b_hour_1_course_"+$(this).attr('course_id')).checked = false;               
-        });
-        }else{
-        $( "#sortable2" ).sortable();
-        $( "#sortable3" ).sortable();
-        $( "#sortable2" ).sortable( "option", "disabled", false );
-        $( "#sortable2" ).disableSelection();
-        $( "#sortable3" ).sortable( "option", "disabled", false );
-        $( "#sortable3" ).disableSelection();
-         $('.row3').each(function(index, element) {
-            document.getElementById("b_hour_3_course_"+$(this).attr('course_id')).checked = true;               
-        });
-        $('.row4').each(function(index, element) {
-            document.getElementById("b_hour_1_course_"+$(this).attr('course_id')).checked = true;               
-        });
-        
-              $( "#sortable" ).sortable({ 
-            disabled: true,
-        });
-        $( "#sortable1" ).sortable({ 
-            disabled: true,
-        });
-         $('.row1').each(function(index, element) {
-            document.getElementById("hour_4_course_"+$(this).attr('course_id')).checked = false;               
-        });
-        $('.row2').each(function(index, element) {
-            document.getElementById("hour_3_course_"+$(this).attr('course_id')).checked = false;               
-        });
-   
-       
+        function active(){
+            if($('input:radio[name=active]:checked').val()==1){
+                $( "#sortable" ).sortable();
+                $( "#sortable1" ).sortable();
+                $( "#sortable" ).sortable( "option", "disabled", false );
+                $( "#sortable" ).disableSelection();
+                $( "#sortable1" ).sortable( "option", "disabled", false );
+                $( "#sortable1" ).disableSelection();
+                $('.row1').each(function(index, element) {
+                    document.getElementById("hour_4_course_"+$(this).attr('course_id')).checked = true;
+                });
+                $('.row2').each(function(index, element) {
+                    document.getElementById("hour_3_course_"+$(this).attr('course_id')).checked = true;
+                });
+                $( "#sortable2" ).sortable({
+                    disabled: true,
+                });
+                $( "#sortable3" ).sortable({
+                    disabled: true,
+                });
+                $('.row3').each(function(index, element) {
+                    document.getElementById("b_hour_3_course_"+$(this).attr('course_id')).checked = false;
+                });
+                $('.row4').each(function(index, element) {
+                    document.getElementById("b_hour_1_course_"+$(this).attr('course_id')).checked = false;
+                });
+            }else{
+                $( "#sortable2" ).sortable();
+                $( "#sortable3" ).sortable();
+                $( "#sortable2" ).sortable( "option", "disabled", false );
+                $( "#sortable2" ).disableSelection();
+                $( "#sortable3" ).sortable( "option", "disabled", false );
+                $( "#sortable3" ).disableSelection();
+                $('.row3').each(function(index, element) {
+                    document.getElementById("b_hour_3_course_"+$(this).attr('course_id')).checked = true;
+                });
+                $('.row4').each(function(index, element) {
+                    document.getElementById("b_hour_1_course_"+$(this).attr('course_id')).checked = true;
+                });
+                $( "#sortable" ).sortable({
+                    disabled: true,
+                });
+                $( "#sortable1" ).sortable({
+                    disabled: true,
+                });
+                $('.row1').each(function(index, element) {
+                    document.getElementById("hour_4_course_"+$(this).attr('course_id')).checked = false;
+                });
+                $('.row2').each(function(index, element) {
+                    document.getElementById("hour_3_course_"+$(this).attr('course_id')).checked = false;
+                });
+            }
         }
-
-    }
         $(function() {
-            
             $("#sortable").sortable({
-               update: function() {
+                update: function() {
                     hour4Course();
                 }
             });
             function hour4Course() {
                 $('.row1').each(function(index, element) {
-                   document.getElementById("hour_4_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}" 
-                    console.log($(this).attr('course_id')+"  "+(index + 1))
-           
-      
+                    document.getElementById("hour_4_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}"
                 });
             }
-             $("#sortable1").sortable({
-               update: function() {
-                     hour3Course();
+            $("#sortable1").sortable({
+                update: function() {
+                    hour3Course();
                 }
             });
-             function hour3Course() {
+            function hour3Course() {
                 $('.row2').each(function(index, element) {
-                   document.getElementById("hour_3_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}" 
+                    document.getElementById("hour_3_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}"
                 });
             }
             $("#sortable2").sortable({
-               update: function() {
+                update: function() {
                     bHour3Course();
                 }
             });
-             function bHour3Course() {
+            function bHour3Course() {
                 $('.row3').each(function(index, element) {
-                   document.getElementById("b_hour_3_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}" 
+                    document.getElementById("b_hour_3_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}"
                 });
-             }
+            }
             $("#sortable3").sortable({
-               update: function() {
+                update: function() {
                     bHour1Course();
                 }
             });
-             function bHour1Course() {
+            function bHour1Course() {
                 $('.row4').each(function(index, element) {
-                   document.getElementById("b_hour_1_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}" 
+                    document.getElementById("b_hour_1_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}"
                 });
-            }      
-           
+            }
         });
-    </script>
-    <script>// Default Spin
-        $('.touchspin').TouchSpin({
-            buttondown_class: 'btn btn-primary',
-            buttonup_class: 'btn btn-primary',
-            buttondown_txt: feather.icons['minus'].toSvg(),
-            buttonup_txt: feather.icons['plus'].toSvg()
-        });
-
-        // Icon Change
-        $('.touchspin-icon').TouchSpin({
-            buttondown_txt: feather.icons['chevron-down'].toSvg(),
-            buttonup_txt: feather.icons['chevron-up'].toSvg()
-        });
-
-        // Min - Max
-        var touchspinValue = $('.touchspin-min-max'),
-            counterMin = 1,
-            counterMax = {{ count($coreCourses) }};
-        if (touchspinValue.length > 0) {
-            touchspinValue
-                .TouchSpin({
-                    min: counterMin,
-                    max: counterMax,
-                    buttondown_txt: feather.icons['minus'].toSvg(),
-                    buttonup_txt: feather.icons['plus'].toSvg()
-                })
-                .on('touchspin.on.startdownspin', function () {
-                    var $this = $(this);
-                    $('.bootstrap-touchspin-up').removeClass('disabled-max-min');
-                    let node = $this.parent().parent().parent().parent().find('input.custom-option-item-check')
-                    let val = JSON.parse($(node).val())
-                    val.order = $this.val()
-                    $(node).val(JSON.stringify(val))
-                    if ($this.val() == counterMin) {
-                        $(this).siblings().find('.bootstrap-touchspin-down').addClass('disabled-max-min');
-                    }
-                })
-                .on('touchspin.on.startupspin', function () {
-                    var $this = $(this);
-                    $('.bootstrap-touchspin-down').removeClass('disabled-max-min');
-                    let node = $this.parent().parent().parent().parent().find('input.custom-option-item-check')
-                    let val = JSON.parse($(node).val())
-                    val.order = $this.val()
-                    $(node).val(JSON.stringify(val))
-                    if ($this.val() == counterMax) {
-                        $(this).siblings().find('.bootstrap-touchspin-up').addClass('disabled-max-min');
-                    }
-                });
-        }
-        jQuery(function(){
-            var max = 3;
-            var checkboxes = $('input[name="b_hour_3_courses"]');
-
-            checkboxes.change(function(){
-                var current = checkboxes.filter(':checked').length;
-                checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
-            });
-        });
-
     </script>
 @endpush
 

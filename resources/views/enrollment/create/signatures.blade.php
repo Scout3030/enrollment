@@ -17,7 +17,7 @@
 @endpush
 
 <div class="row">
-    <div class="col-4">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-header d-block">
                 <h4 class="card-title">{{ __('Student signature') }}</h4>
@@ -152,7 +152,7 @@
         </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-header d-block">
                 <h4 class="card-title">{{ __('Tutor 01 signature') }}</h4>
@@ -286,7 +286,7 @@
         </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-header d-block">
                 <h4 class="card-title">{{ __('Tutor 02 signature') }}</h4>

@@ -911,5 +911,9 @@
     "Text": "Texto",
     "Upload": "Cargar",
     "Sign": "Firmar",
-    "Draw your signature": "Dibuja tu firma"
+    "Draw your signature": "Dibuja tu firma",
+    "Active": "Activar",
+    "Student signature": "Firma de estudiante",
+    "Tutor 01 signature": "Firma de tutor 01",
+    "Tutor 02 signature": "Firma de tutor 02"
 }
