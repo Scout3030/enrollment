@@ -7,6 +7,7 @@ use App\Http\Requests\EnrollmentRequest;
 use App\Models\Course;
 use App\Models\CourseType;
 use App\Models\Enrollment;
+use App\Models\AcademicPeriod;
 use App\Models\Grade;
 use App\Models\Level;
 use Str;
@@ -110,6 +111,8 @@ class EnrollmentController extends Controller
             'grade_id' => $grade->id,
             'bus_stop_id' => $request->transportation == 1 ? $request->bus_stop_id : null,
         ])->save();
+         
+        $academicPeriodId = AcademicPeriod::latest('id')->first();
 
         $enrollment = Enrollment::create([
             'student_id' => $student->id,
@@ -121,6 +124,7 @@ class EnrollmentController extends Controller
             'student_signature' => $request->student_signature,
             'second_tutor_signature' => $request->second_tutor_signature,
             'first_tutor_signature' => $request->first_tutor_signature,
+            'academic_period_id' => $academicPeriodId->id
         ]);
 
         $levelCourses = Course::whereGradeId($student->grade_id)

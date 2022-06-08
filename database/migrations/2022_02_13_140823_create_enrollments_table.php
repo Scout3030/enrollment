@@ -17,6 +17,7 @@ class CreateEnrollmentsTable extends Migration
             $table->id();
             $table->foreignId('student_id')->constrained();
             $table->foreignId('grade_id')->constrained();
+            $table->foreignId('academic_period_id')->constrained();
             $table->foreignId('bus_stop_id')->nullable()->constrained();
             $table->tinyInteger('bilingual')->default(config('constants.NO'));
             $table->string('previous_school')->nullable();
@@ -27,7 +28,7 @@ class CreateEnrollmentsTable extends Migration
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

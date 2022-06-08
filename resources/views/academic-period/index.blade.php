@@ -54,5 +54,27 @@
 @push('scripts')
     <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
     {!! $dataTable->scripts() !!}
+    <script>
+        $(document).ready(function(){
+            const academicPeriodsDatatable = $('#academic-periods-table').DataTable()
+            @can('delete academic periods')
+            academicPeriodsDatatable.on('click',  'tbody .deleteAcademicPeriod', function () {
+                let AcademicPeriodId = $(this).data('id');
+                $.ajax({
+                    url: `{{ route('academic-periods.index') }}/${AcademicPeriodId}`,
+                    type: 'DELETE',
+                    headers: {
+                        'x-csrf-token': $("meta[name=csrf-token]").attr('content')
+                    },
+                    success: (data, textStatus, xhr) => {
+                        if(xhr.status === 200) {
+                            academicPeriodsDatatable.ajax.reload();
+                        }
+                    }
+                })
+            });
+            @endcan
+        })
+    </script>
 @endpush
 

@@ -127,6 +127,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/{academicPeriod}', [AcademicPeriodController::class, 'show'])
             ->name('academic-periods.show')
             ->can('view academic periods');
+        Route::get('/{academicPeriod}/edit', [AcademicPeriodController::class, 'edit'])
+            ->name('academic-periods.edit')
+            ->can('edit academic periods');
         Route::put('/{academicPeriod}', [AcademicPeriodController::class, 'update'])
             ->name('academic-periods.update')
             ->can('edit academic periods');
