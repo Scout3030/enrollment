@@ -915,5 +915,13 @@
     "Active": "Activar",
     "Student signature": "Firma de estudiante",
     "Tutor 01 signature": "Firma de tutor 01",
-    "Tutor 02 signature": "Firma de tutor 02"
+    "Tutor 02 signature": "Firma de tutor 02",
+    "Academic periods": "Periodos academicos",
+    "Status": "Estado",
+    "Start at": "Empieza",
+    "Finish at": "Finaliza",
+    "Add academic period": "Anadir periodo academico",
+    "Edit academic period": "Editar periodo academico",
+    "Start / end": "Inicio / fin",
+    "Academic period created successfully": "Periodo academico creado exitosamente"
 }

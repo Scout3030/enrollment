@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcademicPeriodController;
 use App\Http\Controllers\BusStopController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseTypeController;
@@ -111,6 +112,27 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::delete('/{course}', [CourseController::class, 'destroy'])
             ->name('courses.destroy')
             ->can('delete courses');
+    });
+
+    Route::group(['prefix' => "academic-periods"], function() {
+        Route::get('/', [AcademicPeriodController::class, 'index'])
+            ->name('academic-periods.index')
+            ->can('view academic periods');
+        Route::get('/create', [AcademicPeriodController::class, 'create'])
+            ->name('academic-periods.create')
+            ->can('create academic periods');
+        Route::post('/store', [AcademicPeriodController::class, 'store'])
+            ->name('academic-periods.store')
+            ->can('create academic periods');
+        Route::get('/{academicPeriod}', [AcademicPeriodController::class, 'show'])
+            ->name('academic-periods.show')
+            ->can('view academic periods');
+        Route::put('/{academicPeriod}', [AcademicPeriodController::class, 'update'])
+            ->name('academic-periods.update')
+            ->can('edit academic periods');
+        Route::delete('/{academicPeriod}', [AcademicPeriodController::class, 'destroy'])
+            ->name('academic-periods.destroy')
+            ->can('delete academic periods');
     });
 
     Route::group(['prefix' => "levels"], function() {

@@ -71,6 +71,29 @@
             </li>
             @endcan
 
+            @can('view academic periods')
+                <li class="nav-item  ">
+                    <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
+                        <i data-feather="file-text"></i>
+                        <span class="menu-title text-truncate">{{ __('Academic periods') }}</span>
+                    </a>
+                    <ul class="menu-content">
+                        <li class="@if (Request::url() == route('academic-periods.index')) active @endif">
+                            <a href="{{ route('academic-periods.index') }}" class="d-flex align-items-center" target="_self">
+                                <i data-feather="circle"></i>
+                                <span class="menu-item text-truncate">{{ __('List') }}</span>
+                            </a>
+                        </li>
+                        <li class="@if (Request::url() == route('academic-periods.create')) active @endif">
+                            <a href="{{ route('academic-periods.create') }}" class="d-flex align-items-center" target="_self">
+                                <i data-feather="circle"></i>
+                                <span class="menu-item text-truncate">{{ __('Create') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endcan
+
             @can('view courses')
             <li class="nav-item  ">
                 <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
