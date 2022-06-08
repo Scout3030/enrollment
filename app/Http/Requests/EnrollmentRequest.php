@@ -142,6 +142,8 @@ class EnrollmentRequest extends FormRequest
                 'applied_courses.*.course_id' => 'exists:courses,id',
                 'free_configuration_courses' => ['required', 'array', new ValidOrderRule()],
                 'free_configuration_courses.*.course_id' => 'exists:courses,id',
+                'first_tutor_signature'=>['required'],
+                'student_signature'=>['required'],
             ];
         }
         if(auth()->user()->student->grade->level->id == Level::MIDDLE_SCHOOL) {
@@ -152,6 +154,8 @@ class EnrollmentRequest extends FormRequest
                 'common_optional_course' => ['required', 'exists:courses,id'],
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
+                'first_tutor_signature'=>['required'],
+                'student_signature'=>['required'],
             ];
         }
         if(auth()->user()->student->grade->level->id == Level::HIGH_SCHOOL) {
@@ -164,6 +168,8 @@ class EnrollmentRequest extends FormRequest
                 'free_configuration_courses_highschool_2.*.course_id' => 'exists:courses,id',
                 'free_configuration_courses_highschool_1' => ['required', 'array'],
                 'free_configuration_courses_highschool_1.*.course_id' => 'exists:courses,id',
+                'first_tutor_signature'=>['required'],
+                'student_signature'=>['required'],
             ];
         }
         return [];

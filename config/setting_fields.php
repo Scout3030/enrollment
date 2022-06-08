@@ -13,7 +13,7 @@ return [
                 'label' => 'App Favicon',
                 'rules' => 'nullable|min:2|max:500',
                 'class' => 'w-auto px-2',
-                'value' => '/images/favicon.ico'
+                'value' => '/images/banner/upgrade.png'
             ]
         ]
     ],
@@ -29,7 +29,7 @@ return [
                 'label' => 'App Logo',
                 'rules' => 'nullable|min:2|max:500',
                 'class' => 'w-auto px-2',
-                'value' => '/images/logo-light.png'
+                'value' => '/images/ico/favicon.ico'
             ]
         ]
     ],   
