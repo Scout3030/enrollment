@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ __('Settings') }}
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-12">

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ __('Dashboard') }}
+@endsection
+
 @section('content')
     <section id="dashboard-analytics">
         @role('student')

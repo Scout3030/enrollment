@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    {{ $academicPeriod->id ? __('Edit academicPeriod') : __('Create a academicPeriod') }}
+    {{ $academicPeriod->id ? __('Edit academic period') : __('Create an academic period') }}
 @endsection
 
 @push('vendor-styles')

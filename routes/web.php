@@ -177,13 +177,13 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::group(['prefix' => "enrollment"], function() {
         Route::get('/', [EnrollmentController::class, 'create'])
             ->name('enrollment.create')
-            ->can('create enrollment');
-//            ->middleware('active.enrollment');
+            ->can('create enrollment')
+            ->middleware('active.enrollment');
         Route::post('/store', [EnrollmentController::class, 'store'])
             ->name('enrollment.store')
             ->can('create enrollment');
         Route::post('/signature', [EnrollmentController::class, 'signature'])
-            //  ->can('edit settings')
+              ->can('create enrollment')
               ->name('enrollment.signature');
     });
 
