@@ -133,6 +133,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::put('/{academicPeriod}', [AcademicPeriodController::class, 'update'])
             ->name('academic-periods.update')
             ->can('edit academic periods');
+        Route::post('/change-status', [AcademicPeriodController::class, 'changeStatus'])
+            ->name('academic-periods.change-status')
+            ->can('edit academic periods');
         Route::delete('/{academicPeriod}', [AcademicPeriodController::class, 'destroy'])
             ->name('academic-periods.destroy')
             ->can('delete academic periods');

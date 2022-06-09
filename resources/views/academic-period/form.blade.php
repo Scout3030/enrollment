@@ -74,10 +74,10 @@
                                             <label class="col-form-label" for="started_at_date">{{ __('Start at') }}</label>
                                         </div>
                                         <div class="col-sm-5 position-relative">
-                                            <input type="text" id="started_at_date" name="started_at_date" class="form-control pickadate" placeholder="18 June, 2020" value="{{ old('started_at_date') }}"/>
+                                            <input type="text" id="started_at_date" name="started_at_date" class="form-control pickadate" placeholder="18 June, 2020" value="{{$academicPeriod->id ?  $academicPeriod->started_at->format('j F, Y') : old('started_at_date') }}"/>
                                         </div>
                                         <div class="col-sm-5 position-relative">
-                                            <input type="text" id="started_at_time" name="started_at_time" class="form-control pickatime" placeholder="8:00 AM" value="{{ old('started_at_time') }}"/>
+                                            <input type="text" id="started_at_time" name="started_at_time" class="form-control pickatime" placeholder="8:00 AM" value="{{ $academicPeriod->id ?  $academicPeriod->started_at->format('h:i:s A') :  old('started_at_time') }}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -87,10 +87,10 @@
                                             <label class="col-form-label" for="finished_at_date">{{ __('Finish at') }}</label>
                                         </div>
                                         <div class="col-sm-5 position-relative">
-                                            <input type="text" id="finished_at_date" name="finished_at_date" class="form-control pickadate" placeholder="18 June, 2020" value="{{ old('finished_at_date') }}"/>
+                                            <input type="text" id="finished_at_date" name="finished_at_date" class="form-control pickadate" placeholder="18 June, 2020" value="{{ $academicPeriod->id ?  $academicPeriod->finished_at->format('j F, Y') : old('finished_at_date') }}"/>
                                         </div>
                                         <div class="col-sm-5 position-relative">
-                                            <input type="text" id="finished_at_time" name="finished_at_time" class="form-control pickatime" placeholder="8:00 AM" value="{{ old('finished_at_time') }}"/>
+                                            <input type="text" id="finished_at_time" name="finished_at_time" class="form-control pickatime" placeholder="8:00 AM" value="{{ $academicPeriod->id ?  $academicPeriod->finished_at->format('h:i:s A') : old('finished_at_time') }}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@
                                 <div class="col-sm-10 offset-sm-2 pt-2">
                                     <button type="submit" class="btn btn-primary me-1">{{ __('Save') }}</button>
                                     @if(!$academicPeriod->id)
-                                    <button type="reset" class="btn btn-outline-info">{{ __('Reset') }}</button>
+                                    <button type="reset" id="clear" class="btn btn-outline-info">{{ __('Reset') }}</button>
                                     @endif
                                     <a href="{{ route('academic-periods.index') }}" class="btn btn-outline-secondary">{{ __('Return') }}</a>
                                 </div>
@@ -152,4 +152,7 @@
     <script src="{{ asset('vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
 
     <script src="{{ asset('js/scripts/forms/pickers/form-pickers.js') }}"></script>
+@endpush
+@push('scripts')
+    <script> document.getElementById("clear").reset() </script>
 @endpush

@@ -22,7 +22,8 @@ class AcademicPeriodDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('action', 'academic-period.datatable.action')
-            ->rawColumns(['action']);
+            ->addColumn('status', 'academic-period.datatable.status')
+            ->rawColumns(['action','status']);
     }
 
     /**
@@ -119,10 +120,11 @@ class AcademicPeriodDataTable extends DataTable
                 ->searchable(true)
                 ->orderable(true)
                 ->footer(__('Name')),
-            Column::make('status')
+            Column::computed('status')
                 ->title(__('Status'))
-                ->searchable(true)
-                ->orderable(true)
+                ->exportable(true)
+                ->printable(true)
+                ->addClass('text-center')
                 ->footer(__('Status')),
             Column::make('started_at')
                 ->title(__('Start at'))
