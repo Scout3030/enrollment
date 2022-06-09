@@ -25,12 +25,10 @@ class CreateCoursesTable extends Migration
             $table->softDeletes();
         });
 
-        if(config('app.env') == 'local'){
-            Artisan::call('db:seed', [
-                '--class' => 'CourseSeeder',
-                '--force' => true
-            ]);
-        };
+        Artisan::call('db:seed', [
+            '--class' => 'CourseSeeder',
+            '--force' => true
+        ]);
     }
 
     /**

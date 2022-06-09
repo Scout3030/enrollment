@@ -49,6 +49,12 @@ class RoleSeeder extends Seeder
             'edit courses',
             'delete courses',
             'restore courses',
+            //Course permissions
+            'view academic periods',
+            'create academic periods',
+            'edit academic periods',
+            'delete academic periods',
+            'restore academic periods',
             //Level permissions
             'view levels',
             //Grade permissions

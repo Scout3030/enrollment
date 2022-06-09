@@ -49,7 +49,8 @@ class Enrollment extends Model
         'previous_school',
         'student_signature',
         'second_tutor_signature',
-        'first_tutor_signature'
+        'first_tutor_signature',
+        'academic_period_id',
     ];
 
     protected $casts = [

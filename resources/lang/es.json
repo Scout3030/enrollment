@@ -696,6 +696,7 @@
     "Whoops": "Ups",
     "Whoops!": "¡Ups!",
     "Whoops! Something went wrong.": "¡Ups! Algo salió mal.",
+    "Not Can eliminate this period":"No se puede eliminar este periodo",
     "With Trashed": "Incluida la papelera",
     "Write": "Escriba",
     "Year To Date": "Año hasta la fecha",
@@ -916,5 +917,13 @@
     "Student signature": "Firma de estudiante",
     "Tutor 01 signature": "Firma de tutor 01",
     "Tutor 02 signature": "Firma de tutor 02",
-    "Banner": "Banner"
+    "Banner": "Banner",
+    "Academic periods": "Periodos academicos",
+    "Status": "Estado",
+    "Start at": "Empieza",
+    "Finish at": "Finaliza",
+    "Add academic period": "Anadir periodo academico",
+    "Edit academic period": "Editar periodo academico",
+    "Start / end": "Inicio / fin",
+    "Academic period created successfully": "Periodo academico creado exitosamente"
 }
