@@ -48,6 +48,9 @@ class Course extends Model
     use HasFactory;
     use SoftDeletes;
 
+    const GROUP_COURSES_ONE = 1;
+    const GROUP_COURSES_TWO = 0;
+
     protected $fillable = [
         'name',
         'grade_id',
@@ -55,6 +58,7 @@ class Course extends Model
         'description',
         'bilingual',
         'duration',
+        'group',
     ];
 
     protected $casts = [
