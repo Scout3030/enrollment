@@ -37,6 +37,8 @@ class CourseType extends Model
     const CORE = 7;
     const SPECIFIC = 8;
     const SPECIFIC_FREE_CONFIGURATION = 9;
+    const INTRO_HIGH_SCHOOL = 10;
+    const INTRO_PROFESSIONAL_TRAINING = 11;
 
     protected $fillable = ['name'];
 

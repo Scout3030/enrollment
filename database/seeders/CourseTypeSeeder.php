@@ -24,6 +24,8 @@ class CourseTypeSeeder extends Seeder
             'Core',
             'Specific',
             'Specific free configuration',
+            'Intro high school',
+            'Intro professional training',
         ];
 
         foreach ($types as $type){

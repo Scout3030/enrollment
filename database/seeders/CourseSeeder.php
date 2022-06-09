@@ -220,12 +220,8 @@ class CourseSeeder extends Seeder
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
-            Course::factory()
-
             
-           
-           
-           
+            Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
                 'name' => 'Linguistic and Social Area',
@@ -309,10 +305,6 @@ class CourseSeeder extends Seeder
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
-
-
-
-
 
             Course::factory()
             ->create([
@@ -406,7 +398,6 @@ class CourseSeeder extends Seeder
                 'course_type_id' => CourseType::COMMON_OPTIONAL,
             ]);
 
-
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
@@ -424,6 +415,98 @@ class CourseSeeder extends Seeder
 
 
             Course::factory()
+            ->create([
+                'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                'name' => 'Linguistic and Social Area',
+                'duration'=>'9',
+                'group'=>Course::GROUP_COURSES_ONE,
+                'course_type_id' => CourseType::COMMON,
+            ]);
+            Course::factory()
+            ->create([
+                'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                'name' => 'Scientific-Technological Field',
+                'duration'=>'9',
+                'group'=>Course::GROUP_COURSES_ONE,
+                'course_type_id' => CourseType::COMMON,
+            ]);
+            
+            Course::factory()
+            ->create([
+                'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                'name' => 'First Foreign Language: English',
+                'duration'=>'3',
+                'group'=>Course::GROUP_COURSES_TWO,
+                'course_type_id' => CourseType::COMMON,
+            ]);
+            Course::factory()
+            ->create([
+                'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                'name' => 'Visual and Audiovisual Plastic Education',
+                'duration'=>'2',
+                'group'=>Course::GROUP_COURSES_TWO,
+                'course_type_id' => CourseType::COMMON,
+            ]);
+            Course::factory()
+            ->create([
+                'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                'name' => 'Technology and Digitization',
+                'duration'=>'2',
+                'group'=>Course::GROUP_COURSES_TWO,
+                'course_type_id' => CourseType::COMMON,
+            ]);
+            Course::factory()
+            ->create([
+                'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                'name' => 'Physical education',
+                'duration'=>'2',
+                'group'=>Course::GROUP_COURSES_TWO,
+                'course_type_id' => CourseType::COMMON,
+            ]);
+            Course::factory()
+            ->create([
+                'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                'name' => 'Second Foreign Language: French',
+                'duration'=>'2',
+                'course_type_id' => CourseType::COMMON_OPTIONAL,
+            ]);
+            Course::factory()
+            ->create([
+                'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                'name' => 'center matter',
+                'duration'=>'2',
+                'course_type_id' => CourseType::COMMON_OPTIONAL,
+            ]);
+            Course::factory()
+            ->create([
+                'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                'name' => 'Asturian Language and Literature',
+                'duration'=>'2',
+                'course_type_id' => CourseType::COMMON_OPTIONAL,
+            ]);
+            Course::factory()
+            ->create([
+                'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                'name' => 'Social or Business Entrepreneurship Project',
+                'duration'=>'2',
+                'course_type_id' => CourseType::COMMON_OPTIONAL,
+            ]);
+
+            Course::factory()
+            ->create([
+                'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                'name' => 'Religión',
+                'duration'=>'1',
+                'course_type_id' => CourseType::COMMON_OPTIONAL,
+            ]);
+            Course::factory()
+            ->create([
+                'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                'name' => 'Educational Attention',
+                'duration'=>'1',
+                'course_type_id' => CourseType::COMMON_OPTIONAL,
+            ]);
+           Course::factory()
             ->create([
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'name' => 'Geography and History',
@@ -451,218 +534,177 @@ class CourseSeeder extends Seeder
                 'duration'=>'2',
                 'course_type_id' => CourseType::CORE,
             ]);
-            Course::factory()
+        Course::factory()
             ->create([
+                'name' => 'Religión',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'name' => 'Religion',
                 'duration'=>'1',
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                'course_type_id' => CourseType::SPECIFIC,
             ]);
-            Course::factory()
+        Course::factory()
             ->create([
-                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'name' => 'Ethical values',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'duration'=>'1',
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-            ]); 
-            
-            // electives fourth
-        Course::factory()
-            ->create([
-                'name' => 'Artes escenicas y danza',
-                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::ELECTIVE,
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Cultura cientifica',
-                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::ELECTIVE,
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Cultura clasica',
-                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::ELECTIVE,
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Educacion plastica visual',
-                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::ELECTIVE,
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Segunda lengua extranjera, frances',
-                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::ELECTIVE,
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Music',
-                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::ELECTIVE,
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Tecnologias de la informacion y comunicacion',
-                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::ELECTIVE,
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Philosophy',
-                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::ELECTIVE,
+                'course_type_id' => CourseType::SPECIFIC,
             ]);
 
-        // academic fourth
         Course::factory()
             ->create([
-                'name' => 'Biologia y geologia + fisica y quimica',
+                'name' => 'Academic Mathematics',
+                'duration'=>'4',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::ACADEMIC,
+                'group'=>Course::GROUP_COURSES_TWO,
+                 'course_type_id' => CourseType::INTRO_HIGH_SCHOOL,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Latin + economia',
+                'name' => 'Biology and geology',
+                'duration'=>'3',
+                'group'=>Course::GROUP_COURSES_TWO,
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::ACADEMIC,
+                 'course_type_id' => CourseType::INTRO_HIGH_SCHOOL,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Physics and chemistry',
+                'duration'=>'3',
+                'group'=>Course::GROUP_COURSES_TWO,
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                 'course_type_id' => CourseType::INTRO_HIGH_SCHOOL,
+            ]);
+            Course::factory()
+            ->create([
+                'name' => 'Academic Mathematics',
+                'duration'=>'4',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'group'=>Course::GROUP_COURSES_ONE,
+                 'course_type_id' => CourseType::INTRO_HIGH_SCHOOL,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Economy',
+                'duration'=>'3',
+                'group'=>Course::GROUP_COURSES_ONE,
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                 'course_type_id' => CourseType::INTRO_HIGH_SCHOOL,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Latin',
+                'duration'=>'3',
+                'group'=>Course::GROUP_COURSES_ONE,
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                 'course_type_id' => CourseType::INTRO_HIGH_SCHOOL,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Applied mathematics',
+                'duration'=>'4',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                 'course_type_id' => CourseType::INTRO_PROFESSIONAL_TRAINING,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Sciences applied to Professional Activity',
+                'duration'=>'3',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                 'course_type_id' => CourseType::INTRO_PROFESSIONAL_TRAINING,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Technology',
+                'duration'=>'3',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                 'course_type_id' => CourseType::INTRO_PROFESSIONAL_TRAINING,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'initiation to business activity',
+                'duration'=>'3',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                 'course_type_id' => CourseType::INTRO_PROFESSIONAL_TRAINING,
             ]);
 
-        // applied fourth
+
         Course::factory()
             ->create([
-                'name' => 'Ciencias aplicadas a la actividad profesional',
+                'name' => 'Performing Arts and Dance',
+                'duration'=>'3',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::APPLIED,
+                'course_type_id' => CourseType::SPECIFIC,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Iniciacion a la actividad emprendedora y empresarial',
+                'name' => 'TIC',
+                'duration'=>'3',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::APPLIED,
+                'course_type_id' => CourseType::SPECIFIC,
+            ]);      
+        Course::factory()
+            ->create([
+                'name' => 'Second Foreign Language: French',
+                'duration'=>'3',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC,
+            ]);
+        Course::factory()
+            ->create([
+                'name' => 'Visual and Audiovisual Plastic Education',
+                'duration'=>'3',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC,
+            ]);
+        Course::factory()
+            ->create([
+                'duration'=>'3',
+                'name' => 'Classic culture',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC,
             ]);
 
         // free configuration fourth
         Course::factory()
             ->create([
-                'name' => 'Electronica, robotica y control',
+                'duration'=>'3',
+                'name' => 'Philosophy',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC,
+            ]);
+        Course::factory()
+            ->create([
+                'duration'=>'3',
+                'name' => 'Music',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC,
+            ]);
+        Course::factory()
+            ->create([
+                'duration'=>'3',
+                'name' => 'scientific culture',
+                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                'course_type_id' => CourseType::SPECIFIC,
+            ]);
+        Course::factory()
+            ->create([
+                'duration'=>'3',
+                'name' => 'Asturian Language and Literature',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Fotografia, video y creacion digital',
+                'name' => 'Electronics, Robotics and Control',
+                'duration'=>'3',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Lengua asturiana y su literatura',
+                'name' => 'Photography, Video and Digital Creation',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Especifica no elegida en el cuadro anterior (indicar cual)',
-                'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'course_type_id' => CourseType::FREE_CONFIGURATION,
-            ]);
-
-        // core courses high school
-        Course::factory()
-            ->create([
-                'name' => 'Biologia y geologia',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::CORE,
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Dibujo tecnico I',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::CORE,
-            ]);
-
-        // specific and free configuration
-        Course::factory()
-            ->create([
-                'name' => 'Anatomia aplicada',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-                'duration' => 4
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Biologia y geologia',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-                'duration' => 4
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Dibujo tecnico I',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-                'duration' => 4
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Tecnologia industrial I',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-                'duration' => 4
-            ]);
-
-        Course::factory()
-            ->create([
-                'name' => 'Cultura cientifica',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-                'duration' => 3
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Segunda lengua extranjera I: Frances',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-                'duration' => 3
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Tecnologia de la informacion y comunicacion I',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-                'duration' => 3
-            ]);
-
-        Course::factory()
-            ->create([
-                'name' => 'Lengua asturiana y literatura I',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-                'duration' => 1
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Protocolo, orientacion e insercion profesional',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-                'duration' => 1
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Proyecto de investigacion I: semiotica y estetica del cine I',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-                'duration' => 1
-            ]);
-        Course::factory()
-            ->create([
-                'name' => 'Religion',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL,
-                'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
-                'duration' => 1
+                'duration'=>'3',
             ]);
     }
 }
