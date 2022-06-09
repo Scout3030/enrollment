@@ -60,31 +60,23 @@ class AcademicPeriodController extends Controller
 
     public function changeStatus(Request $request): \Illuminate\Http\JsonResponse
     {
-       $statu = AcademicPeriod::findOrFail($request->id);
-      if($request->status){
-        $statu->status = true;
-      }
-     else{
-        $statu->status = false;
-      }
-      $statu->save();
-
+        $academicPeriod = AcademicPeriod::findOrFail($request->id);
+        $academicPeriod->status = !$academicPeriod->status;
+        $academicPeriod->save();
         return response()->json(__('Status period  updates successfully'));
     }
 
     /**
      * @param AcademicPeriod $academicPeriod
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(AcademicPeriod $academicPeriod): \Illuminate\Http\RedirectResponse//JsonResponse
+    public function destroy(AcademicPeriod $academicPeriod)
     {
-            $Enrollment = Enrollment::where('academic_period_id',$academicPeriod->id)->first();
-         if($Enrollment){
-            return back()->with('messages', ['type' => 'success', 'description' => __('Not Can eliminate this period')]);
-         }
-         else{
+        try {
             $academicPeriod->delete();
             return back()->with('message', ['type' => 'success', 'description' => __('Academic period deleted successfully')]);
-         }
+        } catch (\Exception $e) {
+            return back()->withErrors(__('Can not delete this period'));
+        }
     }
 }

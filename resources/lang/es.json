@@ -925,5 +925,10 @@
     "Add academic period": "Anadir periodo academico",
     "Edit academic period": "Editar periodo academico",
     "Start / end": "Inicio / fin",
-    "Academic period created successfully": "Periodo academico creado exitosamente"
+    "Academic period created successfully": "Periodo academico creado exitosamente",
+    "Success": "Exito",
+    "Message": "Mensaje",
+    "Period updated successfully": "Periodo actualizado correctamente",
+    "Inactive / Active": "Inactivo / Activo",
+    "Can not delete this period": "No se puede eliminar este perido"
 }

@@ -121,11 +121,11 @@ class AcademicPeriodDataTable extends DataTable
                 ->orderable(true)
                 ->footer(__('Name')),
             Column::computed('status')
-                ->title(__('Status'))
+                ->title(__('Inactive / Active'))
                 ->exportable(true)
                 ->printable(true)
                 ->addClass('text-center')
-                ->footer(__('Status')),
+                ->footer(__('Inactive / Active')),
             Column::make('started_at')
                 ->title(__('Start at'))
                 ->searchable(true)

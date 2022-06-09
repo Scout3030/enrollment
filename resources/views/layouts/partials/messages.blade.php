@@ -16,3 +16,12 @@
         </div>
     </div>
 @endif
+
+@stack('toasts')
+
+@push('scripts')
+    <script>
+        const basicToast = document.querySelector('.basic-toast');
+        const toast = new bootstrap.Toast(basicToast);
+    </script>
+@endpush
