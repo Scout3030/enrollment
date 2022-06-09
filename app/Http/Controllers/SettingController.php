@@ -15,11 +15,10 @@ class SettingController extends Controller
             $request->merge(['logo' => 'storage/settings/'.$file]);
         }
 
-        if ($request->hasFile('image')) {
-            $file = uploadFile('image', 'settings');
+        if ($request->hasFile('image_file')) {
+            $file = uploadFile('image_file', 'settings');
             $request->merge(['image' => 'storage/settings/'.$file]);
         }
-
         $data = $this->validate($request, $rules);
         $validSettings = array_keys($rules);
 

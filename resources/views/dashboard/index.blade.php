@@ -1,21 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-       
     <section id="dashboard-analytics">
         @role('student')
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal fade" id="bannerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="bannerModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">{{ __('Learn about this registration process') }}</h5>
+                        <h5 class="modal-title" id="bannerModalLabel">{{ __('Learn about this registration process') }}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body" align="center">
-                        <p><img class="img-fluid rounded mt-3 mb-2" src="{{ asset(setting('image')) }}" alt="" width="310" height="310"></p>
+                        <img class="img-fluid rounded mt-3 mb-2" src="{{ asset(setting('image')) }}" alt="" height="100%">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Ok') }}</button>
                     </div>
                 </div>
             </div>
@@ -86,8 +85,7 @@
                                 type="button"
                                 class="btn btn-relief-info"
                                 data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop"
-                            
+                                data-bs-target="#bannerModal"
                             >
                             {{ __('Start here') }}
                             </button>
@@ -99,10 +97,11 @@
         @endrole
     </section>
 @endsection
+
 @push('scripts')
-    <script> 
-         $(document).ready(function() {          
-            $('#staticBackdrop').modal('show');
+    <script>
+         $(document).ready(function() {
+            $('#bannerModal').modal('show');
         })
     </script>
 @endpush
