@@ -1,13 +1,6 @@
 @section('title', __('Login Page'))
 
 <x-guest-layout>
-
-{{--    <h4 class="card-title mb-1">{{ __('Welcome to Vuexy!') }} 👋</h4>--}}
-
-{{--    <div class="mb-4 text-sm text-gray-600">--}}
-{{--        {{ __('Please sign-in to your account and start the adventure') }}--}}
-{{--    </div>--}}
-
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="mb-1">
@@ -22,6 +15,20 @@
                 placeholder="john@mail.com"
                 :value="old('email')"
                 autofocus
+            />
+        </div>
+
+        <div class="mb-1">
+            <x-jet-label
+                for="dni"
+                value="{{ __('DNI') }}"
+            />
+            <x-jet-input
+                id="dni"
+                type="text"
+                name="dni"
+                placeholder="34343434"
+                :value="old('dni')"
             />
         </div>
 
