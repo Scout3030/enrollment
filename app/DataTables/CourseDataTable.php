@@ -55,7 +55,7 @@ class CourseDataTable extends DataTable
                     ->language([
                         'url' => '//cdn.datatables.net/plug-ins/1.10.16/i18n/'.config('languages')[session('applocale')][0].'.json',
                     ])
-                    ->setTableId('course-table')
+                    ->setTableId('coursesDatatable')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Blfrtip')

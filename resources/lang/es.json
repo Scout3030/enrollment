@@ -966,5 +966,8 @@
     "Period updated successfully": "Periodo actualizado correctamente",
     "Inactive / Active": "Inactivo / Activo",
     "Can not delete this period": "No se puede eliminar este perido",
-    "Academic period edited successfully": "Periodo academico editado exitosamente"
+    "Academic period edited successfully": "Periodo academico editado exitosamente",
+    "Delete course": "Eliminar curso",
+    "Course deleted successfully": "Curso eliminado correctamente",
+    "Click confirm to delete the course. This action is not reversible.": "Click para eliminar este curso. La accion es irreversible"
 }

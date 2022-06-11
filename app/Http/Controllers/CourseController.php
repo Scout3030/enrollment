@@ -62,11 +62,15 @@ class CourseController extends Controller
 
     /**
      * @param Course $course
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Course $course): \Illuminate\Http\JsonResponse
+    public function destroy(Course $course)
     {
-        $course->delete();
-        return response()->json(__('User deleted successfully'));
+        try {
+            $course->delete();
+            return back()->with('message', ['type' => 'success', 'description' => __('Course deleted successfully')]);
+        } catch (\Exception $e) {
+            return back()->withErrors(__('Can not delete this course'));
+        }
     }
 }

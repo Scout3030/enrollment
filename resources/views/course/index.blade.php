@@ -25,7 +25,7 @@
                         </div>
                         <div class="avatar bg-light-primary p-50">
                             <span class="avatar-content">
-                              <i data-feather="user" class="font-medium-4"></i>
+                              <i data-feather='folder' class="font-medium-4"></i>
                             </span>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="avatar bg-light-danger p-50">
                             <span class="avatar-content">
-                              <i data-feather="user-plus" class="font-medium-4"></i>
+                              <i data-feather='folder' class="font-medium-4"></i>
                             </span>
                         </div>
                     </div>
@@ -55,22 +55,7 @@
                         </div>
                         <div class="avatar bg-light-success p-50">
                             <span class="avatar-content">
-                              <i data-feather="user-check" class="font-medium-4"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center justify-content-between">
-                        <div>
-                            <h3 class="fw-bolder mb-75">{{ App\Models\User::role('student')->get()->count() }}</h3>
-                            <span>{{ __('Students') }}</span>
-                        </div>
-                        <div class="avatar bg-light-warning p-50">
-                            <span class="avatar-content">
-                              <i data-feather="user-x" class="font-medium-4"></i>
+                              <i data-feather='folder' class="font-medium-4"></i>
                             </span>
                         </div>
                     </div>
@@ -89,6 +74,31 @@
             </div>
             <div class="card-datatable table-responsive pt-0">
                 {!! $dataTable->table() !!}
+            </div>
+        </div>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">{{ __('Delete course') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{ __('Click confirm to delete the course. This action is not reversible.') }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            onclick="event.preventDefault(); document.getElementById('deleteCourseForm').submit();"
+                        >{{ __('Confirm') }}</button>
+                    </div>
+                    <form method="POST" id="deleteCourseForm" action="#">
+                        @method('delete')
+                        @csrf
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -116,5 +126,18 @@
 @push('scripts')
     <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
     {!! $dataTable->scripts() !!}
+    <script>
+        $(document).ready(function(){
+            const coursesDatatable = $('#coursesDatatable').DataTable()
+
+            @can('delete courses')
+            coursesDatatable.on('click',  'tbody .deleteCourse', function () {
+                let courseId = $(this).data('id');
+                let $form = $('#deleteCourseForm')
+                $form.attr('action', `{{ route('courses.index') }}/${courseId}`)
+            });
+            @endcan
+        })
+    </script>
 @endpush
 
