@@ -83,6 +83,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereBusStopId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Student whereGradeId($value)
  * @property-read \App\Models\Grade|null $grade
+ * @property int|null $parents_condition
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Enrollment[] $enrollments
+ * @property-read int|null $enrollments_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Student whereParentsCondition($value)
  */
 class Student extends Model
 {

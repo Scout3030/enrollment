@@ -42,6 +42,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Course whereCourseTypeId($value)
  * @property int|null $duration
  * @method static \Illuminate\Database\Eloquent\Builder|Course whereDuration($value)
+ * @property int|null $group
+ * @method static \Illuminate\Database\Eloquent\Builder|Course whereGroup($value)
  */
 class Course extends Model
 {

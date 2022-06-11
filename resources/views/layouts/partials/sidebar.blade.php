@@ -39,7 +39,7 @@
                     <li class="@if (Request::url() == route('users.index')) active @endif">
                         <a href="{{ route('users.index') }}" class="d-flex align-items-center" target="_self">
                             <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate">{{ __('List') }}</span>
+                            <span class="menu-item text-truncate">{{ __('List noun') }}</span>
                         </a>
                     </li>
                 </ul>

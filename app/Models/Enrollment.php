@@ -35,6 +35,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereRepeatCourse($value)
  * @property-read \App\Models\Grade $grade
  * @property-read \App\Models\Student $student
+ * @property int $academic_period_id
+ * @property string|null $student_signature
+ * @property string|null $second_tutor_signature
+ * @property string|null $first_tutor_signature
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereAcademicPeriodId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereFirstTutorSignature($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereSecondTutorSignature($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Enrollment whereStudentSignature($value)
  */
 class Enrollment extends Model
 {

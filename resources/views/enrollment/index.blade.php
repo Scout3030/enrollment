@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/rowGroup.bootstrap5.min.css') }}">
 @endpush
 
+@section('title')
+    {{ __('Enrollments') }}
+@endsection
+
 @section('content')
     <section class="app-user-list">
         <div class="row">
@@ -15,12 +19,27 @@
                 <div class="card">
                     <div class="card-body d-flex align-items-center justify-content-between">
                         <div>
-                            <h3 class="fw-bolder mb-75">{{ App\Models\User::role('student')->get()->count() }}</h3>
-                            <span>{{ __('Students') }}</span>
+                            <h3 class="fw-bolder mb-75">{{ $academicPeriod->name }}</h3>
+                            <span>{{ __('Current period') }}</span>
                         </div>
-                        <div class="avatar bg-light-warning p-50">
+                        <div class="avatar bg-light-danger p-50">
                             <span class="avatar-content">
-                              <i data-feather="user-x" class="font-medium-4"></i>
+                              <i data-feather="box" class="avatar-icon"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <h3 class="fw-bolder mb-75">{{ $enrollmentsInPeriod->count() }}</h3>
+                            <span>{{ __('Enrollments in the current period') }}</span>
+                        </div>
+                        <div class="avatar bg-light-primary p-50">
+                            <span class="avatar-content">
+                              <i data-feather="trending-up" class="avatar-icon"></i>
                             </span>
                         </div>
                     </div>
