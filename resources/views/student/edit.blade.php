@@ -26,7 +26,7 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <input type="text" id="name" class="form-control" name="name"
-                                                   value="{{ old('name', auth()->user()->name) }}" />
+                                                   value="{{ old('name', $student->user->name) }}" />
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <input type="text" id="email" name="email" class="form-control"
-                                                   value="{{ auth()->user()->email }}" />
+                                                   value="{{ $student->user->email }}" />
                                         </div>
                                     </div>
                                 </div>

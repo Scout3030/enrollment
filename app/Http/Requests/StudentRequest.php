@@ -27,8 +27,8 @@ class StudentRequest extends FormRequest
         return [
             'name' => 'required|string|min:3',
             'country_id' => 'required|exists:countries,id',
-            'email' => 'required|email|unique:users,email,'. $student->id .',id',
-            'dni' => 'required|min:8|max:8|unique:students,dni,'. $student->user->id .',user_id',
+            'email' => 'required|email|unique:users,email,'. $student->user->id .',id',
+            'dni' => 'required|min:8|max:8|unique:students,dni,'. $student->id .',id',
             'middle_name' => 'nullable|string|min:3',
             'paternal_surname' => 'nullable|string|min:3',
             'maternal_surname' => 'nullable|string|min:3',
