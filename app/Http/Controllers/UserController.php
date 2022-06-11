@@ -72,6 +72,10 @@ class UserController extends Controller
             $data['password'] = Hash::make($request->password);
         }
 
+        foreach ($user->getRoleNames() as $role) {
+            $user->removeRole($role);
+        }
+
         $user->fill($data)->save();
         $user->assignRole($request->role);
 

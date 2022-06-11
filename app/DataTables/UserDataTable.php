@@ -1,5 +1,8 @@
 <?php
 
+// Filter by relationships, raw
+// https://yajrabox.com/docs/laravel-datatables/master/filter-column
+
 namespace App\DataTables;
 
 use App\Models\User;
@@ -19,6 +22,19 @@ class UserDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->filterColumn('email_verified_at', function($query, $keyword) {
+                if(preg_match("/".__('Yes')."/i", $keyword)){
+                    $query->whereNotNull('email_verified_at');
+                }
+                if(preg_match("/".__('No')."/i", $keyword)){
+                    $query->whereNull('email_verified_at');
+                }
+            })
+            ->filterColumn('role', function($query, $keyword) {
+                $query->whereHas('roles', function($q) use ($keyword) {
+                    $q->where('name', 'LIKE', "%".$keyword."%");
+                });
+            })
             ->editColumn('email_verified_at', function(User $user){
                 return $user->email_verified_at ? __('Yes') : __('No');
             })
@@ -147,6 +163,8 @@ class UserDataTable extends DataTable
                 ->footer(__('Created')),
             Column::computed('role')
                 ->title(__('Role'))
+                ->searchable(true)
+                ->orderable(false)
                 ->exportable(true)
                 ->printable(true)
                 ->addClass('text-center')
