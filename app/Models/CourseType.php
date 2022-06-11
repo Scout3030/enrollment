@@ -30,15 +30,18 @@ class CourseType extends Model
 
     const COMMON = 1;
     const COMMON_OPTIONAL = 2;
-    const ELECTIVE = 3;
-    const ACADEMIC = 4;
-    const APPLIED = 5;
-    const FREE_CONFIGURATION = 6;
-    const CORE = 7;
-    const SPECIFIC = 8;
-    const SPECIFIC_FREE_CONFIGURATION = 9;
-    const INTRO_HIGH_SCHOOL = 10;
-    const INTRO_PROFESSIONAL_TRAINING = 11;
+    const COMMON_OPTIONAL_MIDDLE_FIRST_ONE = 3;
+    const COMMON_OPTIONAL_MIDDLE_FIRST_TWO = 4;
+    const ELECTIVE = 5;
+    const ACADEMIC = 6;
+    const APPLIED = 7;
+    const FREE_CONFIGURATION = 8;
+    const CORE = 9;
+    const SPECIFIC = 10;
+    const SPECIFIC_FREE_CONFIGURATION = 11;
+    const INTRO_HIGH_SCHOOL = 12;
+    const INTRO_PROFESSIONAL_TRAINING = 13;
+  
 
     protected $fillable = ['name'];
 
