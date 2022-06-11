@@ -24,6 +24,14 @@
         <link rel="stylesheet" href="{{ asset('css/overrides.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
         @stack('styles')
+        <style>
+            .expanded .navbar-brand img{
+                max-height: 100px;
+            }
+            .navbar-brand img{
+                max-height: 45px;
+            }
+        </style>
     </head>
     <!-- END: Head-->
 

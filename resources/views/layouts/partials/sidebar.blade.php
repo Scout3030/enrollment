@@ -3,7 +3,7 @@
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item me-auto text-center">
                 <a class="navbar-brand" href="{{url('/')}}">
-                    <img src="https://iesleopoldoalasclarin.com/wp-content/uploads/2020/01/layout_set_logo.jpg" style="max-height: 100px" alt="">
+                    <img src="https://iesleopoldoalasclarin.com/wp-content/uploads/2020/01/layout_set_logo.jpg" alt="">
 {{--                    <h2 class="brand-text">Vuexy</h2>--}}
                 </a>
             </li>

@@ -53,13 +53,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             ->can('delete users');
     });
 
-    Route::group(['prefix' => "user"], function() {
-        Route::view('/profile/edit', 'user.profile.edit')
-            ->name('user.profile.edit');
-
-        Route::put('student/profile', [StudentController::class, 'profile'])->name('student.profile.update');
-        Route::put('profile', [UserController::class, 'profile'])->name('user.profile.update');
-    });
+    Route::view('/profile/edit', 'user.profile.edit')
+        ->name('user.profile.edit');
+    Route::put('student/profile', [StudentController::class, 'profile'])
+        ->name('student.profile.update');
+    Route::put('user/profile', [UserController::class, 'profile'])
+        ->name('user.profile.update');
 
     Route::group(['prefix' => "students"], function() {
         Route::get('/', [StudentController::class, 'index'])
