@@ -16,16 +16,9 @@ class CourseSeeder extends Seeder
      */
     public function run()
     {
-        // Common courses
-        Course::factory()
-            ->count(60)
-            ->create([
-                'course_type_id' => CourseType::COMMON,
-            ]);
-          
-           
-        // Religion and ethical values for all grades
-        Course::factory()
+
+        /** 1º ESO (LOMLOE)  */
+             Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Physical Education',
@@ -81,44 +74,46 @@ class CourseSeeder extends Seeder
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
+
+
             Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Second Foreign Language: French',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_ONE,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Asturian Language and Literature',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_ONE,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Applied Digitization',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_ONE,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Religion',
                 'duration'=>'1',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_TWO,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Educational Attention',
                 'duration'=>'1',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_TWO,
             ]);
 
 
-
+            /** 2º ESO  */
 
 
             Course::factory()
@@ -220,6 +215,8 @@ class CourseSeeder extends Seeder
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
+
+            /** 2º ESO PMAR */
             
             Course::factory()
             ->create([
