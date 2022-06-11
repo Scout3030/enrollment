@@ -89,6 +89,32 @@
             </div>
         </div>
 
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">{{ __('Delete user') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{ __('Click confirm to delete the user') }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            onclick="event.preventDefault(); document.getElementById('deleteUserForm').submit();"
+                        >{{ __('Confirm') }}</button>
+                    </div>
+                    <form method="POST" id="deleteUserForm" action="#">
+                        @method('delete')
+                        @csrf
+                    </form>
+                </div>
+            </div>
+        </div>
+
         @can('create users')
             @include('user.create-modal')
         @endcan
@@ -142,18 +168,8 @@
             @can('delete users')
             userDatatable.on('click',  'tbody .deleteUser', function () {
                 let userId = $(this).data('id');
-                $.ajax({
-                    url: `{{ route('users.index') }}/${userId}`,
-                    type: 'DELETE',
-                    headers: {
-                        'x-csrf-token': $("meta[name=csrf-token]").attr('content')
-                    },
-                    success: (data, textStatus, xhr) => {
-                        if(xhr.status === 200) {
-                            userDatatable.ajax.reload();
-                        }
-                    }
-                })
+                let $form = $('#deleteUserForm')
+                $form.attr('action', `{{ route('users.index') }}/${userId}`)
             });
             @endcan
         })

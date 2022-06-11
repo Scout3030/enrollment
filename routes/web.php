@@ -86,7 +86,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::put('/{student}', [StudentController::class, 'update'])
             ->name('students.update')
             ->can('edit students');
-        Route::delete('/{user}', [StudentController::class, 'destroy'])
+        Route::delete('/{student}', [StudentController::class, 'destroy'])
             ->name('students.destroy')
             ->can('delete students');
     });

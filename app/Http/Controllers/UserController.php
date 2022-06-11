@@ -80,12 +80,16 @@ class UserController extends Controller
 
     /**
      * @param User $user
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(User $user): \Illuminate\Http\JsonResponse
+    public function destroy(User $user)
     {
-        $user->delete();
-        return response()->json(__('User deleted successfully'));
+        try {
+            $user->delete();
+            return back()->with('message', ['type' => 'success', 'description' => __('User deleted successfully')]);
+        } catch (\Exception $e) {
+            return back()->withErrors(__('Can not delete this user'));
+        }
     }
 
     /**
