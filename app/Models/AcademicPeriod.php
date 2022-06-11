@@ -48,5 +48,6 @@ class AcademicPeriod extends Model
     protected $casts = [
         'started_at' => 'datetime:d-m-Y H:i',
         'finished_at' => 'datetime:d-m-Y H:i',
+        'status' => 'boolean'
     ];
 }

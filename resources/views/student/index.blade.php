@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/rowGroup.bootstrap5.min.css') }}">
 @endpush
 
+@section('title', __('Students'))
+
 @section('content')
     <section class="app-user-list">
         <div class="row">

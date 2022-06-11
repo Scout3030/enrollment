@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', __('Import students'))
+
 @section('content')
     <section id="basic-horizontal-layouts">
         <form class="form form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('students.import') }}">
