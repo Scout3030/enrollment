@@ -68,7 +68,7 @@ class StudentDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Blfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->buttons(
                         Button::make([])
                             ->extend('collection')
@@ -113,7 +113,7 @@ class StudentDataTable extends DataTable
                             ),
                         Button::make([])
                             ->className('add-new btn btn-primary')
-                            ->text(__('Add user'))
+                            ->text(__('Add student'))
                             ->attr([
                                 'data-bs-toggle' => 'modal',
                                 'data-bs-target' => '#modals-slide-in',

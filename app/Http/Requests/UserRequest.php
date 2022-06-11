@@ -35,7 +35,8 @@ class UserRequest extends FormRequest
                     'name' => ['required', 'string', 'max:255'],
                     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                     'password' => $this->passwordRules(),
-                    'role' => ['exists:roles,name']
+                    'role' => ['nullable', 'exists:roles,name'],
+                    'dni' => ['nullable', 'unique:students,dni']
                 ];
             }
             case 'PUT': {
@@ -43,7 +44,8 @@ class UserRequest extends FormRequest
                     'name' => ['required', 'string', 'max:255'],
                     'email' => ['required', 'string', 'email', 'max:255'],
                     'password' => ['sometimes', 'string', 'nullable', 'confirmed', new Password()],
-                    'role' => ['exists:roles,name']
+                    'role' => ['nullable', 'exists:roles,name'],
+                    'dni' => ['nullable', 'unique:students,dni']
                 ];
             }
         }

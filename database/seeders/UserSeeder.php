@@ -24,5 +24,16 @@ class UserSeeder extends Seeder
                     'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
                 ]);
         }
+
+        $exampleUser = User::whereEmail('ejemplo@ejemplo.com')->first();
+        if(!$exampleUser){
+            User::factory()
+                ->count(1)
+                ->create([
+                    'name' => 'User',
+                    'email' => 'ejemplo@ejemplo.com',
+                    'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
+                ]);
+        }
     }
 }

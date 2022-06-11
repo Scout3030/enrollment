@@ -1,9 +1,7 @@
 <?php
 
 return [
-    /*
-     * Namespaces used by the generator.
-     */
+    // Namespaces used by the generator.
     'namespace'     => [
         /*
          * Base namespace/directory to create the new file.
@@ -26,9 +24,7 @@ return [
         'model' => '',
     ],
 
-    /*
-     * Set Custom stub folder
-     */
+    // Set Custom stub folder
     //'stub' => '/resources/custom_stub',
 
     /*
@@ -39,9 +35,7 @@ return [
      */
     'pdf_generator' => 'snappy',
 
-    /*
-     * Snappy PDF options.
-     */
+    // Snappy PDF options.
     'snappy'        => [
         'options'     => [
             'no-outline'    => true,
@@ -53,9 +47,7 @@ return [
         'orientation' => 'landscape',
     ],
 
-    /*
-     * Default html builder parameters.
-     */
+    // Default html builder parameters.
     'parameters'    => [
         'dom'     => 'Bfrtip',
         'order'   => [[0, 'desc']],
@@ -68,23 +60,15 @@ return [
         ],
     ],
 
-    /*
-     * Generator command default options value.
-     */
+    // Generator command default options value.
     'generator'     => [
-        /*
-         * Default columns to generate when not set.
-         */
+        // Default columns to generate when not set.
         'columns' => 'id,add your columns,created_at,updated_at',
 
-        /*
-         * Default buttons to generate when not set.
-         */
+        // Default buttons to generate when not set.
         'buttons' => 'create,export,print,reset,reload',
 
-        /*
-         * Default DOM to generate when not set.
-         */
+        // Default DOM to generate when not set.
         'dom' => 'Bfrtip',
     ],
 ];

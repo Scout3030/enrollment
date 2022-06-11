@@ -41,6 +41,10 @@
                 {!! $dataTable->table() !!}
             </div>
         </div>
+
+        @can('create students')
+            @include('student.create-modal')
+        @endcan
     </section>
 @endsection
 

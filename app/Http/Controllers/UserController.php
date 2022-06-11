@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\UserDataTable;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -42,6 +43,15 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        if(!$request->filled('role')){
+            $user->assignRole('student');
+            Student::create([
+                'user_id' => $user->id,
+                'dni' => $request->dni
+            ]);
+            return back()->with('message', ['type' => 'success', 'description' => __('Student created successfully')]);
+        }
 
         $user->assignRole($request->role);
 

@@ -12,7 +12,7 @@
                 id="email"
                 type="text"
                 name="email"
-                placeholder="john@mail.com / 34343434"
+                placeholder="ejemplo@ejemplo.com / 34343434"
                 :value="old('email')"
                 autofocus
             />
@@ -52,10 +52,4 @@
         </x-jet-button>
     </form>
 
-    <p class="text-center mt-2">
-        <span>{{ __('New on our platform?') }}</span>
-        <a href="{{ route('register') }}">
-            <span>{{ __('Create an account') }}</span>
-        </a>
-    </p>
 </x-guest-layout>

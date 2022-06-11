@@ -60,7 +60,7 @@ class UserDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Blfrtip')
-                    ->orderBy(4)
+                    ->orderBy(0)
                     ->buttons(
                         Button::make([])
                             ->extend('collection')

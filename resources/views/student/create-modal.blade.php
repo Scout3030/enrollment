@@ -16,6 +16,18 @@
                         id="name"
                         placeholder="John Doe"
                         name="name"
+                        value="{{ old('name') }}"
+                    />
+                </div>
+                <div class="mb-1">
+                    <label class="form-label" for="dni">{{ __('DNI')}}</label>
+                    <input
+                        type="text"
+                        class="form-control dt-full-name"
+                        id="dni"
+                        placeholder="34343434"
+                        name="dni"
+                        value="{{ old('dni') }}"
                     />
                 </div>
                 <div class="mb-1">
@@ -26,6 +38,7 @@
                         class="form-control dt-email"
                         placeholder="john.doe@example.com"
                         name="email"
+                        value="{{ old('email') }}"
                     />
                 </div>
                 <div class="mb-1">
@@ -47,14 +60,6 @@
                         placeholder="***********"
                         name="password_confirmation"
                     />
-                </div>
-                <div class="mb-1">
-                    <label class="form-label" for="role">{{ __('Role') }}</label>
-                    <select id="role" class="select2 form-select" name="role">
-                        @foreach(App\Models\Role::whereIn('name', ['administrator', 'manager'])->get() as $role)
-                        <option value="{{ $role->name }}">{{ __($role->name) }}</option>
-                        @endforeach
-                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary me-1 data-submit">{{ __('Save') }}</button>
                 <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
