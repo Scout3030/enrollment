@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\StudentDataTable;
-use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\StudentImportRequest;
+use App\Http\Requests\StudentProfileRequest;
 use App\Http\Requests\StudentRequest;
 use App\Models\Student;
 use Maatwebsite\Excel\Facades\Excel;
@@ -67,10 +67,10 @@ class StudentController extends Controller
     }
 
     /**
-     * @param ProfileRequest $request
+     * @param StudentProfileRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function profile(ProfileRequest $request): \Illuminate\Http\RedirectResponse
+    public function profile(StudentProfileRequest $request): \Illuminate\Http\RedirectResponse
     {
         $user = auth()->user();
         $user->name = $request->name;

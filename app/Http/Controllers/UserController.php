@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\UserDataTable;
+use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\Student;
@@ -85,5 +86,23 @@ class UserController extends Controller
     {
         $user->delete();
         return response()->json(__('User deleted successfully'));
+    }
+
+    /**
+     * @param ProfileRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function profile(ProfileRequest $request): \Illuminate\Http\RedirectResponse
+    {
+        $user = auth()->user();
+        $data = $request->only('email', 'name');
+
+        if($request->filled('password')){
+            $data['password'] = Hash::make($request->password);
+        }
+
+        $user->fill($data)->save();
+
+        return back()->with('message', ['type' => 'success', 'description' => __('Profile edited successfully')]);
     }
 }

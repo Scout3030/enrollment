@@ -43,8 +43,8 @@ class UsersImport implements ToCollection, WithChunkReading, WithHeadingRow
             ];
 
             $statuses = [
-                'INACTIVO' => 0,
-                'ACTIVO' => 1,
+                'INACTIVO' => User::INACTIVE,
+                'ACTIVO' => User::ACTIVE,
             ];
 
             if(!array_key_exists($row['nivel'], $levels)) {
