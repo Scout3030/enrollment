@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', __('Student data'))
+
 @section('content')
     <section class="app-user-view-account">
         <div class="row">
@@ -23,8 +25,8 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check font-medium-2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                                 </span>
                                 <div class="ms-75">
-                                    <h4 class="mb-0">3er B</h4>
-                                    <small>Primaria</small>
+                                    <h4 class="mb-0">{{ __($student->grade->name) }}</h4>
+                                    <small>{{ $student->grade->level->custom_name }}</small>
                                 </div>
                             </div>
                         </div>

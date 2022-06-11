@@ -59,7 +59,7 @@
                     <div class="col-12 col-md-6">
                         <label class="form-label" for="role">{{ __('Role') }}</label>
                         <select id="role" class="form-select" name="role">
-                            @foreach(App\Models\Role::get() as $role)
+                            @foreach(App\Models\Role::whereIn('name', ['administrator', 'manager'])->get() as $role)
                                 <option value="{{ $role->name }}">{{ __($role->name) }}</option>
                             @endforeach
                         </select>

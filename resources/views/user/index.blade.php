@@ -58,6 +58,21 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <h3 class="fw-bolder mb-75">{{ App\Models\User::role('student')->get()->count() }}</h3>
+                            <span>{{ __('Students') }}</span>
+                        </div>
+                        <div class="avatar bg-light-warning p-50">
+                            <span class="avatar-content">
+                              <i data-feather="user-check" class="font-medium-4"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- list and filter start -->
         <div class="card">

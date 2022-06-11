@@ -34,6 +34,10 @@ class Level extends Model
     const HIGH_SCHOOL = 2;
     const PROFESSIONAL_TRAINING = 3;
 
+    protected $appends = [
+        'custom_name'
+    ];
+
     public function getNameAttribute($value)
     {
         return __($value);
@@ -47,5 +51,16 @@ class Level extends Model
     public function courseTypes()
     {
         return $this->belongsToMany(CourseType::class);
+    }
+
+    public function getCustomNameAttribute()
+    {
+        $levels = [
+            Level::MIDDLE_SCHOOL => 'ESO',
+            Level::HIGH_SCHOOL => 'PMAR',
+            Level::PROFESSIONAL_TRAINING => 'FP'
+        ];
+
+        return $levels[$this->id];
     }
 }

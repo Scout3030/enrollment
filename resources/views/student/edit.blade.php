@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', __('Edit student data'))
+
 @push('vendor-styles')
     <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
 @endpush

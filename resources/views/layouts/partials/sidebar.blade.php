@@ -74,7 +74,7 @@
             @can('view academic periods')
                 <li class="nav-item  ">
                     <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
-                        <i data-feather="file-text"></i>
+                        <i data-feather='book-open'></i>
                         <span class="menu-title text-truncate">{{ __('Academic periods') }}</span>
                     </a>
                     <ul class="menu-content">
@@ -97,7 +97,7 @@
             @can('view courses')
             <li class="nav-item  ">
                 <a href="javascript:void(0)" class="d-flex align-items-center" target="_self">
-                    <i data-feather="file-text"></i>
+                    <i data-feather='folder'></i>
                     <span class="menu-title text-truncate">{{ __('Courses') }}</span>
                 </a>
                 <ul class="menu-content">
@@ -134,7 +134,7 @@
 
                 <li class="nav-item @if (Request::url() == route('enrollments.index')) active @endif">
                     <a href="{{ route('enrollments.index') }}" class="d-flex align-items-center" target="_self">
-                        <i data-feather="file-text"></i>
+                        <i data-feather='file-text'></i>
                         <span class="menu-title text-truncate">{{ __('Enrollments') }}</span>
                     </a>
                 </li>
@@ -143,7 +143,7 @@
             @can('edit settings')
             <li class="nav-item @if (Request::url() == route('settings.index')) active @endif">
                 <a href="{{ route('settings.index') }}" class="d-flex align-items-center" target="_self">
-                    <i data-feather="file-text"></i>
+                    <i data-feather='settings'></i>
                     <span class="menu-title text-truncate">{{ __('Settings') }}</span>
                 </a>
             </li>
