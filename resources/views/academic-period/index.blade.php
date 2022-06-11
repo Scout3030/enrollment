@@ -61,7 +61,7 @@
     <div class="toast-container">
         <div class="toast basic-toast position-fixed top-0 end-0 m-2" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
-                <img src="{{asset('images/logo/logo.png')}}" class="me-1" alt="Toast image" height="18" width="25" />
+                <img src="{{asset('favicon.jpg')}}" class="me-1" alt="Toast image" height="18" width="25" />
                 <strong class="me-auto">{{ __('Message') }}</strong>
                 <button type="button" class="ms-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>

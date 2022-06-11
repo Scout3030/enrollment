@@ -2,15 +2,15 @@
 
 namespace App\DataTables;
 
+use App\Exports\AcademicPeriodExport;
 use App\Models\AcademicPeriod;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class AcademicPeriodDataTable extends DataTable
 {
+    protected $exportClass = AcademicPeriodExport::class;
     /**
      * Build DataTable class.
      *
