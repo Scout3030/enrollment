@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\Level;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -22,37 +23,79 @@ class UsersImport implements ToCollection, WithChunkReading, WithHeadingRow
     {
         foreach ($collection as $row)
         {
-            if(!array_key_exists('grade', $row->toArray()) || !array_key_exists('email', $row->toArray())
-                || !array_key_exists('name', $row->toArray()) || !array_key_exists('status', $row->toArray())){
+            $headers = $row->toArray();
+            if(!array_key_exists('email', $headers) || !array_key_exists('dni', $headers)
+                || !array_key_exists('nombre', $headers) || !array_key_exists('nivel', $headers)
+                || !array_key_exists('grado', $headers )|| !array_key_exists('estado', $headers)){
                 throw ValidationException::withMessages([__('Invalid excel format, please import a valid file.')]);
             }
 
-            $email_verified = $row['email_verified_at'] ? now() : '';
+            $levels = [
+                'ESO' => Level::MIDDLE_SCHOOL,
+                'PMAR' => Level::HIGH_SCHOOL
+            ];
 
-            $grade = Grade::whereName($row['grade'])->first();
+            $grades = [
+                1 => 'First',
+                2 => 'Second',
+                3 => 'Third',
+                4 => 'Fourth',
+            ];
+
+            $statuses = [
+                'INACTIVO' => 0,
+                'ACTIVO' => 1,
+            ];
+
+            if(!array_key_exists($row['nivel'], $levels)) {
+                throw ValidationException::withMessages([__('Invalid levels, please import a valid content')]);
+            }
+
+            if(!array_key_exists($row['grado'], $grades)) {
+                throw ValidationException::withMessages([__('Invalid grades, please import a valid content')]);
+            }
+
+            if(!array_key_exists($row['estado'], $statuses)) {
+                throw ValidationException::withMessages([__('Invalid statuses, please import a valid content')]);
+            }
+
+            $levelId = $levels[$row['nivel']];
+            $gradeName = $grades[$row['grado']];
+
+            $grade = Grade::whereName($gradeName)
+                ->whereLevelId($levelId)
+                ->first();
+
+            if(!$grade) {
+                throw ValidationException::withMessages([__('Invalid grade by level, please import a valid content')]);
+            }
+
             $user = User::whereEmail($row['email'])->first();
 
             if ($user) {
                 $user->update([
                     'email' => $row['email'],
-                    'name' => $row['name'],
-                    'status' => $row['status'],
-                    'email_verified_at' => $email_verified,
+                    'name' => $row['nombre'],
+                    'status' => $statuses[$row['estado']],
+                    'email_verified_at' => now(),
                 ]);
-                $user->student->fill(["grade_id" => $grade->id])->save();
+                $user->student->fill([
+                    "grade_id" => $grade->id,
+                    "dni" => $row['dni'],
+                ])->save();
             } else {
-                $users = User::create([
+                $user = User::create([
                     'email' => $row['email'],
-                    'name' => $row['name'],
-                    'status' => $row['status'],
-                    'email_verified_at' => $email_verified,
+                    'name' => $row['nombre'],
+                    'status' => $statuses[$row['estado']],
+                    'email_verified_at' => now(),
                     'password' => Hash::make(Str::random(10))
                 ]);
-                $users->assignRole('student');
 
                 Student::create([
-                    'user_id' => $users->id,
+                    'user_id' => $user->id,
                     'grade_id' => $grade->id,
+                    'dni' => $row['dni'],
                 ]);
             }
         }
