@@ -6,29 +6,15 @@
         <div class="mb-1">
             <x-jet-label
                 for="email"
-                value="{{ __('Email') }}"
+                value="{{ __('Email or DNI') }}"
             />
             <x-jet-input
                 id="email"
-                type="email"
+                type="text"
                 name="email"
-                placeholder="john@mail.com"
+                placeholder="john@mail.com / 34343434"
                 :value="old('email')"
                 autofocus
-            />
-        </div>
-
-        <div class="mb-1">
-            <x-jet-label
-                for="dni"
-                value="{{ __('DNI') }}"
-            />
-            <x-jet-input
-                id="dni"
-                type="text"
-                name="dni"
-                placeholder="34343434"
-                :value="old('dni')"
             />
         </div>
 
