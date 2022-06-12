@@ -839,7 +839,7 @@
     "Enrollment": "Matrícula",
     "Enrollments": "Matrículas",
     "Total courses": "Cursos totales",
-    "optional courses info": "Numerar por orden de preferencia",
+    "optional courses info": "Ordena los cursos arrastrando y soltando, siendo 1 el de mayor preferencia.",
     "Please provide a right order for optional courses": "Por favor provee un orden correcto para los cursos opcionales",
     "You have a pending enrollment process": "Tienes un proceso de matrícula activo",
     "Learn about this registration process":"Infórmate sobre este proceso de matrícula",
