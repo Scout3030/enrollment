@@ -1,5 +1,9 @@
 <?php
 
+// Filter and order by relationships, raw
+// https://yajrabox.com/docs/laravel-datatables/master/filter-column
+// https://yajrabox.com/docs/laravel-datatables/master/order-column
+
 namespace App\DataTables;
 
 use App\Models\User;
@@ -19,6 +23,19 @@ class UserDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->filterColumn('email_verified_at', function($query, $keyword) {
+                if(preg_match("/".__('Yes')."/i", $keyword)){
+                    $query->whereNotNull('email_verified_at');
+                }
+                if(preg_match("/".__('No')."/i", $keyword)){
+                    $query->whereNull('email_verified_at');
+                }
+            })
+            ->filterColumn('role', function($query, $keyword) {
+                $query->whereHas('roles', function($q) use ($keyword) {
+                    $q->where('name', 'LIKE', "%".$keyword."%");
+                });
+            })
             ->editColumn('email_verified_at', function(User $user){
                 return $user->email_verified_at ? __('Yes') : __('No');
             })
@@ -59,7 +76,12 @@ class UserDataTable extends DataTable
                     ->setTableId('user-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Blfrtip')
+                    ->dom('<"card-header border-bottom p-1"<"head-label">
+                    <"dt-action-buttons text-right"B>>
+                    <"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l>
+                    <"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i>
+                    <"col-sm-12 col-md-6"p>
+                    >')
                     ->orderBy(0)
                     ->buttons(
                         Button::make([])
@@ -87,20 +109,7 @@ class UserDataTable extends DataTable
                                             <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
                                             <rect x="6" y="14" width="12" height="8"></rect>
                                         </svg> '.__('Print')
-                                    ),
-                                Button::make('reload')
-                                    ->text('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader">
-                                            <line x1="12" y1="2" x2="12" y2="6"></line>
-                                            <line x1="12" y1="18" x2="12" y2="22"></line>
-                                            <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
-                                            <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
-                                            <line x1="2" y1="12" x2="6" y2="12"></line>
-                                            <line x1="18" y1="12" x2="22" y2="12"></line>
-                                            <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
-                                            <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
-                                        </svg> '.__('Reload')
                                     )
-                                    ->className('dropdown-item'),
                             ]
                         ),
                         Button::make([])
@@ -160,6 +169,8 @@ class UserDataTable extends DataTable
                 ->footer(__('Created')),
             Column::computed('role')
                 ->title(__('Role'))
+                ->searchable(true)
+                ->orderable(false)
                 ->exportable(true)
                 ->printable(true)
                 ->addClass('text-center')

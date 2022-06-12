@@ -105,4 +105,18 @@ class StudentController extends Controller
 
         return back()->with('message', ['type' => 'success', 'description' => __('Profile edited successfully')]);
     }
+
+    /**
+     * @param Student $student
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Student $student)
+    {
+        try {
+            $student->delete();
+            return back()->with('message', ['type' => 'success', 'description' => __('Student deleted successfully')]);
+        } catch (\Exception $e) {
+            return back()->withErrors(__('Can not delete this student'));
+        }
+    }
 }

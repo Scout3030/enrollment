@@ -3,7 +3,7 @@
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item me-auto text-center">
                 <a class="navbar-brand" href="{{url('/')}}">
-                    <img src="https://iesleopoldoalasclarin.com/wp-content/uploads/2020/01/layout_set_logo.jpg" style="max-height: 100px" alt="">
+                    <img src="https://iesleopoldoalasclarin.com/wp-content/uploads/2020/01/layout_set_logo.jpg" alt="">
 {{--                    <h2 class="brand-text">Vuexy</h2>--}}
                 </a>
             </li>
@@ -56,7 +56,7 @@
                     <li class="@if (Request::url() == route('students.index')) active @endif">
                         <a href="{{ route('students.index') }}" class="d-flex align-items-center" target="_self">
                             <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate">{{ __('List') }}</span>
+                            <span class="menu-item text-truncate">{{ __('List noun') }}</span>
                         </a>
                     </li>
                 </ul>
@@ -81,7 +81,7 @@
                         <li class="@if (Request::url() == route('academic-periods.index')) active @endif">
                             <a href="{{ route('academic-periods.index') }}" class="d-flex align-items-center" target="_self">
                                 <i data-feather="circle"></i>
-                                <span class="menu-item text-truncate">{{ __('List') }}</span>
+                                <span class="menu-item text-truncate">{{ __('List noun') }}</span>
                             </a>
                         </li>
                         <li class="@if (Request::url() == route('academic-periods.create')) active @endif">
@@ -104,7 +104,7 @@
                     <li class="@if (Request::url() == route('courses.index')) active @endif">
                         <a href="{{ route('courses.index') }}" class="d-flex align-items-center" target="_self">
                             <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate">{{ __('List') }}</span>
+                            <span class="menu-item text-truncate">{{ __('List noun') }}</span>
                         </a>
                     </li>
                     <li class="@if (Request::url() == route('courses.create')) active @endif">
