@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @push('vendor-styles')
-    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/css/forms/spinner/jquery.bootstrap-touchspin.css') }}">
     <style>
         @media screen and (max-width: 480px) {
             .draw-signature-holder, .draw-signature-holdertutor1, .draw-signature-holdertutor2, .text-signature {
@@ -23,6 +21,8 @@
             </div>
         </div>
     </div>
+
+    @include('enrollment.create.banner')
 
     <section id="basic-horizontal-layouts">
         <form id="enrollmentForm" class="form form-horizontal" method="POST"  enctype="multipart/form-data" action="{{ route('enrollment.store') }}">
@@ -367,7 +367,7 @@
             </div>
         </form>
         @include('livewire.enrollment.components.modal')
-
+        @include('layouts.partials.toast', ['message' => __('Great'), 'description' => __('Order updated successfully')])
     </section>
 @endsection
 
@@ -478,7 +478,6 @@
 @endpush
 
 @push('scripts')
-
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script>// Default Spin
