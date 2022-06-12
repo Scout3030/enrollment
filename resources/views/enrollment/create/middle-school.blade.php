@@ -12,6 +12,8 @@
     </style>
 @endpush
 
+@section('title', __('Create your enrollment'))
+
 @section('content')
 
     <div class="content-header-left col-md-9 col-12 mb-2">

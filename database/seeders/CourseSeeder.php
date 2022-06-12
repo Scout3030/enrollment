@@ -28,7 +28,7 @@ class CourseSeeder extends Seeder
             Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => ' Geography and History',
+                'name' => 'Geography and History',
                 'duration'=>'3',
                 'course_type_id' => CourseType::COMMON,
             ]);
@@ -217,7 +217,7 @@ class CourseSeeder extends Seeder
             ]);
 
             /** 2º ESO PMAR */
-            
+
             Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
@@ -238,7 +238,7 @@ class CourseSeeder extends Seeder
                 'name' => 'Scientific and Mathematical Field',
                 'duration'=>'9',
                 'course_type_id' => CourseType::CORE,
-            ]);            
+            ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
@@ -302,7 +302,7 @@ class CourseSeeder extends Seeder
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
-        
+
             /** 3º ESO (LOMLOE)  */
             Course::factory()
             ->create([
@@ -429,7 +429,7 @@ class CourseSeeder extends Seeder
                 'duration'=>'9',
                 'course_type_id' => CourseType::COMMON_AREAS,
             ]);
-            
+
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
@@ -503,7 +503,7 @@ class CourseSeeder extends Seeder
             ]);
 
 
-         /**  4º ESO  */   
+         /**  4º ESO  */
            Course::factory()
             ->create([
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
@@ -648,7 +648,7 @@ class CourseSeeder extends Seeder
                 'duration'=>'3',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::SPECIFIC,
-            ]);      
+            ]);
         Course::factory()
             ->create([
                 'name' => 'Second Foreign Language: French',

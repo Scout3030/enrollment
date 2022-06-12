@@ -12,6 +12,8 @@
     </style>
 @endpush
 
+@section('title', __('Create your enrollment'))
+
 @section('content')
 
     <div class="content-header-left col-md-9 col-12 mb-2">
@@ -47,7 +49,7 @@
                                             />
                                             <label class="custom-option-item p-1" for="common_course_{{ $course->id }}">
                                                 <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                    <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                    <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                                 </span>
                                             </label>
                                         </div>
@@ -83,7 +85,7 @@
                                                 />
                                                 <label class="custom-option-item p-1" for="common_course_{{ $course->id }}">
                                                     <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                        <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                        <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                                     </span>
                                                 </label>
                                             </div>
@@ -118,7 +120,7 @@
                                         />
                                         <label class="custom-option-item p-1" for="common_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                             </span>
                                         </label>
                                     </div>
@@ -152,7 +154,7 @@
                                         />
                                         <label class="custom-option-item p-1" for="common_optional_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                             </span>
                                         </label>
                                     </div>
@@ -186,7 +188,7 @@
                                             />
                                             <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
                                                 <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                    <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                    <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                                 </span>
                                             </label>
                                         </div>
@@ -198,7 +200,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- / basic custom options -->                
+                <!-- / basic custom options -->
             </div>
 
             <div class="row">
@@ -525,53 +527,5 @@
                 });
             }
         });
-        $('.touchspin').TouchSpin({
-            buttondown_class: 'btn btn-primary',
-            buttonup_class: 'btn btn-primary',
-            buttondown_txt: feather.icons['minus'].toSvg(),
-            buttonup_txt: feather.icons['plus'].toSvg()
-        });
-
-        // Icon Change
-        $('.touchspin-icon').TouchSpin({
-            buttondown_txt: feather.icons['chevron-down'].toSvg(),
-            buttonup_txt: feather.icons['chevron-up'].toSvg()
-        });
-
-        // Min - Max
-        var touchspinValue = $('.touchspin-min-max'),
-            counterMin = 1,
-            counterMax = {{ count($commonOptionalTwoCourses) }};
-        if (touchspinValue.length > 0) {
-            touchspinValue
-                .TouchSpin({
-                    min: counterMin,
-                    max: counterMax,
-                    buttondown_txt: feather.icons['minus'].toSvg(),
-                    buttonup_txt: feather.icons['plus'].toSvg()
-                })
-                .on('touchspin.on.startdownspin', function () {
-                    var $this = $(this);
-                    $('.bootstrap-touchspin-up').removeClass('disabled-max-min');
-                    let node = $this.parent().parent().parent().parent().find('input.custom-option-item-check')
-                    let val = JSON.parse($(node).val())
-                    val.order = $this.val()
-                    $(node).val(JSON.stringify(val))
-                    if ($this.val() == counterMin) {
-                        $(this).siblings().find('.bootstrap-touchspin-down').addClass('disabled-max-min');
-                    }
-                })
-                .on('touchspin.on.startupspin', function () {
-                    var $this = $(this);
-                    $('.bootstrap-touchspin-down').removeClass('disabled-max-min');
-                    let node = $this.parent().parent().parent().parent().find('input.custom-option-item-check')
-                    let val = JSON.parse($(node).val())
-                    val.order = $this.val()
-                    $(node).val(JSON.stringify(val))
-                    if ($this.val() == counterMax) {
-                        $(this).siblings().find('.bootstrap-touchspin-up').addClass('disabled-max-min');
-                    }
-                });
-        }
     </script>
 @endpush

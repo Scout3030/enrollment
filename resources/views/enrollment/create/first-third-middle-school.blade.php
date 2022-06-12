@@ -12,6 +12,8 @@
     </style>
 @endpush
 
+@section('title', __('Create your enrollment'))
+
 @section('content')
 
     <div class="content-header-left col-md-9 col-12 mb-2">
@@ -46,7 +48,7 @@
                                         />
                                         <label class="custom-option-item p-1" for="common_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                             </span>
                                         </label>
                                     </div>
@@ -82,7 +84,7 @@
                                             />
                                             <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
                                                 <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                    <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                    <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                                 </span>
                                             </label>
                                         </div>
@@ -92,29 +94,29 @@
                                 @endforelse
                             </div>
                             @if(count($commonOptionalTwoCourses) > 0)
-                                    <div class="row custom-options-checkable g-1">
-                                        <div class="col-md-12 pt-2">
-                                            {{ __('Select one option') }}
-                                        </div>
-                                        @foreach($commonOptionalTwoCourses as $course)
-                                            <div class="col-md-3">
-                                                <input
-                                                    class="custom-option-item-check"
-                                                    type="radio"
-                                                    name="common_optional_course"
-                                                    id="common_optional_course_{{ $course->id }}"
-                                                    value="{{ $course->id }}"
-                                                    @once checked @endonce
-                                                />
-                                                <label class="custom-option-item p-1" for="common_optional_course_{{ $course->id }}">
-                                                    <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                        <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        @endforeach
+                                <div class="row custom-options-checkable g-1">
+                                    <div class="col-md-12 pt-2">
+                                        {{ __('Select one option') }}
                                     </div>
-                                @endif
+                                    @foreach($commonOptionalTwoCourses as $course)
+                                        <div class="col-md-3">
+                                            <input
+                                                class="custom-option-item-check"
+                                                type="radio"
+                                                name="common_optional_course"
+                                                id="common_optional_course_{{ $course->id }}"
+                                                value="{{ $course->id }}"
+                                                @once checked @endonce
+                                            />
+                                            <label class="custom-option-item p-1" for="common_optional_course_{{ $course->id }}">
+                                                <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                    <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
