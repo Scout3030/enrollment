@@ -80,9 +80,9 @@
                                 <div class="col-2 col-md-1">
                                     <div class="card mb-4">
                                         <ul class="list-group list-group-flush">
-                                            @foreach($commonOptionalOneCourses as $key => $course)
+                                            @foreach($commonOptionalOneCourses as $course)
                                             <li class="list-group-item numerator">
-                                                <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $key + 1 }}</span>
+                                                <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
                                             </li>
                                             @endforeach
                                         </ul>
@@ -114,30 +114,29 @@
                                     </div>
                                 </div>
                             </div>
-                            @if(count($commonOptionalTwoCourses) > 0)
-                                <div class="row custom-options-checkable g-1">
-                                    <div class="col-md-12 pt-2">
-                                        {{ __('Select one option') }}
-                                    </div>
-                                    @foreach($commonOptionalTwoCourses as $course)
-                                        <div class="col-md-3">
-                                            <input
-                                                class="custom-option-item-check"
-                                                type="radio"
-                                                name="common_optional_course"
-                                                id="common_optional_course_{{ $course->id }}"
-                                                value="{{ $course->id }}"
-                                                @once checked @endonce
-                                            />
-                                            <label class="custom-option-item p-1" for="common_optional_course_{{ $course->id }}">
-                                                <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                    <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
-                                                </span>
-                                            </label>
-                                        </div>
-                                    @endforeach
+
+                            <div class="row custom-options-checkable g-1">
+                                <div class="col-md-12 pt-2">
+                                    {{ __('Select one option') }}
                                 </div>
-                            @endif
+                                @foreach($commonOptionalTwoCourses as $course)
+                                    <div class="col-md-3">
+                                        <input
+                                            class="custom-option-item-check"
+                                            type="radio"
+                                            name="common_optional_course"
+                                            id="common_optional_course_{{ $course->id }}"
+                                            value="{{ $course->id }}"
+                                            @once checked @endonce
+                                        />
+                                        <label class="custom-option-item p-1" for="common_optional_course_{{ $course->id }}">
+                                            <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>

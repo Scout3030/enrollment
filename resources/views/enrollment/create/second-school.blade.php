@@ -2,6 +2,12 @@
 
 @push('vendor-styles')
     <style>
+        .numerator span{
+            margin: 12px;
+        }
+        .numerator:last-child span{
+            margin: 12px 0 0 0;
+        }
         @media screen and (max-width: 480px) {
             .draw-signature-holder, .draw-signature-holdertutor1, .draw-signature-holdertutor2, .text-signature {
                 max-width: 100% !important;
@@ -138,10 +144,13 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Specific optional') }}</h4>
+                            <h4 class="card-title">{{ __('Specific courses') }}</h4>
+                            <div class="col-md-12 pt-2">
+                                {{ __('Select one option') }}
+                            </div>
                         </div>
                         <div class="card-body">
-                            <div  class="row custom-options-checkable g-1">
+                            <div class="row custom-options-checkable g-1">
                                 @foreach($commonOptionalOneCourses as $course)
                                     <div class="col-md-3">
                                         <input
@@ -174,28 +183,43 @@
                             <p>{{ __('optional courses info') }}</p>
                         </div>
                         <div class="card-body">
-                            <div id="sortable2" class="row custom-options-checkable g-1">
-                                @forelse($commonOptionalTwoCourses as $key => $course)
-                                    <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                        <div class="col-md-12">
-                                            <input
-                                                class="custom-option-item-check"
-                                                type="checkbox"
-                                                name="elective_courses[]"
-                                                id="elective_course_{{ $course->id }}"
-                                                value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
-                                                checked
-                                            />
-                                            <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
+                            <div class="row">
+                                <div class="col-2 col-md-1">
+                                    <div class="card mb-4">
+                                        <ul class="list-group list-group-flush">
+                                            @foreach($commonOptionalTwoCourses as $course)
+                                                <li class="list-group-item numerator">
+                                                    <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-10 col-md-11">
+                                    <div id="sortable2" class="row custom-options-checkable g-1">
+                                        @forelse($commonOptionalTwoCourses as $key => $course)
+                                            <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                <div class="col-md-12">
+                                                    <input
+                                                        class="custom-option-item-check"
+                                                        type="checkbox"
+                                                        name="elective_courses[]"
+                                                        id="elective_course_{{ $course->id }}"
+                                                        value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                                        checked
+                                                    />
+                                                    <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
                                                 <span class="d-flex justify-content-between flex-wrap mb-50">
                                                     <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                                 </span>
-                                            </label>
-                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        @empty
+                                            {{ __('Select level and grade') }}
+                                        @endforelse
                                     </div>
-                                @empty
-                                    {{ __('Select level and grade') }}
-                                @endforelse
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -486,6 +510,7 @@
             $("#sortable").sortable({
                 update: function() {
                     academicCourse();
+                    toast.show();
                 }
             });
             function academicCourse() {
@@ -497,6 +522,7 @@
             $("#sortable1").sortable({
                 update: function() {
                     appliedCourses();
+                    toast.show();
                 }
             });
             function appliedCourses() {
@@ -507,6 +533,7 @@
             $("#sortable2").sortable({
                 update: function() {
                     electiveCourse();
+                    toast.show();
                 }
             });
             function electiveCourse() {
@@ -518,6 +545,7 @@
             $("#sortable3").sortable({
                 update: function() {
                     freeConfigurationCourses();
+                    toast.show();
                 }
             });
             function freeConfigurationCourses() {
