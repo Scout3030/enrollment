@@ -2,6 +2,12 @@
 
 @push('vendor-styles')
     <style>
+        .numerator span{
+            margin: 14px;
+        }
+        .numerator:last-child span{
+            margin: 12px 0 0 0;
+        }
         @media screen and (max-width: 480px) {
             .draw-signature-holder, .draw-signature-holdertutor1, .draw-signature-holdertutor2, .text-signature  {
                 max-width: 100% !important;
@@ -41,15 +47,14 @@
                                         <input
                                             class="custom-option-item-check"
                                             type="checkbox"
-                                             name="core_course"
+                                            name="core_course"
                                             id="core_course_{{ $course->id }}"
-                                            
                                             checked
                                             disabled
                                         />
                                         <label class="custom-option-item p-1" for="core_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                             </span>
                                         </label>
                                     </div>
@@ -80,11 +85,11 @@
                                             name="common_courses"
                                             id="common_course_{{ $course->id }}"
                                             value="{{ $course->id }}"
-                                            @once checked @endonce
+                                            {{ old('common_courses') == $course->id ? 'checked' : ''}}
                                         />
                                         <label class="custom-option-item p-1" for="common_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                             </span>
                                         </label>
                                     </div>
@@ -98,15 +103,24 @@
 
             <div class="row">
                 <!-- custom option checkbox -->
-                <div class="col-sm-12 col-xl-6">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Itinerary') }}</h4>
+                            <h4 class="card-title">{{ __('Itineraries') }}</h4>
+                            <p>{{ __('You are allowed to select courses from one of two options') }}</p>
                         </div>
-                            <div class="mb-1 row">
-                                <div class="col-sm-12">
-                                    <div class="demo-inline-spacing">
-                                        <div class="card-header">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- custom option checkbox -->
+                <div class="col-sm-12 col-xl-6">
+                    <div class="card">
+                        <div class="mb-1 row">
+                            <div class="col-sm-12">
+                                <div class="demo-inline-spacing">
+                                    <div class="card-header">
                                         <div class="form-check form-check-inline" onclick="active()">
                                             <input
                                                 class="form-check-input"
@@ -114,110 +128,107 @@
                                                 name="active"
                                                 id="active_si"
                                                 value="1"
+                                                {{ old('active') == "1" ? 'checked' : ''}}
                                             />
                                             <label class="form-check-label" for="active_si">{{ __('ACADEMIC TEACHINGS FOR BACCALAUREATE INITIATION') }}</label>
-                                        </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         <div class="card-body">
-                                <div class="col-sm-6 col-xl-12">
-                                    <div class="card">
-                                       
-                                            <div class="mb-1 row">
-                                                <div class="col-sm-12">
-                                                    <div class="demo-inline-spacing">
-                                                        <div class="form-check form-check-inline" onclick="activeOption()">
-                                                            <input
-                                                                class="form-check-input  active_1"
-                                                                type="radio"
-                                                                name="active_option"
-                                                                id="active_option_1"
-                                                                value="1"
-                                                            />
-                                                            <label class="form-check-label" for="active_si">{{ __('Option 1') }}</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="row custom-options-checkable g-1">
-                                                            @forelse($coursesItineraryA as $course)
-                                                             <div class="row1" course_id="{{ $course->id }}">
-                                                                <div class="col-md-12">
-                                                                    <input
-                                                                        class="custom-option-item-check"
-                                                                        type="checkbox"
-                                                                        name="core_itinerary_a"
-                                                                        id="core_itinerary_a_{{ $course->id }}"
-                                                                        
-                                                                        checked
-                                                                        disabled
-                                                                    />
-                                                                    <label class="custom-option-item p-1" for="core_itinerary_a_{{ $course->id }}">
-                                                                        <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                                            <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
-                                                                        </span>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            @empty
-                                                                {{ __('Select level and grade') }}
-                                                            @endforelse
-                                                        </div>
-                                                    </div>
+                            <div class="col-sm-6 col-xl-12">
+                                <div class="card">
+                                    <div class="mb-1 row">
+                                        <div class="col-sm-12">
+                                            <div class="demo-inline-spacing">
+                                                <div class="form-check form-check-inline" onclick="activeOption()">
+                                                    <input
+                                                        class="form-check-input  active_1"
+                                                        type="radio"
+                                                        name="active_option"
+                                                        id="active_option_1"
+                                                        value="1"
+                                                        {{ old('active_option') == "1" ? 'checked' : ''}}
+                                                    />
+                                                    <label class="form-check-label" for="active_option_1">{{ __('Option 1') }}</label>
                                                 </div>
                                             </div>
-                                       
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-xl-12">
-                                    <div class="card">
-                                        <div class="mb-1 row">
-                                            <div class="col-sm-10">
-                                                <div class="demo-inline-spacing">
-                                                    <div class="form-check form-check-inline" onclick="activeOption()">
-                                                        <input
-                                                            class="form-check-input active_1"
-                                                            type="radio"
-                                                            name="active_option"
-                                                            id="active_option_2"
-                                                            value="0"
-                                                        />
-                                                        <label class="form-check-label" for="active_no">{{ __('Option 2') }}</label>
-                                                    </div>
+                                            <div class="card-body">
+                                                <div class="row custom-options-checkable g-1">
+                                                    @forelse($coursesItineraryA as $course)
+                                                        <div class="row1" course_id="{{ $course->id }}">
+                                                            <div class="col-md-12">
+                                                                <input
+                                                                    class="custom-option-item-check"
+                                                                    type="checkbox"
+                                                                    name="core_itinerary_a"
+                                                                    id="core_itinerary_a_{{ $course->id }}"
+                                                                    checked
+                                                                    disabled
+                                                                />
+                                                                <label class="custom-option-item p-1" for="core_itinerary_a_{{ $course->id }}">
+                                                                    <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                                        <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    @empty
+                                                        {{ __('Select level and grade') }}
+                                                    @endforelse
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-body">
-                                            <div class="row custom-options-checkable g-1">
-                                                @forelse($coursesItineraryB as $course)
-                                                    <div class="row2" course_id="{{ $course->id }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-12">
+                                <div class="card">
+                                    <div class="mb-1 row">
+                                        <div class="col-sm-10">
+                                            <div class="demo-inline-spacing">
+                                                <div class="form-check form-check-inline" onclick="activeOption()">
+                                                    <input
+                                                        class="form-check-input active_1"
+                                                        type="radio"
+                                                        name="active_option"
+                                                        id="active_option_2"
+                                                        value="0"
+                                                        {{ old('active_option') == "0" ? 'checked' : ''}}
+                                                    />
+                                                    <label class="form-check-label" for="active_option_2">{{ __('Option 2') }}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row custom-options-checkable g-1">
+                                            @forelse($coursesItineraryB as $course)
+                                                <div class="row2" course_id="{{ $course->id }}">
                                                     <div class="col-md-12">
                                                         <input
                                                             class="custom-option-item-check"
                                                             type="checkbox"
                                                             name="core_itinerary_b"
                                                             id="core_itinerary_b_{{ $course->id }}"
-                                                            
                                                             checked
                                                             disabled
                                                         />
                                                         <label class="custom-option-item p-1" for="core_itinerary_b_{{ $course->id }}">
                                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                                <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                                             </span>
                                                         </label>
                                                     </div>
                                                 </div>
-                                                @empty
-                                                    {{ __('Select level and grade') }}
-                                                @endforelse
-                                            </div>
+                                            @empty
+                                                {{ __('Select level and grade') }}
+                                            @endforelse
                                         </div>
-                                        
                                     </div>
                                 </div>
-                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -230,85 +241,75 @@
                             <div class="col-sm-12">
                                 <div class="demo-inline-spacing">
                                     <div class="card-header">
-                                       
-                                    </div>
-                                    
-                                    <div class="form-check form-check-inline" onclick="active()">
-                                     <br>
-                                     <br>
-                                     <br>
-                                     <br>
-                                        <input
-                                            class="form-check-input"
-                                            type="radio"
-                                            name="active"
-                                            id="active_no"
-                                            value="0"
-                                        />
-                                        <label class="form-check-label" for="active_no">{{ __('TEACHINGS APPLIED TO THE INITIATION TO THE VET') }}</label>
+                                        <div class="form-check form-check-inline" onclick="active()">
+                                            <input
+                                                class="form-check-input"
+                                                type="radio"
+                                                name="active"
+                                                id="active_no"
+                                                value="0"
+                                                {{ old('active') == "0" ? 'checked' : ''}}
+                                            />
+                                            <label class="form-check-label" for="active_no">{{ __('TEACHINGS APPLIED TO THE INITIATION TO THE VET') }}</label>
+                                        </div>
                                     </div>
                                 </div>
-                                    <div class="card-body">
-                                        <div class="row custom-options-checkable g-1">
-                                            @forelse($coursesItineraryC as $course)
-                                                <div class="row3" course_id="{{ $course->id }}">
+                                <div class="card-body">
+                                    <div class="row custom-options-checkable g-1">
+                                        @forelse($coursesItineraryC as $course)
+                                            <div class="row3" course_id="{{ $course->id }}">
                                                 <div class="col-md-12">
                                                     <input
                                                         class="custom-option-item-check"
                                                         type="checkbox"
                                                         name="core_itinerary_c"
                                                         id="core_itinerary_c_{{ $course->id }}"
-                                                        
                                                         checked
                                                         disabled
                                                     />
                                                     <label class="custom-option-item p-1" for="core_itinerary_c_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
                                             </div>
-                                            @empty
-                                                {{ __('Select level and grade') }}
-                                            @endforelse
-                                        </div> 
-                                            <div class="row custom-options-checkable g-1">
-                                                <div class="col-md-12 pt-2">
-                                                    {{ __('Select one option') }}
-                                                </div>
-                                                @foreach($coursesItineraryD as $course)
-                                                 <div class="row4" course_id="{{ $course->id }}">
-                                                    <div class="col-md-6">
-                                                        <input
-                                                            class="custom-option-item-check"
-                                                            type="radio"
-                                                            name="core_itinerary_d"
-                                                            id="core_itinerary_d_{{ $course->id }}"
-                                                            value="{{ $course->id }}"
-                                                            @once checked @endonce
-                                                        />
-                                                        <label class="custom-option-item p-1" for="core_itinerary_d_{{ $course->id }}">
-                                                            <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                                <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                @endforeach
-                                            </div>
+                                        @empty
+                                            {{ __('Select level and grade') }}
+                                        @endforelse
                                     </div>
+                                    <div class="row custom-options-checkable g-1">
+                                        <div class="col-md-12 pt-2">
+                                            {{ __('Select one option') }} <b>{{ __('mandatory') }}</b>
+                                        </div>
+                                        @foreach($coursesItineraryD as $course)
+                                            <div class="row4" course_id="{{ $course->id }}">
+                                                <div class="col-md-6">
+                                                    <input
+                                                        class="custom-option-item-check"
+                                                        type="radio"
+                                                        name="core_itinerary_d"
+                                                        id="core_itinerary_d_{{ $course->id }}"
+                                                        value="{{ $course->id }}"
+                                                        {{ old('core_itinerary_d') == $course->id ? 'checked' : ''}}
+                                                    />
+                                                    <label class="custom-option-item p-1" for="core_itinerary_d_{{ $course->id }}">
+                                                        <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            
-                        </div>
                     </div>
-                   
                 </div>
                 <!-- / basic custom options -->
             </div>
-             <div class="row">
+            <div class="row">
                 <!-- custom option checkbox -->
                 <div class="col-sm-12 col-xl-12">
                     <div class="card">
@@ -317,35 +318,74 @@
                             <p>{{ __('optional courses info') }}</p>
                         </div>
                         <div class="card-body">
-                            <div id="sortable5" class="row custom-options-checkable g-1">
-                                @forelse($coursesSpecific as $key => $course)
-                                    <div class="row5" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                        <div class="col-md-12">
-                                            <input
-                                                class="custom-option-item-check"
-                                                type="checkbox"
-                                                name="elective_courses[]"
-                                                id="elective_course_{{ $course->id }}"
-                                                value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
-                                                checked
-                                            />
-                                            <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
-                                                <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                    <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
-                                                </span>
-                                            </label>
-                                        </div>
+                            <div class="row">
+                                <div class="col-2 col-md-1">
+                                    <div class="card mb-4">
+                                        <ul class="list-group list-group-flush">
+                                            @foreach($coursesSpecific as $course)
+                                                <li class="list-group-item numerator">
+                                                    <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </div>
-                                @empty
-                                    {{ __('Select level and grade') }}
-                                @endforelse
+                                </div>
+                                <div class="col-10 col-md-11">
+                                    <div id="sortable5" class="row custom-options-checkable g-1">
+                                        @if(old('elective_courses'))
+                                            @foreach(old('elective_courses') as $order)
+                                                @foreach($coursesSpecific as $key => $course)
+                                                    @if(json_decode($order)->id == $course->id)
+                                                        <div class="row5" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                            <div class="col-md-12">
+                                                                <input
+                                                                    class="custom-option-item-check"
+                                                                    type="checkbox"
+                                                                    name="elective_courses[]"
+                                                                    id="elective_course_{{ $course->id }}"
+                                                                    value='{"id":"{{ $course->id }}", "order":"{{ json_decode($order)->order }}"}'
+                                                                    checked
+                                                                />
+                                                                <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
+                                                                    <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                                        <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            @endforeach
+                                        @else
+                                            @foreach($coursesSpecific as $key => $course)
+                                            <div class="row5" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                <div class="col-md-12">
+                                                    <input
+                                                        class="custom-option-item-check"
+                                                        type="checkbox"
+                                                        name="elective_courses[]"
+                                                        id="elective_course_{{ $course->id }}"
+                                                        value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                                        checked
+                                                    />
+                                                    <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
+                                                        <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- / basic custom options -->                
+                <!-- / basic custom options -->
             </div>
-             <div class="row">
+            <div class="row">
                 <!-- custom option checkbox -->
                 <div class="col-sm-12 col-xl-12">
                     <div class="card">
@@ -354,33 +394,72 @@
                             <p>{{ __('optional courses info') }}</p>
                         </div>
                         <div class="card-body">
-                            <div id="sortable6" class="row custom-options-checkable g-1">
-                                @forelse($coursesfree as $key => $course)
-                                    <div class="row6" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                        <div class="col-md-12">
-                                            <input
-                                                class="custom-option-item-check"
-                                                type="checkbox"
-                                                name="elective_courses_free[]"
-                                                id="elective_course_free_{{ $course->id }}"
-                                                value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
-                                                checked
-                                            />
-                                            <label class="custom-option-item p-1" for="elective_course_free_{{ $course->id }}">
-                                                <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                    <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
-                                                </span>
-                                            </label>
-                                        </div>
+                            <div class="row">
+                                <div class="col-2 col-md-1">
+                                    <div class="card mb-4">
+                                        <ul class="list-group list-group-flush">
+                                            @foreach($coursesfree as $course)
+                                                <li class="list-group-item numerator">
+                                                    <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </div>
-                                @empty
-                                    {{ __('Select level and grade') }}
-                                @endforelse
+                                </div>
+                                <div class="col-10 col-md-11">
+                                    <div id="sortable6" class="row custom-options-checkable g-1">
+                                        @if(old('elective_courses_free'))
+                                            @foreach(old('elective_courses_free') as $order)
+                                                @foreach($coursesfree as $key => $course)
+                                                    @if(json_decode($order)->id == $course->id)
+                                                        <div class="row6" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                            <div class="col-md-12">
+                                                                <input
+                                                                    class="custom-option-item-check"
+                                                                    type="checkbox"
+                                                                    name="elective_courses_free[]"
+                                                                    id="elective_course_free_{{ $course->id }}"
+                                                                    value='{"id":"{{ $course->id }}", "order":"{{ json_decode($order)->order }}"}'
+                                                                    checked
+                                                                />
+                                                                <label class="custom-option-item p-1" for="elective_course_free_{{ $course->id }}">
+                                                                    <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                                        <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            @endforeach
+                                        @else
+                                            @foreach($coursesfree as $key => $course)
+                                            <div class="row6" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                <div class="col-md-12">
+                                                    <input
+                                                        class="custom-option-item-check"
+                                                        type="checkbox"
+                                                        name="elective_courses_free[]"
+                                                        id="elective_course_free_{{ $course->id }}"
+                                                        value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                                        checked
+                                                    />
+                                                    <label class="custom-option-item p-1" for="elective_course_free_{{ $course->id }}">
+                                                        <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- / basic custom options -->                
+                <!-- / basic custom options -->
             </div>
 
             <div class="row">
@@ -598,11 +677,6 @@
                 setTimeout(function (){
                     populateLevelSelect()
                     populateSelect(levelId)
-                    console.log('levelId', levelId)
-                    // setTimeout(function (){
-                    //     levelNode.val(2).trigger('change')
-                    // }, 200)
-                    // gradeNode.val(gradeId).trigger('change')
                 }, 200)
             })
 
@@ -662,67 +736,59 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script>// Default Spin
-        document.getElementById("active_option_1").disabled = true;  
+        document.getElementById("active_option_1").disabled = true;
         document.getElementById("active_option_2").disabled = true;
-         $('.row1').each(function(index, element) {
+        $('.row1').each(function(index, element) {
             document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
         });
         $('.row2').each(function(index, element) {
             document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
         });
-         $('.row3').each(function(index, element) {
+        $('.row3').each(function(index, element) {
             document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
         });
-         $('.row4').each(function(index, element) {
+        $('.row4').each(function(index, element) {
             document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
         });
-       
+
         function activeOption(){
-        if($('input:radio[name=active_option]:checked').val()==1){
-            //  alert(1)
-           $('.row1').each(function(index, element) {
+            if($('input:radio[name=active_option]:checked').val()==1){
+                $('.row1').each(function(index, element) {
                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = true;
                 });
-                 $('.row2').each(function(index, element) {
+                $('.row2').each(function(index, element) {
                     document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
                 });
-           
-        }
-        else{
-             $('.row2').each(function(index, element) {
+            } else {
+                $('.row2').each(function(index, element) {
                     document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = true;
                 });
-                 $('.row1').each(function(index, element) {
+                $('.row1').each(function(index, element) {
                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
                 });
-        }
+            }
         }
         function active(){
             if($('input:radio[name=active]:checked').val()==1){
-              //  alert(1)
-                document.getElementById("active_option_1").disabled = false;  
-                document.getElementById("active_option_2").disabled = false;  
-                 $('.row3').each(function(index, element) {
+                document.getElementById("active_option_1").disabled = false;
+                document.getElementById("active_option_2").disabled = false;
+                $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
                 });
-                 $('.row4').each(function(index, element) {
+                $('.row4').each(function(index, element) {
                     document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
                 });
-            
-               
             }else{
-               // alert(0)
-                document.getElementById("active_option_1").disabled = true;  
-                document.getElementById("active_option_2").disabled = true;  
-                 document.getElementById("active_option_1").checked = false;  
-                document.getElementById("active_option_2").checked = false;  
-                 $('.row3').each(function(index, element) {
+                document.getElementById("active_option_1").disabled = true;
+                document.getElementById("active_option_2").disabled = true;
+                document.getElementById("active_option_1").checked = false;
+                document.getElementById("active_option_2").checked = false;
+                $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = true;
                 });
-                  $('.row4').each(function(index, element) {
+                $('.row4').each(function(index, element) {
                     document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = true;
                 });
-             
                 $('.row1').each(function(index, element) {
                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
                 });
@@ -740,7 +806,7 @@
             });
             function hour4Course() {
                 $('.row5').each(function(index, element) {
-                document.getElementById("elective_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}"
+                    document.getElementById("elective_course_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}"
                 });
             }
             $("#sortable6").sortable({
@@ -751,11 +817,18 @@
             });
             function hour3Course() {
                 $('.row6').each(function(index, element) {
-                   document.getElementById("elective_course_free_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}"
+                    document.getElementById("elective_course_free_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}"
                 });
             }
-           
         });
+
+        @if(!is_null(old('active')))
+        active()
+        @endif
+
+        @if(!is_null(old('active_option')))
+        activeOption()
+        @endif
     </script>
 @endpush
 
