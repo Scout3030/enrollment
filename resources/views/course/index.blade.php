@@ -72,7 +72,7 @@
                     <div class="col-md-4 user_status"></div>
                 </div>
             </div>
-            <div class="card-datatable table-responsive pt-0">
+            <div class="card-datatable pt-0">
                 {!! $dataTable->table() !!}
             </div>
         </div>

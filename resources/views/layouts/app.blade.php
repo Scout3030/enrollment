@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="{{ asset('vendors/css/vendors.min.css') }}" />
         @stack('vendor-styles')
         <!-- END: Vendor CSS-->
+        <!-- BEGIN: Theme CSS-->
         <link rel="stylesheet" href="{{ asset('css/core.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/base/themes/dark-layout.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/base/themes/bordered-layout.css') }}" />
