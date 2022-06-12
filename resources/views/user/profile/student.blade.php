@@ -35,7 +35,7 @@
                             <div class="col-12">
                                 <div class="mb-1 row">
                                     <div class="col-sm-2">
-                                        <label class="col-form-label" for="paternal_surname">{{ __('Paternal surname') }}</label>
+                                        <label class="col-form-label" for="paternal_surname">{{ __('First surname') }}</label>
                                     </div>
                                     <div class="col-sm-10">
                                         <input type="text" id="paternal_surname" class="form-control" name="paternal_surname"
@@ -46,7 +46,7 @@
                             <div class="col-12">
                                 <div class="mb-1 row">
                                     <div class="col-sm-2">
-                                        <label class="col-form-label" for="maternal_surname">{{ __('Maternal surname') }}</label>
+                                        <label class="col-form-label" for="maternal_surname">{{ __('Second surname') }}</label>
                                     </div>
                                     <div class="col-sm-10">
                                         <input type="text" id="maternal_surname" class="form-control" name="maternal_surname"
@@ -101,7 +101,7 @@
                             <div class="col-12">
                                 <div class="mb-1 row">
                                     <div class="col-sm-2">
-                                        <label class="col-form-label" for="address_number">{{ __('Address Number') }}</label>
+                                        <label class="col-form-label" for="address_number">{{ __('Number') }}</label>
                                     </div>
                                     <div class="col-sm-10">
                                         <input type="text" id="address_number" class="form-control" name="address_number"
@@ -273,7 +273,7 @@
                                 <div class="col-12">
                                     <div class="mb-1 row">
                                         <div class="col-sm-3">
-                                            <label class="col-form-label" for="first_tutor_phone_number">{{ __('Phone Number') }}</label>
+                                            <label class="col-form-label" for="first_tutor_phone_number">{{ __('Phone number') }}</label>
                                         </div>
                                         <div class="col-sm-9">
                                             <input type="text" id="first_tutor_phone_number" class="form-control" name="first_tutor_phone_number"
@@ -340,7 +340,7 @@
                                 <div class="col-12">
                                     <div class="mb-1 row">
                                         <div class="col-sm-3">
-                                            <label class="col-form-label" for="second_tutor_phone_number">{{ __('Phone Number') }}</label>
+                                            <label class="col-form-label" for="second_tutor_phone_number">{{ __('Phone number') }}</label>
                                         </div>
                                         <div class="col-sm-9">
                                             <input type="text" id="second_tutor_phone_number" class="form-control" name="second_tutor_phone_number"

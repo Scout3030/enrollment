@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', __('Enrollment details'))
+
 @section('content')
     <section class="app-user-view-account">
         <div class="row">
@@ -53,7 +55,7 @@
                                 </li>
                             </ul>
                             <div class="d-flex justify-content-center pt-2">
-                                <a href="{{ route('user.profile.edit') }}" class="btn btn-primary me-1 waves-effect waves-float waves-light">
+                                <a href="{{ route('enrollments.export', $enrollment ) }}" target="_blank" class="btn btn-primary me-1 waves-effect waves-float waves-light">
                                     {{ __('Export') }}
                                 </a>
                             </div>
@@ -74,33 +76,32 @@
 
             <!-- User Content -->
             <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
-                <!-- Project table -->
                 <div class="card">
-                    <h4 class="card-header">{{ __('Level courses') }}</h4>
                     <div class="card-body">
-                        <div class="info-container">
-                            <ul class="list-unstyled">
-                                <li class="mb-75">
-                                    <span class="fw-bolder me-25">{{ __('Full name') }}:</span>
-                                    <span>{{ $enrollment->student->user->student->first_tutor_full_name ?? '-' }}</span>
-                                </li>
-                                <li class="mb-75">
-                                    <span class="fw-bolder me-25">{{ __('DNI') }}:</span>
-                                    <span>{{ $enrollment->student->user->student->first_tutor_dni ?? '-' }}</span>
-                                </li>
-                                <li class="mb-75">
-                                    <span class="fw-bolder me-25">{{ __('Phone number') }}:</span>
-                                    <span>{{ $enrollment->student->user->student->first_tutor_phone_number ?? '-' }}</span>
-                                </li>
-                                <li class="mb-75">
-                                    <span class="fw-bolder me-25">{{ __('Email') }}:</span>
-                                    <span>{{ $enrollment->student->user->student->first_tutor_email ?? '-' }}</span>
-                                </li>
-                                <li class="mb-75">
-                                    <span class="fw-bolder me-25">{{ __('Address') }}:</span>
-                                    <span>{{ $enrollment->student->user->student->first_tutor_address ?? '-' }}</span>
-                                </li>
-                            </ul>
+                        <div class="d-flex justify-content-around my-2 pt-75">
+                            <div class="d-flex align-items-start me-2">
+                                    <span class="badge bg-light-primary p-75 rounded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check font-medium-2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </span>
+                                <div class="ms-75">
+                                    @if( !is_null($enrollment->student->parents_condition))
+                                        <h4 class="mb-0">{{ __('Parents') }}</h4>
+                                        @if( $enrollment->student->parents_condition == \App\Models\Student::SEPARATED)
+                                            <small>{{ __('Separated') }}</small>
+                                        @endif
+                                        @if( $enrollment->student->parents_condition == \App\Models\Student::MARRIED)
+                                            <small>{{ __('Married') }}</small>
+                                        @endif
+                                        @if( $enrollment->student->parents_condition == \App\Models\Student::COHABITANTS)
+                                            <small>{{ __('Cohabitants') }}</small>
+                                        @endif
+                                    @else
+                                        <small>{{ __('No information') }}</small>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="{{ asset('vendors/css/vendors.min.css') }}" />
         @stack('vendor-styles')
         <!-- END: Vendor CSS-->
+        <!-- BEGIN: Theme CSS-->
         <link rel="stylesheet" href="{{ asset('css/core.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/base/themes/dark-layout.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/base/themes/bordered-layout.css') }}" />
@@ -24,6 +25,14 @@
         <link rel="stylesheet" href="{{ asset('css/overrides.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
         @stack('styles')
+        <style>
+            .expanded .navbar-brand img{
+                max-height: 100px;
+            }
+            .navbar-brand img{
+                max-height: 45px;
+            }
+        </style>
     </head>
     <!-- END: Head-->
 

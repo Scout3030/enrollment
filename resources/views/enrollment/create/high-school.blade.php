@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @push('vendor-styles')
-    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/css/forms/spinner/jquery.bootstrap-touchspin.css') }}">
     <style>
         @media screen and (max-width: 480px) {
             .draw-signature-holder, .draw-signature-holdertutor1, .draw-signature-holdertutor2, .text-signature  {
@@ -11,6 +9,8 @@
         }
     </style>
 @endpush
+
+@section('title', __('Create your enrollment'))
 
 @section('content')
 
@@ -21,6 +21,8 @@
             </div>
         </div>
     </div>
+
+    @include('enrollment.create.banner')
 
     <section id="basic-horizontal-layouts">
         <form id="enrollmentForm" class="form form-horizontal" method="POST" action="{{ route('enrollment.store') }}">
@@ -546,7 +548,7 @@
             </div>
         </form>
         @include('livewire.enrollment.components.modal' )
-
+        @include('layouts.partials.toast', ['message' => __('Great'), 'description' => __('Order updated successfully')])
     </section>
 @endsection
 
@@ -733,6 +735,7 @@
             $("#sortable5").sortable({
                 update: function() {
                     hour4Course();
+                    toast.show();
                 }
             });
             function hour4Course() {
@@ -743,6 +746,7 @@
             $("#sortable6").sortable({
                 update: function() {
                     hour3Course();
+                    toast.show();
                 }
             });
             function hour3Course() {

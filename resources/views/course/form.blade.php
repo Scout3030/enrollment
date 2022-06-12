@@ -74,7 +74,7 @@
                                         <div class="col-sm-5">
                                             <select class="select2 form-select" id="level_id" name="level_id">
                                                 @foreach(\App\Models\Level::get() as $level)
-                                                <option value="{{ $level->id }}">{{ __($level->name) }}</option>
+                                                <option value="{{ $level->id }}">{{ __($level->custom_name) }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

@@ -10,13 +10,13 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $rules = Setting::getValidationRules();
-        if ($request->hasFile('logo')) {
-            $file = uploadFile('logo', 'settings');
+        if ($request->hasFile('logos')) {
+            $file = uploadFile('logos', 'settings');
             $request->merge(['logo' => 'storage/settings/'.$file]);
         }
 
-        if ($request->hasFile('image_file')) {
-            $file = uploadFile('image_file', 'settings');
+        if ($request->hasFile('img')) {
+            $file = uploadFile('img', 'settings');
             $request->merge(['image' => 'storage/settings/'.$file]);
         }
         $data = $this->validate($request, $rules);

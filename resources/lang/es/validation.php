@@ -137,6 +137,9 @@ return [
     ],
 
     'attributes' => [
-        'specific_free_configuration_courses' => 'cursos especificos y de libre configuracion'
+        'specific_free_configuration_courses' => 'cursos especificos y de libre configuracion',
+        'first_tutor_signature' => 'firma de tutor 01',
+        'student_signature' => 'firma de estudiante',
+        "common_optional_course" => "cursos opcionales"
     ],
 ];

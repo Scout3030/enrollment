@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
 @push('vendor-styles')
-    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/css/forms/spinner/jquery.bootstrap-touchspin.css') }}">
     <style>
+        .numerator span{
+            margin: 12px;
+        }
+        .numerator:last-child span{
+            margin: 12px 0 0 0;
+        }
         @media screen and (max-width: 480px) {
             .draw-signature-holder, .draw-signature-holdertutor1, .draw-signature-holdertutor2, .text-signature {
                 max-width: 100% !important;
@@ -11,6 +15,8 @@
         }
     </style>
 @endpush
+
+@section('title', __('Create your enrollment'))
 
 @section('content')
 
@@ -21,6 +27,8 @@
             </div>
         </div>
     </div>
+
+    @include('enrollment.create.banner')
 
     <section id="basic-horizontal-layouts">
         <form id="enrollmentForm" class="form form-horizontal" method="POST"  enctype="multipart/form-data" action="{{ route('enrollment.store') }}">
@@ -46,7 +54,7 @@
                                         />
                                         <label class="custom-option-item p-1" for="common_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
+                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                             </span>
                                         </label>
                                     </div>
@@ -68,53 +76,91 @@
                             <p>{{ __('optional courses info') }}</p>
                         </div>
                         <div class="card-body">
-                            <div id="sortable2" class="row custom-options-checkable g-1">
-                                @forelse($commonOptionalOneCourses as $key => $course)
-                                    <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                        <div class="col-md-12">
-                                            <input
-                                                class="custom-option-item-check"
-                                                type="checkbox"
-                                                name="elective_courses[]"
-                                                id="elective_course_{{ $course->id }}"
-                                                value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
-                                                checked
-                                            />
-                                            <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
-                                                <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                    <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
-                                                </span>
-                                            </label>
-                                        </div>
+                            <div class="row">
+                                <div class="col-2 col-md-1">
+                                    <div class="card mb-4">
+                                        <ul class="list-group list-group-flush">
+                                            @foreach($commonOptionalOneCourses as $course)
+                                            <li class="list-group-item numerator">
+                                                <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
+                                            </li>
+                                            @endforeach
+                                        </ul>
                                     </div>
-                                @empty
-                                    {{ __('Select level and grade') }}
-                                @endforelse
-                            </div>
-                            @if(count($commonOptionalTwoCourses) > 0)
-                                    <div class="row custom-options-checkable g-1">
-                                        <div class="col-md-12 pt-2">
-                                            {{ __('Select one option') }}
-                                        </div>
-                                        @foreach($commonOptionalTwoCourses as $course)
-                                            <div class="col-md-3">
-                                                <input
-                                                    class="custom-option-item-check"
-                                                    type="radio"
-                                                    name="common_optional_course"
-                                                    id="common_optional_course_{{ $course->id }}"
-                                                    value="{{ $course->id }}"
-                                                    @once checked @endonce
-                                                />
-                                                <label class="custom-option-item p-1" for="common_optional_course_{{ $course->id }}">
-                                                    <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                        <span class="fw-bolder">{{ $course->name.' '.($course->bilingual ? '*' : '') }}</span>
-                                                    </span>
-                                                </label>
+                                </div>
+                                <div class="col-10 col-md-11">
+                                    <div id="sortable2" class="row custom-options-checkable g-1">
+                                        @if(old('elective_courses'))
+                                            @foreach(old('elective_courses') as $order)
+                                                @foreach($commonOptionalOneCourses as $key => $course)
+                                                    @if(json_decode($order)->id == $course->id)
+                                                    <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                        <div class="col-md-12">
+                                                            <input
+                                                                class="custom-option-item-check"
+                                                                type="checkbox"
+                                                                name="elective_courses[]"
+                                                                id="elective_course_{{ $course->id }}"
+                                                                value='{"id":"{{ $course->id }}", "order":"{{ json_decode($order)->order }}"}'
+                                                                checked
+                                                            />
+                                                            <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
+                                                        <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                        </span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    @endif
+                                                @endforeach
+                                            @endforeach
+                                        @else
+                                        @foreach($commonOptionalOneCourses as $key => $course)
+                                            <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                <div class="col-md-12">
+                                                    <input
+                                                        class="custom-option-item-check"
+                                                        type="checkbox"
+                                                        name="elective_courses[]"
+                                                        id="elective_course_{{ $course->id }}"
+                                                        value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                                        checked
+                                                    />
+                                                    <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
+                                                        <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                        </span>
+                                                    </label>
+                                                </div>
                                             </div>
                                         @endforeach
+                                        @endif
                                     </div>
-                                @endif
+                                </div>
+                            </div>
+
+                            <div class="row custom-options-checkable g-1">
+                                <div class="col-md-12 pt-2">
+                                    {{ __('Select one option') }} <b>({{ __('mandatory') }})</b>
+                                </div>
+                                @foreach($commonOptionalTwoCourses as $course)
+                                    <div class="col-md-3">
+                                        <input
+                                            class="custom-option-item-check"
+                                            type="radio"
+                                            name="common_optional_course"
+                                            id="common_optional_course_{{ $course->id }}"
+                                            value="{{ $course->id }}"
+                                            {{ old('common_optional_course') == $course->id ? 'checked' : ''}}
+                                        />
+                                        <label class="custom-option-item p-1" for="common_optional_course_{{ $course->id }}">
+                                            <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -284,7 +330,7 @@
             </div>
         </form>
         @include('livewire.enrollment.components.modal')
-
+        @include('layouts.partials.toast', ['message' => __('Great'), 'description' => __('Order updated successfully')])
     </section>
 @endsection
 
@@ -395,15 +441,14 @@
 @endpush
 
 @push('scripts')
-
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script>// Default Spin
-
         $(function() {
             $("#sortable").sortable({
                 update: function() {
                     academicCourse();
+                    toast.show();
                 }
             });
             function academicCourse() {
@@ -415,6 +460,7 @@
             $("#sortable1").sortable({
                 update: function() {
                     appliedCourses();
+                    toast.show();
                 }
             });
             function appliedCourses() {
@@ -425,6 +471,7 @@
             $("#sortable2").sortable({
                 update: function() {
                     electiveCourse();
+                    toast.show();
                 }
             });
             function electiveCourse() {
@@ -436,6 +483,7 @@
             $("#sortable3").sortable({
                 update: function() {
                     freeConfigurationCourses();
+                    toast.show();
                 }
             });
             function freeConfigurationCourses() {
@@ -444,53 +492,5 @@
                 });
             }
         });
-        $('.touchspin').TouchSpin({
-            buttondown_class: 'btn btn-primary',
-            buttonup_class: 'btn btn-primary',
-            buttondown_txt: feather.icons['minus'].toSvg(),
-            buttonup_txt: feather.icons['plus'].toSvg()
-        });
-
-        // Icon Change
-        $('.touchspin-icon').TouchSpin({
-            buttondown_txt: feather.icons['chevron-down'].toSvg(),
-            buttonup_txt: feather.icons['chevron-up'].toSvg()
-        });
-
-        // Min - Max
-        var touchspinValue = $('.touchspin-min-max'),
-            counterMin = 1,
-            counterMax = {{ count($commonOptionalTwoCourses) }};
-        if (touchspinValue.length > 0) {
-            touchspinValue
-                .TouchSpin({
-                    min: counterMin,
-                    max: counterMax,
-                    buttondown_txt: feather.icons['minus'].toSvg(),
-                    buttonup_txt: feather.icons['plus'].toSvg()
-                })
-                .on('touchspin.on.startdownspin', function () {
-                    var $this = $(this);
-                    $('.bootstrap-touchspin-up').removeClass('disabled-max-min');
-                    let node = $this.parent().parent().parent().parent().find('input.custom-option-item-check')
-                    let val = JSON.parse($(node).val())
-                    val.order = $this.val()
-                    $(node).val(JSON.stringify(val))
-                    if ($this.val() == counterMin) {
-                        $(this).siblings().find('.bootstrap-touchspin-down').addClass('disabled-max-min');
-                    }
-                })
-                .on('touchspin.on.startupspin', function () {
-                    var $this = $(this);
-                    $('.bootstrap-touchspin-down').removeClass('disabled-max-min');
-                    let node = $this.parent().parent().parent().parent().find('input.custom-option-item-check')
-                    let val = JSON.parse($(node).val())
-                    val.order = $this.val()
-                    $(node).val(JSON.stringify(val))
-                    if ($this.val() == counterMax) {
-                        $(this).siblings().find('.bootstrap-touchspin-up').addClass('disabled-max-min');
-                    }
-                });
-        }
     </script>
 @endpush

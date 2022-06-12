@@ -39,13 +39,17 @@
                     <div class="col-md-4 user_status"></div>
                 </div>
             </div>
-            <div class="card-datatable table-responsive pt-0">
+            <div class="card-datatable pt-0">
                 {!! $dataTable->table() !!}
             </div>
         </div>
 
         @can('create students')
             @include('student.create-modal')
+        @endcan
+
+        @can('delete students')
+            @include('student.delete-modal')
         @endcan
     </section>
 @endsection
@@ -71,5 +75,18 @@
 @push('scripts')
     <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
     {!! $dataTable->scripts() !!}
+    <script>
+        $(document).ready(function(){
+            const studentDatatable = $('#studentsDatatable').DataTable()
+
+            @can('delete users')
+            studentDatatable.on('click',  'tbody .deleteStudent', function () {
+                let studentId = $(this).data('id');
+                let $form = $('#deleteStudentForm')
+                $form.attr('action', `{{ route('students.index') }}/${studentId}`)
+            });
+            @endcan
+        })
+    </script>
 @endpush
 

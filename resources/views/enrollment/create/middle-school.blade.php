@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @push('vendor-styles')
-    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendors/css/forms/spinner/jquery.bootstrap-touchspin.css') }}">
     <style>
         @media screen and (max-width: 480px) {
             .draw-signature-holder, .draw-signature-holdertutor1, .draw-signature-holdertutor2, .text-signature {
@@ -11,6 +9,8 @@
         }
     </style>
 @endpush
+
+@section('title', __('Create your enrollment'))
 
 @section('content')
 
@@ -21,6 +21,8 @@
             </div>
         </div>
     </div>
+
+    @include('enrollment.create.banner')
 
     <section id="basic-horizontal-layouts">
         <form id="enrollmentForm" class="form form-horizontal" method="POST"  enctype="multipart/form-data" action="{{ route('enrollment.store') }}">
@@ -419,7 +421,7 @@
             </div>
         </form>
         @include('livewire.enrollment.components.modal')
-
+        @include('layouts.partials.toast', ['message' => __('Great'), 'description' => __('Order updated successfully')])
     </section>
 @endsection
 
@@ -539,6 +541,7 @@
             $("#sortable").sortable({
                 update: function() {
                     academicCourse();
+                    toast.show();
                 }
             });
             function academicCourse() {
@@ -550,6 +553,7 @@
             $("#sortable1").sortable({
                 update: function() {
                     appliedCourses();
+                    toast.show();
                 }
             });
             function appliedCourses() {
@@ -560,6 +564,7 @@
             $("#sortable2").sortable({
                 update: function() {
                     electiveCourse();
+                    toast.show();
                 }
             });
             function electiveCourse() {
@@ -571,6 +576,7 @@
             $("#sortable3").sortable({
                 update: function() {
                     freeConfigurationCourses();
+                    toast.show();
                 }
             });
             function freeConfigurationCourses() {
@@ -579,53 +585,5 @@
                 });
             }
         });
-        $('.touchspin').TouchSpin({
-            buttondown_class: 'btn btn-primary',
-            buttonup_class: 'btn btn-primary',
-            buttondown_txt: feather.icons['minus'].toSvg(),
-            buttonup_txt: feather.icons['plus'].toSvg()
-        });
-
-        // Icon Change
-        $('.touchspin-icon').TouchSpin({
-            buttondown_txt: feather.icons['chevron-down'].toSvg(),
-            buttonup_txt: feather.icons['chevron-up'].toSvg()
-        });
-
-        // Min - Max
-        var touchspinValue = $('.touchspin-min-max'),
-            counterMin = 1,
-            counterMax = {{ count($electiveCourses) }};
-        if (touchspinValue.length > 0) {
-            touchspinValue
-                .TouchSpin({
-                    min: counterMin,
-                    max: counterMax,
-                    buttondown_txt: feather.icons['minus'].toSvg(),
-                    buttonup_txt: feather.icons['plus'].toSvg()
-                })
-                .on('touchspin.on.startdownspin', function () {
-                    var $this = $(this);
-                    $('.bootstrap-touchspin-up').removeClass('disabled-max-min');
-                    let node = $this.parent().parent().parent().parent().find('input.custom-option-item-check')
-                    let val = JSON.parse($(node).val())
-                    val.order = $this.val()
-                    $(node).val(JSON.stringify(val))
-                    if ($this.val() == counterMin) {
-                        $(this).siblings().find('.bootstrap-touchspin-down').addClass('disabled-max-min');
-                    }
-                })
-                .on('touchspin.on.startupspin', function () {
-                    var $this = $(this);
-                    $('.bootstrap-touchspin-down').removeClass('disabled-max-min');
-                    let node = $this.parent().parent().parent().parent().find('input.custom-option-item-check')
-                    let val = JSON.parse($(node).val())
-                    val.order = $this.val()
-                    $(node).val(JSON.stringify(val))
-                    if ($this.val() == counterMax) {
-                        $(this).siblings().find('.bootstrap-touchspin-up').addClass('disabled-max-min');
-                    }
-                });
-        }
     </script>
 @endpush
