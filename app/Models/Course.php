@@ -44,6 +44,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Course whereDuration($value)
  * @property int|null $group
  * @method static \Illuminate\Database\Eloquent\Builder|Course whereGroup($value)
+ * @property int|null $group_one
+ * @property int|null $group_two
+ * @method static \Illuminate\Database\Eloquent\Builder|Course whereGroupOne($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Course whereGroupTwo($value)
  */
 class Course extends Model
 {

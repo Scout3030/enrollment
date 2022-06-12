@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $grades_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CourseType[] $courseTypes
  * @property-read int|null $course_types_count
+ * @property-read mixed $custom_name
  */
 class Level extends Model
 {

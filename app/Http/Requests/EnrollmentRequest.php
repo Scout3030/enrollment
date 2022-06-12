@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Models\Grade;
-use App\Models\Level;
-use App\Rules\ValidHoursRule;
 use App\Rules\ValidOrderRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -28,37 +26,37 @@ class EnrollmentRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        if(
-        auth()->user()->student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
-                $electiveCourses = [];    
-                foreach($this->elective_courses as $key => $electiveCourse){
-                    $electiveCourse = json_decode($electiveCourse);
-                    $electiveCourses[$key]['course_id'] = $electiveCourse->id;
-                    $electiveCourses[$key]['order'] = $electiveCourse->order;
-                }
+        $student = auth()->user()->student;
+        if($student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
+            $electiveCourses = [];
+            foreach($this->elective_courses as $key => $electiveCourse){
+                $electiveCourse = json_decode($electiveCourse);
+                $electiveCourses[$key]['course_id'] = $electiveCourse->id;
+                $electiveCourses[$key]['order'] = $electiveCourse->order;
+            }
 
-                $this->merge([
-                    'elective_courses' => $electiveCourses,
-                ]);
+            $this->merge([
+                'elective_courses' => $electiveCourses,
+            ]);
 
-                $electiveCoursesFree = [];    
-                foreach($this->elective_courses_free as $key => $electiveCourseFree){
-                    $electiveCourseFree = json_decode($electiveCourseFree);
-                    $electiveCoursesFree[$key]['course_id'] = $electiveCourseFree->id;
-                    $electiveCoursesFree[$key]['order'] = $electiveCourseFree->order;
-                }
+            $electiveCoursesFree = [];
+            foreach($this->elective_courses_free as $key => $electiveCourseFree){
+                $electiveCourseFree = json_decode($electiveCourseFree);
+                $electiveCoursesFree[$key]['course_id'] = $electiveCourseFree->id;
+                $electiveCoursesFree[$key]['order'] = $electiveCourseFree->order;
+            }
 
-                $this->merge([
-                    'elective_courses_free' => $electiveCoursesFree,
-                ]);
+            $this->merge([
+                'elective_courses_free' => $electiveCoursesFree,
+            ]);
        }
-        if(auth()->user()->student->grade_id == Grade::FIRST_MIDDLE_SCHOOL ||
-           auth()->user()->student->grade_id == Grade::SECOND_MIDDLE_SCHOOL || 
-           auth()->user()->student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||
-           auth()->user()->student->grade_id == Grade::SECOND_HIGH_SCHOOL ||
-           auth()->user()->student->grade_id == Grade::THIRD_HIGH_SCHOOL && 
+        if($student->grade_id == Grade::FIRST_MIDDLE_SCHOOL ||
+           $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL ||
+           $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||
+           $student->grade_id == Grade::SECOND_HIGH_SCHOOL ||
+           $student->grade_id == Grade::THIRD_HIGH_SCHOOL &&
            $this->elective_courses && $this->common_optional_course) {
-            $electiveCourses = [];    
+            $electiveCourses = [];
             foreach($this->elective_courses as $key => $electiveCourse){
                 $electiveCourse = json_decode($electiveCourse);
                 $electiveCourses[$key]['course_id'] = $electiveCourse->id;
@@ -78,11 +76,12 @@ class EnrollmentRequest extends FormRequest
      */
     public function rules()
     {
-         if(auth()->user()->student->grade_id == Grade::FIRST_MIDDLE_SCHOOL || 
-           auth()->user()->student->grade_id == Grade::SECOND_MIDDLE_SCHOOL || 
-           auth()->user()->student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || 
-           auth()->user()->student->grade_id == Grade::THIRD_HIGH_SCHOOL || 
-           auth()->user()->student->grade_id == Grade::SECOND_HIGH_SCHOOL ) {
+        $student = auth()->user()->student;
+         if($student->grade_id == Grade::FIRST_MIDDLE_SCHOOL ||
+           $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL ||
+           $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||
+           $student->grade_id == Grade::THIRD_HIGH_SCHOOL ||
+           $student->grade_id == Grade::SECOND_HIGH_SCHOOL ) {
             return [
                 'bus_stop_id' => [Rule::requiredIf(function () {
                     return $this->transportation == 1;
@@ -93,8 +92,8 @@ class EnrollmentRequest extends FormRequest
                 'first_tutor_signature'=>['required'],
                 'student_signature'=>['required'],
             ];
-        } 
-        if( auth()->user()->student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
+        }
+        if( $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
             return [
                 'bus_stop_id' => [Rule::requiredIf(function () {
                     return $this->transportation == 1;
@@ -109,7 +108,7 @@ class EnrollmentRequest extends FormRequest
                 'student_signature'=>['required'],
             ];
         }
-                 
+
         return [];
     }
 }

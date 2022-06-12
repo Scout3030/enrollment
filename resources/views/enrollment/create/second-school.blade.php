@@ -49,11 +49,11 @@
                                                 class="custom-option-item-check"
                                                 type="checkbox"
                                                 name="common_courses_core[]"
-                                                id="common_course_core{{ $course->id }}"
+                                                id="common_course_core_{{ $course->id }}"
                                                 checked
                                                 disabled
                                             />
-                                            <label class="custom-option-item p-1" for="common_course_{{ $course->id }}">
+                                            <label class="custom-option-item p-1" for="common_course_core_{{ $course->id }}">
                                                 <span class="d-flex justify-content-between flex-wrap mb-50">
                                                     <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                                 </span>
@@ -85,11 +85,11 @@
                                                     class="custom-option-item-check"
                                                     type="checkbox"
                                                     name="common_courses_core[]"
-                                                    id="common_course_core{{ $course->id }}"
+                                                    id="common_course_core_{{ $course->id }}"
                                                     checked
                                                     disabled
                                                 />
-                                                <label class="custom-option-item p-1" for="common_course_{{ $course->id }}">
+                                                <label class="custom-option-item p-1" for="common_course_core_{{ $course->id }}">
                                                     <span class="d-flex justify-content-between flex-wrap mb-50">
                                                         <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                                     </span>
@@ -120,11 +120,11 @@
                                             class="custom-option-item-check"
                                             type="checkbox"
                                             name="common_courses_specific[]"
-                                            id="common_course_specific{{ $course->id }}"
+                                            id="common_course_specific_{{ $course->id }}"
                                             checked
                                             disabled
                                         />
-                                        <label class="custom-option-item p-1" for="common_course_{{ $course->id }}">
+                                        <label class="custom-option-item p-1" for="common_course_specific_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
                                                 <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
                                             </span>
@@ -210,11 +210,12 @@
                                                                     id="elective_course_{{ $course->id }}"
                                                                     value='{"id":"{{ $course->id }}", "order":"{{ json_decode($order)->order }}"}'
                                                                     checked
+                                                                    onclick="this.checked = true"
                                                                 />
                                                                 <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
-                                                        <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
-                                                        </span>
+                                                                    <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                                        <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                                    </span>
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -232,6 +233,7 @@
                                                         id="elective_course_{{ $course->id }}"
                                                         value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
                                                         checked
+                                                        onclick="this.checked = true"
                                                     />
                                                     <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
                                                 <span class="d-flex justify-content-between flex-wrap mb-50">
