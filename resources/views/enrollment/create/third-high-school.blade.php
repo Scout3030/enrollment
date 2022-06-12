@@ -124,7 +124,32 @@
                                 </div>
                                 <div class="col-10 col-md-11">
                                     <div id="sortable2" class="row custom-options-checkable g-1">
-                                        @forelse($commonOptionalOneCourses as $key => $course)
+                                        @if(old('elective_courses'))
+                                            @foreach(old('elective_courses') as $order)
+                                                @foreach($commonOptionalOneCourses as $key => $course)
+                                                    @if(json_decode($order)->id == $course->id)
+                                                        <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                            <div class="col-md-12">
+                                                                <input
+                                                                    class="custom-option-item-check"
+                                                                    type="checkbox"
+                                                                    name="elective_courses[]"
+                                                                    id="elective_course_{{ $course->id }}"
+                                                                    value='{"id":"{{ $course->id }}", "order":"{{ json_decode($order)->order }}"}'
+                                                                    checked
+                                                                />
+                                                                <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
+                                                        <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                        </span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            @endforeach
+                                        @else
+                                            @foreach($commonOptionalOneCourses as $key => $course)
                                             <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                 <div class="col-md-12">
                                                     <input
@@ -142,15 +167,14 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                        @empty
-                                            {{ __('Select level and grade') }}
-                                        @endforelse
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                             <div class="row custom-options-checkable g-1">
                                 <div class="col-md-12 pt-2">
-                                    {{ __('Select one option') }}
+                                    {{ __('Select one option') }} <b>({{ __('mandatory') }})</b>
                                 </div>
                                 @foreach($commonOptionalTwoCourses as $course)
                                     <div class="col-md-3">
@@ -160,7 +184,7 @@
                                             name="common_optional_course"
                                             id="common_optional_course_{{ $course->id }}"
                                             value="{{ $course->id }}"
-                                            @once checked @endonce
+                                            {{ old('common_optional_course') == $course->id ? 'checked' : ''}}
                                         />
                                         <label class="custom-option-item p-1" for="common_optional_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
