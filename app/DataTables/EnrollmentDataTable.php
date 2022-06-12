@@ -2,6 +2,10 @@
 
 namespace App\DataTables;
 
+// Filter and order by relationships, raw
+// https://yajrabox.com/docs/laravel-datatables/master/filter-column
+// https://yajrabox.com/docs/laravel-datatables/master/order-column
+
 use App\Models\Enrollment;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;

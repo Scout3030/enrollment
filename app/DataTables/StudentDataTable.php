@@ -1,5 +1,9 @@
 <?php
 
+// Filter and order by relationships, raw
+// https://yajrabox.com/docs/laravel-datatables/master/filter-column
+// https://yajrabox.com/docs/laravel-datatables/master/order-column
+
 namespace App\DataTables;
 
 use App\Models\Student;
@@ -22,6 +26,43 @@ class StudentDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->filterColumn('email_verified_at', function($query, $keyword) {
+                if(preg_match("/".__('Yes')."/i", $keyword)){
+                    $query->whereHas('user', function($q) use ($keyword) {
+                        $q->whereNotNull('email_verified_at');
+                    });
+                }
+                if(preg_match("/".__('No')."/i", $keyword)){
+                    $query->whereHas('user', function($q) use ($keyword) {
+                        $q->whereNull('email_verified_at');
+                    });
+                }
+            })
+            ->filterColumn('names', function($query, $keyword) {
+                $query->whereHas('user', function($q) use ($keyword){
+                    $q->where('name', "LIKE", "%{$keyword}%");
+                })->orWhere('middle_name', "LIKE", "%{$keyword}%");
+            })
+            ->filterColumn('email', function($query, $keyword) {
+                $query->whereHas('user', function($q) use ($keyword){
+                    $q->where('email', "LIKE", "%{$keyword}%");
+                });
+            })
+            ->filterColumn('surname', function($query, $keyword) {
+                $sql = "CONCAT(students.paternal_surname,' ',students.maternal_surname)  like ?";
+                $query->whereRaw($sql, ["%{$keyword}%"]);
+            })
+            ->orderColumn('surname', function ($query, $order) {
+                $query->orderBy('paternal_surname', $order);
+            })
+            ->orderColumn('email', function ($query, $order) {
+                $query->join('users', 'users.id', '=', 'students.user_id')
+                    ->orderBy('email', $order);
+            })
+            ->orderColumn('names', function ($query, $order) {
+                $query->join('users', 'users.id', '=', 'students.user_id')
+                    ->orderBy('name', $order);
+            })
             ->addColumn('names', function(Student $student){
                 return "{$student->user->name} {$student->middle_name}";
             })
@@ -153,7 +194,7 @@ class StudentDataTable extends DataTable
             Column::make('email_verified_at')
                 ->title(__('Email verified'))
                 ->searchable(true)
-                ->orderable(true)
+                ->orderable(false)
                 ->width(20)
                 ->addClass('text-center')
                 ->footer(__('Email verified')),

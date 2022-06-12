@@ -2,6 +2,10 @@
 
 namespace App\DataTables;
 
+// Filter and order by relationships, raw
+// https://yajrabox.com/docs/laravel-datatables/master/filter-column
+// https://yajrabox.com/docs/laravel-datatables/master/order-column
+
 use App\Models\Course;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -22,7 +26,7 @@ class CourseDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('grade', function (Course $course){
-                return __($course->grade->name). "/" .__($course->grade->level->name);
+                return __($course->grade->name). "/" .__($course->grade->level->custom_name);
             })
             ->addColumn('action', 'course.datatable.action')
             ->rawColumns(['action']);

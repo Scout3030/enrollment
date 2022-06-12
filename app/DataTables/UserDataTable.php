@@ -1,7 +1,8 @@
 <?php
 
-// Filter by relationships, raw
+// Filter and order by relationships, raw
 // https://yajrabox.com/docs/laravel-datatables/master/filter-column
+// https://yajrabox.com/docs/laravel-datatables/master/order-column
 
 namespace App\DataTables;
 
