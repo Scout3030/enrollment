@@ -81,6 +81,22 @@ class EnrollmentController extends Controller
                  }
                     case Grade::THIRD_MIDDLE_SCHOOL: {
 
+                            $commonCourses = Course::whereGradeId($gradeId)
+                                ->whereCourseTypeId(CourseType::COMMON)
+                                ->get();
+
+                            $commonOptionalOneCourses = Course::whereGradeId($gradeId)
+                                ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_ONE)
+                                ->get();
+
+                            $commonOptionalTwoCourses = Course::whereGradeId($gradeId)
+                                ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_TWO)
+                                ->get();
+                            return view('enrollment.create.first-third-middle-school',
+                                    compact('commonCourses', 'commonOptionalOneCourses', 'commonOptionalTwoCourses'));
+                    }
+                    case Grade::FOURTH_MIDDLE_SCHOOL: {
+
                         $commonCoursesCore = Course::whereGradeId($gradeId)
                         ->whereCourseTypeId(CourseType::CORE)
                         ->get();
@@ -111,45 +127,6 @@ class EnrollmentController extends Controller
                             ->whereGroupCoursesOneA(Course::GROUP_COURSES_ONE_A)
                             ->whereGroupCoursesTwoB(Course::GROUP_COURSES_TWO_B)
                             ->whereCourseTypeId(CourseType::ITINERARY)
-                            ->get();
-                        /*   $electiveCourses = Course::whereGradeId($gradeId)
-                                ->whereCourseTypeId(CourseType::ELECTIVE)
-                                ->get();
-
-                            $academicCourses = collect([]);
-                            $appliedCourses = collect([]);
-                            $freeConfigurationCourses = collect([]);
-
-                            if($gradeId == Grade::FOURTH_MIDDLE_SCHOOL){
-                                $academicCourses = Course::whereGradeId($gradeId)
-                                    ->whereCourseTypeId(CourseType::ACADEMIC)
-                                    ->get();
-                                $appliedCourses = Course::whereGradeId($gradeId)
-                                    ->whereCourseTypeId(CourseType::APPLIED)
-                                    ->get();
-                                $freeConfigurationCourses = Course::whereGradeId($gradeId)
-                                    ->whereCourseTypeId(CourseType::FREE_CONFIGURATION)
-                                    ->get();
-                            }
-
-                            return view('enrollment.create.first-middle-school',
-                                compact('commonCourses', 'commonOptionalCourses', 'electiveCourses',
-                                    'freeConfigurationCourses', 'appliedCourses', 'academicCourses'));*/
-                            return view('enrollment.create.first-third-middle-school',
-                                    compact('commonCourses', 'commonOptionalOneCourses', 'commonOptionalTwoCourses'));
-                    }
-                    case Grade::FOURTH_MIDDLE_SCHOOL: {
-
-                        $commonCourses = Course::whereGradeId($gradeId)
-                            ->whereCourseTypeId(CourseType::COMMON)
-                            ->get();
-
-                        $commonOptionalOneCourses = Course::whereGradeId($gradeId)
-                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_ONE)
-                            ->get();
-
-                        $commonOptionalTwoCourses = Course::whereGradeId($gradeId)
-                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_TWO)
                             ->get();
                         return view('enrollment.create.first-third-middle-school',
                                 compact('commonCourses', 'commonOptionalOneCourses', 'commonOptionalTwoCourses'));
@@ -277,8 +254,7 @@ class EnrollmentController extends Controller
             $enrollment->courses()->attach($request->applied_courses);
             $enrollment->courses()->attach($request->free_configuration_courses);
         }
-
-        return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
+       return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
     }
 
     public function show(Enrollment $enrollment){
