@@ -35,11 +35,6 @@ class EnrollmentController extends Controller
         $levelId = $student->grade->level->id;
         $courses = [];
 
-      /*  if($gradeId==Grade::FIRST_MIDDLE_SCHOOL || $gradeId==Grade::FIRST_MIDDLE_SCHOOL){
-
-        }*/
-
-       //dd($gradeId, $levelId );
         switch ($levelId) {
             case Level::MIDDLE_SCHOOL: {
                 switch ($gradeId) {
@@ -106,30 +101,39 @@ class EnrollmentController extends Controller
                             ->get();
 
                         $coursesItineraryA = Course::whereGradeId($gradeId)
-                            ->whereGroupCoursesOneA(Course::GROUP_COURSES_ONE_A)
-                            ->whereGroupCoursesTwoA(Course::GROUP_COURSES_TWO_A)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_A)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_A)
                             ->whereCourseTypeId(CourseType::ITINERARY)
                             ->get();
                         
                         $coursesItineraryB = Course::whereGradeId($gradeId)
-                            ->whereGroupCoursesOneA(Course::GROUP_COURSES_ONE_A)
-                            ->whereGroupCoursesTwoB(Course::GROUP_COURSES_TWO_B)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_A)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_B)
                             ->whereCourseTypeId(CourseType::ITINERARY)
                             ->get();
                         
                         $coursesItineraryC = Course::whereGradeId($gradeId)
-                            ->whereGroupCoursesOneB(Course::GROUP_COURSES_ONE_B)
-                            ->whereGroupCoursesTwoB(Course::GROUP_COURSES_TWO_B)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_A)
                             ->whereCourseTypeId(CourseType::ITINERARY)
                             ->get();
                         
-                        $coursesItineraryB = Course::whereGradeId($gradeId)
-                            ->whereGroupCoursesOneA(Course::GROUP_COURSES_ONE_A)
-                            ->whereGroupCoursesTwoB(Course::GROUP_COURSES_TWO_B)
+                        $coursesItineraryD = Course::whereGradeId($gradeId)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_B)
                             ->whereCourseTypeId(CourseType::ITINERARY)
                             ->get();
-                        return view('enrollment.create.first-third-middle-school',
-                                compact('commonCourses', 'commonOptionalOneCourses', 'commonOptionalTwoCourses'));
+
+                        $coursesSpecific = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::SPECIFIC_ITINERARY)
+                            ->get();
+                        
+                        $coursesfree = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::FREE_CONFIGURATION_ITINERARY)
+                            ->get();
+                        return view('enrollment.create.high-school',
+                                compact('commonCoursesCore','commonCoursesSpecific','coursesItineraryA','coursesItineraryB',
+                                        'coursesItineraryC','coursesItineraryD','coursesfree','coursesSpecific'));
                 }
                 }
             }
@@ -250,9 +254,48 @@ class EnrollmentController extends Controller
         }
 
         if($grade->id == Grade::FOURTH_MIDDLE_SCHOOL){
-            $enrollment->courses()->attach($request->academic_courses);
-            $enrollment->courses()->attach($request->applied_courses);
-            $enrollment->courses()->attach($request->free_configuration_courses);
+           
+           if($request->active==1)
+            {
+                if($request->active_option==1)
+                {
+                    $coursesItineraryA = Course::whereGradeId($student->grade_id)
+                        ->whereGroupOne(Course::GROUP_COURSES_ONE_A)
+                        ->whereGroupTwo(Course::GROUP_COURSES_TWO_A)
+                        ->whereCourseTypeId(CourseType::ITINERARY)
+                        ->get();
+                        $enrollment->courses()->attach($coursesItineraryA);
+                }else{
+                    $coursesItineraryB = Course::whereGradeId($student->grade_id)
+                        ->whereGroupOne(Course::GROUP_COURSES_ONE_A)
+                        ->whereGroupTwo(Course::GROUP_COURSES_TWO_B)
+                        ->whereCourseTypeId(CourseType::ITINERARY)
+                        ->get();
+                        $enrollment->courses()->attach($coursesItineraryB);
+                }
+            }
+            else{
+                   $coursesItineraryC = Course::whereGradeId($student->grade_id)
+                        ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                        ->whereGroupTwo(Course::GROUP_COURSES_TWO_A)
+                        ->whereCourseTypeId(CourseType::ITINERARY)
+                        ->get();
+                
+                    $coursesItineraryD  = $request->core_itinerary_d;
+                    $enrollment->courses()->attach($coursesItineraryC);
+                    $enrollment->courses()->attach($coursesItineraryD);
+
+            }
+
+            $commonCoursesCore = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::CORE)
+                ->get();
+                
+            $enrollment->courses()->attach($commonCoursesCore);
+            $enrollment->courses()->attach($request->common_courses);
+            $enrollment->courses()->attach($request->elective_courses);
+            $enrollment->courses()->attach($request->elective_courses_free);
+          
         }
        return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
     }

@@ -21,6 +21,9 @@ class CourseTypeLevelSeeder extends Seeder
             CourseType::COMMON_OPTIONAL_ONE,
             CourseType::COMMON_OPTIONAL_TWO,
             CourseType::ELECTIVE,
+            CourseType::ITINERARY,
+            CourseType::SPECIFIC_ITINERARY,
+            CourseType::FREE_CONFIGURATION_ITINERARY,
         ];
 
         $highSchoolCourseTypes = [

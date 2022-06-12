@@ -40,7 +40,9 @@ class CourseType extends Model
     const SPECIFIC = 10;
     const SPECIFIC_FREE_CONFIGURATION = 11;
     const ITINERARY = 12;
-    const INTRO_PROFESSIONAL_TRAINING = 13;
+    const SPECIFIC_ITINERARY = 13;
+    const FREE_CONFIGURATION_ITINERARY = 14;
+    const INTRO_PROFESSIONAL_TRAINING = 15;
   
 
     protected $fillable = ['name'];
