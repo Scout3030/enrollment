@@ -81,35 +81,35 @@ class CourseSeeder extends Seeder
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Second Foreign Language: French',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_ONE,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Asturian Language and Literature',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_ONE,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Applied Digitization',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_ONE,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Religion',
                 'duration'=>'1',
-                'course_type_id' => CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_TWO,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Educational Attention',
                 'duration'=>'1',
-                'course_type_id' => CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_TWO,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);
 
 
@@ -302,7 +302,8 @@ class CourseSeeder extends Seeder
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
-
+        
+            /** 3º ESO (LOMLOE)  */
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
@@ -338,6 +339,7 @@ class CourseSeeder extends Seeder
                 'duration'=>'4',
                 'course_type_id' => CourseType::COMMON,
             ]);
+
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
@@ -373,26 +375,28 @@ class CourseSeeder extends Seeder
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
+
+
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
                 'name' => 'Second Foreign Language: French',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
                 'name' => 'Asturian Language and Literature',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
                 'name' => 'Social and Business Entrepreneurship Project',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
 
             Course::factory()
@@ -400,32 +404,30 @@ class CourseSeeder extends Seeder
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
                 'name' => 'Educational Attention',
                 'duration'=>'1',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
                 'name' => 'Religion',
                 'duration'=>'1',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);
 
-
+/**  3º ESO PROGRAMA DE DIVERSIFICACIÓN CURRICULAR I */
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
                 'name' => 'Linguistic and Social Area',
                 'duration'=>'9',
-                'group'=>Course::GROUP_COURSES_ONE,
-                'course_type_id' => CourseType::COMMON,
+                'course_type_id' => CourseType::COMMON_AREAS,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
                 'name' => 'Scientific-Technological Field',
                 'duration'=>'9',
-                'group'=>Course::GROUP_COURSES_ONE,
-                'course_type_id' => CourseType::COMMON,
+                'course_type_id' => CourseType::COMMON_AREAS,
             ]);
             
             Course::factory()
@@ -433,7 +435,6 @@ class CourseSeeder extends Seeder
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
                 'name' => 'First Foreign Language: English',
                 'duration'=>'3',
-                'group'=>Course::GROUP_COURSES_TWO,
                 'course_type_id' => CourseType::COMMON,
             ]);
             Course::factory()
@@ -441,7 +442,6 @@ class CourseSeeder extends Seeder
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
                 'name' => 'Visual and Audiovisual Plastic Education',
                 'duration'=>'2',
-                'group'=>Course::GROUP_COURSES_TWO,
                 'course_type_id' => CourseType::COMMON,
             ]);
             Course::factory()
@@ -449,7 +449,6 @@ class CourseSeeder extends Seeder
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
                 'name' => 'Technology and Digitization',
                 'duration'=>'2',
-                'group'=>Course::GROUP_COURSES_TWO,
                 'course_type_id' => CourseType::COMMON,
             ]);
             Course::factory()
@@ -457,7 +456,6 @@ class CourseSeeder extends Seeder
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
                 'name' => 'Physical education',
                 'duration'=>'2',
-                'group'=>Course::GROUP_COURSES_TWO,
                 'course_type_id' => CourseType::COMMON,
             ]);
             Course::factory()
@@ -465,28 +463,28 @@ class CourseSeeder extends Seeder
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
                 'name' => 'Second Foreign Language: French',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
                 'name' => 'center matter',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
                 'name' => 'Asturian Language and Literature',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
                 'name' => 'Social or Business Entrepreneurship Project',
                 'duration'=>'2',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
 
             Course::factory()
@@ -494,15 +492,18 @@ class CourseSeeder extends Seeder
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
                 'name' => 'Religión',
                 'duration'=>'1',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
                 'name' => 'Educational Attention',
                 'duration'=>'1',
-                'course_type_id' => CourseType::COMMON_OPTIONAL,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);
+
+
+         /**  4º ESO  */   
            Course::factory()
             ->create([
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
@@ -551,76 +552,86 @@ class CourseSeeder extends Seeder
                 'name' => 'Academic Mathematics',
                 'duration'=>'4',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'group'=>Course::GROUP_COURSES_TWO,
-                 'course_type_id' => CourseType::INTRO_HIGH_SCHOOL,
+                'group_one'=>Course::GROUP_COURSES_ONE_A,
+                'group_two'=>Course::GROUP_COURSES_TWO_A,
+                 'course_type_id' => CourseType::ITINERARY,
             ]);
         Course::factory()
             ->create([
                 'name' => 'Biology and geology',
                 'duration'=>'3',
-                'group'=>Course::GROUP_COURSES_TWO,
+                'group_one'=>Course::GROUP_COURSES_ONE_A,
+                'group_two'=>Course::GROUP_COURSES_TWO_A,
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                 'course_type_id' => CourseType::INTRO_HIGH_SCHOOL,
+                 'course_type_id' => CourseType::ITINERARY,
             ]);
         Course::factory()
             ->create([
                 'name' => 'Physics and chemistry',
                 'duration'=>'3',
-                'group'=>Course::GROUP_COURSES_TWO,
+                'group_one'=>Course::GROUP_COURSES_ONE_A,
+                'group_two'=>Course::GROUP_COURSES_TWO_A,
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                 'course_type_id' => CourseType::INTRO_HIGH_SCHOOL,
+                 'course_type_id' => CourseType::ITINERARY,
             ]);
             Course::factory()
             ->create([
                 'name' => 'Academic Mathematics',
                 'duration'=>'4',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'group'=>Course::GROUP_COURSES_ONE,
-                 'course_type_id' => CourseType::INTRO_HIGH_SCHOOL,
+                'group_one'=>Course::GROUP_COURSES_ONE_A,
+                'group_two'=>Course::GROUP_COURSES_TWO_B,
+                 'course_type_id' => CourseType::ITINERARY,
             ]);
         Course::factory()
             ->create([
                 'name' => 'Economy',
                 'duration'=>'3',
-                'group'=>Course::GROUP_COURSES_ONE,
+                'group_one'=>Course::GROUP_COURSES_ONE_A,
+                'group_two'=>Course::GROUP_COURSES_TWO_B,
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                 'course_type_id' => CourseType::INTRO_HIGH_SCHOOL,
+                 'course_type_id' => CourseType::ITINERARY,
             ]);
         Course::factory()
             ->create([
                 'name' => 'Latin',
                 'duration'=>'3',
-                'group'=>Course::GROUP_COURSES_ONE,
+                'group_one'=>Course::GROUP_COURSES_ONE_A,
+                'group_two'=>Course::GROUP_COURSES_TWO_B,
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                 'course_type_id' => CourseType::INTRO_HIGH_SCHOOL,
+                 'course_type_id' => CourseType::ITINERARY,
             ]);
         Course::factory()
             ->create([
                 'name' => 'Applied mathematics',
                 'duration'=>'4',
+                'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                 'course_type_id' => CourseType::INTRO_PROFESSIONAL_TRAINING,
+                 'course_type_id' => CourseType::ITINERARY,
             ]);
         Course::factory()
             ->create([
                 'name' => 'Sciences applied to Professional Activity',
                 'duration'=>'3',
+                'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                 'course_type_id' => CourseType::INTRO_PROFESSIONAL_TRAINING,
+                 'course_type_id' => CourseType::ITINERARY,
             ]);
         Course::factory()
             ->create([
                 'name' => 'Technology',
                 'duration'=>'3',
+                'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                 'course_type_id' => CourseType::INTRO_PROFESSIONAL_TRAINING,
+                 'course_type_id' => CourseType::ITINERARY,
             ]);
         Course::factory()
             ->create([
                 'name' => 'initiation to business activity',
                 'duration'=>'3',
+                'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                 'course_type_id' => CourseType::INTRO_PROFESSIONAL_TRAINING,
+                 'course_type_id' => CourseType::ITINERARY,
             ]);
 
 

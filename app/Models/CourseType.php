@@ -28,10 +28,10 @@ class CourseType extends Model
 {
     use HasFactory;
 
-    const COMMON = 1;
-    const COMMON_OPTIONAL = 2;
-    const COMMON_OPTIONAL_MIDDLE_FIRST_ONE = 3;
-    const COMMON_OPTIONAL_MIDDLE_FIRST_TWO = 4;
+    const COMMON = 1;                      
+    const COMMON_AREAS = 2;                
+    const COMMON_OPTIONAL_ONE = 3;
+    const COMMON_OPTIONAL_TWO = 4;
     const ELECTIVE = 5;
     const ACADEMIC = 6;
     const APPLIED = 7;
@@ -39,7 +39,7 @@ class CourseType extends Model
     const CORE = 9;
     const SPECIFIC = 10;
     const SPECIFIC_FREE_CONFIGURATION = 11;
-    const INTRO_HIGH_SCHOOL = 12;
+    const ITINERARY = 12;
     const INTRO_PROFESSIONAL_TRAINING = 13;
   
 

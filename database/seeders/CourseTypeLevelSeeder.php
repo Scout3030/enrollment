@@ -17,9 +17,9 @@ class CourseTypeLevelSeeder extends Seeder
     {
         $middleSchoolCourseTypes = [
             CourseType::COMMON,
-            CourseType::COMMON_OPTIONAL,
-            CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_ONE,
-            CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_TWO,
+            CourseType::COMMON_AREAS,
+            CourseType::COMMON_OPTIONAL_ONE,
+            CourseType::COMMON_OPTIONAL_TWO,
             CourseType::ELECTIVE,
         ];
 

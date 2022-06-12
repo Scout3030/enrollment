@@ -35,8 +35,11 @@ class EnrollmentController extends Controller
         $levelId = $student->grade->level->id;
         $courses = [];
 
+      /*  if($gradeId==Grade::FIRST_MIDDLE_SCHOOL || $gradeId==Grade::FIRST_MIDDLE_SCHOOL){
 
+        }*/
 
+       //dd($gradeId, $levelId );
         switch ($levelId) {
             case Level::MIDDLE_SCHOOL: {
                 switch ($gradeId) {
@@ -47,13 +50,13 @@ class EnrollmentController extends Controller
                                 ->get();
 
                             $commonOptionalOneCourses = Course::whereGradeId($gradeId)
-                                ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_ONE)
+                                ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_ONE)
                                 ->get();
 
                             $commonOptionalTwoCourses = Course::whereGradeId($gradeId)
-                                ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_MIDDLE_FIRST_TWO)
+                                ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_TWO)
                                 ->get();
-                            return view('enrollment.create.first-middle-school',
+                            return view('enrollment.create.first-third-middle-school',
                                 compact('commonCourses', 'commonOptionalOneCourses', 'commonOptionalTwoCourses'));
                      }
                      case Grade::SECOND_MIDDLE_SCHOOL: {
@@ -73,32 +76,84 @@ class EnrollmentController extends Controller
                         $commonOptionalTwoCourses = Course::whereGradeId($gradeId)
                             ->whereCourseTypeId(CourseType::FREE_CONFIGURATION)
                             ->get();
-                     /*   $electiveCourses = Course::whereGradeId($gradeId)
-                            ->whereCourseTypeId(CourseType::ELECTIVE)
-                            ->get();
-
-                        $academicCourses = collect([]);
-                        $appliedCourses = collect([]);
-                        $freeConfigurationCourses = collect([]);
-
-                        if($gradeId == Grade::FOURTH_MIDDLE_SCHOOL){
-                            $academicCourses = Course::whereGradeId($gradeId)
-                                ->whereCourseTypeId(CourseType::ACADEMIC)
-                                ->get();
-                            $appliedCourses = Course::whereGradeId($gradeId)
-                                ->whereCourseTypeId(CourseType::APPLIED)
-                                ->get();
-                            $freeConfigurationCourses = Course::whereGradeId($gradeId)
-                                ->whereCourseTypeId(CourseType::FREE_CONFIGURATION)
-                                ->get();
-                        }
-
-                        return view('enrollment.create.first-middle-school',
-                            compact('commonCourses', 'commonOptionalCourses', 'electiveCourses',
-                                'freeConfigurationCourses', 'appliedCourses', 'academicCourses'));*/
                         return view('enrollment.create.second-school',
                             compact('commonCoursesCore','commonCoursesSpecific', 'commonOptionalOneCourses', 'commonOptionalTwoCourses'));
                  }
+                    case Grade::THIRD_MIDDLE_SCHOOL: {
+
+                        $commonCoursesCore = Course::whereGradeId($gradeId)
+                        ->whereCourseTypeId(CourseType::CORE)
+                        ->get();
+
+                        $commonCoursesSpecific = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::SPECIFIC)
+                            ->get();
+
+                        $coursesItineraryA = Course::whereGradeId($gradeId)
+                            ->whereGroupCoursesOneA(Course::GROUP_COURSES_ONE_A)
+                            ->whereGroupCoursesTwoA(Course::GROUP_COURSES_TWO_A)
+                            ->whereCourseTypeId(CourseType::ITINERARY)
+                            ->get();
+                        
+                        $coursesItineraryB = Course::whereGradeId($gradeId)
+                            ->whereGroupCoursesOneA(Course::GROUP_COURSES_ONE_A)
+                            ->whereGroupCoursesTwoB(Course::GROUP_COURSES_TWO_B)
+                            ->whereCourseTypeId(CourseType::ITINERARY)
+                            ->get();
+                        
+                        $coursesItineraryC = Course::whereGradeId($gradeId)
+                            ->whereGroupCoursesOneB(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupCoursesTwoB(Course::GROUP_COURSES_TWO_B)
+                            ->whereCourseTypeId(CourseType::ITINERARY)
+                            ->get();
+                        
+                        $coursesItineraryB = Course::whereGradeId($gradeId)
+                            ->whereGroupCoursesOneA(Course::GROUP_COURSES_ONE_A)
+                            ->whereGroupCoursesTwoB(Course::GROUP_COURSES_TWO_B)
+                            ->whereCourseTypeId(CourseType::ITINERARY)
+                            ->get();
+                        /*   $electiveCourses = Course::whereGradeId($gradeId)
+                                ->whereCourseTypeId(CourseType::ELECTIVE)
+                                ->get();
+
+                            $academicCourses = collect([]);
+                            $appliedCourses = collect([]);
+                            $freeConfigurationCourses = collect([]);
+
+                            if($gradeId == Grade::FOURTH_MIDDLE_SCHOOL){
+                                $academicCourses = Course::whereGradeId($gradeId)
+                                    ->whereCourseTypeId(CourseType::ACADEMIC)
+                                    ->get();
+                                $appliedCourses = Course::whereGradeId($gradeId)
+                                    ->whereCourseTypeId(CourseType::APPLIED)
+                                    ->get();
+                                $freeConfigurationCourses = Course::whereGradeId($gradeId)
+                                    ->whereCourseTypeId(CourseType::FREE_CONFIGURATION)
+                                    ->get();
+                            }
+
+                            return view('enrollment.create.first-middle-school',
+                                compact('commonCourses', 'commonOptionalCourses', 'electiveCourses',
+                                    'freeConfigurationCourses', 'appliedCourses', 'academicCourses'));*/
+                            return view('enrollment.create.first-third-middle-school',
+                                    compact('commonCourses', 'commonOptionalOneCourses', 'commonOptionalTwoCourses'));
+                    }
+                    case Grade::FOURTH_MIDDLE_SCHOOL: {
+
+                        $commonCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON)
+                            ->get();
+
+                        $commonOptionalOneCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_ONE)
+                            ->get();
+
+                        $commonOptionalTwoCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_TWO)
+                            ->get();
+                        return view('enrollment.create.first-third-middle-school',
+                                compact('commonCourses', 'commonOptionalOneCourses', 'commonOptionalTwoCourses'));
+                }
                 }
             }
             case Level::HIGH_SCHOOL: {
@@ -122,6 +177,26 @@ class EnrollmentController extends Controller
 
                         return view('enrollment.create.second-school',
                         compact('commonCoursesCore','commonCoursesSpecific', 'commonOptionalOneCourses', 'commonOptionalTwoCourses'));
+                    }
+                    case Grade::THIRD_HIGH_SCHOOL: {
+                        $commonCourses = Course::whereGradeId($gradeId)
+                        ->whereCourseTypeId(CourseType::COMMON)
+                        ->get();
+
+                        $commonCoursesAreas = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON_AREAS)
+                            ->get();
+
+                        $commonOptionalOneCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_ONE)
+                            ->get();
+
+                        $commonOptionalTwoCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_TWO)
+                            ->get();
+
+                        return view('enrollment.create.third-high-school',
+                        compact('commonCourses','commonCoursesAreas', 'commonOptionalOneCourses', 'commonOptionalTwoCourses'));
                     }
                 }
             }
@@ -161,7 +236,7 @@ class EnrollmentController extends Controller
             'academic_period_id' => $academicPeriodId->id
         ]);
 
-        if($student->grade_id == Grade::FIRST_MIDDLE_SCHOOL) {
+        if($student->grade_id == Grade::FIRST_MIDDLE_SCHOOL || $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL) {
             $levelCourses = Course::whereGradeId($student->grade_id)
             ->whereCourseTypeId(CourseType::COMMON)
             ->get();
@@ -183,17 +258,25 @@ class EnrollmentController extends Controller
             $enrollment->courses()->attach($request->elective_courses);
         }
 
-      /*  if($grade->id == Grade::FOURTH_MIDDLE_SCHOOL){
+        if($student->grade_id == Grade::THIRD_HIGH_SCHOOL) {
+            $commonCourses = Course::whereGradeId($student->grade_id)
+            ->whereCourseTypeId(CourseType::COMMON)
+            ->get();
+            $commonCoursesAreas = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::COMMON_AREAS)
+                ->get();
+
+            $enrollment->courses()->attach($commonCourses);
+            $enrollment->courses()->attach($commonCoursesAreas);
+            $enrollment->courses()->attach($request->common_optional_course);
+            $enrollment->courses()->attach($request->elective_courses);
+        }
+
+        if($grade->id == Grade::FOURTH_MIDDLE_SCHOOL){
             $enrollment->courses()->attach($request->academic_courses);
             $enrollment->courses()->attach($request->applied_courses);
             $enrollment->courses()->attach($request->free_configuration_courses);
         }
-
-        if($grade->level->id == Level::HIGH_SCHOOL){
-            $enrollment->courses()->attach($request->core_course);
-            $enrollment->courses()->attach($request->free_configuration_courses_highschool_1);
-            $enrollment->courses()->attach($request->free_configuration_courses_highschool_2);
-        }*/
 
         return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
     }

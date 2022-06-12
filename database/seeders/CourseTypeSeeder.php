@@ -16,9 +16,9 @@ class CourseTypeSeeder extends Seeder
     {
         $types = [
             'Common',
-            'Common optional',
-            'Common optional middle first one',
-            'Common optional middle first two',
+            'Common areas',
+            'Common optional one',
+            'Common optional two',
             'Elective',
             'Academic',
             'Applied',
