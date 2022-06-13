@@ -31,36 +31,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center justify-content-between">
-                        <div>
-                            <h3 class="fw-bolder mb-75">{{ App\Models\Course::whereCourseTypeId(\App\Models\CourseType::COMMON_OPTIONAL)->get()->count() }}</h3>
-                            <span>{{ __('Optional courses') }}</span>
-                        </div>
-                        <div class="avatar bg-light-danger p-50">
-                            <span class="avatar-content">
-                              <i data-feather='folder' class="font-medium-4"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center justify-content-between">
-                        <div>
-                            <h3 class="fw-bolder mb-75">{{ App\Models\Course::whereCourseTypeId(\App\Models\CourseType::ELECTIVE)->get()->count() }}</h3>
-                            <span>{{ __('Optional courses') }}</span>
-                        </div>
-                        <div class="avatar bg-light-success p-50">
-                            <span class="avatar-content">
-                              <i data-feather='folder' class="font-medium-4"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <!-- list and filter start -->
         <div class="card">
