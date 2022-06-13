@@ -13,7 +13,29 @@
         <div class="container mt-4">
             <div class="row">
                 <div class="col-md-8">
-                    <h2>MARTRICULA 1° ESO</h2>
+                    <h2>
+                    @if ($enrollment->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL) 
+                        MARTRICULA 1° ESO
+                    @endif             
+                    @if ($enrollment->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL) 
+                        MARTRICULA 2º ESO
+                    @endif             
+                    @if ($enrollment->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL)
+                        MARTRICULA 3º ESO (LOMLOE)
+                    @endif             
+                    @if ($enrollment->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)
+                        MARTRICULA 2º ESO PMAR
+                    @endif             
+                    @if ($enrollment->grade->id == App\Models\Grade::THIRD_HIGH_SCHOOL)
+                        MARTRICULA 3º ESO PROGRAMA DE DIVERSIFICACIÓN CURRICULAR I
+                    @endif             
+                    @if ($enrollment->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
+                        MARTRICULA 4º ESO
+                    @endif
+                    
+                    
+                    
+                    </h2>
                     <h4>IES Leopoldo Alas Clarín</h4>
                 </div>
         </div>
@@ -32,28 +54,156 @@
             <table class="tftable" border="1">
            
             <tr><td colspan="6">APELLIDOS Y NOMBRES DEL ALUMNO/A: {{  $enrollment->student->user->full_name }}</td></tr>
-            <tr><td colspan="2">DNI: {{  $enrollment->student->dni }}</td><td colspan="2">FECHA DE NACIMIENTO: {{ ( $enrollment->student->birth)->toDateString(); }}</td><td colspan="2">NACIONALIDAD:</td></tr>
+            <tr><td colspan="2">DNI: {{  $enrollment->student->dni }}</td><td colspan="2">FECHA DE NACIMIENTO: {{ ( $enrollment->student->birth)->toDateString(); }}</td><td colspan="2">NACIONALIDAD:  {{ $enrollment->student->user->student->country ? $enrollment->student->user->student->country->name : '-' }}</td></tr>
             <tr><td colspan="6">DIRECCIÓN POSTAL (Localidad y Calle / Ave. / Plaza): {{  $enrollment->student->address }}, Calle {{ $enrollment->student->address_number }}</td></tr>
             <tr><td colspan="3">DATOS TUTOR/A 1: Apellidos y nombre: {{  $enrollment->student->first_tutor_full_name }}</td><td colspan="3" style="background-color:#d4e3e5;">DATOS TUTOR/A 2: Apellidos y nombre: {{  $enrollment->student->second_tutor_full_name }}</td></tr>
             <tr><td colspan="1">DNI: {{  $enrollment->student->first_tutor_dni }}<td colspan="2">Teléfono: {{  $enrollment->student->first_tutor_phone_number }}</td><td colspan="1">DNI: {{  $enrollment->student->second_tutor_dni }}</td><td colspan="2">Télefono: {{  $enrollment->student->second_tutor_phone_number }}</tr>
             <tr><td colspan="3">Domicilio: {{  $enrollment->student->first_tutor_address }}</td><td colspan="3">Domicilio: {{  $enrollment->student->second_tutor_address }}</td></tr>
             <tr><td colspan="6">SOLICITA TRANSPORTE: @if($enrollment->student->bus_stop_id) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif</td></tr>
-            <tr><td colspan="3">Ruta solicitada:  @if($enrollment->student->bus_stop_id){{  $enrollment->student->busStop->route->id }}@endif</td><td colspan="3">Parada solicitada: @if($enrollment->student->bus_stop_id){{  $enrollment->student->busStop->name }}@endif</td></tr>
+            <tr><td colspan="3">Ruta solicitada:  @if($enrollment->student->bus_stop_id){{  $enrollment->student->busStop->route->id }}@else   --- @endif</td><td colspan="3">Parada solicitada: @if($enrollment->student->bus_stop_id){{  $enrollment->student->busStop->name }}@else   --- @endif</td></tr>
             @foreach ( App\Models\Route::all() as $route )
             <tr><td colspan="6">{{ $route->id }}. {{  $route->name  }}</td></tr>
             @endforeach
             <tr style="background-color:#d4e3e5;"><td colspan="4">BILINGUE INGLES: Materias marcadas con *</td><td colspan="2"> @if($enrollment->bilingual) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif</td></tr>
             <tr><td colspan="2">REPITE CURSO: @if($enrollment->repeat_course) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif</td><td colspan="4">COLEGIO DE PROCEDENCIA: {{  $enrollment->previous_school }}</td></tr>
-             <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS COMUNES</td></tr>
-             @foreach ( $enrollment->courses as $course )
-             @if(App\Models\CourseType::COMMON == $course->course_type_id)
-            <tr><td colspan="6">{{ $course->name }}</td></tr>@endif
-            @endforeach
-             <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">OPTATIVA (Númerar por orden de preferencia)</td></tr>
-             @foreach ( $enrollment->courses as $course )
-             @if(App\Models\CourseType::COMMON_OPTIONAL == $course->course_type_id)
-            <tr><td colspan="6">{{ $course->name }}</td></tr>@endif
-            @endforeach
+            
+
+
+             @if ($enrollment->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL) 
+                   <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS COMUNES</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::COMMON == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS OPTATIVAS (Númeradas por orden de preferencia)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::COMMON_OPTIONAL_ONE == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIA OPTATIVA (Seleccionada)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::COMMON_OPTIONAL_TWO == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+            @endif             
+            @if ($enrollment->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL) 
+                <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">TRONCALES</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::CORE == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">ESPECIFICAS (Obligatorias)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::SPECIFIC == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">ESPECIFICA (Seleccionada)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::SPECIFIC_FREE_CONFIGURATION == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">LIBRE CONFIGURACION (Númeradas por orden de preferencia)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::FREE_CONFIGURATION == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+            @endif             
+             @if ($enrollment->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)
+                <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">TRONCALES</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::CORE == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">ESPECIFICAS (Obligatorias)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::SPECIFIC == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">ESPECIFICA (Seleccionada)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::SPECIFIC_FREE_CONFIGURATION == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">LIBRE CONFIGURACION (Númeradas por orden de preferencia)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::FREE_CONFIGURATION == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+            @endif             
+                @if ($enrollment->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL)
+                <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS COMUNES</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::COMMON == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS OPTATIVAS (Númeradas por orden de preferencia)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::COMMON_OPTIONAL_ONE == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIA OPTATIVA (Seleccionada)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::COMMON_OPTIONAL_TWO == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+            @endif             
+            @if ($enrollment->grade->id == App\Models\Grade::THIRD_HIGH_SCHOOL)
+                <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">AMBITOS COMUNES</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::COMMON_AREAS == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS COMUNES (Obligatorias)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::COMMON == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS OPTATIVAS (Númeradas por orden de preferencia)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::COMMON_OPTIONAL_ONE == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIA OPTATIVA (Seleccionada)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::COMMON_OPTIONAL_TWO == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+            @endif             
+            @if ($enrollment->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">CURSOS TRONCALES</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::CORE == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">CURSO ESPECIFICO (Seleccionado)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::SPECIFIC == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">CURSOS ITINERARIOS</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::ITINERARY == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">CURSOS ESPECIFICOS ITINERARIOS (Númeradas por orden de preferencia)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::SPECIFIC_ITINERARY == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">CURSOS LIBRES CONFIGURARCION ITINERARIOS (Númeradas por orden de preferencia)</td></tr>
+                    @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::FREE_CONFIGURATION_ITINERARY == $course->course_type_id)
+                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @endforeach
+                    
+            @endif
+
+
+
+
+
+            
+            
             <tr><td colspan="6">(A propuesta del equipo docente del centro de Primaria y/o del IES se puede cursar en este bloque <b> REFUERZO EDUCATIVO DE LAS COMPETENCIAS MATEMÁTICAS Y/O LINGUISTICA)</b></td></tr>
             <tr><td colspan="3">Fecha:</td><td align="center">Alumno/a</td  align="center"><td>Tutor 1</td><td  align="center">Tutor 2</td></tr>
             <tr><td colspan="3">Firma:</td><td></td><td></td><td></td></tr>
