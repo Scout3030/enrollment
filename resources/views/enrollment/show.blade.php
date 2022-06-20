@@ -66,13 +66,9 @@
             </div>
             <!--/ User Sidebar -->
 
-            @if($enrollment->student->grade->level->id == \App\Models\Level::HIGH_SCHOOL)
-                @include('enrollment.high_school_courses')
-            @endif
-
-            @if($enrollment->student->grade->level->id == \App\Models\Level::MIDDLE_SCHOOL)
-                @include('enrollment.middle_school_courses')
-            @endif
+           @if ($enrollment->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL) 
+                    @include('enrollment.first_third_middle_school')
+            @endif   
 
             <!-- User Content -->
             <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">

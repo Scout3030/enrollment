@@ -302,7 +302,40 @@ class EnrollmentController extends Controller
 
     public function show(Enrollment $enrollment){
         $courses = $enrollment->courses;
-        $levelCourses = $courses->filter(function ($value) {
+        if ($enrollment->grade->id == \App\Models\Grade::FIRST_MIDDLE_SCHOOL) 
+        { 
+            $Courses = $courses->filter(function ($value) {
+             return $value->course_type_id == CourseType::COMMON || $value->course_type_id == CourseType::COMMON_OPTIONAL_ONE ||
+                       $value->course_type_id == CourseType::COMMON_OPTIONAL_TWO;
+            });
+            return view('enrollment.show',compact('enrollment', 'Courses'));
+        }
+        if ($enrollment->grade->id == \App\Models\Grade::FOURTH_MIDDLE_SCHOOL) 
+        { 
+            $Courses = $courses->filter(function ($value) {
+             return $value->course_type_id == CourseType::COMMON || $value->course_type_id == CourseType::COMMON_OPTIONAL_ONE ||
+                       $value->course_type_id == CourseType::COMMON_OPTIONAL_TWO;
+            });
+            return view('enrollment.show',compact('enrollment', 'Courses'));
+        }
+            //dd($levelCourses); }
+          /*  foreach ( $enrollment->courses as $course )
+                  { 
+                      if(App\Models\CourseType::COMMON == $course->course_type_id){
+                      $common =   $course->name;
+                 }
+                }      
+                foreach ( $enrollment->courses as $course )
+                    if(App\Models\CourseType::COMMON_OPTIONAL_ONE == $course->course_type_id){
+                    $course->name
+                    }   
+                     }
+                     foreach ( $enrollment->courses as $course ){
+                     if(App\Models\CourseType::COMMON_OPTIONAL_TWO == $course->course_type_id)
+                   { $course->name}}
+                    
+                        }*/
+      /*  $levelCourses = $courses->filter(function ($value) {
             return $value->course_type_id == CourseType::COMMON || $value->course_type_id == CourseType::COMMON_OPTIONAL;
         });
 
@@ -328,13 +361,9 @@ class EnrollmentController extends Controller
 
         $coreCourses = $courses->filter(function ($value) {
             return $value->course_type_id == CourseType::CORE;
-        });
-
-        return view('enrollment.show',
-            compact('enrollment', 'levelCourses',
-                'electiveCourses', 'academicCourses', 'appliedCourses', 'freeConfigurationCourses',
-                'specificFreeConfigurationCourses', 'coreCourses')
-        );
+        });*/
+   // }
+       
     }
 
     public function export(Enrollment $enrollment){
