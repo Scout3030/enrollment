@@ -9,6 +9,7 @@ use App\Http\Requests\StudentRequest;
 use App\Models\Student;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
+use Str;
 use Storage;
 
 class StudentController extends Controller
@@ -118,5 +119,11 @@ class StudentController extends Controller
         } catch (\Exception $e) {
             return back()->withErrors(__('Can not delete this student'));
         }
+    }
+
+    public function export(Student $student){
+        $pdf = \PDF::loadView('template_pdf.student', ['student' => $student]);
+        $pdfName = Str::slug($student->user->name.' '.$student->paternal_surname.' '.$student->maternal_surname,'-');
+        return $pdf->download($pdfName.'.pdf');
     }
 }

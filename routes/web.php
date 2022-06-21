@@ -88,6 +88,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::delete('/{student}', [StudentController::class, 'destroy'])
             ->name('students.destroy')
             ->can('delete students');
+        Route::get('/export/{student}', [StudentController::class, 'export'])
+            ->name('students.export')
+            ->can('view students');
     });
 
     Route::group(['prefix' => "courses"], function() {
