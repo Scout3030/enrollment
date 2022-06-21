@@ -102,8 +102,8 @@ class StudentController extends Controller
         $student->second_tutor_email = $request->second_tutor_email;
         $student->second_tutor_address = $request->second_tutor_address;
         $student->save();
-
-        return back()->with('message', ['type' => 'success', 'description' => __('Profile edited successfully')]);
+        
+        return redirect()->route('enrollment.create')->with('message', ['type' => 'success', 'description' => __('Profile edited successfully')]);
     }
 
     /**

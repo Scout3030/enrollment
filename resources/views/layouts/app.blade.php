@@ -10,7 +10,7 @@
         <title>@yield('title') | {{ config('app.name', 'Laravel') }}</title>
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('favicon.jpg')}}">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
-
+        <link href="{{ asset('js/dropzone/min/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
         {{-- Include core + vendor Styles --}}
         <link rel="stylesheet" href="{{ asset('vendors/css/vendors.min.css') }}" />
         @stack('vendor-styles')
@@ -71,7 +71,7 @@
 
         {{-- include footer --}}
         @include('panels.footer')
-
+        <script src="{{ asset('js/dropzone/min/dropzone.min.js') }}"></script>
         <script src="{{ asset('vendors/js/vendors.min.js') }}"></script>
         <script src="{{ asset('vendors/js/ui/jquery.sticky.js') }}"></script>
         @stack('vendor-scripts')
@@ -80,6 +80,7 @@
         <script src="{{ asset('js/core/scripts.js') }}"></script>
         <script src="{{ asset('js/scripts/customizer.js') }}"></script>
         <script src="{{ asset('js/scripts/utils.js') }}"></script>
+        
         <script type="text/javascript">
             $(window).on('load', function() {
 
