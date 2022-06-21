@@ -84,7 +84,7 @@
                                     <div class="col-sm-10">
                                         <input type="date" id="birth" class="form-control" name="birth"
                                                value="{{ old('birth', auth()->user()->student->birth ?  auth()->user()->student->birth->format('Y-m-d') : null )  }}" />
-                                             
+
                                     </div>
                                 </div>
                             </div>
@@ -198,31 +198,31 @@
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label" for="transportation_yes">
                                             <b> {{ __('Grade') }}
-                                             @if (auth()->user()->student->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL) 
+                                             @if (auth()->user()->student->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL)
                                                   1° ESO
-                                            @endif             
-                                            @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL) 
+                                            @endif
+                                            @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL)
                                                   2º ESO
-                                            @endif             
+                                            @endif
                                             @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL)
                                                   3º ESO (LOMLOE)
-                                            @endif             
+                                            @endif
                                             @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)
                                                   2º ESO PMAR
-                                            @endif             
+                                            @endif
                                             @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_HIGH_SCHOOL)
                                                   3º ESO PROGRAMA DE DIVERSIFICACIÓN CURRICULAR I
-                                            @endif             
+                                            @endif
                                             @if (auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
                                                   4º ESO
                                             @endif
                                             </b>
-                                            
+
                                             </label>
                                         </div>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -417,26 +417,25 @@
                     </div>
                 </div>
             </div>
-             @if (auth()->user()->student->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL) 
-                   
-            @endif             
-            @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL) 
-                   @include('user.profile.necessary_documents.documents')
-            @endif             
-            @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL)
-                   
-            @endif             
-            @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)
-                  
-            @endif             
-            @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_HIGH_SCHOOL)
-                  
-            @endif             
-            @if (auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
-                  
-            @endif
-             
-
         </div>
     </form>
+
+    @if (auth()->user()->student->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL)
+
+    @endif
+    @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL)
+        @include('user.profile.necessary_documents.documents')
+    @endif
+    @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL)
+
+    @endif
+    @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)
+
+    @endif
+    @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_HIGH_SCHOOL)
+
+    @endif
+    @if (auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
+
+    @endif
 </section>
