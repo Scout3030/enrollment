@@ -42,6 +42,11 @@ class CreateStudentsTable extends Migration
             $table->string('second_tutor_email')->nullable();
             $table->string('second_tutor_address')->nullable();
             $table->tinyInteger('parents_condition')->nullable();
+            $table->string('previous_school')->nullable();
+            $table->string('certificate_document')->nullable();
+            $table->string('agreement_document')->nullable();
+            $table->string('dni_document')->nullable();
+            $table->string('payment_document')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

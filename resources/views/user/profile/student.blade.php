@@ -179,9 +179,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-10 offset-sm-2 mt-4">
-                                <button type="submit" class="btn btn-primary me-1">{{ __('Save and continue enrollment') }}</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -417,25 +414,55 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header d-block">
+                            <h4 class="card-title">{{ __('Previous school') }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-12">
+                                <div class="mb-1 row">
+                                    <div class="demo-inline-spacing">
+                                        <div class="offset-xl-1 col-xl-6 col-md-6 col-12">
+                                            <div class="mb-1">
+                                                <label class="form-label" for="previous_school">{{ __('Previous school') }}</label>
+                                                <input type="text" class="form-control" id="previous_school" name="previous_school" placeholder="{{ __('Type...') }}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-10 offset-sm-2 mt-4" align="right">
+                                <button type="submit" class="btn btn-primary me-1">{{ __('Save and continue enrollment') }}</button>
+                            </div>
+                        </div>                        
+                    </div>                    
+                </div>
+            </div>
         </div>
+        <input type="hidden" id="image" name="dni_document" value="">
+        <input type="hidden" id="image" name="agreement_document" value="">
+        <input type="hidden" id="image" name="payment_document" value="">
+        <input type="hidden" id="image" name="certificate_document" value="">
     </form>
 
     @if (auth()->user()->student->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL)
-
+        @include('user.profile.necessary_documents.first-middle')
     @endif
     @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL)
-        @include('user.profile.necessary_documents.documents')
-    @endif
+        @include('user.profile.necessary_documents.second-middle')
+    @endif  
     @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL)
-
+        @include('user.profile.necessary_documents.third-fourth-middle')
     @endif
     @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)
-
+        @include('user.profile.necessary_documents.high-school')
     @endif
     @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_HIGH_SCHOOL)
-
+        @include('user.profile.necessary_documents.high-school')
     @endif
     @if (auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
-
+        @include('user.profile.necessary_documents.third-fourth-middle')
     @endif
 </section>

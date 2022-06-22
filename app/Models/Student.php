@@ -132,6 +132,11 @@ class Student extends Model
         'second_tutor_email',
         'second_tutor_address',
         'parents_condition',
+        'previous_school',
+        'certificate_document',
+        'agreement_document',
+        'dni_document',
+        'payment_document',
     ];
 
     protected $casts = [
