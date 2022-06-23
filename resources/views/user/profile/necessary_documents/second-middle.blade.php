@@ -35,7 +35,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4 class="card-title">{{ __('Minor Custody Regulatory Agreement') }}</h4>
+                        <h4 class="card-title">{{ __('Minor Custody Regulatory Agreement') }}  {{ __('(only if the parents are separated)') }}</h4>
                         <div>
                             <form action="#" class="dropzone dropzone-area" id="agreementDocument">
                                 @csrf
@@ -60,7 +60,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4 class="card-title">{{ __('Official Academic Certificate of Studies') }}</h4>
+                        <h4 class="card-title">{{ __('Official Academic Certificate of Studies') }} {{ __('Only if it is a new addition') }}</h4>
                         <div>
                             <form action="#" class="dropzone dropzone-area" id="certificateDocument">
                                 @csrf

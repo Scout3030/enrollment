@@ -141,6 +141,11 @@ return [
         'first_tutor_signature' => 'firma de tutor 01',
         'student_signature' => 'firma de estudiante',
         "common_optional_course" => "cursos opcionales",
-        "common_courses" => "cursos comunes"
+        "common_courses" => "cursos comunes",
+        'dni_document'   => 'Dni alumno',
+        'payment_document'=> 'Justificante de pago',
+        'agreement_documentt'=> 'Convenio regulador',
+        'certificate_document'=> 'Certificado académico',      
+
     ],
 ];

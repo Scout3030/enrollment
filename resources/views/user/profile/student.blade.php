@@ -1,5 +1,5 @@
 <section id="basic-horizontal-layouts">
-    <form class="form form-horizontal"  enctype="multipart/form-data" method="POST" action="{{ route('student.profile.update') }}">
+    <form class="form form-horizontal" name="formProfile"  enctype="multipart/form-data" method="POST" action="{{ route('student.profile.update') }}">
         @csrf
         @method('PUT')
         <div class="row">
@@ -224,6 +224,25 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12">                    
+                    <div class="card">
+                        <div class="card-header d-block">
+                            <h4 class="card-title">{{ __('Previous school') }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-1 row">
+                                <div class="col-sm-2">
+                                    <label class="col-form-label" for="previous_school">{{ __('Previous school') }}</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="previous_school" name="previous_school" placeholder="{{ __('Type...') }}" />
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>                    
+                </div>
+            </div>
             </div>
 
             <div class="col-md-5">
@@ -414,32 +433,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header d-block">
-                            <h4 class="card-title">{{ __('Previous school') }}</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="col-12">
-                                <div class="mb-1 row">
-                                    <div class="demo-inline-spacing">
-                                        <div class="offset-xl-1 col-xl-6 col-md-6 col-12">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="previous_school">{{ __('Previous school') }}</label>
-                                                <input type="text" class="form-control" id="previous_school" name="previous_school" placeholder="{{ __('Type...') }}" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-10 offset-sm-2 mt-4" align="right">
-                                <button type="submit" class="btn btn-primary me-1">{{ __('Save and continue enrollment') }}</button>
-                            </div>
-                        </div>                        
-                    </div>                    
-                </div>
-            </div>
+            
         </div>
         <input type="hidden" id="image" name="dni_document" value="">
         <input type="hidden" id="image" name="agreement_document" value="">
@@ -465,4 +459,22 @@
     @if (auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
         @include('user.profile.necessary_documents.third-fourth-middle')
     @endif
+     <div class="row">
+            <div class="col-12">                    
+                <div class="card">                    
+                    <div class="card-body">                        
+                        <div class="col-sm-10 offset-sm-2 mt-0" align="right">
+                            <button type="submit" onclick="formProfile.submit()" class="btn btn-primary me-1">{{ __('Save and continue enrollment') }}</button>
+                        </div>
+                    </div>                        
+                </div>                    
+            </div>
+        </div>    
 </section>
+@push('scripts')
+  <script>
+
+  </script>
+    
+    
+@endpush

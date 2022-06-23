@@ -119,7 +119,7 @@ class StudentController extends Controller
         }
         $student->save();
         
-        return redirect()->route('enrollment.create')->with('message', ['type' => 'success', 'description' => __('Profile edited successfully')]);
+        return redirect()->route('enrollment.create')->with('message', ['type' => 'success', 'description' => __('Documents saved successfully')]);
     }
 
     /**
