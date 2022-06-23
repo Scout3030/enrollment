@@ -463,8 +463,10 @@
             <div class="col-12">                    
                 <div class="card">                    
                     <div class="card-body">                        
-                        <div class="col-sm-10 offset-sm-2 mt-0" align="right">
-                            <button type="submit" onclick="formProfile.submit()" class="btn btn-primary me-1">{{ __('Save and continue enrollment') }}</button>
+                        <div class="d-grid col-lg-12 col-md-12 mb-1 mb-lg-0">
+                            <button type="submit"  
+                                    class="btn btn-outline-primary" onclick="formProfile.submit()"
+                                    >{{ __('Save and continue enrollment') }}</button>
                         </div>
                     </div>                        
                 </div>                    

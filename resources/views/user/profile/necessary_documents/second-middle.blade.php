@@ -124,7 +124,7 @@
     </script>
     <script>
         // 1 hidden input
-        const agreementInput = $('input[name=image_file]');
+        const agreementInput = $('input[name=agreement_document]');
         const agreementDropzone = new Dropzone("#agreementDocument", {
             url: "{{ route('upload.files', 'second_middle') }}",
             addRemoveLinks: true,
