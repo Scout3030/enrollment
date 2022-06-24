@@ -24,7 +24,7 @@ class CheckProfile
         if ( $student->grade_id == Grade::FIRST_MIDDLE_SCHOOL ||  $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL ||
           $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||  $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
             if($profile->parents_condition == 0 && !$profile->agreement_document){
-               return redirect()->route('user.profile.edit');
+                return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Complete all the necessary documentation')]);
             }
         }
 
@@ -32,13 +32,13 @@ class CheckProfile
           $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
            
             if(!$profile->previous_school && !$profile->certificate_document){
-               return redirect()->route('user.profile.edit');
+                return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Complete all the necessary documentation')]);
             }
         }
 
         if ($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
             if(!$profile->payment_document){
-                return redirect()->route('user.profile.edit');   
+                return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Complete all the necessary documentation')]);  
             }          
         }
        
@@ -50,7 +50,7 @@ class CheckProfile
             !$profile->first_tutor_address || !$profile->second_tutor_dni || !$profile->second_tutor_full_name ||
             !$profile->second_tutor_phone_number || !$profile->second_tutor_email || !$profile->second_tutor_address ) {
        
-            return redirect()->route('user.profile.edit');
+                return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Complete all the necessary documentation')]);
         }
         return $next($request);
     }
