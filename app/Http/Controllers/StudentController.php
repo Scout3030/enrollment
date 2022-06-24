@@ -84,6 +84,7 @@ class StudentController extends Controller
         $student->paternal_surname = $request->paternal_surname;
         $student->maternal_surname = $request->maternal_surname;
         $student->dni = $request->dni;
+        $student->previous_school = $request->previous_school;
         $student->birth = $request->birth;
         $student->address = $request->address;
         $student->address_number = $request->address_number;

@@ -142,7 +142,7 @@ return [
         'student_signature' => 'firma de estudiante',
         "common_optional_course" => "cursos opcionales",
         "common_courses" => "cursos comunes",
-        'dni_document'   => 'Documento dni',
+        'dni_document'   => 'Documento dni del alumno/a',
         'payment_document'=> 'Justificante de pago',
         'agreement_document'=> 'Convenio regulador',
         'certificate_document'=> 'Certificado académico',      

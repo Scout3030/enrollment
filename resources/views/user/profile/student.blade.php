@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="col-sm-10">
                                         <input type="text" id="dni" class="form-control" name="dni"
-                                               value="{{ old('dni', auth()->user()->student->dni) }}" />
+                                               value="{{ old('dni', auth()->user()->student->dni) }}" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -190,35 +190,26 @@
                         </div>
                         <div class="card-body">
                             <div class="col-12">
-                                <div class="mb-1 row">
-                                    <div class="demo-inline-spacing">
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label" for="transportation_yes">
-                                            <b> {{ __('Grade') }}
-                                             @if (auth()->user()->student->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL)
-                                                  1° ESO
-                                            @endif
-                                            @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL)
-                                                  2º ESO
-                                            @endif
-                                            @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL)
-                                                  3º ESO (LOMLOE)
-                                            @endif
-                                            @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)
-                                                  2º ESO PMAR
-                                            @endif
-                                            @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_HIGH_SCHOOL)
-                                                  3º ESO PROGRAMA DE DIVERSIFICACIÓN CURRICULAR I
-                                            @endif
-                                            @if (auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
-                                                  4º ESO
-                                            @endif
-                                            </b>
-
-                                            </label>
-                                        </div>
+                            <div class="mb-1 row">
+                                    <div class="col-sm-2">
+                                        <label class="col-form-label" for="email">{{ __('Grade') }}</label>
                                     </div>
-                                </div>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="email" class="form-control"
+                                               value="@if (auth()->user()->student->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL)1° ESO
+                                            @endif
+                                            @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL)2º ESO
+                                            @endif
+                                            @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL)3º ESO (LOMLOE)
+                                            @endif
+                                            @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)2º ESO PMAR
+                                            @endif
+                                            @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_HIGH_SCHOOL)3º ESO PROGRAMA DE DIVERSIFICACIÓN CURRICULAR I
+                                            @endif
+                                            @if (auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)4º ESO
+                                            @endif" readonly />
+                                    </div>
+                                </div>                                
                             </div>
                         </div>
                     </div>
@@ -236,7 +227,7 @@
                                     <label class="col-form-label" for="previous_school">{{ __('Previous school') }}</label>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="previous_school" name="previous_school" placeholder="{{ __('Type...') }}" />
+                                    <input type="text" class="form-control" id="previous_school" value="{{  old('previous_school',auth()->user()->student->previous_school) }}" name="previous_school" placeholder="{{ __('Type...') }}" />
                                 </div>
                             </div>
                         </div>                        
