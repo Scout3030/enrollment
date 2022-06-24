@@ -86,6 +86,42 @@
                 $form.attr('action', `{{ route('students.index') }}/${studentId}`)
             });
             @endcan
+
+            @can('create students')
+            $('#modals-slide-in').on('shown.bs.modal', function () {
+
+                $('#level_id').select2({
+                    ajax: {
+                        url: "{{ route('levels.index') }}",
+                        dataType: 'JSON',
+                        processResults: (data) => {
+                            return {
+                                results: data.data
+                            }
+                        }
+                    }
+                }).on('select2:select', (e) => {
+
+                    $('.grade').addClass('d-none');
+
+                    const data = e.params.data;
+
+                    $('#grade_id').select2({
+                        ajax: {
+                            url: `/grades/level/${data.id}`,
+                            dataType: 'JSON',
+                            processResults: (data) => {
+                                return {
+                                    results: data.data
+                                }
+                            }
+                        }
+                    });
+
+                    $('.grade').removeClass('d-none');
+                });
+            })
+            @endcan
         })
     </script>
 @endpush

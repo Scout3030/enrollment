@@ -1007,5 +1007,14 @@
     "Delete period": "Eliminar periodo",
     "Course deleted successfully": "Curso eliminado correctamente",
     "Click confirm to delete the course. This action is not reversible.": "Click para eliminar este curso. La acción es irreversible",
-    "Click confirm to delete the period. This action is not reversible.": "Click para eliminar este periodo. La acción es irreversible"
+    "Click confirm to delete the period. This action is not reversible.": "Click para eliminar este periodo. La acción es irreversible",
+    "Grade": "Grado",
+    "Send password change emails": "Enviar mails de cambio de contraseña",
+    "Emails sent successfully": "Correos enviados exitosamente",
+    "There was an error sending the mail:": "Ocurrió un error a enviar el correo:",
+    "Your user has been created, log in by resetting your password at the following link:": "Tu usuario ha sido creado, ingresa restableciendo tu contraseña en el siguiente enlace:",
+    "Reset your password page": "Página de restablecimiento de contraseña",
+    "Forgot your password page": "Página olvidaste tu contraseña",
+    "Notification Reset Password": "Notificación de restablecimiento de contraseña",
+    "Reset password": "Restablecer contraseña"
 }

@@ -4,7 +4,7 @@
         <form class="add-new-user modal-content pt-0" method="POST" action="{{ route('users.store') }}">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">×</button>
             <div class="modal-header mb-1">
-                <h5 class="modal-title" id="exampleModalLabel">{{ __('Add user') }}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ __('Add student') }}</h5>
             </div>
             @csrf
             <div class="modal-body flex-grow-1">
@@ -30,6 +30,16 @@
                         value="{{ old('dni') }}"
                     />
                 </div>
+                <div class="mb-1">
+                    <label class="form-label" for="level_id">{{ __('Level')}}</label>
+                    <select class="form-control" id="level_id" name="level_id"></select>
+                </div>
+
+                <div class="mb-1 grade d-none">
+                    <label class="form-label" for="grade_id">{{ __('Grade')}}</label>
+                    <select class="form-control" id="grade_id" name="grade_id"></select>
+                </div>
+
                 <div class="mb-1">
                     <label class="form-label" for="email">{{ __('Email') }}</label>
                     <input

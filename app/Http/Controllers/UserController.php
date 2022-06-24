@@ -6,9 +6,13 @@ use App\DataTables\UserDataTable;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
+use App\Mail\NotificationResetPassword;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Log;
+use Mail;
 
 class UserController extends Controller
 {
@@ -43,14 +47,23 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'remember_token' => Str::random(24)
         ]);
 
         if(!$request->filled('role')){
             $user->assignRole('student');
             Student::create([
                 'user_id' => $user->id,
-                'dni' => $request->dni
+                'dni' => $request->dni,
+                'grade_id' => $request->grade_id
             ]);
+
+            try {
+                Mail::to( $user->email )->send( new NotificationResetPassword($user->remember_token, $user->email) );
+            } catch (\Exception $e) {
+                Log::info( __('There was an error sending the mail:') . ' ' . $e->getMessage());
+            }
+
             return back()->with('message', ['type' => 'success', 'description' => __('Student created successfully')]);
         }
 

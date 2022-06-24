@@ -26,18 +26,6 @@ class StudentDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->filterColumn('email_verified_at', function($query, $keyword) {
-                if(preg_match("/".__('Yes')."/i", $keyword)){
-                    $query->whereHas('user', function($q) use ($keyword) {
-                        $q->whereNotNull('email_verified_at');
-                    });
-                }
-                if(preg_match("/".__('No')."/i", $keyword)){
-                    $query->whereHas('user', function($q) use ($keyword) {
-                        $q->whereNull('email_verified_at');
-                    });
-                }
-            })
             ->filterColumn('names', function($query, $keyword) {
                 $query->whereHas('user', function($q) use ($keyword){
                     $q->where('name', "LIKE", "%{$keyword}%");
@@ -52,6 +40,18 @@ class StudentDataTable extends DataTable
                 $sql = "CONCAT(students.paternal_surname,' ',students.maternal_surname)  like ?";
                 $query->whereRaw($sql, ["%{$keyword}%"]);
             })
+            ->filterColumn('grade', function($query, $keyword) {
+                $query->whereHas('grade', function($q) use ($keyword){
+                    $q->where('name', "LIKE", "%{$keyword}%");
+                });
+            })
+            ->filterColumn('level', function($query, $keyword) {
+                $query->whereHas('grade', function($q) use ($keyword){
+                    $q->whereHas('level', function($model) use ($keyword) {
+                        $model->where('name', "LIKE", "%{$keyword}%");
+                    });
+                });
+            })
             ->orderColumn('surname', function ($query, $order) {
                 $query->orderBy('paternal_surname', $order);
             })
@@ -63,6 +63,15 @@ class StudentDataTable extends DataTable
                 $query->join('users', 'users.id', '=', 'students.user_id')
                     ->orderBy('name', $order);
             })
+            ->orderColumn('grade', function ($query, $order) {
+                $query->join('grades', 'grades.id', '=', 'students.grade_id')
+                    ->orderBy('name', $order);
+            })
+            ->orderColumn('level', function ($query, $order) {
+                $query->join('grades', 'grades.id', '=', 'students.grade_id')
+                    ->join('levels', 'levels.id', '=', 'grades.level_id')
+                    ->orderBy('name', $order);
+            })
             ->addColumn('names', function(Student $student){
                 return "{$student->user->name} {$student->middle_name}";
             })
@@ -72,8 +81,11 @@ class StudentDataTable extends DataTable
             ->addColumn('email', function(Student $student){
                 return $student->user->email;
             })
-            ->addColumn('email_verified_at', function(Student $student){
-                return $student->user->email_verified_at ? __('Yes') : __('No');
+            ->addColumn('grade', function(Student $student) {
+                return $student->grade->name;
+            })
+            ->addColumn('level', function(Student $student) {
+                return $student->grade->level->name;
             })
             ->addColumn('action', 'student.datatable.action');
     }
@@ -171,11 +183,6 @@ class StudentDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id')
-                ->title('Id')
-                ->searchable(true)
-                ->orderable(true)
-                ->footer('Id'),
             Column::make('names')
                 ->title(__('Names'))
                 ->searchable(true)
@@ -196,19 +203,16 @@ class StudentDataTable extends DataTable
                 ->searchable(true)
                 ->orderable(true)
                 ->footer(__('Email')),
-            Column::make('email_verified_at')
-                ->title(__('Email verified'))
-                ->searchable(true)
-                ->orderable(false)
-                ->width(20)
-                ->addClass('text-center')
-                ->footer(__('Email verified')),
-            Column::make('created_at')
-                ->title(__('Created'))
+            Column::make('level')
+                ->title(__('Level'))
                 ->searchable(true)
                 ->orderable(true)
-                ->addClass('text-center')
-                ->footer(__('Created')),
+                ->footer(__('Level')),
+            Column::make('grade')
+                ->title(__('Grade'))
+                ->searchable(true)
+                ->orderable(true)
+                ->footer(__('Grade')),
             Column::computed('action')
                 ->title(__('Actions'))
                 ->exportable(false)
