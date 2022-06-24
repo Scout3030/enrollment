@@ -36,7 +36,7 @@
                         </div>
                         <div class="text-center">
                             <h1 class="mb-1 text-white">{{ __('You have a pending enrollment process') }}</h1>
-                            <a href="{{ route('enrollment.create') }}" class="btn btn-relief-info">{{ __('Start here') }}</a>
+                            <a href="{{ route('user.profile.edit') }}" class="btn btn-relief-info">{{ __('Start here') }}</a>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
         <div class="row match-height">
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="card bg-success">
-                    
+
                 </div>
             </div>
         </div>
