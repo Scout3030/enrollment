@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @push('vendor-styles')
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
     <style>
         @media screen and (max-width: 480px) {
             .draw-signature-holder, .draw-signature-holdertutor1, .draw-signature-holdertutor2, .text-signature {

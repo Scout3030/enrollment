@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @push('vendor-styles')
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
     <style>
         .numerator span{
             margin: 14px;
