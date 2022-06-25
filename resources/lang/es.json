@@ -1012,9 +1012,12 @@
     "Send password change emails": "Enviar mails de cambio de contraseña",
     "Emails sent successfully": "Correos enviados exitosamente",
     "There was an error sending the mail:": "Ocurrió un error a enviar el correo:",
-    "Your user has been created, log in by resetting your password at the following link:": "Tu usuario ha sido creado, ingresa restableciendo tu contraseña en el siguiente enlace:",
+    "Your user has been created": "Tu usuario ha sido creado",
+    "Log in by resetting your password at the following link:": "Ingresa restableciendo tu contraseña en el siguiente enlace:",
     "Reset your password page": "Página de restablecimiento de contraseña",
     "Forgot your password page": "Página olvidaste tu contraseña",
-    "Notification Reset Password": "Notificación de restablecimiento de contraseña",
-    "Reset password": "Restablecer contraseña"
+    "Reset password notification": "Notificación de restablecimiento de contraseña",
+    "Reset password": "Restablecer contraseña",
+    "Your new password must be different from previously used passwords": "Debe ser diferente a la usada previamente",
+    "Back to login": "Volver al login"
 }

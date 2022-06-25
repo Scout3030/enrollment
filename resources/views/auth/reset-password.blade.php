@@ -2,7 +2,7 @@
 
 <x-guest-layout>
 
-    <h4 class="card-title mb-1">{{ __('Reset Password ') }}🔒</h4>
+    <h4 class="card-title mb-1">{{ __('Reset password') }}🔒</h4>
     <p class="card-text mb-2">{{ __('Your new password must be different from previously used passwords') }}</p>
 
     <form method="POST" action="{{ route('password.update') }}">

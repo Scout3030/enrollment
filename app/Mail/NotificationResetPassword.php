@@ -32,6 +32,7 @@ class NotificationResetPassword extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.notification_resetPassword');
+        return $this->subject(__('Reset password notification'))
+            ->markdown('mails.notification_reset_password');
     }
 }
