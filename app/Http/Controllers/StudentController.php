@@ -87,7 +87,6 @@ class StudentController extends Controller
         $student->middle_name = $request->middle_name;
         $student->paternal_surname = $request->paternal_surname;
         $student->maternal_surname = $request->maternal_surname;
-        $student->dni = $request->dni;
         $student->previous_school = $request->previous_school;
         $student->birth = $request->birth;
         $student->address = $request->address;
@@ -123,7 +122,7 @@ class StudentController extends Controller
             $student->agreement_document = $request->agreement_document;
         }
         $student->save();
-        
+
         return redirect()->route('enrollment.create')->with('message', ['type' => 'success', 'description' => __('Documents saved successfully')]);
     }
 
