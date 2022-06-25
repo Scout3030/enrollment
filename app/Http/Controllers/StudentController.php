@@ -9,6 +9,9 @@ use App\Http\Requests\StudentRequest;
 use App\Models\Student;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
+use App\Mail\NotificationResetPassword;
+use Log;
+use Mail;
 use Str;
 use Storage;
 
@@ -125,5 +128,28 @@ class StudentController extends Controller
         $pdf = \PDF::loadView('template_pdf.student', ['student' => $student]);
         $pdfName = Str::slug($student->user->name.' '.$student->paternal_surname.' '.$student->maternal_surname,'-');
         return $pdf->download($pdfName.'.pdf');
+    }
+
+    public function notificationResetPassword()
+    {
+        $students = Student::with('user')
+            ->whereHas('user', function ($query) {
+                $query->whereNull('last_login_at');
+            })->get();
+
+        foreach ( $students as $student ) {
+
+            $student->user->update([
+                'remember_token' => Str::random(24)
+            ]);
+
+            try {
+                Mail::to( $student->user->email )->send( new NotificationResetPassword($student->user->remember_token, $student->user->email) );
+            } catch (\Exception $e) {
+                Log::info( __('There was an error sending the mail:') . ' ' . $e->getMessage());
+            }
+        }
+
+        return back()->with('message', ['type' => 'success', 'description' => __('Emails sent successfully')]);
     }
 }

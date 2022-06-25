@@ -18,6 +18,13 @@
                                     <label for="file" class="form-label">{{ __('Load file to import') }} <a href="{{ route('students.downloadFormat') }}">{{ __('File') }}</a></label>
                                     <input class="form-control" type="file" id="file" name="file"/>
                                 </div>
+
+                                <div class="col-lg-6 col-md-12 mb-1 mb-sm-0 pb-2">
+                                    <a
+                                        class="btn btn-primary float-end mt-2"
+                                        href="{{ route('students.notification.reset-password') }}"
+                                    >{{ __('Send password change emails') }}</a>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary me-1">{{ __('Import') }}</button>
                         </div>

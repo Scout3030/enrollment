@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('status')->default(\App\Models\User::ACTIVE);
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->datetime('last_login_at')->nullable();
+            $table->string('last_login_ip')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

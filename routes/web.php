@@ -11,6 +11,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingController;
+use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,6 +92,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/export/{student}', [StudentController::class, 'export'])
             ->name('students.export')
             ->can('view students');
+        Route::get('/notification/reset-password', [StudentController::class, 'notificationResetPassword'])
+            ->name('students.notification.reset-password');
     });
 
     Route::group(['prefix' => "courses"], function() {
