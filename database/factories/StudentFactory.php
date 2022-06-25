@@ -22,6 +22,7 @@ class StudentFactory extends Factory
             'country_id' => Country::all()->random()->id,
             'grade_id' => Grade::all()->random()->id,
             'middle_name' => $this->faker->name,
+            'previous_school' => $this->faker->sentence,
             'paternal_surname' => $this->faker->lastName,
             'maternal_surname' => $this->faker->lastName,
             'dni' => $this->faker->randomNumber(8,true),

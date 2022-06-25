@@ -1,5 +1,5 @@
 <section id="basic-horizontal-layouts">
-    <form class="form form-horizontal" method="POST" action="{{ route('student.profile.update') }}">
+    <form class="form form-horizontal" name="formProfile"  enctype="multipart/form-data" method="POST" action="{{ route('student.profile.update') }}">
         @csrf
         @method('PUT')
         <div class="row">
@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="col-sm-10">
                                         <input type="text" id="dni" class="form-control" name="dni"
-                                               value="{{ old('dni', auth()->user()->student->dni) }}" />
+                                               value="{{ old('dni', auth()->user()->student->dni) }}" readonly />
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +83,8 @@
                                     </div>
                                     <div class="col-sm-10">
                                         <input type="date" id="birth" class="form-control" name="birth"
-                                               value="{{ old('birth', auth()->user()->student->birth->format('Y-m-d')) }}" />
+                                               value="{{ old('birth', auth()->user()->student->birth ?  auth()->user()->student->birth->format('Y-m-d') : null )  }}" />
+
                                     </div>
                                 </div>
                             </div>
@@ -178,13 +179,61 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-10 offset-sm-2 mt-4">
-                                <button type="submit" class="btn btn-primary me-1">{{ __('Save') }}</button>
-                                <a href="{{ route('profile.show') }}" class="btn btn-outline-secondary">{{ __('Return') }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">{{ __('Course in which you enroll') }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-12">
+                            <div class="mb-1 row">
+                                    <div class="col-sm-2">
+                                        <label class="col-form-label" for="email">{{ __('Grade') }}</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="email" class="form-control"
+                                               value="@if (auth()->user()->student->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL)1° ESO
+                                            @endif
+                                            @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL)2º ESO
+                                            @endif
+                                            @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL)3º ESO (LOMLOE)
+                                            @endif
+                                            @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)2º ESO PMAR
+                                            @endif
+                                            @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_HIGH_SCHOOL)3º ESO PROGRAMA DE DIVERSIFICACIÓN CURRICULAR I
+                                            @endif
+                                            @if (auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)4º ESO
+                                            @endif" readonly />
+                                    </div>
+                                </div>                                
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-12">                    
+                    <div class="card">
+                        <div class="card-header d-block">
+                            <h4 class="card-title">{{ __('Previous school') }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-1 row">
+                                <div class="col-sm-2">
+                                    <label class="col-form-label" for="previous_school">{{ __('Previous school') }}</label>
+                                </div>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="previous_school" value="{{  old('previous_school',auth()->user()->student->previous_school) }}" name="previous_school" placeholder="{{ __('Type...') }}" />
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>                    
+                </div>
+            </div>
             </div>
 
             <div class="col-md-5">
@@ -375,6 +424,50 @@
                     </div>
                 </div>
             </div>
+            
         </div>
+        <input type="hidden" id="image" name="dni_document" value="">
+        <input type="hidden" id="image" name="agreement_document" value="">
+        <input type="hidden" id="image" name="payment_document" value="">
+        <input type="hidden" id="image" name="certificate_document" value="">
     </form>
+
+    @if (auth()->user()->student->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL)
+        @include('user.profile.necessary_documents.first-middle')
+    @endif
+    @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL)
+        @include('user.profile.necessary_documents.second-middle')
+    @endif  
+    @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL)
+        @include('user.profile.necessary_documents.third-fourth-middle')
+    @endif
+    @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)
+        @include('user.profile.necessary_documents.high-school')
+    @endif
+    @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_HIGH_SCHOOL)
+        @include('user.profile.necessary_documents.high-school')
+    @endif
+    @if (auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
+        @include('user.profile.necessary_documents.third-fourth-middle')
+    @endif
+     <div class="row">
+            <div class="col-12">                    
+                <div class="card">                    
+                    <div class="card-body">                        
+                        <div class="d-grid col-lg-12 col-md-12 mb-1 mb-lg-0">
+                            <button type="submit"  
+                                    class="btn btn-outline-primary" onclick="formProfile.submit()"
+                                    >{{ __('Save and continue enrollment') }}</button>
+                        </div>
+                    </div>                        
+                </div>                    
+            </div>
+        </div>    
 </section>
+@push('scripts')
+  <script>
+
+  </script>
+    
+    
+@endpush

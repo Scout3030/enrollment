@@ -597,7 +597,7 @@
                                         <div class="offset-xl-1 col-xl-6 col-md-6 col-12">
                                             <div class="mb-1">
                                                 <label class="form-label" for="previous_school">{{ __('Previous school') }}</label>
-                                                <input type="text" class="form-control" id="previous_school" name="previous_school" placeholder="{{ __('Type...') }}" />
+                                                <input type="text" class="form-control" id="previous_school" value="{{ auth()->user()->student->previous_school }}" name="previous_school" placeholder="{{ __('Type...') }}" />
                                                 <input type="hidden" class="form-control" id="sign" name="sign"/>
                                             </div>
                                         </div>

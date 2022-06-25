@@ -7,6 +7,7 @@ use App\Http\Requests\StudentImportRequest;
 use App\Http\Requests\StudentProfileRequest;
 use App\Http\Requests\StudentRequest;
 use App\Models\Student;
+use App\Models\Grade;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
 use App\Mail\NotificationResetPassword;
@@ -87,6 +88,7 @@ class StudentController extends Controller
         $student->paternal_surname = $request->paternal_surname;
         $student->maternal_surname = $request->maternal_surname;
         $student->dni = $request->dni;
+        $student->previous_school = $request->previous_school;
         $student->birth = $request->birth;
         $student->address = $request->address;
         $student->address_number = $request->address_number;
@@ -105,9 +107,24 @@ class StudentController extends Controller
         $student->second_tutor_phone_number = $request->second_tutor_phone_number;
         $student->second_tutor_email = $request->second_tutor_email;
         $student->second_tutor_address = $request->second_tutor_address;
+        if($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
+            $student->dni_document =  $request->dni_document;
+            $student->agreement_document =  $request->agreement_document;
+            $student->certificate_document =  $request->certificate_document;
+            $student->payment_document = $request->payment_document;
+        }
+        if($student->grade_id == Grade::SECOND_MIDDLE_SCHOOL) {
+            $student->dni_document =  $request->dni_document;
+            $student->agreement_document =  $request->agreement_document;
+            $student->certificate_document =  $request->certificate_document;
+        }
+        if($student->grade_id == Grade::FIRST_MIDDLE_SCHOOL) {
+            $student->dni_document = $request->dni_document;
+            $student->agreement_document = $request->agreement_document;
+        }
         $student->save();
-
-        return back()->with('message', ['type' => 'success', 'description' => __('Profile edited successfully')]);
+        
+        return redirect()->route('enrollment.create')->with('message', ['type' => 'success', 'description' => __('Documents saved successfully')]);
     }
 
     /**

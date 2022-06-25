@@ -6,6 +6,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseTypeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StudentController;
@@ -53,6 +54,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             ->name('users.destroy')
             ->can('delete users');
     });
+
+    Route::post('/upload-files/{path?}', [FileController::class, 'upload'])
+        ->name('upload.files');
 
     Route::view('/profile/edit', 'user.profile.edit')
         ->name('user.profile.edit');
@@ -183,7 +187,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::group(['prefix' => "enrollment"], function() {
         Route::get('/', [EnrollmentController::class, 'create'])
             ->name('enrollment.create')
-            ->can('create enrollment');
+            ->can('create enrollment')
+            ->middleware('check.profile');
           //  ->middleware('active.enrollment');
         Route::post('/store', [EnrollmentController::class, 'store'])
             ->name('enrollment.store')
