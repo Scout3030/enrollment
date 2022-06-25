@@ -31,6 +31,9 @@ class CourseTypeSeeder extends Seeder
             'Specific free configuration',
             'Intro high school',
             'Intro professional training',
+            'Modules associated to unit of competences',
+            'Modules associated to common blocks',
+            'Modules of education in workspace',
         ];
 
         foreach ($types as $type){

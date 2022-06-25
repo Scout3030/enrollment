@@ -40,6 +40,11 @@ class Grade extends Model
     const SECOND_HIGH_SCHOOL = 6;
     const THIRD_HIGH_SCHOOL = 7;
 
+    const FIRST_EDUCATIONAL_CYCLE_BASIC = 10;
+    const SECOND_EDUCATIONAL_CYCLE_BASIC = 11;
+    const FIRST_EDUCATIONAL_CYCLE_MEDIUM = 12;
+    const SECOND_EDUCATIONAL_CYCLE_MEDIUM = 13;
+
     public function getNameAttribute($value)
     {
         return __($value);

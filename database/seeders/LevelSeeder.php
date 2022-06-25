@@ -18,6 +18,7 @@ class LevelSeeder extends Seeder
             'Middle school',
             'High school',
             'Professional training',
+            'Educational cycle'
         ];
 
         foreach ($levels as $level){

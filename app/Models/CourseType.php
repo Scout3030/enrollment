@@ -28,8 +28,8 @@ class CourseType extends Model
 {
     use HasFactory;
 
-    const COMMON = 1;                      
-    const COMMON_AREAS = 2;                
+    const COMMON = 1;
+    const COMMON_AREAS = 2;
     const COMMON_OPTIONAL_ONE = 3;
     const COMMON_OPTIONAL_TWO = 4;
     const ELECTIVE = 5;
@@ -43,7 +43,12 @@ class CourseType extends Model
     const SPECIFIC_ITINERARY = 13;
     const FREE_CONFIGURATION_ITINERARY = 14;
     const INTRO_PROFESSIONAL_TRAINING = 15;
-  
+
+    // educational cycle
+    const ASSOCIATED_UNITS_OF_COMPETENCES = 16;
+    const ASSOCIATED_COMMON_BLOCKS = 17;
+    const FORMATION_WORKSPACE = 18;
+    const CF_COMMON = 19;
 
     protected $fillable = ['name'];
 

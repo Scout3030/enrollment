@@ -34,6 +34,7 @@ class Level extends Model
     const MIDDLE_SCHOOL = 1;
     const HIGH_SCHOOL = 2;
     const PROFESSIONAL_TRAINING = 3;
+    const EDUCATIONAL_CYCLE = 4;
 
     protected $appends = [
         'custom_name'
