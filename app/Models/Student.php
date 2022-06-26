@@ -92,9 +92,9 @@ class Student extends Model
 {
     use HasFactory;
 
-    const SEPARATED = 0;
-    const MARRIED = 1;
-    const COHABITANTS = 2;
+    const SEPARATED = 1;
+    const MARRIED = 2;
+    const COHABITANTS = 3;
 
     protected static function boot () {
         parent::boot();

@@ -248,8 +248,8 @@
                                                         type="radio"
                                                         name="parents_condition"
                                                         id="parents_condition_separated"
-                                                        value="0"
-                                                        {{ old('parents_condition') && old('parents_condition') == \App\Models\Student::SEPARATED ? 'checked' : '' }}
+                                                        value="{{ \App\Models\Student::SEPARATED }}"
+                                                        {{ old('parents_condition') == \App\Models\Student::SEPARATED ? 'checked' : '' }}
                                                     />
                                                     <label class="form-check-label" for="parents_condition_separated">{{ __('Separated') }}</label>
                                                 </div>
@@ -259,9 +259,8 @@
                                                         type="radio"
                                                         name="parents_condition"
                                                         id="parents_condition_married"
-                                                        value="1"
-                                                        {{ old('parents_condition') && old('parents_condition') == \App\Models\Student::MARRIED ? 'checked' : '' }}
-                                                        {{ !old('parents_condition') ? 'checked' : '' }}
+                                                        value="{{ \App\Models\Student::MARRIED }}"
+                                                        {{ old('parents_condition') == \App\Models\Student::MARRIED ? 'checked' : '' }}
                                                     />
                                                     <label class="form-check-label" for="parents_condition_married">{{ __('Married') }}</label>
                                                 </div>
@@ -271,8 +270,8 @@
                                                         type="radio"
                                                         name="parents_condition"
                                                         id="parents_condition_cohabitants"
-                                                        value="2"
-                                                        {{ old('parents_condition') && old('parents_condition') == \App\Models\Student::COHABITANTS ? 'checked' : '' }}
+                                                        value="{{ \App\Models\Student::COHABITANTS }}"
+                                                        {{ old('parents_condition') == \App\Models\Student::COHABITANTS ? 'checked' : '' }}
                                                     />
                                                     <label class="form-check-label" for="parents_condition_cohabitants">{{ __('Cohabitants') }}</label>
                                                 </div>
@@ -421,10 +420,11 @@
             </div>
 
         </div>
-        <input type="hidden" id="image" name="dni_document" value="">
-        <input type="hidden" id="image" name="agreement_document" value="">
-        <input type="hidden" id="image" name="payment_document" value="">
-        <input type="hidden" id="image" name="certificate_document" value="">
+        <input type="hidden" id="dni_document" name="dni_document" value="">
+        <input type="hidden" id="agreement_document" name="agreement_document" value="">
+        <input type="hidden" id="payment_document" name="payment_document" value="">
+        <input type="hidden" id="certificate_document" name="certificate_document" value="">
+        <input type="hidden" id="academic_history" name="academic_history" value="">
     </form>
 
     {{--ESO--}}
@@ -446,6 +446,10 @@
     @endif
     @if (auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
         @include('user.profile.necessary_documents.third-fourth-middle')
+    @endif
+
+    @if (auth()->user()->student->grade->level->id == App\Models\Level::BACHELOR)
+        @include('user.profile.necessary_documents.bachelor')
     @endif
     <div class="row">
         <div class="col-12">

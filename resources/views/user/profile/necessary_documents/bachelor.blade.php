@@ -92,9 +92,43 @@
                         <h4 class="card-title">{{ __('Official Academic Certificate of Studies') }} {{ __('Only if it is a new addition') }}</h4>
                         <p>{{ __('Boletin de notas is not allowed') }}</p>
                         <div>
-                            <b>
-                                {{ __('This documentation has to be submitted in person. Te document has to be the original. Without this document, the enrollment is not valid.') }}
-                            </b>
+                            <form action="#" class="dropzone dropzone-area" id="certificateDocument">
+                                @csrf
+                                <div class="fallback">
+                                    <input name="file" type="file" multiple="multiple">
+                                </div>
+                                <div class="dz-message needsclick">
+                                    <div class="mb-3">
+                                        <i class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                    </div>
+                                    <h4>{{ __("Drop files here or click to upload") }}.</h4>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="card-title">{{ __('Academic history') }} ({{ __('Original') }})</h4>
+                        <div>
+                            <form action="#" class="dropzone dropzone-area" id="academicHistory">
+                                @csrf
+                                <div class="fallback">
+                                    <input name="file" type="file" multiple="multiple">
+                                </div>
+                                <div class="dz-message needsclick">
+                                    <div class="mb-3">
+                                        <i class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                    </div>
+                                    <h4>{{ __("Drop files here or click to upload") }}.</h4>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -110,7 +144,7 @@
     <!-- END: Page Vendor JS-->
 
     <!-- Examples here-->
-{{--    <script src="{{ asset('js/scripts/forms/form-file-uploader.js')}}"></script>--}}
+    {{--    <script src="{{ asset('js/scripts/forms/form-file-uploader.js')}}"></script>--}}
 
     <script>
         // 1 hidden input
@@ -174,7 +208,7 @@
         });
 
     </script>
-     <script>
+    <script>
         // 1 hidden input
         const certificateInput = $('input[name=certificate_document]');
         const certificateDropzone = new Dropzone("#certificateDocument", {
@@ -205,7 +239,7 @@
         });
 
     </script>
-     <script>
+    <script>
         // 1 hidden input
         const paymentInput = $('input[name=payment_document]');
         const paymentDropzone = new Dropzone("#paymentDocument", {
@@ -235,5 +269,34 @@
             paymentInput.val('')
         });
 
+    </script>
+    <script>
+        // 1 hidden input
+        const academicHistoryInput = $('input[name=academic_history]');
+        const academicHistoryDropzone = new Dropzone("#academicHistory", {
+            url: "{{ route('upload.files', 'third_fourth_middle') }}",
+            addRemoveLinks: true,
+            maxFilesize: 20,
+            acceptedFiles: ".jpeg,.jpg,.png,.pdf",
+            init: function() {
+                this.on("success", function (file, response) {
+                    academicHistoryInput.val(response)
+                    file.serverId = response.id;
+                    $(file.previewTemplate).find('.dz-custom-download').attr("href", window.appBaseUrl + "file/download/" + file.serverId);
+                    $(file.previewTemplate).find('.dz-custom-delete').off().on("click", function (e) {
+                        e.preventDefault();
+                        paymentDropzone.emit("removedfile", file);
+                    });
+                });
+                this.on("addedfile", function() {
+                    if (this.files[1]!=null){
+                        this.removeFile(this.files[0]);
+                    }
+                });
+            }
+        });
+        paymentDropzone.on("removedfile", function(file) {
+            academicHistoryInput.val('')
+        });
     </script>
 @endpush

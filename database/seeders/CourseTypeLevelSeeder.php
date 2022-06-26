@@ -42,7 +42,7 @@ class CourseTypeLevelSeeder extends Seeder
         $levels = [
             ['name' => 'Middle school', 'course_types' => $middleSchoolCourseTypes],
             ['name' => 'High school', 'course_types' => $highSchoolCourseTypes],
-            ['name' => 'Professional training', 'course_types' => $professionalTrainingCourseTypes],
+            ['name' => 'Bachelor', 'course_types' => $professionalTrainingCourseTypes],
         ];
 
         foreach ($levels as $level){

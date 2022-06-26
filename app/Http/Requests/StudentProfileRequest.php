@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Level;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Grade;
 use Illuminate\Validation\Rule;
@@ -58,7 +59,7 @@ class StudentProfileRequest extends FormRequest
 
             'dni_document'=>'required',
             'agreement_document'=>[Rule::requiredIf(function () {
-                return $this->parents_condition == 0;
+                return $this->parents_condition == \App\Models\Student::SEPARATED;
             })],
             'previous_school' => 'nullable|min:10'
         ];
@@ -68,7 +69,7 @@ class StudentProfileRequest extends FormRequest
         if($student->grade_id == Grade::SECOND_MIDDLE_SCHOOL) {
             $moreRules = [
                 'certificate_document'=>[Rule::requiredIf(function () {
-                    return $this->previous_school == null;
+                    return $this->previous_school;
                 })],
             ];
         }
@@ -76,15 +77,13 @@ class StudentProfileRequest extends FormRequest
         if($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
             $moreRules = [
                 'payment_document' => 'required',
-                'certificate_document' => [Rule::requiredIf(function () {
-                    return $this->previous_school ==null;
-                })],
             ];
         }
 
-        if($student->grade_id == Grade::SECOND_HIGH_SCHOOL || $student->grade_id == Grade::THIRD_HIGH_SCHOOL) {
+        if($student->grade->level->id == Level::BACHELOR) {
             $moreRules = [
                 'payment_document' => 'required',
+                'academic_history' => 'required',
             ];
         }
 
