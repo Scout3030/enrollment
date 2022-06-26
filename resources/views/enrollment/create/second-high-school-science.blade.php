@@ -69,7 +69,7 @@
             </div>
             <div class="row">
                 <!-- custom option checkbox -->
-               
+
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -281,7 +281,7 @@
 
             <div class="row">
                 <!-- custom option checkbox -->
-                
+
                 <!-- / basic custom options -->
             </div>
 
@@ -325,7 +325,7 @@
                                 <div class="card">
                                     <div class="mb-1 row">
                                         <div class="col-sm-12">
-                                            
+
                                                 <div id="sortable5" class="row custom-options-checkable g-1">
                                                     @forelse($coursesItineraryB as $key => $course)
                                                         <div class="row1" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
@@ -338,7 +338,7 @@
                                                                      value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
                                                                     checked
                                                                      onclick="this.checked = true"
-                                                                    
+
                                                                 />
                                                                 <label class="custom-option-item p-1" for="core_itinerary_a_{{ $course->id }}">
                                                                     <span class="d-flex justify-content-between flex-wrap mb-50">
@@ -351,12 +351,12 @@
                                                         {{ __('Select level and grade') }}
                                                     @endforelse
                                                 </div>
-                                         
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -395,7 +395,7 @@
                                                          value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
                                                         checked
                                                          onclick="this.checked = true"
-                                                        
+
                                                     />
                                                     <label class="custom-option-item p-1" for="core_itinerary_b_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
@@ -437,7 +437,7 @@
                                             {{ __('Select level and grade') }}
                                         @endforelse
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -719,7 +719,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script>// Default Spin
-      
+
         $('.row51').each(function(index, element) {
             document.getElementById("modaly_course1_"+$(this).attr('course_id')).checked = false;
         });
@@ -737,11 +737,11 @@
         });
 
         function activeOption(){
-         
+
         }
         function active(){
             if($('input:radio[name=active]:checked').val()==1){
-             
+
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
                 });
@@ -755,7 +755,7 @@
                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = true;
                 });
             }else{
-              
+
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = true;
                 });
@@ -810,7 +810,7 @@
             }
         });
 
-        
+
 
         @if(!is_null(old('active')))
         active()

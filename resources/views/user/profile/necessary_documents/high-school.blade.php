@@ -122,7 +122,7 @@
 
     <script>
         // 1 hidden input
-        const imageInput = $('input[name=image_file]');
+        const imageInput = $('input[name=dni_document]');
         const imageDropzone = new Dropzone("#dniDocument", {
             url: "{{ route('upload.files', 'high_school') }}",
             addRemoveLinks: true,
@@ -153,7 +153,7 @@
     </script>
     <script>
         // 1 hidden input
-        const agreementInput = $('input[name=image_file]');
+        const agreementInput = $('input[name=agreement_document]');
         const agreementDropzone = new Dropzone("#agreementDocument", {
             url: "{{ route('upload.files', 'high_school') }}",
             addRemoveLinks: true,
@@ -184,7 +184,7 @@
     </script>
      <script>
         // 1 hidden input
-        const certificateInput = $('input[name=image_file]');
+        const certificateInput = $('input[name=certificate_document]');
         const certificateDropzone = new Dropzone("#certificateDocument", {
             url: "{{ route('upload.files', 'high_school') }}",
             addRemoveLinks: true,
@@ -215,7 +215,7 @@
     </script>
      <script>
         // 1 hidden input
-        const paymentInput = $('input[name=image_file]');
+        const paymentInput = $('input[name=payment_document]');
         const paymentDropzone = new Dropzone("#paymentDocument", {
             url: "{{ route('upload.files', 'high_school') }}",
             addRemoveLinks: true,

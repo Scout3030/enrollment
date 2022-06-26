@@ -129,7 +129,5 @@
         agreementDropzone.on("removedfile", function(file) {
             agreementInput.val('')
         });
-
     </script>
-
 @endpush

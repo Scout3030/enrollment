@@ -25,7 +25,6 @@ class StudentProfileRequest extends FormRequest
      */
     public function rules()
     {
-
         $student = auth()->user()->student;
 
         $rules = [

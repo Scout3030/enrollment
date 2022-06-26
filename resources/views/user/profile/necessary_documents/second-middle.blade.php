@@ -158,7 +158,7 @@
     </script>
      <script>
         // 1 hidden input
-        const certificateInput = $('input[name=image_file]');
+        const certificateInput = $('input[name=certificate_document]');
         const certificateDropzone = new Dropzone("#certificateDocument", {
             url: "{{ route('upload.files', 'second_middle') }}",
             addRemoveLinks: true,
