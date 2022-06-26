@@ -28,7 +28,8 @@ class EnrollmentRequest extends FormRequest
     {
         $student = auth()->user()->student;
 
-        if($student->grade_id == Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES) {
+        if($student->grade_id == Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES ||
+        $student->grade_id == Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES) {
              if($this->active1==1){
                  $course_A = $this->core_itinerary_a5;
              }
@@ -56,7 +57,7 @@ class EnrollmentRequest extends FormRequest
                  'elective_courses' => $electiveCourses,
              ]);
         }
-
+       
         if($student->grade_id == Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY || $student->grade_id == Grade::FIRST_HIGH_SCHOOL_GENERAL ||
         $student->grade_id == Grade::SECOND_HIGH_SCHOOL_SCIENCE) {
             if($this->active==1){
@@ -205,7 +206,8 @@ class EnrollmentRequest extends FormRequest
             ];
         }
 
-        if( $student->grade_id == Grade::SECOND_HIGH_SCHOOL_SCIENCE) {
+        if( $student->grade_id == Grade::SECOND_HIGH_SCHOOL_SCIENCE || 
+            $student->grade_id == Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES) {
             return [
                 'bus_stop_id' => [Rule::requiredIf(function () {
                     return $this->transportation == 1;

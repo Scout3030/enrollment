@@ -1326,6 +1326,12 @@ class CourseSeeder extends Seeder
                 'course_type_id' => CourseType::COMMON_OPTIONAL,
             ]);
             
+
+
+
+
+
+
             
 
 /************* SECOND_HIGH_SCHOOL_SCIENCE ******************************/
@@ -1556,6 +1562,260 @@ class CourseSeeder extends Seeder
                 ]);
 
 
+
+                 /************* SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES ******************************/
+
+                    Course::factory()
+                    ->create([
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'name' => 'History of Philosophy',
+                        'duration'=>'3',
+                        'course_type_id' => CourseType::CORE,
+                    ]);
+                    Course::factory()
+                    ->create([
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'name' => 'First Foreign Language II: English II',
+                        'duration'=>'4',
+                        'course_type_id' => CourseType::CORE,
+                    ]);
+                    Course::factory()
+                    ->create([
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'name' => 'History of Spain',
+                        'duration'=>'3',
+                        'course_type_id' => CourseType::CORE,
+                    ]);
+                    Course::factory()
+                    ->create([
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'name' => 'Spanish Language and Literature II',
+                        'duration'=>'4',
+                        'course_type_id' => CourseType::CORE,
+                    ]);
+
+                    Course::factory()
+                    ->create([
+                        'name' => 'Latin II',
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'course_type_id' => CourseType::ITINERARY_HUMANITIES,
+                        'duration'=>'4',
+                    ]);
+
+                    Course::factory()
+                    ->create([
+                        'name' => 'Applied mathematics to social sciences II',
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'course_type_id' => CourseType::ITINERARY_SCIENCES,
+                        'duration'=>'4',
+                    ]);
+
+                    Course::factory()
+                    ->create([
+                        'name' => 'Greek II',
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'course_type_id' => CourseType::ITINERARY_HUMANITIES,
+                        'group_one'=>Course::GROUP_COURSES_ONE_A,
+                        'duration'=>'4',
+                    ]);
+        
+                    Course::factory()
+                    ->create([
+                        'name' => 'Geography',
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'group_one'=>Course::GROUP_COURSES_ONE_A,
+                        'course_type_id' => CourseType::ITINERARY_HUMANITIES,
+                        'duration'=>'4',
+                    ]);
+
+                    Course::factory()
+                    ->create([
+                        'name' => 'business Economics',
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'course_type_id' => CourseType::ITINERARY_HUMANITIES,
+                        'group_one'=>Course::GROUP_COURSES_ONE_B,
+                        'duration'=>'4',
+                    ]);
+        
+                    Course::factory()
+                    ->create([
+                        'name' => 'History of art',
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'group_one'=>Course::GROUP_COURSES_ONE_B,
+                        'course_type_id' => CourseType::ITINERARY_HUMANITIES,
+                        'duration'=>'4',
+                    ]);
+
+
+                    Course::factory()
+                    ->create([
+                        'name' => 'Greek II',
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'course_type_id' => CourseType::ITINERARY_SCIENCES,
+                        'group_one'=>Course::GROUP_COURSES_TWO_A,
+                        'duration'=>'4',
+                    ]);
+        
+                    Course::factory()
+                    ->create([
+                        'name' => 'Geography',
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'group_one'=>Course::GROUP_COURSES_TWO_A,
+                        'course_type_id' => CourseType::ITINERARY_SCIENCES,
+                        'duration'=>'4',
+                    ]);
+
+                    Course::factory()
+                    ->create([
+                        'name' => 'business Economics',
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'course_type_id' => CourseType::ITINERARY_SCIENCES,
+                        'group_one'=>Course::GROUP_COURSES_TWO_B,
+                        'duration'=>'4',
+                    ]);
+        
+                    Course::factory()
+                    ->create([
+                        'name' => 'History of art',
+                        'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                        'group_one'=>Course::GROUP_COURSES_TWO_B,
+                        'course_type_id' => CourseType::ITINERARY_SCIENCES,
+                        'duration'=>'4',
+                    ]);
+
+                    Course::factory()
+                ->create([
+                    'name' => 'Image and sound',
+                    'duration'=>'3',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_B,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+                Course::factory()
+                ->create([
+                    'name' => 'TIC II',
+                    'duration'=>'3',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_B,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+                Course::factory()
+                ->create([
+                    'name' => 'Psychology',
+                    'duration'=>'3',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_B,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+                Course::factory()
+                ->create([
+                    'name' => 'Second Foreign Language II: French II',
+                    'duration'=>'3',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_B,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+                Course::factory()
+                ->create([
+                    'name' => 'Asturian language II',
+                    'duration'=>'1',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_B,
+                    'group_two'=>Course::GROUP_COURSES_TWO_B,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+                Course::factory()
+                ->create([
+                    'name' => 'Research project II',
+                    'duration'=>'1',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_B,
+                    'group_two'=>Course::GROUP_COURSES_TWO_B,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+                Course::factory()
+                ->create([
+                    'name' => 'active lifestyle',
+                    'duration'=>'1',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_B,
+                    'group_two'=>Course::GROUP_COURSES_TWO_B,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+                Course::factory()
+                ->create([
+                    'name' => 'Religion',
+                    'duration'=>'1',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_B,
+                    'group_two'=>Course::GROUP_COURSES_TWO_B,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+
+
+                Course::factory()
+                ->create([
+                    'name' => 'Foundation of administration and management',
+                    'duration'=>'4',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_A,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+
+                Course::factory()
+                ->create([
+                    'name' => 'History of music and dance',
+                    'duration'=>'4',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_A,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+                Course::factory()
+                ->create([
+                    'name' => 'Geography',
+                    'duration'=>'4',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_A,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+                Course::factory()
+                ->create([
+                    'name' => 'Economy',
+                    'duration'=>'4',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_A,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+                Course::factory()
+                ->create([
+                    'name' => 'Greek II',
+                    'duration'=>'4',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_A,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+                Course::factory()
+                ->create([
+                    'name' => 'History of art',
+                    'duration'=>'4',
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                    'group_one'=>Course::GROUP_COURSES_ONE_A,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
+                     'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
+                ]);
+
+
+
+
             
-    }
+    }   
 }
