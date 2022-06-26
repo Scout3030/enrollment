@@ -31,11 +31,13 @@ class Grade extends Model
 {
     use HasFactory;
 
+    // ESO
     const FIRST_MIDDLE_SCHOOL = 1;
     const SECOND_MIDDLE_SCHOOL = 2;
     const THIRD_MIDDLE_SCHOOL = 3;
     const FOURTH_MIDDLE_SCHOOL = 4;
 
+    // PMAR
     const FIRST_HIGH_SCHOOL = 5;
     const SECOND_HIGH_SCHOOL = 6;
     const THIRD_HIGH_SCHOOL = 7;
@@ -45,7 +47,6 @@ class Grade extends Model
     const FIRST_HIGH_SCHOOL_GENERAL = 10;
     const SECOND_HIGH_SCHOOL_SCIENCE = 11;
     const SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES = 12;
-    
 
     public function getNameAttribute($value)
     {

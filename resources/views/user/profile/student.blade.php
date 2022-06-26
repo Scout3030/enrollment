@@ -249,7 +249,7 @@
                                                         name="parents_condition"
                                                         id="parents_condition_separated"
                                                         value="0"
-                                                        {{ auth()->user()->student->id ? (auth()->user()->student->parents_condition == \App\Models\Student::SEPARATED? 'checked' : '') : '' }}
+                                                        {{ old('parents_condition') && old('parents_condition') == \App\Models\Student::SEPARATED ? 'checked' : '' }}
                                                     />
                                                     <label class="form-check-label" for="parents_condition_separated">{{ __('Separated') }}</label>
                                                 </div>
@@ -260,7 +260,8 @@
                                                         name="parents_condition"
                                                         id="parents_condition_married"
                                                         value="1"
-                                                        {{ auth()->user()->student->id ? (auth()->user()->student->parents_condition == \App\Models\Student::MARRIED? 'checked' : '') : '' }}
+                                                        {{ old('parents_condition') && old('parents_condition') == \App\Models\Student::MARRIED ? 'checked' : '' }}
+                                                        {{ !old('parents_condition') ? 'checked' : '' }}
                                                     />
                                                     <label class="form-check-label" for="parents_condition_married">{{ __('Married') }}</label>
                                                 </div>
@@ -271,7 +272,7 @@
                                                         name="parents_condition"
                                                         id="parents_condition_cohabitants"
                                                         value="2"
-                                                        {{ auth()->user()->student->id ? (auth()->user()->student->parents_condition == \App\Models\Student::COHABITANTS? 'checked' : '') : '' }}
+                                                        {{ old('parents_condition') && old('parents_condition') == \App\Models\Student::COHABITANTS ? 'checked' : '' }}
                                                     />
                                                     <label class="form-check-label" for="parents_condition_cohabitants">{{ __('Cohabitants') }}</label>
                                                 </div>
@@ -426,15 +427,17 @@
         <input type="hidden" id="image" name="certificate_document" value="">
     </form>
 
+    {{--ESO--}}
     @if (auth()->user()->student->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL)
         @include('user.profile.necessary_documents.first-middle')
     @endif
     @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL)
         @include('user.profile.necessary_documents.second-middle')
     @endif
-    @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL)
+    @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL || auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
         @include('user.profile.necessary_documents.third-fourth-middle')
     @endif
+    {{--PMAR--}}
     @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)
         @include('user.profile.necessary_documents.high-school')
     @endif

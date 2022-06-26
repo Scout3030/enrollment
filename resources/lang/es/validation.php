@@ -167,6 +167,7 @@ return [
         'second_tutor_address' => 'dirección del segundo tutor',
         'second_tutor_phone_number' => 'teléfono del segundo tutor',
         'grade_id' => 'grado',
-        'middle_name' => 'segundo nombre'
+        'middle_name' => 'segundo nombre',
+        "previous school" => 'colegio anterior'
     ],
 ];

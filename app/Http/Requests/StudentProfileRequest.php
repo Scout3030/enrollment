@@ -60,6 +60,7 @@ class StudentProfileRequest extends FormRequest
             'agreement_document'=>[Rule::requiredIf(function () {
                 return $this->parents_condition == 0;
             })],
+            'previous_school' => 'nullable|min:10'
         ];
 
         $moreRules = [];
@@ -67,17 +68,23 @@ class StudentProfileRequest extends FormRequest
         if($student->grade_id == Grade::SECOND_MIDDLE_SCHOOL) {
             $moreRules = [
                 'certificate_document'=>[Rule::requiredIf(function () {
-                    return $this->previous_school ==null;
+                    return $this->previous_school == null;
                 })],
             ];
         }
 
         if($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
             $moreRules = [
-                'payment_document'=>'required',
-                'certificate_document'=>[Rule::requiredIf(function () {
+                'payment_document' => 'required',
+                'certificate_document' => [Rule::requiredIf(function () {
                     return $this->previous_school ==null;
                 })],
+            ];
+        }
+
+        if($student->grade_id == Grade::SECOND_HIGH_SCHOOL || $student->grade_id == Grade::THIRD_HIGH_SCHOOL) {
+            $moreRules = [
+                'payment_document' => 'required',
             ];
         }
 
