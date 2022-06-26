@@ -32,10 +32,14 @@
                 </div>
                 <div class="mb-1">
                     <label class="form-label" for="level_id">{{ __('Level')}}</label>
-                    <select class="form-control" id="level_id" name="level_id"></select>
+                    <select class="select2 form-select" id="level_id" name="level_id">
+                        @foreach(\App\Models\Level::get() as $level)
+                            <option value="{{ $level->id }}">{{ __($level->custom_name) }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
-                <div class="mb-1 grade d-none">
+                <div class="mb-1">
                     <label class="form-label" for="grade_id">{{ __('Grade')}}</label>
                     <select class="form-control" id="grade_id" name="grade_id"></select>
                 </div>

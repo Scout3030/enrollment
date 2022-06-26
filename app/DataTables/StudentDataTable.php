@@ -81,11 +81,11 @@ class StudentDataTable extends DataTable
             ->addColumn('email', function(Student $student){
                 return $student->user->email;
             })
+            ->addColumn('level', function(Student $student) {
+                return __($student->grade->level->custom_name);
+            })
             ->addColumn('grade', function(Student $student) {
                 return $student->grade->name;
-            })
-            ->addColumn('level', function(Student $student) {
-                return $student->grade->level->name;
             })
             ->addColumn('action', 'student.datatable.action');
     }

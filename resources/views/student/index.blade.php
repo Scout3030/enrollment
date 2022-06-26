@@ -88,39 +88,49 @@
             @endcan
 
             @can('create students')
-            $('#modals-slide-in').on('shown.bs.modal', function () {
+            const levelNode = $('#level_id')
+            const gradeNode = $("#grade_id")
+            const typeNode = $("#course_type_id")
 
-                $('#level_id').select2({
-                    ajax: {
-                        url: "{{ route('levels.index') }}",
-                        dataType: 'JSON',
-                        processResults: (data) => {
-                            return {
-                                results: data.data
-                            }
+            let firstLevelId = levelNode.select2().val()
+            populateSelect(firstLevelId)
+            populateTypesSelect(firstLevelId)
+
+            levelNode.on('change', function(){
+                const levelId = $(this).val()
+                populateSelect(levelId)
+                populateTypesSelect(levelId)
+            })
+
+            function populateSelect(levelId){
+                $.ajax({
+                    url: `{{ route('grades.index') }}/level/${levelId}`,
+                    type: 'GET',
+                    success: (data, textStatus, xhr) => {
+                        if(xhr.status === 200) {
+                            gradeNode.empty();
+                            gradeNode.select2({
+                                data: data.data
+                            });
                         }
                     }
-                }).on('select2:select', (e) => {
+                })
+            }
 
-                    $('.grade').addClass('d-none');
-
-                    const data = e.params.data;
-
-                    $('#grade_id').select2({
-                        ajax: {
-                            url: `/grades/level/${data.id}`,
-                            dataType: 'JSON',
-                            processResults: (data) => {
-                                return {
-                                    results: data.data
-                                }
-                            }
+            function populateTypesSelect(levelId){
+                $.ajax({
+                    url: `{{ route('courseTypes.index') }}/level/${levelId}`,
+                    type: 'GET',
+                    success: (data, textStatus, xhr) => {
+                        if(xhr.status === 200) {
+                            typeNode.empty();
+                            typeNode.select2({
+                                data: data.data
+                            });
                         }
-                    });
-
-                    $('.grade').removeClass('d-none');
-                });
-            })
+                    }
+                })
+            }
             @endcan
         })
     </script>
