@@ -23,6 +23,11 @@ class GradeSeeder extends Seeder
             ['name' => 'First', 'level_id' => Level::HIGH_SCHOOL],
             ['name' => 'Second', 'level_id' => Level::HIGH_SCHOOL],
             ['name' => 'Third', 'level_id' => Level::HIGH_SCHOOL],
+            ['name' => 'first science technology', 'level_id' => Level::HIGH_SCHOOL],
+            ['name' => 'first humanities sciences', 'level_id' => Level::HIGH_SCHOOL],
+            ['name' => 'first general', 'level_id' => Level::HIGH_SCHOOL],
+            ['name' => 'second science', 'level_id' => Level::HIGH_SCHOOL],
+            ['name' => 'second humanities sciences', 'level_id' => Level::HIGH_SCHOOL],
             ['name' => 'First', 'level_id' => Level::PROFESSIONAL_TRAINING],
             ['name' => 'Second', 'level_id' => Level::PROFESSIONAL_TRAINING],
         ];

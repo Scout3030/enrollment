@@ -31,6 +31,20 @@ class CourseTypeSeeder extends Seeder
             'Specific free configuration',
             'Intro high school',
             'Intro professional training',
+            'Modality',
+            'Modality_option',
+            'Core modality',
+            'Core modality option one',
+            'Core modality option two',
+            'Core modality option third',
+            'Core modality option fourth',
+            'Core modality option five',
+            'Common optional',
+            'Itinerary humanities ',
+            'Itinerary sciences',
+            'Itinerary humanities option',
+            'Itinerary sciences option',
+
         ];
 
         foreach ($types as $type){

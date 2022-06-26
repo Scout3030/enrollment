@@ -179,6 +179,141 @@ class EnrollmentController extends Controller
                         return view('enrollment.create.third-high-school',
                             compact('commonCourses','commonCoursesAreas', 'commonOptionalOneCourses', 'commonOptionalTwoCourses'));
                     }
+                    case Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY: {
+
+                        $commonCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON)
+                            ->get();
+
+                        $modalitiesCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::MODALITY)
+                            ->get();                           
+
+                        $modalityOption = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::MODALITY_OPTION)
+                            ->get();
+
+                        $coursesItineraryA = Course::whereGradeId($gradeId)
+                              ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_ONE)
+                            ->get();
+
+                        $coursesItineraryB = Course::whereGradeId($gradeId)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_A)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_TWO)
+                            ->get();
+
+                        $coursesItineraryC = Course::whereGradeId($gradeId)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_B)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_TWO)
+                            ->get();
+
+                        $coursesItineraryD = Course::whereGradeId($gradeId)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_B)
+                            ->whereCourseTypeId(CourseType::ITINERARY)
+                            ->get();
+
+                        $coursesSpecific = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL)
+                            ->get();
+
+                        return view('enrollment.create.high-school-science-technology',
+                            compact('commonCourses','modalitiesCourses','modalityOption','coursesItineraryA','coursesItineraryB',
+                                'coursesItineraryC','coursesItineraryD','coursesSpecific'));
+                    }
+
+                    case Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES: {
+
+                        $commonCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON)
+                            ->get();
+
+                        $modalitiesCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::ITINERARY_HUMANITIES)
+                            ->get();                           
+
+                        $modalityOption = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::ITINERARY_SCIENCES)
+                            ->get();
+
+                        $coursesItineraryA = Course::whereGradeId($gradeId)
+                              ->whereCourseTypeId(CourseType::ITINERARY_HUMANITIES_OPTION)
+                            ->get();
+                        
+                        $coursesItinerarySciences = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::ITINERARY_SCIENCES_OPTION)
+                             ->get();
+
+                        $coursesItineraryB = Course::whereGradeId($gradeId)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_A)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_TWO)
+                            ->get();
+
+                        $coursesItineraryC = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_ONE)
+                            ->get();
+
+                        $coursesItineraryD = Course::whereGradeId($gradeId)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_B)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_TWO)
+                            ->get();
+
+                        $coursesSpecific = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL)
+                            ->get();
+
+                        return view('enrollment.create.high-school-humanities-science',
+                            compact('commonCourses','modalitiesCourses','modalityOption','coursesItinerarySciences','coursesItineraryA','coursesItineraryB',
+                                'coursesItineraryC','coursesItineraryD','coursesSpecific'));
+                    }
+                    case Grade::FIRST_HIGH_SCHOOL_GENERAL: {
+
+                        $commonCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON)
+                            ->get();
+
+                        $modalitiesCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::MODALITY)
+                            ->get();                           
+
+                        $modalityOption = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::MODALITY_OPTION)
+                            ->get();
+
+                        $coursesItineraryA = Course::whereGradeId($gradeId)
+                              ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_ONE)
+                            ->get();
+
+                        $coursesItineraryB = Course::whereGradeId($gradeId)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_A)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_TWO)
+                            ->get();
+
+                        $coursesItineraryC = Course::whereGradeId($gradeId)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_B)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_TWO)
+                            ->get();
+
+                        $coursesItineraryD = Course::whereGradeId($gradeId)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_B)
+                            ->whereCourseTypeId(CourseType::ITINERARY)
+                            ->get();
+
+                        $coursesSpecific = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL)
+                            ->get();
+
+                        return view('enrollment.create.high-school-general',
+                            compact('commonCourses','modalitiesCourses','modalityOption','coursesItineraryA','coursesItineraryB',
+                                'coursesItineraryC','coursesItineraryD','coursesSpecific'));
+                    }
                 }
             }
             case Level::PROFESSIONAL_TRAINING: {
@@ -195,6 +330,7 @@ class EnrollmentController extends Controller
      */
     public function store(EnrollmentRequest $request)
     {
+       
         $student = auth()->user()->student;
         $grade = $student->grade;
         $student->fill([
@@ -297,6 +433,119 @@ class EnrollmentController extends Controller
             $enrollment->courses()->attach($request->elective_courses_free);
 
         }
+
+        if($grade->id == Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY || $grade->id == Grade::FIRST_HIGH_SCHOOL_GENERAL){
+
+            
+            if($request->active==1)
+            {
+                $enrollment->courses()->attach($request->elective_courses);
+            }
+            else{
+                $enrollment->courses()->attach($request->elective_courses);
+                $enrollment->courses()->attach($request->elective_courses_free);
+            }
+
+           
+            $commonCourses = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::COMMON)
+                ->get();
+
+             $modalitiesCourses = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::MODALITY)
+                ->get(); 
+
+            $enrollment->courses()->attach($commonCourses);
+            $enrollment->courses()->attach($modalitiesCourses);
+            $enrollment->courses()->attach($request->one_courses);
+            if($request->modality==1){
+                $coursesSpecific = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::COMMON_OPTIONAL)
+                ->first();
+                $enrollment->courses()->attach( $coursesSpecific->id);
+            }
+        }
+
+        if($grade->id == Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES){
+
+            
+            if($request->active==1)
+            {
+                $enrollment->courses()->attach($request->elective_courses);
+            }
+            else{
+                $enrollment->courses()->attach($request->elective_courses);
+                $enrollment->courses()->attach($request->elective_courses_free);
+            }
+
+            if($request->active1==1)
+            {
+                $modalitiesCourses = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::ITINERARY_HUMANITIES)
+                ->get();  
+                $enrollment->courses()->attach($modalitiesCourses); 
+                $enrollment->courses()->attach($request->one_courses);
+            }
+            else{
+                $modalityOption = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::ITINERARY_SCIENCES)
+                ->get();
+                $enrollment->courses()->attach($modalityOption); 
+                $enrollment->courses()->attach($request->one_courses2);
+            }
+
+           
+                $commonCourses = Course::whereGradeId($student->grade_id)
+                    ->whereCourseTypeId(CourseType::COMMON)
+                    ->get();
+
+                    
+                $coursesItineraryA = Course::whereGradeId($student->grade_id)
+                    ->whereCourseTypeId(CourseType::ITINERARY_HUMANITIES_OPTION)
+                    ->get();
+
+                    $enrollment->courses()->attach($commonCourses);
+                    
+                    $enrollment->courses()->attach($modalityOption);
+                    if($request->modality==1){
+                        $coursesSpecific = Course::whereGradeId($student->grade_id)
+                        ->whereCourseTypeId(CourseType::COMMON_OPTIONAL)
+                        ->first();
+                        $enrollment->courses()->attach( $coursesSpecific->id);
+                    }          
+        }
+
+      /*  if($grade->id == Grade::FIRST_HIGH_SCHOOL_GENERAL){
+
+            
+            if($request->active==1)
+            {
+                $enrollment->courses()->attach($request->elective_courses);
+            }
+            else{
+                $enrollment->courses()->attach($request->elective_courses);
+                $enrollment->courses()->attach($request->elective_courses_free);
+            }
+
+           
+            $commonCourses = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::COMMON)
+                ->get();
+
+             $modalitiesCourses = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::MODALITY)
+                ->get(); 
+
+            $enrollment->courses()->attach($commonCourses);
+            $enrollment->courses()->attach($modalitiesCourses);
+            $enrollment->courses()->attach($request->one_courses);
+            if($request->modality==1){
+                $coursesSpecific = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::COMMON_OPTIONAL)
+                ->first();
+                $enrollment->courses()->attach( $coursesSpecific->id);
+            }
+        }*/
         return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
     }
 
