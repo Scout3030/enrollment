@@ -7,11 +7,8 @@
 namespace App\DataTables;
 
 use App\Models\Student;
-use App\Models\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class StudentDataTable extends DataTable
@@ -61,6 +58,7 @@ class StudentDataTable extends DataTable
             })
             ->orderColumn('names', function ($query, $order) {
                 $query->join('users', 'users.id', '=', 'students.user_id')
+                    ->select('students.*')
                     ->orderBy('name', $order);
             })
             ->orderColumn('grade', function ($query, $order) {
