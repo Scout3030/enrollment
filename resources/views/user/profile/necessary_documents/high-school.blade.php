@@ -9,7 +9,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4 class="card-title">{{ __('student Dni') }}</h4>
+                        <h4 class="card-title">{{ __('student DNI') }}</h4>
+                        <p>{{ __('student DNI description') }}</p>
                         <div>
                             <form action="#" class="dropzone dropzone-area" id="dniDocument">
                                 @csrf
@@ -88,6 +89,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h4 class="card-title">{{ __('Official Academic Certificate of Studies') }}</h4>
+                        <p>{{ __('Boletin de notas is not allowed') }}</p>
                         <div>
                             <form action="#" class="dropzone dropzone-area" id="certificateDocument">
                                 @csrf

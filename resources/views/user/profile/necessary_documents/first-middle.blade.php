@@ -9,7 +9,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4 class="card-title">{{ __('student Dni') }}</h4>
+                        <h4 class="card-title">{{ __('student DNI') }}</h4>
+                        <p>{{ __('student DNI description') }}</p>
                         <div>
                             <form action="#" class="dropzone dropzone-area" id="dniDocument">
                                 @csrf
@@ -35,7 +36,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4 class="card-title">{{ __('Minor Custody Regulatory Agreement') }}  {{ __('(only if the parents are separated)') }}</h4>
+                        <h4 class="card-title">{{ __('Minor Custody Regulatory Agreement') }}</h4>
+                        <p>{{ __('Only if the parents are separated') }}</p>
                         <div>
                             <form action="#" class="dropzone dropzone-area" id="agreementDocument">
                                 @csrf

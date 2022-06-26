@@ -315,7 +315,7 @@
                 <div class="col-sm-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Specific') }}</h4>
+                            <h4 class="card-title">{{ __('Specific female plural') }}</h4>
                             <p>{{ __('optional courses info') }}</p>
                         </div>
                         <div class="card-body">
@@ -757,20 +757,22 @@
         });
 
         function activeOption(){
-            if($('input:radio[name=active_option]:checked').val()==1){
-                $('.row1').each(function(index, element) {
-                    document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = true;
-                });
-                $('.row2').each(function(index, element) {
-                    document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
-                });
-            } else {
-                $('.row2').each(function(index, element) {
-                    document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = true;
-                });
-                $('.row1').each(function(index, element) {
-                    document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
-                });
+            if($('input:radio[name=active]:checked').val()==1){
+                if($('input:radio[name=active_option]:checked').val()==1){
+                    $('.row1').each(function(index, element) {
+                        document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = true;
+                    });
+                    $('.row2').each(function(index, element) {
+                        document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
+                    });
+                } else {
+                    $('.row2').each(function(index, element) {
+                        document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = true;
+                    });
+                    $('.row1').each(function(index, element) {
+                        document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
+                    });
+                }
             }
         }
         function active(){

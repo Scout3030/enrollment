@@ -210,14 +210,6 @@ class CourseSeeder extends Seeder
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
-            Course::factory()
-            ->create([
-                'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'center matter',
-                'duration'=>'2',
-                'course_type_id' => CourseType::FREE_CONFIGURATION,
-            ]);
-
             /** 2º ESO PMAR */
 
             Course::factory()
@@ -293,7 +285,7 @@ class CourseSeeder extends Seeder
             Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'center matter',
+                'name' => 'Center matter',
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
@@ -470,7 +462,7 @@ class CourseSeeder extends Seeder
             Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                'name' => 'center matter',
+                'name' => 'Center matter',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
