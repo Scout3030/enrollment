@@ -33,7 +33,6 @@ class EnrollmentController extends Controller
         $student->load(['grade.level'])->get();
         $gradeId = $student->grade->id;
         $levelId = $student->grade->level->id;
-
         switch ($levelId) {
             case Level::MIDDLE_SCHOOL: {
                 switch ($gradeId) {
@@ -431,6 +430,65 @@ class EnrollmentController extends Controller
                     }
                 }
             }
+
+
+            case Level::EDUCATIONAL_CYCLE: {
+                switch ($gradeId) {
+                    case Grade::FIRST_EDUCATIONAL_CYCLE_BASIC: {
+
+                        $commonCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::ASSOCIATED_UNITS_OF_COMPETENCES)
+                            ->get();
+
+                        $commonCourses1 = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::ASSOCIATED_COMMON_BLOCKS)
+                            ->get();
+
+                        $commonCourses2 = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::FORMATION_WORKSPACE)
+                            ->get();
+
+                        return view('enrollment.create.educational-cycle-basic',
+                            compact('commonCourses','commonCourses1','commonCourses2'));
+                    }
+                    case Grade::SECOND_EDUCATIONAL_CYCLE_BASIC: {
+
+                        $commonCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::ASSOCIATED_UNITS_OF_COMPETENCES)
+                            ->get();
+
+                        $commonCourses1 = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::ASSOCIATED_COMMON_BLOCKS)
+                            ->get();
+
+                        $commonCourses2 = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::FORMATION_WORKSPACE)
+                            ->get();
+
+                        return view('enrollment.create.educational-cycle-basic',
+                            compact('commonCourses','commonCourses1','commonCourses2'));
+                    }
+                    case Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM: {
+
+                        $commonCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::CF_COMMON)
+                            ->get();
+
+                        return view('enrollment.create.educational-cycle-medium',
+                            compact('commonCourses'));
+                    }
+                    case Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM: {
+
+                        $commonCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::CF_COMMON)
+                            ->get();
+
+                        return view('enrollment.create.educational-cycle-medium',
+                            compact('commonCourses'));
+                    }
+
+                }
+            }
             default:
                 abort(403, __('No permissions'));
         }
@@ -720,6 +778,17 @@ class EnrollmentController extends Controller
                 $enrollment->courses()->attach($request->one_courses2);
             }
         }
+
+       if( $grade->id == Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM || $grade->id == Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM) {
+
+            $commonCourses = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::CF_COMMON)
+                ->get();
+                $enrollment->courses()->attach($commonCourses);
+
+        }
+
+
 
         return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
     }

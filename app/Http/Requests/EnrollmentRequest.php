@@ -223,6 +223,28 @@ class EnrollmentRequest extends FormRequest
             ];
         }
 
+        if( $student->grade_id == Grade::FIRST_EDUCATIONAL_CYCLE_BASIC || 
+        $student->grade_id == Grade::SECOND_EDUCATIONAL_CYCLE_BASIC) {
+        return [
+            'bus_stop_id' => [Rule::requiredIf(function () {
+                return $this->transportation == 1;
+            }), 'exists:bus_stops,id'],
+            'first_tutor_signature'=>['required'],
+            'student_signature'=>['required'],
+        ];
+    }
+
+    if( $student->grade_id == Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM || 
+        $student->grade_id == Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM) {
+        return [
+            'bus_stop_id' => [Rule::requiredIf(function () {
+                return $this->transportation == 1;
+            }), 'exists:bus_stops,id'],
+            'first_tutor_signature'=>['required'],
+            'student_signature'=>['required'],
+        ];
+    }
+
         return [];
     }
 }
