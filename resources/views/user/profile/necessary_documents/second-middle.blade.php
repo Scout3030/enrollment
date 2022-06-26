@@ -98,7 +98,7 @@
             url: "{{ route('upload.files', 'second_middle') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
-            acceptedFiles: ".jpeg,.jpg,.png,.gif",
+            acceptedFiles: ".jpeg,.jpg,.png,.pdf",
             init: function() {
                 this.on("success", function (file, response) {
                     imageInput.val(response)
@@ -129,7 +129,7 @@
             url: "{{ route('upload.files', 'second_middle') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
-            acceptedFiles: ".jpeg,.jpg,.png,.gif",
+            acceptedFiles: ".jpeg,.jpg,.png,.pdf",
             init: function() {
                 this.on("success", function (file, response) {
                     agreementInput.val(response)
@@ -160,7 +160,7 @@
             url: "{{ route('upload.files', 'second_middle') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
-            acceptedFiles: ".jpeg,.jpg,.png,.gif",
+            acceptedFiles: ".jpeg,.jpg,.png,.pdf",
             init: function() {
                 this.on("success", function (file, response) {
                     certificateInput.val(response)
