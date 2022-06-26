@@ -30,8 +30,6 @@ class GradeSeeder extends Seeder
             ['name' => 'first general', 'level_id' => Level::BACHELOR],
             ['name' => 'second science', 'level_id' => Level::BACHELOR],
             ['name' => 'second humanities sciences', 'level_id' => Level::BACHELOR],
-            ['name' => 'First', 'level_id' => Level::BACHELOR],
-            ['name' => 'Second', 'level_id' => Level::BACHELOR],
 
             ['name' => '1 FPB', 'level_id' => Level::EDUCATIONAL_CYCLE],
             ['name' => '2 FPB', 'level_id' => Level::EDUCATIONAL_CYCLE],
