@@ -37,10 +37,10 @@ class StudentProfileRequest extends FormRequest
             'birth' => 'required|date',
             'address' => 'required|string|min:3',
             'address_number' => 'required|string',
-            'door' => 'required|string',
-            'stair' => 'required|string',
-            'floor' => 'required|string',
-            'letter' => 'required|string',
+            'door' => 'nullable|string',
+            'stair' => 'nullable|string',
+            'floor' => 'nullable|string',
+            'letter' => 'nullable|string',
             'postal_code' => 'required|string',
 
             'first_tutor_dni' => 'required|string|min:8|max:8',
@@ -49,31 +49,24 @@ class StudentProfileRequest extends FormRequest
             'first_tutor_email' => 'required|email',
             'first_tutor_address' => 'required|string|min:3',
 
-            'second_tutor_dni' => 'required|string|min:8|max:8',
-            'second_tutor_full_name' => 'required|string|min:3',
-            'second_tutor_phone_number' => 'required|string|min:6',
-            'second_tutor_email' => 'required|email',
-            'second_tutor_address' => 'required|string|min:3',
+            'second_tutor_dni' => 'nullable|string|min:8|max:8',
+            'second_tutor_full_name' => 'nullable|string|min:3',
+            'second_tutor_phone_number' => 'nullable|string|min:6',
+            'second_tutor_email' => 'nullable|email',
+            'second_tutor_address' => 'nullable|string|min:3',
 
-            'parents_condition' => 'required'
+            'parents_condition' => 'required',
+
+            'dni_document'=>'required',
+            'agreement_document'=>[Rule::requiredIf(function () {
+                return $this->parents_condition == 0;
+            })],
         ];
-        $moreRules = [];
 
-        if($student->grade_id == Grade::FIRST_MIDDLE_SCHOOL) {
-            $moreRules = [
-                'dni_document'=>'required',
-                'agreement_document'=>[Rule::requiredIf(function () {
-                    return $this->parents_condition == 0;
-                })],
-            ];
-        }
+        $moreRules = [];
 
         if($student->grade_id == Grade::SECOND_MIDDLE_SCHOOL) {
             $moreRules = [
-                'dni_document'=>'required',
-                'agreement_document'=>[Rule::requiredIf(function () {
-                    return $this->parents_condition == 0;
-                })],
                 'certificate_document'=>[Rule::requiredIf(function () {
                     return $this->previous_school ==null;
                 })],
@@ -82,17 +75,13 @@ class StudentProfileRequest extends FormRequest
 
         if($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
             $moreRules = [
-                'dni_document'=>'required',
                 'payment_document'=>'required',
-                'agreement_document'=>[Rule::requiredIf(function () {
-                    return $this->parents_condition == 0;
-                })],
                 'certificate_document'=>[Rule::requiredIf(function () {
                     return $this->previous_school ==null;
                 })],
             ];
         }
-        
+
         return array_merge($rules, $moreRules);
     }
 }
