@@ -39,7 +39,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Common courses') }}</h4>
+                            <h4 class="card-title">{{ __('Common subjects') }} ({{ __('mandatory') }})</h4>
                         </div>
                         <div class="card-body">
                             <div  class="row custom-options-checkable g-1">
@@ -55,7 +55,7 @@
                                         />
                                         <label class="custom-option-item p-1" for="common_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                             </span>
                                         </label>
                                     </div>
@@ -73,7 +73,7 @@
                 <div class="col-sm-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Optional courses') }}</h4>
+                            <h4 class="card-title">{{ __('Optional subjects') }}</h4>
                             <p>{{ __('optional courses info') }}</p>
                         </div>
                         <div class="card-body">
@@ -107,9 +107,9 @@
                                                                 onclick="this.checked = true"
                                                             />
                                                             <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
-                                                        <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
-                                                        </span>
+                                                            <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                                <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
+                                                            </span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -131,7 +131,7 @@
                                                     />
                                                     <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -158,7 +158,7 @@
                                         />
                                         <label class="custom-option-item p-1" for="common_optional_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                             </span>
                                         </label>
                                     </div>

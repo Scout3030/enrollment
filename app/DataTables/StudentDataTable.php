@@ -7,11 +7,8 @@
 namespace App\DataTables;
 
 use App\Models\Student;
-use App\Models\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class StudentDataTable extends DataTable
@@ -61,6 +58,7 @@ class StudentDataTable extends DataTable
             })
             ->orderColumn('names', function ($query, $order) {
                 $query->join('users', 'users.id', '=', 'students.user_id')
+                    ->select('students.*')
                     ->orderBy('name', $order);
             })
             ->orderColumn('grade', function ($query, $order) {
@@ -81,11 +79,11 @@ class StudentDataTable extends DataTable
             ->addColumn('email', function(Student $student){
                 return $student->user->email;
             })
+            ->addColumn('level', function(Student $student) {
+                return __($student->grade->level->custom_name);
+            })
             ->addColumn('grade', function(Student $student) {
                 return $student->grade->name;
-            })
-            ->addColumn('level', function(Student $student) {
-                return $student->grade->level->name;
             })
             ->addColumn('action', 'student.datatable.action');
     }
@@ -126,7 +124,7 @@ class StudentDataTable extends DataTable
                         <"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i>
                         <"col-sm-12 col-md-6"p>
                     >')
-                    ->orderBy(0)
+                    ->orderBy(1, 'asc')
                     ->buttons(
                         Button::make([])
                             ->extend('collection')
@@ -183,6 +181,12 @@ class StudentDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('id')
+                ->title('Id')
+                ->searchable(false)
+                ->orderable(false)
+                ->visible(false)
+                ->footer('Id'),
             Column::make('names')
                 ->title(__('Names'))
                 ->searchable(true)

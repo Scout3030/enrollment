@@ -57,12 +57,10 @@ class Level extends Model
 
     public function getCustomNameAttribute()
     {
-        $levels = [
+        return [
             Level::MIDDLE_SCHOOL => 'ESO',
             Level::HIGH_SCHOOL => 'PMAR',
             Level::PROFESSIONAL_TRAINING => 'FP'
-        ];
-
-        return $levels[$this->id];
+        ][$this->id];
     }
 }

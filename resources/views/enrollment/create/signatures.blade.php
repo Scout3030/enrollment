@@ -28,7 +28,7 @@
                         <div class="demo-inline-spacing">
                             <div class="modal-content">
                                 <ul class="head-links nav nav-tabs nav-tabs-custom nav-justified">
-                                    <li type="capture" class="active nav-item " role="tablist"><a data-toggle="tab" class="nav-link active" aria-selected="true" href="#text">Text</a></li>
+                                    <li type="capture" class="active nav-item " role="tablist"><a data-toggle="tab" class="nav-link active" aria-selected="true" href="#text">{{__('Text')}}</a></li>
                                     <li type="upload" class="nav-item"><a data-toggle="tab" class="nav-link" aria-selected="false" href="#upload">{{__('Upload')}}</a></li>
                                     <li type="draw" class="nav-item"><a data-toggle="tab"  class="nav-link" aria-selected="false" href="#draw">{{__('Draw') }}</a></li>
                                 </ul>
@@ -90,9 +90,9 @@
                                                 </div>
                                             </form>
                                             <div class="divider"></div>
-                                            <h4 class="text-center">Preview</h4>
+                                            <h4 class="text-center">{{__('Preview')}}</h4>
                                             <div class="text-signature-preview">
-                                                <div class="text-signature" id="text-signature" style="color: #000000">{{ __('Signature student') }}</div>
+                                                <div class="text-signature" id="text-signature" style="color: #000000; font-size: 30px">{{ __('Signature student') }}</div>
                                             </div>
                                             <br>
                                             <div class="row" align="right">
@@ -163,7 +163,7 @@
                         <div class="demo-inline-spacing">
                             <div class="modal-content">
                                 <ul class="head-links-tutor1 nav nav-tabs nav-tabs-custom nav-justified">
-                                    <li type="capturetutor1" class="active nav-item " role="tablist"><a data-toggle="tab" class="nav-link active" aria-selected="true" href="#texttutor1">Text</a></li>
+                                    <li type="capturetutor1" class="active nav-item " role="tablist"><a data-toggle="tab" class="nav-link active" aria-selected="true" href="#texttutor1">{{__('Text')}}</a></li>
                                     <li type="uploadtutor1" class="nav-item"><a data-toggle="tab" class="nav-link" aria-selected="false" href="#uploadtutor1">{{__('Upload')}}</a></li>
                                     <li type="drawtutor1" class="nav-item"><a data-toggle="tab"  class="nav-link" aria-selected="false" href="#drawtutor1">{{__('Draw') }}</a></li>
                                 </ul>
@@ -225,9 +225,9 @@
                                                 </div>
                                             </form>
                                             <div class="divider"></div>
-                                            <h4 class="text-center">Preview</h4>
+                                            <h4 class="text-center">{{__('Preview')}}</h4>
                                             <div class="text-signature-preview">
-                                                <div class="text-signaturetutor1" id="text-signaturetutor1" style="color: #000000">{{ __('Signature tutor 1') }}</div>
+                                                <div class="text-signaturetutor1" id="text-signaturetutor1" style="color: #000000; font-size: 30px">{{ __('Signature tutor 1') }}</div>
                                             </div>
                                             <br>
                                             <div class="row" align="right">
@@ -297,7 +297,7 @@
                         <div class="demo-inline-spacing">
                             <div class="modal-content">
                                 <ul class="head-links-tutor2 nav nav-tabs nav-tabs-custom nav-justified">
-                                    <li type="capturetutor2" class="active nav-item " role="tablist"><a data-toggle="tab" class="nav-link active" aria-selected="true" href="#texttutor2">Text</a></li>
+                                    <li type="capturetutor2" class="active nav-item " role="tablist"><a data-toggle="tab" class="nav-link active" aria-selected="true" href="#texttutor2">{{__('Text')}}</a></li>
                                     <li type="uploadtutor2" class="nav-item"><a data-toggle="tab" class="nav-link" aria-selected="false" href="#uploadtutor2">{{__('Upload')}}</a></li>
                                     <li type="drawtutor2" class="nav-item"><a data-toggle="tab"  class="nav-link" aria-selected="false" href="#drawtutor2">{{__('Draw') }}</a></li>
                                 </ul>
@@ -359,9 +359,9 @@
                                                 </div>
                                             </form>
                                             <div class="divider"></div>
-                                            <h4 class="text-center">Preview</h4>
+                                            <h4 class="text-center">{{__('Preview')}}</h4>
                                             <div class="text-signature-preview">
-                                                <div class="text-signaturetutor2" id="text-signaturetutor2" style="color: #000000">{{ __('Signature tutor 2') }}</div>
+                                                <div class="text-signaturetutor2" id="text-signaturetutor2" style="color: #000000; font-size: 30px">{{ __('Signature tutor 2') }}</div>
                                             </div>
                                             <br>
                                             <div class="row" align="right">

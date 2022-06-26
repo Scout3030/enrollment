@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="{{ asset('css/base/themes/semi-dark-layout.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/base/core/menu/menu-types/vertical-menu.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/pages/ui-feather.css') }}">
         <link rel="stylesheet" href="{{ asset('css/overrides.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
         @stack('styles')

@@ -77,7 +77,7 @@
                                 <div class="col-12">
                                     <div class="mb-1 row">
                                         <div class="col-sm-2">
-                                            <label class="col-form-label" for="dni">{{ __('Dni') }}</label>
+                                            <label class="col-form-label" for="dni">{{ __('DNI') }}</label>
                                         </div>
                                         <div class="col-sm-10">
                                             <input type="text" id="dni" class="form-control" name="dni"

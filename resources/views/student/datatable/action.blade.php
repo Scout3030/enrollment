@@ -9,15 +9,26 @@
     <div class="dropdown-menu dropdown-menu-end">
         @can('view students')
         <a href="{{ route('students.show', $id) }}" class="dropdown-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text font-small-4 me-50">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-            </svg>
+            <i data-feather='align-justify'></i>
             {{ __('Details') }}
         </a>
+        @endcan
+
+        @can('edit students')
+        <a href="javascript:void(0)" class="dropdown-item editStudent" data-bs-target="#editStudent" data-bs-toggle="modal" data-id="{{ $id }}" data-user-id="{{ $user_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+            {{ __('Edit') }}
+        </a>
+        @endcan
+
+        @can('edit students')
+            <a href="{{ route('students.edit', $id) }}" class="dropdown-item">
+                <i data-feather='edit-3'></i>
+                {{ __('Edit details') }}
+            </a>
         @endcan
 
         @can('delete students')
@@ -32,6 +43,7 @@
                 {{ __('Delete') }}
             </a>
         @endcan
+
         @can('view students')
         <a href="{{ route('students.export', $id) }}" target="_blank" class="dropdown-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text font-small-4 me-50">

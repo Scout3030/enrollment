@@ -4,6 +4,6 @@
 
 ## {{ __('Log in by resetting your password at the following link:') }}
 <p>
-    <a href="{{ route('password.reset', $remember_token) }}?email={{ $email }}">{{ __('Reset password') }}</a>
+    <a href="{{ url('/forgot-password')}}">{{ __('Reset password') }}</a>
 </p>
 @endcomponent

@@ -16,10 +16,11 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
+        // ESO
         $users = User::factory()
             ->count(1)
             ->create([
-                'name' => 'Student 1',
+                'name' => 'Student 1 ESO',
                 'email' => 'student1@mail.com',
                 'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG', //secret
             ])->each(function (\App\Models\User $u) {
@@ -39,7 +40,7 @@ class StudentSeeder extends Seeder
         $users = User::factory()
             ->count(1)
             ->create([
-                'name' => 'Student 2',
+                'name' => 'Student 2 ESO',
                 'email' => 'student2@mail.com',
                 'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG', //secret
             ])->each(function (\App\Models\User $u) {
@@ -59,13 +60,13 @@ class StudentSeeder extends Seeder
         $users = User::factory()
             ->count(1)
             ->create([
-                'name' => 'Student 3',
+                'name' => 'Student 3 ESO',
                 'email' => 'student3@mail.com',
                 'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG', //secret
             ])->each(function (\App\Models\User $u) {
                 Student::factory([
                     'user_id' => $u->id,
-                    'grade_id' => Grade::SECOND_HIGH_SCHOOL,
+                    'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
                     'dni' => "33333333"
                 ])
                     ->count(1)
@@ -79,14 +80,14 @@ class StudentSeeder extends Seeder
         $users = User::factory()
             ->count(1)
             ->create([
-                'name' => 'Student 4',
+                'name' => 'Student 4 ESO',
                 'email' => 'student4@mail.com',
-                'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
+                'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG', //secret
             ])->each(function (\App\Models\User $u) {
                 Student::factory([
                     'user_id' => $u->id,
-                    'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                    'dni' => '44444444'
+                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'dni' => "44444444"
                 ])
                     ->count(1)
                     ->create();
@@ -99,14 +100,14 @@ class StudentSeeder extends Seeder
         $users = User::factory()
             ->count(1)
             ->create([
-                'name' => 'Student 5',
+                'name' => 'Student 1 PMAR',
                 'email' => 'student5@mail.com',
-                'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
+                'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG', //secret
             ])->each(function (\App\Models\User $u) {
                 Student::factory([
                     'user_id' => $u->id,
-                    'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                    'dni' => '55555555'
+                    'grade_id' => Grade::FIRST_HIGH_SCHOOL,
+                    'dni' => "55555555"
                 ])
                     ->count(1)
                     ->create();
@@ -119,13 +120,13 @@ class StudentSeeder extends Seeder
         $users = User::factory()
             ->count(1)
             ->create([
-                'name' => 'Student 6',
+                'name' => 'Student 2 PMAR',
                 'email' => 'student6@mail.com',
                 'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
             ])->each(function (\App\Models\User $u) {
                 Student::factory([
                     'user_id' => $u->id,
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL,
                     'dni' => '66666666'
                 ])
                     ->count(1)
@@ -135,6 +136,110 @@ class StudentSeeder extends Seeder
         foreach ($users as $user){
             $user->assignRole('student');
         }
+
+        $users = User::factory()
+            ->count(1)
+            ->create([
+                'name' => 'Student 3 PMAR',
+                'email' => 'student7@mail.com',
+                'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
+            ])->each(function (\App\Models\User $u) {
+                Student::factory([
+                    'user_id' => $u->id,
+                    'grade_id' => Grade::THIRD_HIGH_SCHOOL,
+                    'dni' => '7777777'
+                ])
+                    ->count(1)
+                    ->create();
+            });
+
+        foreach ($users as $user){
+            $user->assignRole('student');
+        }
+
+        User::factory()
+        ->count(1)
+        ->create([
+            'name' => 'Student CIENCIA y TECNOLOGIA',
+            'email' => 'student8@mail.com',
+            'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
+        ])->each(function (\App\Models\User $u) {
+            Student::factory([
+                'user_id' => $u->id,
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
+                'dni' => '88888888'
+            ])
+                ->count(1)
+                ->create();
+        });
+
+        User::factory()
+        ->count(1)
+        ->create([
+            'name' => 'Student 1 HUMANIDADES Y CIENCIAS SOCIALES',
+            'email' => 'student9@mail.com',
+            'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
+        ])->each(function (\App\Models\User $u) {
+            Student::factory([
+                'user_id' => $u->id,
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                'dni' => '99999999'
+            ])
+                ->count(1)
+                ->create();
+        });
+
+        User::factory()
+        ->count(1)
+        ->create([
+            'name' => 'Student BACHILLERATO GENERAL',
+            'email' => 'student10@mail.com',
+            'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
+        ])->each(function (\App\Models\User $u) {
+            Student::factory([
+                'user_id' => $u->id,
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
+                'dni' => '10101010'
+            ])
+                ->count(1)
+                ->create();
+        });
+
+        User::factory()
+        ->count(1)
+        ->create([
+            'name' => 'Student 2 BACHILLERATO CIENCIAS',
+            'email' => 'student12@mail.com',
+            'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
+        ])->each(function (\App\Models\User $u) {
+            Student::factory([
+                'user_id' => $u->id,
+                'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
+                'dni' => '12121212'
+            ])
+                ->count(1)
+                ->create();
+        });
+
+        $users = User::factory()
+        ->count(1)
+        ->create([
+            'name' => 'Student 2 HUMANIDADES Y CIENCIAS SOCIALES',
+            'email' => 'student13@mail.com',
+            'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
+        ])->each(function (\App\Models\User $u) {
+            Student::factory([
+                'user_id' => $u->id,
+                'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                'dni' => '13131313'
+            ])
+                ->count(1)
+                ->create();
+        });
+
+    foreach ($users as $user){
+        $user->assignRole('student');
+    }
 
         $users = User::factory()
             ->count(99)

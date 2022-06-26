@@ -39,7 +39,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Core courses') }}</h4>
+                            <h4 class="card-title">{{ __('Core plural') }} {{  __('mandatory') }}</h4>
                         </div>
                         <div class="card-body">
                             <div class="row custom-options-checkable g-1">
@@ -55,7 +55,7 @@
                                         />
                                         <label class="custom-option-item p-1" for="core_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                             </span>
                                         </label>
                                     </div>
@@ -74,7 +74,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Specific') }}</h4>
+                            <h4 class="card-title">{{ __('Specific female plural') }} ({{ __('select one') }})</h4>
                         </div>
                         <div class="card-body">
                             <div class="row custom-options-checkable g-1">
@@ -90,7 +90,7 @@
                                         />
                                         <label class="custom-option-item p-1" for="common_course_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                             </span>
                                         </label>
                                     </div>
@@ -170,7 +170,7 @@
                                                                 />
                                                                 <label class="custom-option-item p-1" for="core_itinerary_a_{{ $course->id }}">
                                                                     <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                                        <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                                        <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                     </span>
                                                                 </label>
                                                             </div>
@@ -218,7 +218,7 @@
                                                         />
                                                         <label class="custom-option-item p-1" for="core_itinerary_b_{{ $course->id }}">
                                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                                <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                             </span>
                                                         </label>
                                                     </div>
@@ -270,7 +270,7 @@
                                                     />
                                                     <label class="custom-option-item p-1" for="core_itinerary_c_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -296,7 +296,7 @@
                                                     />
                                                     <label class="custom-option-item p-1" for="core_itinerary_d_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -315,7 +315,7 @@
                 <div class="col-sm-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Specific') }}</h4>
+                            <h4 class="card-title">{{ __('Specific female plural') }}</h4>
                             <p>{{ __('optional courses info') }}</p>
                         </div>
                         <div class="card-body">
@@ -350,7 +350,7 @@
                                                                 />
                                                                 <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
                                                                     <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                                        <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                                        <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                     </span>
                                                                 </label>
                                                             </div>
@@ -373,7 +373,7 @@
                                                     />
                                                     <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -428,7 +428,7 @@
                                                                 />
                                                                 <label class="custom-option-item p-1" for="elective_course_free_{{ $course->id }}">
                                                                     <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                                        <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                                        <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                     </span>
                                                                 </label>
                                                             </div>
@@ -451,7 +451,7 @@
                                                     />
                                                     <label class="custom-option-item p-1" for="elective_course_free_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -757,20 +757,22 @@
         });
 
         function activeOption(){
-            if($('input:radio[name=active_option]:checked').val()==1){
-                $('.row1').each(function(index, element) {
-                    document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = true;
-                });
-                $('.row2').each(function(index, element) {
-                    document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
-                });
-            } else {
-                $('.row2').each(function(index, element) {
-                    document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = true;
-                });
-                $('.row1').each(function(index, element) {
-                    document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
-                });
+            if($('input:radio[name=active]:checked').val()==1){
+                if($('input:radio[name=active_option]:checked').val()==1){
+                    $('.row1').each(function(index, element) {
+                        document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = true;
+                    });
+                    $('.row2').each(function(index, element) {
+                        document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
+                    });
+                } else {
+                    $('.row2').each(function(index, element) {
+                        document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = true;
+                    });
+                    $('.row1').each(function(index, element) {
+                        document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
+                    });
+                }
             }
         }
         function active(){

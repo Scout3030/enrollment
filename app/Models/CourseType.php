@@ -43,12 +43,27 @@ class CourseType extends Model
     const SPECIFIC_ITINERARY = 13;
     const FREE_CONFIGURATION_ITINERARY = 14;
     const INTRO_PROFESSIONAL_TRAINING = 15;
+    const MODALITY = 16;
+
+    const MODALITY_OPTION = 17;
+    const CORE_MODALITY= 18;
+    const CORE_MODALITY_OPTION_ONE= 19;
+    const CORE_MODALITY_OPTION_TWO= 20;
+    const CORE_MODALITY_OPTION_THIRD= 21;
+    const CORE_MODALITY_OPTION_FOURTH= 22;
+    const CORE_MODALITY_OPTION_FIVE= 23;
+    const COMMON_OPTIONAL = 24;
+    const ITINERARY_HUMANITIES = 25;
+    const ITINERARY_SCIENCES = 26;
+    const ITINERARY_HUMANITIES_OPTION = 27;
+    const ITINERARY_SCIENCES_OPTION = 28;
 
     // educational cycle
-    const ASSOCIATED_UNITS_OF_COMPETENCES = 16;
-    const ASSOCIATED_COMMON_BLOCKS = 17;
-    const FORMATION_WORKSPACE = 18;
-    const CF_COMMON = 19;
+    const ASSOCIATED_UNITS_OF_COMPETENCES = 29;
+    const ASSOCIATED_COMMON_BLOCKS = 30;
+    const FORMATION_WORKSPACE = 31;
+    const CF_COMMON = 32;
+
 
     protected $fillable = ['name'];
 

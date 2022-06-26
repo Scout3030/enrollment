@@ -51,6 +51,10 @@
         @can('delete students')
             @include('student.delete-modal')
         @endcan
+
+        @can('edit users')
+            @include('student.edit-modal')
+        @endcan
     </section>
 @endsection
 
@@ -78,6 +82,17 @@
     <script>
         $(document).ready(function(){
             const studentDatatable = $('#studentsDatatable').DataTable()
+            const select2Modal = $('#editStudentForm');
+            const gradeEditNode = $('#grade_id_edit')
+            const levelEditNode = $('#level_id_edit')
+
+            levelEditNode.select2({
+                dropdownParent: select2Modal
+            });
+
+            gradeEditNode.select2({
+                dropdownParent: select2Modal
+            });
 
             @can('delete users')
             studentDatatable.on('click',  'tbody .deleteStudent', function () {
@@ -87,40 +102,97 @@
             });
             @endcan
 
-            @can('create students')
-            $('#modals-slide-in').on('shown.bs.modal', function () {
+            @can('edit users')
+            studentDatatable.on('click',  'tbody .editStudent', function () {
+                let studentId = $(this).data('id');
+                let userId = $(this).data('user-id');
+                let $form = $('#editStudentForm')
+                $.ajax({
+                    url: `{{ route('students.index') }}/${studentId}`,
+                    type: 'GET',
+                    headers: {
+                        'x-csrf-token': $("meta[name=csrf-token]").attr('content')
+                    },
+                    success: (data) => {
+                        populateForm($form, data.data)
+                        setTimeout(function(){
+                            levelEditNode.val(data.data.level_id).trigger('change');
+                            populateSelectEdit(data.data.level_id)
+                            setTimeout(function(){
+                                gradeEditNode.val(data.data.grade_id).trigger('change');
+                            }, 500)
+                        }, 500)
+                    }
+                })
+                $form.attr('action', `{{ route('users.index') }}/${userId}`)
+            });
+            @endcan
 
-                $('#level_id').select2({
-                    ajax: {
-                        url: "{{ route('levels.index') }}",
-                        dataType: 'JSON',
-                        processResults: (data) => {
-                            return {
-                                results: data.data
-                            }
+            @can('create students')
+            const levelNode = $('#level_id')
+            const gradeNode = $("#grade_id")
+            const typeNode = $("#course_type_id")
+
+            let firstLevelId = levelNode.select2().val()
+            populateSelect(firstLevelId)
+            populateTypesSelect(firstLevelId)
+
+            levelNode.on('change', function(){
+                const levelId = $(this).val()
+                populateSelect(levelId)
+                populateTypesSelect(levelId)
+            })
+
+            levelEditNode.on('change', function(){
+                const levelId = $(this).val()
+                populateSelectEdit(levelId)
+            })
+
+            function populateSelect(levelId){
+                $.ajax({
+                    url: `{{ route('grades.index') }}/level/${levelId}`,
+                    type: 'GET',
+                    success: (data, textStatus, xhr) => {
+                        if(xhr.status === 200) {
+                            gradeNode.empty();
+                            gradeNode.select2({
+                                data: data.data
+                            });
                         }
                     }
-                }).on('select2:select', (e) => {
+                })
+            }
 
-                    $('.grade').addClass('d-none');
-
-                    const data = e.params.data;
-
-                    $('#grade_id').select2({
-                        ajax: {
-                            url: `/grades/level/${data.id}`,
-                            dataType: 'JSON',
-                            processResults: (data) => {
-                                return {
-                                    results: data.data
-                                }
-                            }
+            function populateSelectEdit(levelId){
+                $.ajax({
+                    url: `{{ route('grades.index') }}/level/${levelId}`,
+                    type: 'GET',
+                    success: (data, textStatus, xhr) => {
+                        if(xhr.status === 200) {
+                            gradeEditNode.empty();
+                            gradeEditNode.select2({
+                                dropdownParent: select2Modal,
+                                data: data.data
+                            });
                         }
-                    });
+                    }
+                })
+            }
 
-                    $('.grade').removeClass('d-none');
-                });
-            })
+            function populateTypesSelect(levelId){
+                $.ajax({
+                    url: `{{ route('courseTypes.index') }}/level/${levelId}`,
+                    type: 'GET',
+                    success: (data, textStatus, xhr) => {
+                        if(xhr.status === 200) {
+                            typeNode.empty();
+                            typeNode.select2({
+                                data: data.data
+                            });
+                        }
+                    }
+                })
+            }
             @endcan
         })
     </script>

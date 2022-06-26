@@ -25,124 +25,69 @@ class StudentProfileRequest extends FormRequest
      */
     public function rules()
     {
-        
         $student = auth()->user()->student;
-        if($student->grade_id == Grade::FIRST_MIDDLE_SCHOOL) {
-            return [
-                'dni_document'=>'required',
-                'agreement_document'=>[Rule::requiredIf(function () {
-                    return $this->parents_condition == 0;
-                })],
-                'name' => 'required|string|min:3',
-                'country_id' => 'required|exists:countries,id',
-                'dni' => 'required|min:8|max:8|unique:students,dni,'. auth()->id() .',user_id',
-                'middle_name' => 'required|string|min:3',
-                'paternal_surname' => 'required|string|min:3',
-                'maternal_surname' => 'required|string|min:3',
-                'birth' => 'required|date',
-                'address' => 'required|string|min:3',
-                'address_number' => 'required|string',
-                'door' => 'required|string',
-                'stair' => 'required|string',
-                'floor' => 'required|string',
-                'letter' => 'required|string',
-                'postal_code' => 'required|string',
 
-                'first_tutor_dni' => 'required|string|min:8|max:8',
-                'first_tutor_full_name' => 'required|string|min:3',
-                'first_tutor_phone_number' => 'required|string|min:6',
-                'first_tutor_email' => 'required|email',
-                'first_tutor_address' => 'required|string|min:3',
+        $rules = [
+            'name' => 'required|string|min:3',
+            'country_id' => 'required|exists:countries,id',
+            'middle_name' => 'required|string|min:3',
+            'paternal_surname' => 'required|string|min:3',
+            'maternal_surname' => 'required|string|min:3',
+            'birth' => 'required|date',
+            'address' => 'required|string|min:3',
+            'address_number' => 'required|string',
+            'door' => 'nullable|string',
+            'stair' => 'nullable|string',
+            'floor' => 'nullable|string',
+            'letter' => 'nullable|string',
+            'postal_code' => 'required|string',
 
-                'second_tutor_dni' => 'required|string|min:8|max:8',
-                'second_tutor_full_name' => 'required|string|min:3',
-                'second_tutor_phone_number' => 'required|string|min:6',
-                'second_tutor_email' => 'required|email',
-                'second_tutor_address' => 'required|string|min:3',
+            'first_tutor_dni' => 'required|string|min:8|max:8',
+            'first_tutor_full_name' => 'required|string|min:3',
+            'first_tutor_phone_number' => 'required|string|min:6',
+            'first_tutor_email' => 'required|email',
+            'first_tutor_address' => 'required|string|min:3',
 
-                'parents_condition' => 'required'
-            ];
-        }
+            'second_tutor_dni' => 'nullable|string|min:8|max:8',
+            'second_tutor_full_name' => 'nullable|string|min:3',
+            'second_tutor_phone_number' => 'nullable|string|min:6',
+            'second_tutor_email' => 'nullable|email',
+            'second_tutor_address' => 'nullable|string|min:3',
+
+            'parents_condition' => 'required',
+
+            'dni_document'=>'required',
+            'agreement_document'=>[Rule::requiredIf(function () {
+                return $this->parents_condition == 0;
+            })],
+            'previous_school' => 'nullable|min:10'
+        ];
+
+        $moreRules = [];
 
         if($student->grade_id == Grade::SECOND_MIDDLE_SCHOOL) {
-            return [
-                'dni_document'=>'required',
-                'agreement_document'=>[Rule::requiredIf(function () {
-                    return $this->parents_condition == 0;
-                })],
+            $moreRules = [
                 'certificate_document'=>[Rule::requiredIf(function () {
-                    return $this->previous_school ==null;
+                    return $this->previous_school == null;
                 })],
-                'name' => 'required|string|min:3',
-                'country_id' => 'required|exists:countries,id',
-                'dni' => 'required|min:8|max:8|unique:students,dni,'. auth()->id() .',user_id',
-                'middle_name' => 'required|string|min:3',
-                'paternal_surname' => 'required|string|min:3',
-                'maternal_surname' => 'required|string|min:3',
-                'birth' => 'required|date',
-                'address' => 'required|string|min:3',
-                'address_number' => 'required|string',
-                'door' => 'required|string',
-                'stair' => 'required|string',
-                'floor' => 'required|string',
-                'letter' => 'required|string',
-                'postal_code' => 'required|string',
-
-                'first_tutor_dni' => 'required|string|min:8|max:8',
-                'first_tutor_full_name' => 'required|string|min:3',
-                'first_tutor_phone_number' => 'required|string|min:6',
-                'first_tutor_email' => 'required|email',
-                'first_tutor_address' => 'required|string|min:3',
-
-                'second_tutor_dni' => 'required|string|min:8|max:8',
-                'second_tutor_full_name' => 'required|string|min:3',
-                'second_tutor_phone_number' => 'required|string|min:6',
-                'second_tutor_email' => 'required|email',
-                'second_tutor_address' => 'required|string|min:3',
-
-                'parents_condition' => 'required'
             ];
         }
 
         if($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
-            return [
-                'dni_document'=>'required',
-                'payment_document'=>'required',
-                'agreement_document'=>[Rule::requiredIf(function () {
-                    return $this->parents_condition == 0;
-                })],
-                'certificate_document'=>[Rule::requiredIf(function () {
+            $moreRules = [
+                'payment_document' => 'required',
+                'certificate_document' => [Rule::requiredIf(function () {
                     return $this->previous_school ==null;
                 })],
-                'name' => 'required|string|min:3',
-                'country_id' => 'required|exists:countries,id',
-                'dni' => 'required|min:8|max:8|unique:students,dni,'. auth()->id() .',user_id',
-                'middle_name' => 'required|string|min:3',
-                'paternal_surname' => 'required|string|min:3',
-                'maternal_surname' => 'required|string|min:3',
-                'birth' => 'required|date',
-                'address' => 'required|string|min:3',
-                'address_number' => 'required|string',
-                'door' => 'required|string',
-                'stair' => 'required|string',
-                'floor' => 'required|string',
-                'letter' => 'required|string',
-                'postal_code' => 'required|string',
-
-                'first_tutor_dni' => 'required|string|min:8|max:8',
-                'first_tutor_full_name' => 'required|string|min:3',
-                'first_tutor_phone_number' => 'required|string|min:6',
-                'first_tutor_email' => 'required|email',
-                'first_tutor_address' => 'required|string|min:3',
-
-                'second_tutor_dni' => 'required|string|min:8|max:8',
-                'second_tutor_full_name' => 'required|string|min:3',
-                'second_tutor_phone_number' => 'required|string|min:6',
-                'second_tutor_email' => 'required|email',
-                'second_tutor_address' => 'required|string|min:3',
-
-                'parents_condition' => 'required'
             ];
         }
+
+        if($student->grade_id == Grade::SECOND_HIGH_SCHOOL || $student->grade_id == Grade::THIRD_HIGH_SCHOOL) {
+            $moreRules = [
+                'payment_document' => 'required',
+            ];
+        }
+
+        return array_merge($rules, $moreRules);
     }
 }
