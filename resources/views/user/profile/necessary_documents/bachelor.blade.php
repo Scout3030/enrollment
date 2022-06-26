@@ -4,7 +4,7 @@
 @endpush
 
 <div class="row">
-    <div class="col-sm-12 col-xl-6">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -30,13 +30,13 @@
             </div>
         </div>
     </div>
-
-    <div class="col-sm-12 col-xl-6">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
                         <h4 class="card-title">{{ __('Proof of payment of school insurance') }}</h4>
+                        <p>{{ __('mandatory') }}</p>
                         <div>
                             <form action="#" class="dropzone dropzone-area" id="paymentDocument">
                                 @csrf
@@ -56,9 +56,7 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12 col-xl-6">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -84,7 +82,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-12 col-xl-6">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -110,7 +108,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-12 col-xl-6">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -138,19 +136,13 @@
 </div>
 
 @push('scripts')
-
     <!-- BEGIN: Page Vendor JS-->
     <script src="{{ asset('vendors/js/file-uploaders/dropzone.min.js')}}"></script>
-    <!-- END: Page Vendor JS-->
-
-    <!-- Examples here-->
-    {{--    <script src="{{ asset('js/scripts/forms/form-file-uploader.js')}}"></script>--}}
-
     <script>
         // 1 hidden input
         const imageInput = $('input[name=dni_document]');
         const imageDropzone = new Dropzone("#dniDocument", {
-            url: "{{ route('upload.files', 'third_fourth_middle') }}",
+            url: "{{ route('upload.files', 'bachelor') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -171,17 +163,15 @@
                 });
             }
         });
-
         imageDropzone.on("removedfile", function(file) {
             imageInput.val('')
         });
-
     </script>
     <script>
         // 1 hidden input
         const agreementInput = $('input[name=agreement_document]');
         const agreementDropzone = new Dropzone("#agreementDocument", {
-            url: "{{ route('upload.files', 'third_fourth_middle') }}",
+            url: "{{ route('upload.files', 'bachelor') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -202,17 +192,15 @@
                 });
             }
         });
-
         agreementDropzone.on("removedfile", function(file) {
             agreementInput.val('')
         });
-
     </script>
     <script>
         // 1 hidden input
         const certificateInput = $('input[name=certificate_document]');
         const certificateDropzone = new Dropzone("#certificateDocument", {
-            url: "{{ route('upload.files', 'third_fourth_middle') }}",
+            url: "{{ route('upload.files', 'bachelor') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -233,17 +221,15 @@
                 });
             }
         });
-
         certificateDropzone.on("removedfile", function(file) {
             certificateInput.val('')
         });
-
     </script>
     <script>
         // 1 hidden input
         const paymentInput = $('input[name=payment_document]');
         const paymentDropzone = new Dropzone("#paymentDocument", {
-            url: "{{ route('upload.files', 'third_fourth_middle') }}",
+            url: "{{ route('upload.files', 'bachelor') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -264,17 +250,15 @@
                 });
             }
         });
-
         paymentDropzone.on("removedfile", function(file) {
             paymentInput.val('')
         });
-
     </script>
     <script>
         // 1 hidden input
         const academicHistoryInput = $('input[name=academic_history]');
         const academicHistoryDropzone = new Dropzone("#academicHistory", {
-            url: "{{ route('upload.files', 'third_fourth_middle') }}",
+            url: "{{ route('upload.files', 'bachelor') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",

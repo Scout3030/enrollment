@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @push('vendor-styles')
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
     <style>
         .numerator span{
             margin: 14px;
@@ -54,7 +55,7 @@
                                         />
                                         <label class="custom-option-item p-1" for="common_courses_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                             </span>
                                         </label>
                                     </div>
@@ -107,7 +108,7 @@
                                 <div class="card">
                                     <div class="mb-1 row">
                                         <div class="col-sm-12">
-                                            
+
                                                 <div  class="row custom-options-checkable g-1">
                                                     @forelse($modalitiesCourses as $key => $course)
                                                         <div class="row1" course_id="{{ $course->id }}">
@@ -119,11 +120,11 @@
                                                                     id="core_itinerary_a_{{ $course->id }}"
                                                                     checked
                                                                     disabled
-                                                                    
+
                                                                 />
                                                                 <label class="custom-option-item p-1" for="core_itinerary_a_{{ $course->id }}">
                                                                     <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                                        <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                                        <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                     </span>
                                                                 </label>
                                                             </div>
@@ -133,7 +134,7 @@
                                                     @endforelse
                                                 </div>
 
-                                               
+
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <h4 class="card-title">{{ __('choose one') }}</h4>
@@ -153,7 +154,7 @@
                                                                     />
                                                                     <label class="custom-option-item p-1" for="one_courses_{{ $course->id }}">
                                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                         </span>
                                                                     </label>
                                                                 </div>
@@ -180,7 +181,7 @@
                                                                     />
                                                                     <label class="custom-option-item p-1" for="one_coursesB_{{ $course->id }}">
                                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                         </span>
                                                                     </label>
                                                                 </div>
@@ -188,13 +189,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            
-                                         
+
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -233,11 +234,11 @@
                                                       disabled
                                                         checked
                                                          onclick="this.checked = true"
-                                                        
+
                                                     />
                                                     <label class="custom-option-item p-1" for="core_itinerary_b_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -266,7 +267,7 @@
                                                     />
                                                     <label class="custom-option-item p-1" for="one_courses2B_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -293,7 +294,7 @@
                                                     />
                                                     <label class="custom-option-item p-1" for="one_courses2_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -335,7 +336,7 @@
                                 <div class="card">
                                     <div class="mb-1 row">
                                         <div class="col-sm-12">
-                                            
+
                                                 <div id="sortable5" class="row custom-options-checkable g-1">
                                                     @forelse($coursesItineraryC as $key => $course)
                                                         <div class="row15" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
@@ -348,11 +349,11 @@
                                                                      value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
                                                                     checked
                                                                      onclick="this.checked = true"
-                                                                    
+
                                                                 />
                                                                 <label class="custom-option-item p-1" for="core_itinerary_a5_{{ $course->id }}">
                                                                     <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                                        <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                                        <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                     </span>
                                                                 </label>
                                                             </div>
@@ -361,12 +362,12 @@
                                                         {{ __('Select level and grade') }}
                                                     @endforelse
                                                 </div>
-                                         
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -405,11 +406,11 @@
                                                          value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
                                                         checked
                                                          onclick="this.checked = true"
-                                                        
+
                                                     />
                                                     <label class="custom-option-item p-1" for="core_itinerary_b5_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -438,7 +439,7 @@
                                                     />
                                                     <label class="custom-option-item p-1" for="core_itinerary_c_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' '.($course->bilingual ? '*' : '') }}</span>
+                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
                                                 </div>
@@ -728,8 +729,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script>// Default Spin
-      
-       
+
+
         $('.row1').each(function(index, element) {
             document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
         });
@@ -769,11 +770,11 @@
         });
 
         function activeOption(){
-         
+
         }
         function active(){
             if($('input:radio[name=active]:checked').val()==1){
-             
+
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
                 });
@@ -795,20 +796,20 @@
                   $('.rowone2').each(function(index, element) {
                     document.getElementById("one_courses2_"+$(this).attr('course_id')).disabled = true;
                  });
-                  
+
                  $('.rowone2').each(function(index, element) {
                     document.getElementById("one_courses2_"+$(this).attr('course_id')).checked = false;
                 });
                  $('.rowone2B').each(function(index, element) {
                     document.getElementById("one_courses2B_"+$(this).attr('course_id')).disabled = true;
                  });
-                  
+
                  $('.rowone2B').each(function(index, element) {
                     document.getElementById("one_courses2B_"+$(this).attr('course_id')).checked = false;
                 });
-               
+
             }else{
-              
+
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = true;
                 });
@@ -824,14 +825,14 @@
                  $('.rowone').each(function(index, element) {
                     document.getElementById("one_courses_"+$(this).attr('course_id')).disabled = true;
                  });
-                  
+
                  $('.rowone').each(function(index, element) {
                     document.getElementById("one_courses_"+$(this).attr('course_id')).checked = false;
                 });
                  $('.rowoneB').each(function(index, element) {
                     document.getElementById("one_coursesB_"+$(this).attr('course_id')).disabled = true;
                  });
-                  
+
                  $('.rowoneB').each(function(index, element) {
                     document.getElementById("one_coursesB_"+$(this).attr('course_id')).checked = false;
                 });
@@ -841,12 +842,12 @@
                  $('.rowone2B').each(function(index, element) {
                             document.getElementById("one_courses2B_"+$(this).attr('course_id')).disabled = false;
                 });
-                
+
             }
         }
         function active1(){
             if($('input:radio[name=active1]:checked').val()==1){
-             
+
                 $('.row35').each(function(index, element) {
                     document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).checked = false;
                 });
@@ -859,10 +860,10 @@
                  $('.row15').each(function(index, element) {
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = true;
                 });
-                
-               
+
+
             }else{
-              
+
                 $('.row35').each(function(index, element) {
                     document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).checked = true;
                 });
@@ -875,7 +876,7 @@
                  $('.row15').each(function(index, element) {
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = false;
                 });
-                
+
             }
         }
         $(function() {
@@ -915,7 +916,7 @@
             }
         });
 
-        
+
 
         @if(!is_null(old('active')))
         active()

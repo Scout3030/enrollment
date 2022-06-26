@@ -367,7 +367,7 @@ class EnrollmentController extends Controller
                             ->whereGroupTwo(Course::GROUP_COURSES_TWO_B)
                             ->whereCourseTypeId(CourseType::SPECIFIC_FREE_CONFIGURATION)
                             ->get();
-                        
+
                         return view('enrollment.create.second-high-school-science',
                             compact('commonCourses','modalitiesCourses','modalitiesCourses2','modalitiesCourses3','modalitiesCourses4','modalitiesCourses5','modalityOption','coursesItineraryA','coursesItineraryB',
                                 'coursesItineraryC','coursesItineraryD'));
