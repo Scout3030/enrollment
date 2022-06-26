@@ -55,12 +55,7 @@ class StudentProfileRequest extends FormRequest
             'second_tutor_email' => 'nullable|email',
             'second_tutor_address' => 'nullable|string|min:3',
 
-            'parents_condition' => 'required',
-
             'dni_document'=>'required',
-            'agreement_document'=>[Rule::requiredIf(function () {
-                return $this->parents_condition == \App\Models\Student::SEPARATED;
-            })],
             'previous_school' => 'nullable|min:10'
         ];
 
@@ -68,22 +63,41 @@ class StudentProfileRequest extends FormRequest
 
         if($student->grade_id == Grade::SECOND_MIDDLE_SCHOOL) {
             $moreRules = [
+                'parents_condition' => 'required',
                 'certificate_document'=>[Rule::requiredIf(function () {
                     return $this->previous_school;
+                })],
+                'agreement_document'=>[Rule::requiredIf(function () {
+                    return $this->parents_condition == \App\Models\Student::SEPARATED;
                 })],
             ];
         }
 
         if($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
             $moreRules = [
+                'parents_condition' => 'required',
                 'payment_document' => 'required',
+                'agreement_document'=>[Rule::requiredIf(function () {
+                    return $this->parents_condition == \App\Models\Student::SEPARATED;
+                })],
             ];
         }
 
         if($student->grade->level->id == Level::BACHELOR) {
             $moreRules = [
+                'parents_condition' => 'required',
                 'payment_document' => 'required',
                 'academic_history' => 'required',
+                'agreement_document'=>[Rule::requiredIf(function () {
+                    return $this->parents_condition == \App\Models\Student::SEPARATED;
+                })],
+            ];
+        }
+
+        if($student->grade->level->id == Level::EDUCATIONAL_CYCLE) {
+            $moreRules = [
+                'parents_condition' => 'nullable',
+                'payment_document' => 'required',
             ];
         }
 

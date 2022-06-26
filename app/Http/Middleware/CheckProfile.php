@@ -48,6 +48,11 @@ class CheckProfile
             }
         }
 
+        if ($student->grade->level->id == Level::EDUCATIONAL_CYCLE){
+            if(!$student->payment_document){
+                return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Complete all the necessary documentation')]);
+            }
+        }
         if (!$student->dni_document || !$student->country_id || !$student->paternal_surname || !$student->middle_name ||
             !$student->maternal_surname || !$student->birth || !$student->address || !$student->address_number ||
             !$student->first_tutor_dni ||

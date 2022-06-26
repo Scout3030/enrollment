@@ -133,6 +133,10 @@ class StudentController extends Controller
             $student->academic_history = $request->academic_history;
             $student->certificate_document =  $request->certificate_document;
         }
+        if($student->grade->level->id == Level::EDUCATIONAL_CYCLE) {
+            $student->dni_document = $request->dni_document;
+            $student->payment_document = $request->payment_document;
+        }
         $student->save();
 
         return redirect()->route('enrollment.create')->with('message', ['type' => 'success', 'description' => __('Documents saved successfully')]);

@@ -451,6 +451,11 @@
     @if (auth()->user()->student->grade->level->id == App\Models\Level::BACHELOR)
         @include('user.profile.necessary_documents.bachelor')
     @endif
+
+    @if (auth()->user()->student->grade->level->id == App\Models\Level::EDUCATIONAL_CYCLE)
+        @include('user.profile.necessary_documents.educational-cycle')
+    @endif
+
     <div class="row">
         <div class="col-12">
             <div class="card">
