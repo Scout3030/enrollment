@@ -29,7 +29,6 @@ class EnrollmentRequest extends FormRequest
         $student = auth()->user()->student;
 
         if($student->grade_id == Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES) {
-           //  dd($this->core_itinerary_a5,$this->core_itinerary_b5,$this->core_itinerary_c5,$this->active1);
              if($this->active1==1){
                  $course_A = $this->core_itinerary_a5;
              }
@@ -58,8 +57,8 @@ class EnrollmentRequest extends FormRequest
              ]);
         }
 
-        if($student->grade_id == Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY || $student->grade_id == Grade::FIRST_HIGH_SCHOOL_GENERAL) {
-           // dd($this->core_itinerary_a,$this->core_itinerary_b,$this->core_itinerary_c,$this->active);
+        if($student->grade_id == Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY || $student->grade_id == Grade::FIRST_HIGH_SCHOOL_GENERAL ||
+        $student->grade_id == Grade::SECOND_HIGH_SCHOOL_SCIENCE) {
             if($this->active==1){
                 $course_A = $this->core_itinerary_a;
             }
@@ -197,6 +196,22 @@ class EnrollmentRequest extends FormRequest
                 'active1'=> ['required'],
                 'modality'=> ['required'],               
                
+                'elective_courses' => ['required', 'array', new ValidOrderRule()],
+                'elective_courses.*.course_id' => 'exists:courses,id',
+                'elective_courses_free' => ['required', 'array', new ValidOrderRule()],
+                'elective_courses_free.*.course_id' => 'exists:courses,id',
+                'first_tutor_signature'=>['required'],
+                'student_signature'=>['required'],
+            ];
+        }
+
+        if( $student->grade_id == Grade::SECOND_HIGH_SCHOOL_SCIENCE) {
+            return [
+                'bus_stop_id' => [Rule::requiredIf(function () {
+                    return $this->transportation == 1;
+                }), 'exists:bus_stops,id'],
+                'active'=> ['required'],
+                'active1'=> ['required'],
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
                 'elective_courses_free' => ['required', 'array', new ValidOrderRule()],

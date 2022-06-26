@@ -1435,7 +1435,7 @@ class CourseSeeder extends Seeder
                 ->create([
                     'name' => 'Industrial Technology II',
                     'duration'=>'4',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_A,
                     'group_two'=>Course::GROUP_COURSES_TWO_A,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
@@ -1445,7 +1445,7 @@ class CourseSeeder extends Seeder
                 ->create([
                     'name' => 'Earth and environmental sciences',
                     'duration'=>'4',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_A,
                     'group_two'=>Course::GROUP_COURSES_TWO_A,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
@@ -1454,7 +1454,7 @@ class CourseSeeder extends Seeder
                 ->create([
                     'name' => 'Geology',
                     'duration'=>'4',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_A,
                     'group_two'=>Course::GROUP_COURSES_TWO_A,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
@@ -1463,7 +1463,7 @@ class CourseSeeder extends Seeder
                 ->create([
                     'name' => 'Technical drawing II',
                     'duration'=>'4',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_A,
                     'group_two'=>Course::GROUP_COURSES_TWO_A,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
@@ -1472,7 +1472,7 @@ class CourseSeeder extends Seeder
                 ->create([
                     'name' => 'Biology',
                     'duration'=>'4',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_A,
                     'group_two'=>Course::GROUP_COURSES_TWO_A,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
@@ -1481,43 +1481,43 @@ class CourseSeeder extends Seeder
                 ->create([
                     'name' => 'Image and sound',
                     'duration'=>'3',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_B,
-                    'group_two'=>Course::GROUP_COURSES_TWO_B,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
                 ]);
                 Course::factory()
                 ->create([
                     'name' => 'TIC II',
                     'duration'=>'3',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_B,
-                    'group_two'=>Course::GROUP_COURSES_TWO_B,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
                 ]);
                 Course::factory()
                 ->create([
                     'name' => 'Psychology',
                     'duration'=>'3',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_B,
-                    'group_two'=>Course::GROUP_COURSES_TWO_B,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
                 ]);
                 Course::factory()
                 ->create([
                     'name' => 'Second Foreign Language II: French II',
                     'duration'=>'3',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_B,
-                    'group_two'=>Course::GROUP_COURSES_TWO_B,
+                    'group_two'=>Course::GROUP_COURSES_TWO_A,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
                 ]);
                 Course::factory()
                 ->create([
                     'name' => 'Asturian language II',
                     'duration'=>'1',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_B,
                     'group_two'=>Course::GROUP_COURSES_TWO_B,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
@@ -1526,7 +1526,7 @@ class CourseSeeder extends Seeder
                 ->create([
                     'name' => 'Research project II',
                     'duration'=>'1',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_B,
                     'group_two'=>Course::GROUP_COURSES_TWO_B,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
@@ -1535,7 +1535,7 @@ class CourseSeeder extends Seeder
                 ->create([
                     'name' => 'active lifestyle',
                     'duration'=>'1',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_B,
                     'group_two'=>Course::GROUP_COURSES_TWO_B,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
@@ -1544,7 +1544,7 @@ class CourseSeeder extends Seeder
                 ->create([
                     'name' => 'Religion',
                     'duration'=>'1',
-                    'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
+                    'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                     'group_one'=>Course::GROUP_COURSES_ONE_B,
                     'group_two'=>Course::GROUP_COURSES_TWO_B,
                      'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,

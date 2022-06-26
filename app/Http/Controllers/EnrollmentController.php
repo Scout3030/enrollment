@@ -314,6 +314,64 @@ class EnrollmentController extends Controller
                             compact('commonCourses','modalitiesCourses','modalityOption','coursesItineraryA','coursesItineraryB',
                                 'coursesItineraryC','coursesItineraryD','coursesSpecific'));
                     }
+                    case Grade::SECOND_HIGH_SCHOOL_SCIENCE: {
+
+                        $commonCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::CORE)
+                            ->get();
+
+                        $modalitiesCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::CORE_MODALITY_OPTION_ONE)
+                            ->get();   
+                        
+                        $modalitiesCourses2 = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::CORE_MODALITY_OPTION_TWO)
+                            ->get();
+                        
+                        $modalitiesCourses3 = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::CORE_MODALITY_OPTION_THIRD)
+                            ->get();  
+                        
+                        $modalitiesCourses4 = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::CORE_MODALITY_OPTION_FOURTH)
+                            ->get();  
+                           
+                        $modalitiesCourses5 = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::CORE_MODALITY_OPTION_FIVE)
+                            ->get();   
+                            
+
+                        $modalityOption = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::MODALITY_OPTION)
+                            ->get();
+
+                        $coursesItineraryA = Course::whereGradeId($gradeId)
+                              ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_ONE)
+                            ->get();
+
+                        $coursesItineraryB = Course::whereGradeId($gradeId)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_A)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_A)
+                            ->whereCourseTypeId(CourseType::SPECIFIC_FREE_CONFIGURATION)
+                            ->get();
+
+                        $coursesItineraryC = Course::whereGradeId($gradeId)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_A)
+                            ->whereCourseTypeId(CourseType::SPECIFIC_FREE_CONFIGURATION)
+                            ->get();
+
+                        $coursesItineraryD = Course::whereGradeId($gradeId)
+                            ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
+                            ->whereGroupTwo(Course::GROUP_COURSES_TWO_B)
+                            ->whereCourseTypeId(CourseType::SPECIFIC_FREE_CONFIGURATION)
+                            ->get();
+
+                          
+                        return view('enrollment.create.second-high-school-science',
+                            compact('commonCourses','modalitiesCourses','modalitiesCourses2','modalitiesCourses3','modalitiesCourses4','modalitiesCourses5','modalityOption','coursesItineraryA','coursesItineraryB',
+                                'coursesItineraryC','coursesItineraryD'));
+                    }
                 }
             }
             case Level::PROFESSIONAL_TRAINING: {
@@ -515,7 +573,7 @@ class EnrollmentController extends Controller
                     }          
         }
 
-      /*  if($grade->id == Grade::FIRST_HIGH_SCHOOL_GENERAL){
+        if($grade->id == Grade::SECOND_HIGH_SCHOOL_SCIENCE){
 
             
             if($request->active==1)
@@ -529,23 +587,46 @@ class EnrollmentController extends Controller
 
            
             $commonCourses = Course::whereGradeId($student->grade_id)
-                ->whereCourseTypeId(CourseType::COMMON)
+                ->whereCourseTypeId(CourseType::CORE)
                 ->get();
-
-             $modalitiesCourses = Course::whereGradeId($student->grade_id)
-                ->whereCourseTypeId(CourseType::MODALITY)
-                ->get(); 
-
             $enrollment->courses()->attach($commonCourses);
-            $enrollment->courses()->attach($modalitiesCourses);
-            $enrollment->courses()->attach($request->one_courses);
-            if($request->modality==1){
-                $coursesSpecific = Course::whereGradeId($student->grade_id)
-                ->whereCourseTypeId(CourseType::COMMON_OPTIONAL)
-                ->first();
-                $enrollment->courses()->attach( $coursesSpecific->id);
+           
+            if($request->active1==1){
+                $modalitiesCourses = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::CORE_MODALITY_OPTION_ONE)
+                ->get();  
+                $enrollment->courses()->attach($modalitiesCourses);
             }
-        }*/
+
+            if($request->active1==2){
+                $modalitiesCourses2 = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::CORE_MODALITY_OPTION_TWO)
+                ->get();
+                $enrollment->courses()->attach($modalitiesCourses2);
+            }
+
+            if($request->active1==3){
+                $modalitiesCourses3 = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::CORE_MODALITY_OPTION_THIRD)
+                ->get();  
+                $enrollment->courses()->attach($modalitiesCourses3);
+            }
+
+            if($request->active1==4){                
+                $modalitiesCourses4 = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::CORE_MODALITY_OPTION_FOURTH)
+                ->get(); 
+                $enrollment->courses()->attach($modalitiesCourses4);
+            }
+
+            if($request->active1==5){                
+                $modalitiesCourses5 = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::CORE_MODALITY_OPTION_FIVE)
+                ->get(); 
+                $enrollment->courses()->attach($modalitiesCourses5);
+            }
+          
+        }
         return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
     }
 
