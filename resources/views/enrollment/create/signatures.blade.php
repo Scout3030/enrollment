@@ -90,9 +90,9 @@
                                                 </div>
                                             </form>
                                             <div class="divider"></div>
-                                            <h4 class="text-center">Preview</h4>
+                                            <h4 class="text-center">{{__('Preview')}}</h4>
                                             <div class="text-signature-preview">
-                                                <div class="text-signature" id="text-signature" style="color: #000000">{{ __('Signature student') }}</div>
+                                                <div class="text-signature" id="text-signature" style="color: #000000; font-size: 30px">{{ __('Signature student') }}</div>
                                             </div>
                                             <br>
                                             <div class="row" align="right">
@@ -225,9 +225,9 @@
                                                 </div>
                                             </form>
                                             <div class="divider"></div>
-                                            <h4 class="text-center">Preview</h4>
+                                            <h4 class="text-cent__er">{{__('Preview')}}</h4>
                                             <div class="text-signature-preview">
-                                                <div class="text-signaturetutor1" id="text-signaturetutor1" style="color: #000000">{{ __('Signature tutor 1') }}</div>
+                                                <div class="text-signaturetutor1" id="text-signaturetutor1" style="color: #000000; font-size: 30px">{{ __('Signature tutor 1') }}</div>
                                             </div>
                                             <br>
                                             <div class="row" align="right">
@@ -359,9 +359,9 @@
                                                 </div>
                                             </form>
                                             <div class="divider"></div>
-                                            <h4 class="text-center">Preview</h4>
+                                            <h4 class="text-cent__er">{{__('Preview')}}</h4>
                                             <div class="text-signature-preview">
-                                                <div class="text-signaturetutor2" id="text-signaturetutor2" style="color: #000000">{{ __('Signature tutor 2') }}</div>
+                                                <div class="text-signaturetutor2" id="text-signaturetutor2" style="color: #000000; font-size: 30px">{{ __('Signature tutor 2') }}</div>
                                             </div>
                                             <br>
                                             <div class="row" align="right">

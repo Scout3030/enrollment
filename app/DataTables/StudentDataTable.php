@@ -126,7 +126,7 @@ class StudentDataTable extends DataTable
                         <"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i>
                         <"col-sm-12 col-md-6"p>
                     >')
-                    ->orderBy(0)
+                    ->orderBy(1, 'asc')
                     ->buttons(
                         Button::make([])
                             ->extend('collection')
@@ -183,6 +183,12 @@ class StudentDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('id')
+                ->title('Id')
+                ->searchable(false)
+                ->orderable(false)
+                ->visible(false)
+                ->footer('Id'),
             Column::make('names')
                 ->title(__('Names'))
                 ->searchable(true)
