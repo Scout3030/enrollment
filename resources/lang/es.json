@@ -878,7 +878,7 @@
     "Bilingual english": "Bilingüe inglés",
     "Course repeated": "Repite curso",
     "Previous school": "Colegio de procedencia",
-    "Course repeated?": "Repite curso",
+    "Course repeated?": "¿Repite curso?",
     "Type...": "Tipea...",
     "Common": "Común",
     "Performing Arts and Dance":"Artes Escénicas y Danza",
@@ -1031,5 +1031,9 @@
     "Reset password notification": "Notificación de restablecimiento de contraseña",
     "Reset password": "Restablecer contraseña",
     "Your new password must be different from previously used passwords": "Debe ser diferente a la usada previamente",
-    "Back to login": "Volver al login"
+    "Back to login": "Volver al login",
+    "Verify your email": "Verifica tu email",
+    "Verify your email page": "Verifica tu email",
+    "verification-link-sent": "Link de verificacion enviado",
+    "Didn't receive an email?": "¿No has recibido el correo?"
 }
