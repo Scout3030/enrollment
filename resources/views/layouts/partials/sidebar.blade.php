@@ -118,8 +118,8 @@
             @endcan
 
             @can('create enrollment')
-                <li class="nav-item @if (Request::url() == route('enrollment.create') || Request::url() == route('enrollment.create') ) active @endif">
-                    <a href="{{ route('enrollment.create') }}" class="d-flex align-items-center" target="_self">
+                <li class="nav-item @if (Request::url() == route('enrollment.create') || Request::url() == route('user.profile.edit') ) active @endif">
+                    <a href="{{ route('user.profile.edit') }}" class="d-flex align-items-center" target="_self">
                         <i data-feather="file-text"></i>
                         <span class="menu-title text-truncate">{{ __('Enrollment') }}</span>
                     </a>
