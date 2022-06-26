@@ -134,7 +134,7 @@ class StudentSeeder extends Seeder
         User::factory()
             ->count(1)
             ->create([
-                'name' => 'Student CIENCIA y TECNOLOGIA',
+                'name' => 'Student 1 BACHILLERATO CIENCIA y TECNOLOGIA',
                 'email' => 'student8@mail.com',
                 'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
             ])->each(function (\App\Models\User $u) {
@@ -150,7 +150,7 @@ class StudentSeeder extends Seeder
         User::factory()
             ->count(1)
             ->create([
-                'name' => 'Student 1 HUMANIDADES Y CIENCIAS SOCIALES',
+                'name' => 'Student 1 BACHILLERATO HUMANIDADES Y CIENCIAS SOCIALES',
                 'email' => 'student9@mail.com',
                 'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
             ])->each(function (\App\Models\User $u) {
@@ -166,7 +166,7 @@ class StudentSeeder extends Seeder
         User::factory()
             ->count(1)
             ->create([
-                'name' => 'Student BACHILLERATO GENERAL',
+                'name' => 'Student 1 BACHILLERATO GENERAL',
                 'email' => 'student10@mail.com',
                 'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
             ])->each(function (\App\Models\User $u) {
@@ -198,7 +198,7 @@ class StudentSeeder extends Seeder
         User::factory()
             ->count(1)
             ->create([
-                'name' => 'Student 2 HUMANIDADES Y CIENCIAS SOCIALES',
+                'name' => 'Student 2 BACHILLERATO HUMANIDADES Y CIENCIAS SOCIALES',
                 'email' => 'student13@mail.com',
                 'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
             ])->each(function (\App\Models\User $u) {

@@ -20,21 +20,23 @@ class GradeSeeder extends Seeder
             ['name' => 'Second', 'level_id' => Level::MIDDLE_SCHOOL],
             ['name' => 'Third', 'level_id' => Level::MIDDLE_SCHOOL],
             ['name' => 'Fourth', 'level_id' => Level::MIDDLE_SCHOOL],
+
             ['name' => 'First', 'level_id' => Level::HIGH_SCHOOL],
             ['name' => 'Second', 'level_id' => Level::HIGH_SCHOOL],
             ['name' => 'Third', 'level_id' => Level::HIGH_SCHOOL],
-            ['name' => 'first science technology', 'level_id' => Level::HIGH_SCHOOL],
-            ['name' => 'first humanities sciences', 'level_id' => Level::HIGH_SCHOOL],
-            ['name' => 'first general', 'level_id' => Level::HIGH_SCHOOL],
-            ['name' => 'second science', 'level_id' => Level::HIGH_SCHOOL],
-            ['name' => 'second humanities sciences', 'level_id' => Level::HIGH_SCHOOL],
-            ['name' => 'First', 'level_id' => Level::PROFESSIONAL_TRAINING],
-            ['name' => 'Second', 'level_id' => Level::PROFESSIONAL_TRAINING],
 
-            ['name' => 'First Basic', 'level_id' => Level::EDUCATIONAL_CYCLE],
-            ['name' => 'Second Basic', 'level_id' => Level::EDUCATIONAL_CYCLE],
-            ['name' => 'First Medium', 'level_id' => Level::EDUCATIONAL_CYCLE],
-            ['name' => 'Second Medium', 'level_id' => Level::EDUCATIONAL_CYCLE],
+            ['name' => 'first science technology', 'level_id' => Level::BACHELOR],
+            ['name' => 'first humanities sciences', 'level_id' => Level::BACHELOR],
+            ['name' => 'first general', 'level_id' => Level::BACHELOR],
+            ['name' => 'second science', 'level_id' => Level::BACHELOR],
+            ['name' => 'second humanities sciences', 'level_id' => Level::BACHELOR],
+            ['name' => 'First', 'level_id' => Level::BACHELOR],
+            ['name' => 'Second', 'level_id' => Level::BACHELOR],
+
+            ['name' => '1 FPB', 'level_id' => Level::EDUCATIONAL_CYCLE],
+            ['name' => '2 FPB', 'level_id' => Level::EDUCATIONAL_CYCLE],
+            ['name' => '1 CFGM', 'level_id' => Level::EDUCATIONAL_CYCLE],
+            ['name' => '2 CFGM', 'level_id' => Level::EDUCATIONAL_CYCLE],
         ];
 
         foreach ($grades as $grade){

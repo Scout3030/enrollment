@@ -17,7 +17,7 @@ class LevelSeeder extends Seeder
         $levels = [
             'Middle school',
             'High school',
-            'Professional training',
+            'Bachelor',
             'Educational cycle'
         ];
 

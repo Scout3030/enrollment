@@ -33,7 +33,7 @@ class Level extends Model
 
     const MIDDLE_SCHOOL = 1;
     const HIGH_SCHOOL = 2;
-    const PROFESSIONAL_TRAINING = 3;
+    const BACHELOR = 3;
     const EDUCATIONAL_CYCLE = 4;
 
     protected $appends = [
@@ -60,7 +60,7 @@ class Level extends Model
         return [
             Level::MIDDLE_SCHOOL => 'ESO',
             Level::HIGH_SCHOOL => 'PMAR',
-            Level::PROFESSIONAL_TRAINING => 'FP',
+            Level::BACHELOR => 'BACHILLERATO',
             Level::EDUCATIONAL_CYCLE => 'CICLO FORMATIVO',
         ][$this->id];
     }

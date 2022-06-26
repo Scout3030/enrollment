@@ -168,6 +168,8 @@ return [
         'second_tutor_phone_number' => 'teléfono del segundo tutor',
         'grade_id' => 'grado',
         'middle_name' => 'segundo nombre',
-        "previous school" => 'colegio anterior'
+        "previous_school" => 'colegio anterior',
+        "parents_condition" => 'condición de los padres',
+        'academic_history' => 'historial académico'
     ],
 ];
