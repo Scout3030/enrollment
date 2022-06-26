@@ -47,6 +47,7 @@ class CreateStudentsTable extends Migration
             $table->string('agreement_document')->nullable();
             $table->string('dni_document')->nullable();
             $table->string('payment_document')->nullable();
+            $table->string('academic_history')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

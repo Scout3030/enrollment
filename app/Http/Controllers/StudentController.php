@@ -7,6 +7,7 @@ use App\Http\Requests\StudentImportRequest;
 use App\Http\Requests\StudentProfileRequest;
 use App\Http\Requests\StudentRequest;
 use App\Http\Resources\StudentResource;
+use App\Models\Level;
 use App\Models\Student;
 use App\Models\Grade;
 use Maatwebsite\Excel\Facades\Excel;
@@ -124,6 +125,13 @@ class StudentController extends Controller
         if($student->grade_id == Grade::FIRST_MIDDLE_SCHOOL) {
             $student->dni_document = $request->dni_document;
             $student->agreement_document = $request->agreement_document;
+        }
+        if($student->grade->level->id == Level::BACHELOR) {
+            $student->dni_document = $request->dni_document;
+            $student->agreement_document = $request->agreement_document;
+            $student->payment_document = $request->payment_document;
+            $student->academic_history = $request->academic_history;
+            $student->certificate_document =  $request->certificate_document;
         }
         $student->save();
 

@@ -137,6 +137,7 @@ class Student extends Model
         'agreement_document',
         'dni_document',
         'payment_document',
+        'academic_history',
     ];
 
     protected $casts = [
