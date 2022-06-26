@@ -1,4 +1,4 @@
-   
+
 
 .signature-card {
     padding: 3em 1em !important;
@@ -110,11 +110,11 @@ canvas#draw-signaturetutor1 {
     border: 1px dashed #ddd;
 }
 
-.text-signature {
-    width: 400px;
-    height: 150px;
+.text-signature, .text-signaturetutor1, .text-signaturetutor2 {
+    width: 100%;
+    height: 100px;
     margin: 1px auto;
-    padding-top: 40px;
+    padding-top: 30px;
 }
 
 .center-notify {
@@ -190,7 +190,7 @@ body.editor .signer-overlay {
     padding-top: 6px;
     overflow: hidden;
 }
-.signature-tool-item button {    
+.signature-tool-item button {
 
 }
 .signer-tool p {
@@ -445,13 +445,13 @@ body.editor .signer-overlay {
 .signer-element:hover {
     border: 1px dashed #3DA4FF;
 }
-.signer-element:hover .ui-resizable-handle.ui-resizable-nw, 
+.signer-element:hover .ui-resizable-handle.ui-resizable-nw,
 .signer-element:hover .ui-resizable-handle.ui-resizable-ne,
 .signer-element:hover .ui-resizable-handle.ui-resizable-sw,
 .signer-element:hover .ui-resizable-handle.ui-resizable-se {
     background: #3DA4FF;
 }
-.selected-element .ui-resizable-handle.ui-resizable-nw, 
+.selected-element .ui-resizable-handle.ui-resizable-nw,
 .selected-element .ui-resizable-handle.ui-resizable-ne,
 .selected-element .ui-resizable-handle.ui-resizable-sw,
 .selected-element .ui-resizable-handle.ui-resizable-se {
@@ -615,5 +615,4 @@ button.jscolortutor1 {
         .signature-holder {
             width: 100%;
         }
-        
-    
+
