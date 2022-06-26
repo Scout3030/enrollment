@@ -60,7 +60,8 @@ class Level extends Model
         return [
             Level::MIDDLE_SCHOOL => 'ESO',
             Level::HIGH_SCHOOL => 'PMAR',
-            Level::PROFESSIONAL_TRAINING => 'FP'
+            Level::PROFESSIONAL_TRAINING => 'FP',
+            Level::EDUCATIONAL_CYCLE => 'CICLO FORMATIVO',
         ][$this->id];
     }
 }
