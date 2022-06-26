@@ -25,7 +25,7 @@ class StudentProfileRequest extends FormRequest
      */
     public function rules()
     {
-        
+
         $student = auth()->user()->student;
         if($student->grade_id == Grade::FIRST_MIDDLE_SCHOOL) {
             return [
@@ -35,7 +35,6 @@ class StudentProfileRequest extends FormRequest
                 })],
                 'name' => 'required|string|min:3',
                 'country_id' => 'required|exists:countries,id',
-                'dni' => 'required|min:8|max:8|unique:students,dni,'. auth()->id() .',user_id',
                 'middle_name' => 'required|string|min:3',
                 'paternal_surname' => 'required|string|min:3',
                 'maternal_surname' => 'required|string|min:3',
@@ -75,7 +74,6 @@ class StudentProfileRequest extends FormRequest
                 })],
                 'name' => 'required|string|min:3',
                 'country_id' => 'required|exists:countries,id',
-                'dni' => 'required|min:8|max:8|unique:students,dni,'. auth()->id() .',user_id',
                 'middle_name' => 'required|string|min:3',
                 'paternal_surname' => 'required|string|min:3',
                 'maternal_surname' => 'required|string|min:3',
@@ -116,7 +114,6 @@ class StudentProfileRequest extends FormRequest
                 })],
                 'name' => 'required|string|min:3',
                 'country_id' => 'required|exists:countries,id',
-                'dni' => 'required|min:8|max:8|unique:students,dni,'. auth()->id() .',user_id',
                 'middle_name' => 'required|string|min:3',
                 'paternal_surname' => 'required|string|min:3',
                 'maternal_surname' => 'required|string|min:3',

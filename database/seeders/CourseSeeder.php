@@ -29,6 +29,7 @@ class CourseSeeder extends Seeder
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Geography and History',
+                'bilingual' => true,
                 'duration'=>'3',
                 'course_type_id' => CourseType::COMMON,
             ]);
@@ -57,6 +58,7 @@ class CourseSeeder extends Seeder
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
                 'name' => 'Biology and Geology',
+                'bilingual' => true,
                 'duration'=>'4',
                 'course_type_id' => CourseType::COMMON,
             ]);
@@ -114,8 +116,6 @@ class CourseSeeder extends Seeder
 
 
             /** 2º ESO  */
-
-
             Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
@@ -148,6 +148,7 @@ class CourseSeeder extends Seeder
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
                 'name' => 'Mathematics',
+                'bilingual' => true,
                 'duration'=>'5',
                 'course_type_id' => CourseType::CORE,
             ]);
@@ -170,6 +171,7 @@ class CourseSeeder extends Seeder
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
                 'name' => 'Physical Education',
+                'bilingual' => true,
                 'duration'=>'2',
                 'course_type_id' => CourseType::SPECIFIC,
             ]);
@@ -183,7 +185,7 @@ class CourseSeeder extends Seeder
             Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'Religion',
+                'name' => 'Religión',
                 'duration'=>'1',
                 'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
             ]);
@@ -529,6 +531,7 @@ class CourseSeeder extends Seeder
             ->create([
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'name' => 'Physical education',
+                'bilingual' => true,
                 'duration'=>'2',
                 'course_type_id' => CourseType::CORE,
             ]);
@@ -594,7 +597,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Latin',
+                'name' => 'Latín',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
                 'group_two'=>Course::GROUP_COURSES_TWO_B,
@@ -652,7 +655,7 @@ class CourseSeeder extends Seeder
                 'duration'=>'3',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::SPECIFIC_ITINERARY,
-            ]);      
+            ]);
         Course::factory()
             ->create([
                 'name' => 'Second Foreign Language: French',
@@ -720,10 +723,10 @@ class CourseSeeder extends Seeder
             ]);
 
 
-      
-      
-      
-      
+
+
+
+
       /*********************** FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY  ***********************/
 
 
@@ -920,7 +923,7 @@ class CourseSeeder extends Seeder
 
             Course::factory()
             ->create([
-                'name' => 'Latin I',
+                'name' => 'Latín I',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_HUMANITIES,
                 'duration'=>'4',
@@ -1090,8 +1093,8 @@ class CourseSeeder extends Seeder
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::COMMON_OPTIONAL,
             ]);
-           
-            
+
+
 
 
 
@@ -1172,7 +1175,7 @@ class CourseSeeder extends Seeder
             ]);
             Course::factory()
             ->create([
-                'name' => 'Latin',
+                'name' => 'Latín',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',
@@ -1212,7 +1215,7 @@ class CourseSeeder extends Seeder
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
                 'duration'=>'4',
             ]);
-           
+
             Course::factory()
             ->create([
                 'name' => 'Physics and Chemistry',
@@ -1229,7 +1232,7 @@ class CourseSeeder extends Seeder
             ]);
             Course::factory()
             ->create([
-                'name' => 'Latin',
+                'name' => 'Latín',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
                 'duration'=>'4',
@@ -1325,8 +1328,8 @@ class CourseSeeder extends Seeder
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL,
             ]);
-            
-            
+
+
 
 /************* SECOND_HIGH_SCHOOL_SCIENCE ******************************/
 
@@ -1556,6 +1559,6 @@ class CourseSeeder extends Seeder
                 ]);
 
 
-            
+
     }
 }

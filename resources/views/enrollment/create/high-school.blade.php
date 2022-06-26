@@ -39,7 +39,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Core courses') }}</h4>
+                            <h4 class="card-title">{{ __('Core plural') }} {{  __('mandatory') }}</h4>
                         </div>
                         <div class="card-body">
                             <div class="row custom-options-checkable g-1">
@@ -74,7 +74,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Specific') }}</h4>
+                            <h4 class="card-title">{{ __('Specific female plural') }} ({{ __('select one') }})</h4>
                         </div>
                         <div class="card-body">
                             <div class="row custom-options-checkable g-1">

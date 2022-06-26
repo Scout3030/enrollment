@@ -39,7 +39,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Common courses') }}</h4>
+                            <h4 class="card-title">{{ __('Common subjects') }} ({{ __('mandatory') }})</h4>
                         </div>
                         <div class="card-body">
                             <div  class="row custom-options-checkable g-1">
@@ -73,7 +73,7 @@
                 <div class="col-sm-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Optional courses') }}</h4>
+                            <h4 class="card-title">{{ __('Optional subjects') }}</h4>
                             <p>{{ __('optional courses info') }}</p>
                         </div>
                         <div class="card-body">
