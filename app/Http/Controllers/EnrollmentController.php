@@ -34,7 +34,7 @@ class EnrollmentController extends Controller
         $gradeId = $student->grade->id;
         $levelId = $student->grade->level->id;
         $courses = [];
-
+        dd( $levelId,  $gradeId ,$student);
         switch ($levelId) {
             case Level::MIDDLE_SCHOOL: {
                 switch ($gradeId) {
@@ -433,6 +433,31 @@ class EnrollmentController extends Controller
                           
                      
                     }
+                }
+            }
+           
+
+            case Level::EDUCATIONAL_CYCLE: {
+                switch ($gradeId) {
+                    case Grade::FIRST_EDUCATIONAL_CYCLE_BASIC: {
+
+                        $commonCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::FORMATION_WORKSPACE)
+                            ->get();
+
+                        return view('enrollment.create.first-educational-cycle-basic',
+                            compact('commonCourses'));
+                    }
+                    case Grade::SECOND_EDUCATIONAL_CYCLE_BASIC: {
+
+                        $commonCourses = Course::whereGradeId($gradeId)
+                            ->whereCourseTypeId(CourseType::ASSOCIATED_UNITS_OF_COMPETENCES)
+                            ->get();
+
+                        return view('enrollment.create.second-educational-cycle-basic',
+                            compact('commonCourses'));
+                    }                  
+                   
                 }
             }
             case Level::PROFESSIONAL_TRAINING: {
