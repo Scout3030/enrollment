@@ -6,6 +6,7 @@ use App\DataTables\StudentDataTable;
 use App\Http\Requests\StudentImportRequest;
 use App\Http\Requests\StudentProfileRequest;
 use App\Http\Requests\StudentRequest;
+use App\Http\Resources\StudentResource;
 use App\Models\Student;
 use App\Models\Grade;
 use Maatwebsite\Excel\Facades\Excel;
@@ -29,9 +30,12 @@ class StudentController extends Controller
 
     /**
      * @param Student $student
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return StudentResource|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(Student $student){
+        if(request()->ajax()){
+            return new StudentResource($student);
+        }
         $student->load('user')->get();
         return view('student.show', compact('student'));
     }

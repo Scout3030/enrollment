@@ -164,5 +164,6 @@ return [
         'second_tutor_email' => 'email del segundo tutor',
         'second_tutor_address' => 'direccion del segundo tutor',
         'second_tutor_phone_number' => 'telefono del segundo tutor',
+        'grade_id' => 'grado'
     ],
 ];

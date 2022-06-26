@@ -85,6 +85,17 @@ class UserController extends Controller
             $data['password'] = Hash::make($request->password);
         }
 
+        if($user->hasRole('student')){
+            $user->student->dni = $request->dni;
+            $user->student->grade_id = $request->grade_id;
+            $user->student->save();
+            
+            $data['email'] = $request->email;
+            $user->fill($data)->save();
+
+            return back()->with('message', ['type' => 'success', 'description' => __('Student edited successfully')]);
+        }
+
         foreach ($user->getRoleNames() as $role) {
             $user->removeRole($role);
         }

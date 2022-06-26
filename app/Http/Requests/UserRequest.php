@@ -41,6 +41,16 @@ class UserRequest extends FormRequest
                 ];
             }
             case 'PUT': {
+                $user = $this->route('user');
+                if($user->hasRole('student')){
+                    return [
+                        'name' => ['required', 'string', 'max:255'],
+                        'email' => ['required', 'string', 'email', 'max:255'],
+                        'password' => ['sometimes', 'string', 'nullable', 'confirmed', new Password()],
+                        'dni' => 'required|min:8|max:8|unique:students,dni,'. $user->student->id .',id',
+                        'grade_id' => ['required']
+                    ];
+                }
                 return [
                     'name' => ['required', 'string', 'max:255'],
                     'email' => ['required', 'string', 'email', 'max:255'],

@@ -51,6 +51,10 @@
         @can('delete students')
             @include('student.delete-modal')
         @endcan
+
+        @can('edit users')
+            @include('student.edit-modal')
+        @endcan
     </section>
 @endsection
 
@@ -78,12 +82,49 @@
     <script>
         $(document).ready(function(){
             const studentDatatable = $('#studentsDatatable').DataTable()
+            const select2Modal = $('#editStudentForm');
+            const gradeEditNode = $('#grade_id_edit')
+            const levelEditNode = $('#level_id_edit')
+
+            levelEditNode.select2({
+                dropdownParent: select2Modal
+            });
+
+            gradeEditNode.select2({
+                dropdownParent: select2Modal
+            });
 
             @can('delete users')
             studentDatatable.on('click',  'tbody .deleteStudent', function () {
                 let studentId = $(this).data('id');
                 let $form = $('#deleteStudentForm')
                 $form.attr('action', `{{ route('students.index') }}/${studentId}`)
+            });
+            @endcan
+
+            @can('edit users')
+            studentDatatable.on('click',  'tbody .editStudent', function () {
+                let studentId = $(this).data('id');
+                let userId = $(this).data('user-id');
+                let $form = $('#editStudentForm')
+                $.ajax({
+                    url: `{{ route('students.index') }}/${studentId}`,
+                    type: 'GET',
+                    headers: {
+                        'x-csrf-token': $("meta[name=csrf-token]").attr('content')
+                    },
+                    success: (data) => {
+                        populateForm($form, data.data)
+                        setTimeout(function(){
+                            levelEditNode.val(data.data.level_id).trigger('change');
+                            populateSelectEdit(data.data.level_id)
+                            setTimeout(function(){
+                                gradeEditNode.val(data.data.grade_id).trigger('change');
+                            }, 500)
+                        }, 500)
+                    }
+                })
+                $form.attr('action', `{{ route('users.index') }}/${userId}`)
             });
             @endcan
 
@@ -102,6 +143,11 @@
                 populateTypesSelect(levelId)
             })
 
+            levelEditNode.on('change', function(){
+                const levelId = $(this).val()
+                populateSelectEdit(levelId)
+            })
+
             function populateSelect(levelId){
                 $.ajax({
                     url: `{{ route('grades.index') }}/level/${levelId}`,
@@ -110,6 +156,22 @@
                         if(xhr.status === 200) {
                             gradeNode.empty();
                             gradeNode.select2({
+                                data: data.data
+                            });
+                        }
+                    }
+                })
+            }
+
+            function populateSelectEdit(levelId){
+                $.ajax({
+                    url: `{{ route('grades.index') }}/level/${levelId}`,
+                    type: 'GET',
+                    success: (data, textStatus, xhr) => {
+                        if(xhr.status === 200) {
+                            gradeEditNode.empty();
+                            gradeEditNode.select2({
+                                dropdownParent: select2Modal,
                                 data: data.data
                             });
                         }
