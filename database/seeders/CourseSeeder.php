@@ -21,14 +21,14 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'Physical Education',
+                'name' => 'Educación Física',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'Geography and History',
+                'name' => 'Geografía e Historia',
                 'bilingual' => true,
                 'duration'=>'3',
                 'course_type_id' => CourseType::COMMON,
@@ -36,28 +36,28 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'Spanish Language and Literature',
+                'name' => 'Lengua Castellana y Literatura',
                 'duration'=>'5',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'First Foreign Language: English',
+                'name' => 'Primera Lengua Extranjera I: Inglés I',
                 'duration'=>'4',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'Mathematics',
+                'name' => 'Matemáticas',
                 'duration'=>'4',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'Biology and Geology',
+                'name' => 'Biología y Geología',
                 'bilingual' => true,
                 'duration'=>'4',
                 'course_type_id' => CourseType::COMMON,
@@ -65,14 +65,14 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'Visual and Audiovisual Plastic Education',
+                'name' => 'Educación Plástica, Visual y Audiovisual',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'Music',
+                'name' => 'Música',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
@@ -81,35 +81,35 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'Second Foreign Language: French',
+                'name' => 'Segunda Lengua Extranjera: Francés I',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'Asturian Language and Literature',
+                'name' => 'Lengua Asturiana y Literatura I',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'Applied Digitization',
+                'name' => 'Digitalización Aplicada',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'Religion',
+                'name' => 'Religión',
                 'duration'=>'1',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::FIRST_MIDDLE_SCHOOL,
-                'name' => 'Educational Attention',
+                'name' => 'Atención Educativa',
                 'duration'=>'1',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);
@@ -119,35 +119,35 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'Geography and History',
+                'name' => 'Geografía e Historia',
                 'duration'=>'3',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'Physics and Chemistry',
+                'name' => 'Física y Química',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'First Foreign Language: English',
+                'name' => 'Primera Lengua Extranjera I: Inglés I',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'Spanish Language and Literature',
+                'name' => 'Lengua Castellana y Literatura',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'Mathematics',
+                'name' => 'Matemáticas',
                 'bilingual' => true,
                 'duration'=>'5',
                 'course_type_id' => CourseType::CORE,
@@ -155,7 +155,7 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'Music',
+                'name' => 'Música',
                 'duration'=>'2',
                 'course_type_id' => CourseType::SPECIFIC,
             ]);
@@ -163,14 +163,14 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'Technology',
+                'name' => 'Tecnología',
                 'duration'=>'2',
                 'course_type_id' => CourseType::SPECIFIC,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'Physical Education',
+                'name' => 'Educación Física',
                 'bilingual' => true,
                 'duration'=>'2',
                 'course_type_id' => CourseType::SPECIFIC,
@@ -178,7 +178,7 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'Ethical values',
+                'name' => 'Valores Éticos',
                 'duration'=>'1',
                 'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
             ]);
@@ -192,21 +192,21 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'Second Foreign Language: French',
+                'name' => 'Segunda Lengua Extranjera I: Francés I',
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'Classic culture',
+                'name' => 'Cultura Clásica',
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_MIDDLE_SCHOOL,
-                'name' => 'Asturian language',
+                'name' => 'Lengua Asturiana',
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
@@ -215,84 +215,84 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'Linguistic and Social Area',
+                'name' => 'Ámbito Lingüístico y Social',
                 'duration'=>'7',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'Foreign Languages Area',
+                'name' => 'Ámbito de Lenguas Extranjeras',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'Scientific and Mathematical Field',
+                'name' => 'Ámbito Científico y Matemático',
                 'duration'=>'9',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'Music',
+                'name' => 'Música',
                 'duration'=>'2',
                 'course_type_id' => CourseType::SPECIFIC,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'Technology',
+                'name' => 'Tecnología',
                 'duration'=>'2',
                 'course_type_id' => CourseType::SPECIFIC,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'Physical education',
+                'name' => 'Educación Física',
                 'duration'=>'2',
                 'course_type_id' => CourseType::SPECIFIC,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'Ethical values',
+                'name' => 'Valores Éticos',
                 'duration'=>'1',
                 'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'Religion',
+                'name' => 'Religión',
                 'duration'=>'1',
                 'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'Classic culture',
+                'name' => 'Cultura Clásica',
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'Asturian language',
+                'name' => 'Lengua Asturiana',
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'Center matter',
+                'name' => 'Materia de Centro',
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL,
-                'name' => 'Second Foreign Language: French',
+                'name' => 'Segunda Lengua Extranjera: Francés I',
                 'duration'=>'2',
                 'course_type_id' => CourseType::FREE_CONFIGURATION,
             ]);
@@ -301,35 +301,35 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Physical education',
+                'name' => 'Educación Física',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Geography and History',
+                'name' => 'Geografía e Historia',
                 'duration'=>'3',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Spanish Language and Literature',
+                'name' => 'Lengua Castellana y Literatura',
                 'duration'=>'4',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'First Foreign Language: English',
+                'name' => 'Primera Lengua Extranjera I: Inglés I',
                 'duration'=>'3',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Math',
+                'name' => 'Matemáticas',
                 'duration'=>'4',
                 'course_type_id' => CourseType::COMMON,
             ]);
@@ -337,35 +337,35 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Biology and geology',
+                'name' => 'Biología y Geología',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Visual and Audiovisual Plastic Education',
+                'name' => 'Educación Plástica Visual y Audiovisual',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Physics and chemistry',
+                'name' => 'Física y Química',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Technology and Digitization',
+                'name' => 'Tecnología y Digitalización',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Education in Civic and Ethical Values',
+                'name' => 'Educación en Valores Cívicos y Éticos',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
@@ -374,21 +374,21 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Second Foreign Language: French',
+                'name' => 'Segunda Lengua Extranjera: Francés I',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Asturian Language and Literature',
+                'name' => 'Lengua Asturiana y Literatura I',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Social and Business Entrepreneurship Project',
+                'name' => 'Proyecto de Emprendimiento Social y Empresarial',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
@@ -396,14 +396,14 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Educational Attention',
+                'name' => 'Atención Educativa',
                 'duration'=>'1',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_MIDDLE_SCHOOL,
-                'name' => 'Religion',
+                'name' => 'Religión',
                 'duration'=>'1',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);
@@ -412,14 +412,14 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                'name' => 'Linguistic and Social Area',
+                'name' => 'Ámbito Lingüístico y Social',
                 'duration'=>'9',
                 'course_type_id' => CourseType::COMMON_AREAS,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                'name' => 'Scientific-Technological Field',
+                'name' => 'Ámbito Científico-Tecnológico',
                 'duration'=>'9',
                 'course_type_id' => CourseType::COMMON_AREAS,
             ]);
@@ -427,56 +427,56 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                'name' => 'First Foreign Language: English',
+                'name' => 'Primera Lengua Extranjera I: Inglés I',
                 'duration'=>'3',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                'name' => 'Visual and Audiovisual Plastic Education',
+                'name' => 'Educación Plástica Visual y Audiovisual',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                'name' => 'Technology and Digitization',
+                'name' => 'Tecnología y Digitalización',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                'name' => 'Physical education',
+                'name' => 'Educación Física',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                'name' => 'Second Foreign Language: French',
+                'name' => 'Segunda Lengua Extranjera: Francés I',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                'name' => 'Center matter',
+                'name' => 'Materia de Centro',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                'name' => 'Asturian Language and Literature',
+                'name' => 'Lengua Asturiana y Literatura I',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                'name' => 'Social or Business Entrepreneurship Project',
+                'name' => 'Proyecto de Emprendimiento Social o Empresarial',
                 'duration'=>'2',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
@@ -491,7 +491,7 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::THIRD_HIGH_SCHOOL,
-                'name' => 'Educational Attention',
+                'name' => 'Atención Educativa',
                 'duration'=>'1',
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);
@@ -501,28 +501,28 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'name' => 'Geography and History',
+                'name' => 'Geografía e Historia',
                 'duration'=>'3',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'name' => 'Spanish Language and Literature',
+                'name' => 'Lengua Castellana y Literatura',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'name' => 'First Foreign Language: English',
+                'name' => 'Primera Lengua Extranjera I: Inglés I',
                 'duration'=>'3',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
-                'name' => 'Physical education',
+                'name' => 'Educación Física',
                 'bilingual' => true,
                 'duration'=>'2',
                 'course_type_id' => CourseType::CORE,
@@ -536,7 +536,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Ethical values',
+                'name' => 'Valores Éticos',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'duration'=>'1',
                 'course_type_id' => CourseType::SPECIFIC,
@@ -544,7 +544,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Academic Mathematics',
+                'name' => 'Matemáticas Académicas',
                 'duration'=>'4',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -553,7 +553,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Biology and geology',
+                'name' => 'Biología y Geología',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -562,7 +562,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Physics and chemistry',
+                'name' => 'Física y Química',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -571,7 +571,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Academic Mathematics',
+                'name' => 'Matemáticas Académicas',
                 'duration'=>'4',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -580,7 +580,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Economy',
+                'name' => 'Economía',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
                 'group_two'=>Course::GROUP_COURSES_TWO_B,
@@ -598,7 +598,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Applied mathematics',
+                'name' => 'Matemáticas Aplicadas',
                 'duration'=>'4',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -607,7 +607,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Sciences applied to Professional Activity',
+                'name' => 'Ciencias Aplicadas a la Actividad Profesional',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -616,7 +616,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Technology',
+                'name' => 'Tecnología',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_B,
@@ -625,7 +625,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'initiation to business activity',
+                'name' => 'Iniciación a la Actividad Empresarial',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_B,
@@ -636,7 +636,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Performing Arts and Dance',
+                'name' => 'Artes Escénicas y Danza',
                 'duration'=>'3',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::SPECIFIC_ITINERARY,
@@ -650,14 +650,14 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Second Foreign Language: French',
+                'name' => 'Segunda Lengua Extranjera: Francés I',
                 'duration'=>'3',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::SPECIFIC_ITINERARY,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Visual and Audiovisual Plastic Education',
+                'name' => 'Educación Plástica Visual y Audiovisual',
                 'duration'=>'3',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::SPECIFIC_ITINERARY,
@@ -665,7 +665,7 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'duration'=>'3',
-                'name' => 'Classic culture',
+                'name' => 'Cultura Clásica',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::SPECIFIC_ITINERARY,
             ]);
@@ -674,41 +674,41 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'duration'=>'3',
-                'name' => 'Philosophy',
+                'name' => 'Filosofía',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::SPECIFIC_ITINERARY,
             ]);
         Course::factory()
             ->create([
                 'duration'=>'3',
-                'name' => 'Music',
+                'name' => 'Música',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::SPECIFIC_ITINERARY,
             ]);
         Course::factory()
             ->create([
                 'duration'=>'3',
-                'name' => 'scientific culture',
+                'name' => 'Cultura Científica',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::SPECIFIC_ITINERARY,
             ]);
         Course::factory()
             ->create([
                 'duration'=>'3',
-                'name' => 'Asturian Language and Literature',
+                'name' => 'Lengua Asturiana y Literatura I',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::FREE_CONFIGURATION_ITINERARY,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Electronics, Robotics and Control',
+                'name' => 'Electrónica, Robótica y Control',
                 'duration'=>'3',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::FREE_CONFIGURATION_ITINERARY,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Photography, Video and Digital Creation',
+                'name' => 'Fotografía, Vídeo y Creación Digital',
                 'grade_id' => Grade::FOURTH_MIDDLE_SCHOOL,
                 'course_type_id' => CourseType::FREE_CONFIGURATION_ITINERARY,
                 'duration'=>'3',
@@ -726,28 +726,28 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Physical education',
+                'name' => 'Educación Física',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
                 'course_type_id' => CourseType::COMMON,
                 'duration'=>'2',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Philosophy',
+                'name' => 'Filosofía',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
                 'course_type_id' => CourseType::COMMON,
                 'duration'=>'3',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Spanish Language and Literature',
+                'name' => 'Lengua Castellana y Literatura',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
                 'course_type_id' => CourseType::COMMON,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'First Foreign Language: English',
+                'name' => 'Primera Lengua Extranjera I: Inglés I',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
                 'course_type_id' => CourseType::COMMON,
                 'duration'=>'4',
@@ -755,7 +755,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Physics and Chemistry',
+                'name' => 'Física y Química',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
                 'course_type_id' => CourseType::MODALITY,
                 'duration'=>'4',
@@ -763,7 +763,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Math',
+                'name' => 'Matemáticas',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
                 'course_type_id' => CourseType::MODALITY,
                 'duration'=>'4',
@@ -771,48 +771,48 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Biology, Geology and Environmental Sciences',
+                'name' => 'Bilogía, Geología y Ciencias Ambientales',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Technical drawing I',
+                'name' => 'Dibujo Técnico I',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'technology and engineering',
+                'name' => 'Tecnología e Ingeniería',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Technical drawing I',
+                'name' => 'Dibujo Técnico I',
                 'duration'=>'4',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);
         Course::factory()
             ->create([
-                'name' => 'technology and engineering',
+                'name' => 'Tecnología e Ingeniería',
                 'duration'=>'4',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
             ]);Course::factory()
         ->create([
-            'name' => 'Sciences applied to Professional Activity',
+            'name' => 'Ciencias Aplicadas a la Actividad Profesional',
             'duration'=>'4',
             'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
             'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
         ]);
         Course::factory()
             ->create([
-                'name' => 'Applied anatomy',
+                'name' => 'Anatomía Aplicada',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -820,7 +820,7 @@ class CourseSeeder extends Seeder
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);Course::factory()
         ->create([
-            'name' => 'The classic legacy',
+            'name' => 'El Legado Clásico',
             'duration'=>'3',
             'group_one'=>Course::GROUP_COURSES_ONE_B,
             'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -828,7 +828,7 @@ class CourseSeeder extends Seeder
             'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
         ]);Course::factory()
         ->create([
-            'name' => 'Applied digital technology',
+            'name' => 'Tecnologías Digitales Aplicada I',
             'duration'=>'3',
             'group_one'=>Course::GROUP_COURSES_ONE_B,
             'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -837,7 +837,7 @@ class CourseSeeder extends Seeder
         ]);
         Course::factory()
             ->create([
-                'name' => 'Asturian Language and Literature',
+                'name' => 'Lengua Asturiana y Literatura I',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -846,7 +846,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Second Foreign Language: French',
+                'name' => 'Segunda Lengua Extranjera: Francés I',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -855,7 +855,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Integrated research project',
+                'name' => 'Proyecto de Investigación Integrado',
                 'duration'=>'1',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_B,
@@ -864,7 +864,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Energy resources and sustainability',
+                'name' => 'Recursos Energéticos y Sostenibilidad I',
                 'duration'=>'1',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_B,
@@ -874,7 +874,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Religion',
+                'name' => 'Religión',
                 'duration'=>'1',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY,
                 'course_type_id' => CourseType::COMMON_OPTIONAL,
@@ -886,28 +886,28 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Physical education',
+                'name' => 'Educación Física',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::COMMON,
                 'duration'=>'2',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Philosophy',
+                'name' => 'Filosofía',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::COMMON,
                 'duration'=>'3',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Spanish Language and Literature',
+                'name' => 'Lengua Castellana y Literatura',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::COMMON,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'First Foreign Language: English',
+                'name' => 'Primera Lengua Extranjera I: Inglés I',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::COMMON,
                 'duration'=>'4',
@@ -922,7 +922,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'History of the contemporary world',
+                'name' => 'Historia del Mundo Contemporáneo',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_HUMANITIES,
                 'duration'=>'4',
@@ -930,35 +930,35 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Applied mathematics to social sciences',
+                'name' => 'Matemáticas Aplicadas a las Ciencias Sociales',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_SCIENCES,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Economy',
+                'name' => 'Economía',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_SCIENCES,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Economy',
+                'name' => 'Economía',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_HUMANITIES_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Greek',
+                'name' => 'Griego',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_HUMANITIES_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'world literature',
+                'name' => 'Literatura Universal',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_HUMANITIES_OPTION,
                 'duration'=>'4',
@@ -966,21 +966,21 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'History of the contemporary world',
+                'name' => 'Historia del Mundo Contemporáneo',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_SCIENCES_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'world literature',
+                'name' => 'Literatura Universal',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_SCIENCES_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Greek',
+                'name' => 'Griego',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_SCIENCES_OPTION,
                 'duration'=>'4',
@@ -988,7 +988,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Applied anatomy',
+                'name' => 'Anatomía Aplicada',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -996,7 +996,7 @@ class CourseSeeder extends Seeder
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);Course::factory()
         ->create([
-            'name' => 'The classic legacy',
+            'name' => 'El Legado Clásico',
             'duration'=>'3',
             'group_one'=>Course::GROUP_COURSES_ONE_B,
             'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -1004,7 +1004,7 @@ class CourseSeeder extends Seeder
             'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
         ]);Course::factory()
         ->create([
-            'name' => 'Asturian Language and Literature',
+            'name' => 'Lengua Asturiana y Literatura I',
             'duration'=>'3',
             'group_one'=>Course::GROUP_COURSES_ONE_B,
             'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -1013,7 +1013,7 @@ class CourseSeeder extends Seeder
         ]);
         Course::factory()
             ->create([
-                'name' => 'Second Foreign Language: French',
+                'name' => 'Segunda Lengua Extranjera: Francés I',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -1022,7 +1022,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Applied digital technology',
+                'name' => 'Tecnologías Digitales Aplicada I',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -1032,7 +1032,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Integrated research project',
+                'name' => 'Proyecto de Investigación Integrado',
                 'duration'=>'1',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_B,
@@ -1041,7 +1041,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Energy resources and sustainability',
+                'name' => 'Recursos Energéticos y Sostenibilidad I',
                 'duration'=>'1',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_B,
@@ -1050,29 +1050,21 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Economy',
+                'name' => 'Economía',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Greek',
+                'name' => 'Griego',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'world literature',
-                'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
-                'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
-                'duration'=>'4',
-            ]);
-
-        Course::factory()
-            ->create([
-                'name' => 'History of the contemporary world',
+                'name' => 'Literatura Universal',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
                 'duration'=>'4',
@@ -1080,7 +1072,15 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Religion',
+                'name' => 'Historia del Mundo Contemporáneo',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
+                'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
+                'duration'=>'4',
+            ]);
+
+        Course::factory()
+            ->create([
+                'name' => 'Religión',
                 'duration'=>'1',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::COMMON_OPTIONAL,
@@ -1095,28 +1095,28 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Physical education',
+                'name' => 'Educación Física',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON,
                 'duration'=>'2',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Philosophy',
+                'name' => 'Filosofía',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON,
                 'duration'=>'3',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Spanish Language and Literature',
+                'name' => 'Lengua Castellana y Literatura',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'First Foreign Language: English',
+                'name' => 'Primera Lengua Extranjera I: Inglés I',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON,
                 'duration'=>'4',
@@ -1124,7 +1124,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'general math',
+                'name' => 'Matemáticas Generales',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::MODALITY,
                 'duration'=>'4',
@@ -1132,35 +1132,35 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'world literature',
+                'name' => 'Literatura Universal',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Biology, Geology and Environmental Sciences',
+                'name' => 'Bilogía, Geología y Ciencias Ambientales',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Technical drawing I',
+                'name' => 'Dibujo Técnico I',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Physics and Chemistry',
+                'name' => 'Física y Química',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'technology and engineering',
+                'name' => 'Tecnología e Ingeniería',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',
@@ -1174,35 +1174,35 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Greek',
+                'name' => 'Griego',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'History of the contemporary world',
+                'name' => 'Historia del Mundo Contemporáneo',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Economy, Entrepreneurship and business activity',
+                'name' => 'Economía, Entrepreneurship and business activity',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'world literature',
+                'name' => 'Literatura Universal',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Biology, Geology and Environmental Sciences',
+                'name' => 'Bilogía, Geología y Ciencias Ambientales',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
                 'duration'=>'4',
@@ -1210,14 +1210,14 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Physics and Chemistry',
+                'name' => 'Física y Química',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'technology and engineering',
+                'name' => 'Tecnología e Ingeniería',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
                 'duration'=>'4',
@@ -1231,21 +1231,21 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Technical drawing I',
+                'name' => 'Dibujo Técnico I',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'Greek',
+                'name' => 'Griego',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
                 'duration'=>'4',
             ]);
         Course::factory()
             ->create([
-                'name' => 'History of the contemporary world',
+                'name' => 'Historia del Mundo Contemporáneo',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_ONE,
                 'duration'=>'4',
@@ -1253,7 +1253,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Applied anatomy',
+                'name' => 'Anatomía Aplicada',
                 'duration'=>'3',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1261,7 +1261,7 @@ class CourseSeeder extends Seeder
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);Course::factory()
         ->create([
-            'name' => 'The classic legacy',
+            'name' => 'El Legado Clásico',
             'duration'=>'3',
             'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
             'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
@@ -1269,7 +1269,7 @@ class CourseSeeder extends Seeder
             'group_two'=>Course::GROUP_COURSES_TWO_A,
         ]);Course::factory()
         ->create([
-            'name' => 'Applied digital technology',
+            'name' => 'Tecnologías Digitales Aplicada I',
             'duration'=>'3',
             'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
             'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
@@ -1278,7 +1278,7 @@ class CourseSeeder extends Seeder
         ]);
         Course::factory()
             ->create([
-                'name' => 'Asturian Language and Literature',
+                'name' => 'Lengua Asturiana y Literatura I',
                 'duration'=>'3',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
@@ -1287,7 +1287,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Second Foreign Language: French',
+                'name' => 'Segunda Lengua Extranjera: Francés I',
                 'duration'=>'3',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
@@ -1296,7 +1296,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Integrated research project',
+                'name' => 'Proyecto de Investigación Integrado',
                 'duration'=>'1',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
@@ -1305,7 +1305,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Energy resources and sustainability',
+                'name' => 'Recursos Energéticos y Sostenibilidad I',
                 'duration'=>'1',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_B,
@@ -1315,7 +1315,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Religion',
+                'name' => 'Religión',
                 'duration'=>'1',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::COMMON_OPTIONAL,
@@ -1328,112 +1328,112 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'History of Philosophy',
+                'name' => 'Historia de la Filosofía',
                 'duration'=>'3',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'Math II',
+                'name' => 'Matemáticas II',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'History of Spain',
+                'name' => 'Historia de España',
                 'duration'=>'3',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'Spanish Language and Literature II',
+                'name' => 'Lengua Castellana y Literatura II',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'First Foreign Language II: English II',
+                'name' => 'Primera Lengua Extranjera II: Inglés II',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'Biology',
+                'name' => 'Biología',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE_MODALITY_OPTION_ONE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'Chemistry',
+                'name' => 'Química',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE_MODALITY_OPTION_ONE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'Physics',
+                'name' => 'Física',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE_MODALITY_OPTION_TWO,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'Technical drawing II',
+                'name' => 'Dibujo Técnico II',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE_MODALITY_OPTION_TWO,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'Geology',
+                'name' => 'Geología',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE_MODALITY_OPTION_THIRD,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'Technical drawing II',
+                'name' => 'Dibujo Técnico II',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE_MODALITY_OPTION_THIRD,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'Physics',
+                'name' => 'Física',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE_MODALITY_OPTION_FOURTH,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'Chemistry',
+                'name' => 'Química',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE_MODALITY_OPTION_FOURTH,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'Physics',
+                'name' => 'Física',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE_MODALITY_OPTION_FIVE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
-                'name' => 'Biology',
+                'name' => 'Biología',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE_MODALITY_OPTION_FIVE,
             ]);
 
         Course::factory()
             ->create([
-                'name' => 'Industrial Technology II',
+                'name' => 'Tecnología Industrial II',
                 'duration'=>'4',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -1443,7 +1443,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Earth and environmental sciences',
+                'name' => 'Ciencias de la Tierra y del Medio Ambiente',
                 'duration'=>'4',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -1452,7 +1452,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Geology',
+                'name' => 'Geología',
                 'duration'=>'4',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -1461,7 +1461,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Technical drawing II',
+                'name' => 'Dibujo Técnico II',
                 'duration'=>'4',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -1470,7 +1470,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Biology',
+                'name' => 'Biología',
                 'duration'=>'4',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -1479,7 +1479,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Image and sound',
+                'name' => 'Imagen y Sonido',
                 'duration'=>'3',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1497,7 +1497,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Psychology',
+                'name' => 'Psicología',
                 'duration'=>'3',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1506,7 +1506,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Second Foreign Language II: French II',
+                'name' => 'Segunda Lengua Extranjera II: Francés II',
                 'duration'=>'3',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1515,7 +1515,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Asturian language II',
+                'name' => 'Lengua Asturiana II',
                 'duration'=>'1',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1524,7 +1524,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Research project II',
+                'name' => 'Proyecto de Investigación II',
                 'duration'=>'1',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1533,7 +1533,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'active lifestyle',
+                'name' => 'Estilo de Vida Activo',
                 'duration'=>'1',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1542,7 +1542,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Religion',
+                'name' => 'Religión',
                 'duration'=>'1',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_SCIENCE,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1556,35 +1556,35 @@ class CourseSeeder extends Seeder
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
-                'name' => 'History of Philosophy',
+                'name' => 'Historia de la Filosofía',
                 'duration'=>'3',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
-                'name' => 'First Foreign Language II: English II',
+                'name' => 'Primera Lengua Extranjera II: Inglés II',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
-                'name' => 'History of Spain',
+                'name' => 'Historia de España',
                 'duration'=>'3',
                 'course_type_id' => CourseType::CORE,
             ]);
         Course::factory()
             ->create([
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
-                'name' => 'Spanish Language and Literature II',
+                'name' => 'Lengua Castellana y Literatura II',
                 'duration'=>'4',
                 'course_type_id' => CourseType::CORE,
             ]);
 
         Course::factory()
             ->create([
-                'name' => 'Latin II',
+                'name' => 'Latín II',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_HUMANITIES,
                 'duration'=>'4',
@@ -1592,7 +1592,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Applied mathematics to social sciences II',
+                'name' => 'Matemáticas Aplicadas a las Ciencias Sociales II',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_SCIENCES,
                 'duration'=>'4',
@@ -1600,7 +1600,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Greek II',
+                'name' => 'Griego II',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_HUMANITIES,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -1609,7 +1609,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Geography',
+                'name' => 'Geografía',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
                 'course_type_id' => CourseType::ITINERARY_HUMANITIES,
@@ -1618,7 +1618,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'business Economics',
+                'name' => 'Economía de la Empresa',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_HUMANITIES,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1627,7 +1627,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'History of art',
+                'name' => 'Historia del Arte',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'course_type_id' => CourseType::ITINERARY_HUMANITIES,
@@ -1637,7 +1637,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Greek II',
+                'name' => 'Griego II',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_TWO_A,
@@ -1646,7 +1646,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Geography',
+                'name' => 'Geografía',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_TWO_A,
                 'course_type_id' => CourseType::ITINERARY_SCIENCES,
@@ -1655,7 +1655,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'business Economics',
+                'name' => 'Economía de la Empresa',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'course_type_id' => CourseType::ITINERARY_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_TWO_B,
@@ -1664,7 +1664,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'History of art',
+                'name' => 'Historia del Arte',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_TWO_B,
                 'course_type_id' => CourseType::ITINERARY_SCIENCES,
@@ -1673,7 +1673,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Image and sound',
+                'name' => 'Imagen y Sonido',
                 'duration'=>'3',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1691,7 +1691,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Psychology',
+                'name' => 'Psicología',
                 'duration'=>'3',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1700,7 +1700,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Second Foreign Language II: French II',
+                'name' => 'Segunda Lengua Extranjera II: Francés II',
                 'duration'=>'3',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1709,7 +1709,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Asturian language II',
+                'name' => 'Lengua Asturiana II',
                 'duration'=>'1',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1718,7 +1718,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Research project II',
+                'name' => 'Proyecto de Investigación II',
                 'duration'=>'1',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1727,7 +1727,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'active lifestyle',
+                'name' => 'Estilo de Vida Activo',
                 'duration'=>'1',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1736,7 +1736,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Religion',
+                'name' => 'Religión',
                 'duration'=>'1',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1747,7 +1747,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Foundation of administration and management',
+                'name' => 'Fundamento de Administración y Gestión',
                 'duration'=>'4',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -1757,7 +1757,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'History of music and dance',
+                'name' => 'Historia de la Música y Danza',
                 'duration'=>'4',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -1766,7 +1766,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Geography',
+                'name' => 'Geografía',
                 'duration'=>'4',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -1775,7 +1775,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Economy',
+                'name' => 'Economía',
                 'duration'=>'4',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -1784,7 +1784,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Greek II',
+                'name' => 'Griego II',
                 'duration'=>'4',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -1793,7 +1793,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'History of art',
+                'name' => 'Historia del Arte',
                 'duration'=>'4',
                 'grade_id' => Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES,
                 'group_one'=>Course::GROUP_COURSES_ONE_A,
@@ -1804,21 +1804,21 @@ class CourseSeeder extends Seeder
         // 1 FPB
         Course::factory()
             ->create([
-                'name' => 'Elemental techniques of service',
+                'name' => 'Técnicas Elementales de Servicio',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 6,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Basic process to prepare food and drinks',
+                'name' => 'Procesos Básicos de Preparación de Alimentos y Bebidas',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 5,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Preparing and assembling materials for catering',
+                'name' => 'Preparación y Montaje de Materiales para Colectividades y Catering',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 4,
@@ -1826,14 +1826,14 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Applied sciences I',
+                'name' => 'Ciencias Aplicadas I',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_COMMON_BLOCKS,
                 'duration' => 6,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Communication and society I',
+                'name' => 'Comunicación y Sociedad I',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_COMMON_BLOCKS,
                 'duration' => 6,
@@ -1841,14 +1841,14 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Forming in workspaces I',
+                'name' => 'FCT: Formación en Centros de Trabajo',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::FORMATION_WORKSPACE,
                 'duration' => 120,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Prevention in labor risks',
+                'name' => 'Unidad Formativa Prevención de Riesgos Laborales',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::FORMATION_WORKSPACE,
                 'duration' => 2,
@@ -1858,28 +1858,28 @@ class CourseSeeder extends Seeder
         // 2 FPB
         Course::factory()
             ->create([
-                'name' => 'Técnicas elementales de preelaboración',
+                'name' => 'Técnicas Elementales de Preelaboración',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 5,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Procesos básicos de producción culinaria',
+                'name' => 'Procesos Básicos de Producción Culinaria',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 6,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Aprovisionamiento y conservación de materias primas e higiene en la manipulación',
+                'name' => 'Aprovisionamiento y Conservación de Materias Primas e Higiene en la Manipulación',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 4,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Atención al cliente',
+                'name' => 'Atención al Cliente',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 2,
@@ -1887,14 +1887,14 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Ciencias aplicadas II',
+                'name' => 'Ciencias Aplicadas II',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_COMMON_BLOCKS,
                 'duration' => 6,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Comunicación y sociedad II',
+                'name' => 'Comunicación y Sociedad II',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_COMMON_BLOCKS,
                 'duration' => 6,
@@ -1902,7 +1902,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Formación en centros de trabajo I',
+                'name' => 'Formación en Centros de Trabajo I',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::FORMATION_WORKSPACE,
                 'duration' => 120,
@@ -1912,35 +1912,35 @@ class CourseSeeder extends Seeder
         // 1 CFGM
         Course::factory()
             ->create([
-                'name' => 'Preelaboración y conservación de alimentos',
+                'name' => 'Preelaboración y Conservación de Alimentos',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 320,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Técnicas culinarias',
+                'name' => 'Técnicas Culinarias',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 256,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Procesos básicos de pastelería y repostería',
+                'name' => 'Procesos Básicos de Pastelería y Repostería',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 192,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Seguridad e higiene en la manipulación de alimentos',
+                'name' => 'Seguridad e Higiene en la Manipulación de Alimentos',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 96,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Formación y orientación laboral',
+                'name' => 'Formación y Orientación Laboral',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 96,
@@ -1950,35 +1950,35 @@ class CourseSeeder extends Seeder
         // 2 CFGM
         Course::factory()
             ->create([
-                'name' => 'Ofertas gastrónomicas',
+                'name' => 'Ofertas Gastrónomicas',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 66,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Productos culinarios',
+                'name' => 'Productos Culinarios',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 308,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Postres en restauración',
+                'name' => 'Postres en Restauración',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 198,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Empresa e iniciativa emprendedora',
+                'name' => 'Empresa e Iniciativa Emprendedora',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 88,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Formación en centros de trabajo',
+                'name' => 'Formación en Centros de Trabajo',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 380,
