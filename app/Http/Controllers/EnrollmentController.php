@@ -675,7 +675,6 @@ class EnrollmentController extends Controller
 
             $enrollment->courses()->attach($commonCourses);
 
-            $enrollment->courses()->attach($modalityOption);
             if($request->modality==1){
                 $coursesSpecific = Course::whereGradeId($student->grade_id)
                     ->whereCourseTypeId(CourseType::COMMON_OPTIONAL)
@@ -785,6 +784,26 @@ class EnrollmentController extends Controller
                 ->whereCourseTypeId(CourseType::CF_COMMON)
                 ->get();
                 $enrollment->courses()->attach($commonCourses);
+
+        }
+
+        if( $grade->id == Grade::FIRST_EDUCATIONAL_CYCLE_BASIC || $grade->id == Grade::SECOND_EDUCATIONAL_CYCLE_BASIC) {
+
+            
+                $commonCourses = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::ASSOCIATED_UNITS_OF_COMPETENCES)
+                ->get();
+
+                $commonCourses1 = Course::whereGradeId($student->grade_id)
+                    ->whereCourseTypeId(CourseType::ASSOCIATED_COMMON_BLOCKS)
+                    ->get();
+
+                $commonCourses2 = Course::whereGradeId($student->grade_id)
+                    ->whereCourseTypeId(CourseType::FORMATION_WORKSPACE)
+                    ->get();
+                $enrollment->courses()->attach($commonCourses);
+                $enrollment->courses()->attach($commonCourses1);
+                $enrollment->courses()->attach($commonCourses2);
 
         }
 
