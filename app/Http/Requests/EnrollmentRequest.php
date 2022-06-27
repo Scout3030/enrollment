@@ -181,8 +181,6 @@ class EnrollmentRequest extends FormRequest
                 'one_courses' =>['required'],
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
-                'elective_courses_free' => ['required', 'array', new ValidOrderRule()],
-                'elective_courses_free.*.course_id' => 'exists:courses,id',
                 'first_tutor_signature'=>['required'],
                'student_signature'=>['required'],
             ];
@@ -199,8 +197,6 @@ class EnrollmentRequest extends FormRequest
                
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
-                'elective_courses_free' => ['required', 'array', new ValidOrderRule()],
-                'elective_courses_free.*.course_id' => 'exists:courses,id',
                 'first_tutor_signature'=>['required'],
                 'student_signature'=>['required'],
             ];
@@ -216,8 +212,6 @@ class EnrollmentRequest extends FormRequest
                 'active1'=> ['required'],
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
-                'elective_courses_free' => ['required', 'array', new ValidOrderRule()],
-                'elective_courses_free.*.course_id' => 'exists:courses,id',
                 'first_tutor_signature'=>['required'],
                 'student_signature'=>['required'],
             ];
