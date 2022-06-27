@@ -9,8 +9,6 @@ namespace App\DataTables;
 use App\Models\Enrollment;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class EnrollmentDataTable extends DataTable
@@ -25,11 +23,21 @@ class EnrollmentDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->filterColumn('student', function($query, $keyword) {
+                $query->whereHas('student', function($q) use ($keyword){
+                    $q->whereHas('user', function($q) use ($keyword){
+                        $q->where('name', "LIKE", "%".$keyword."%");
+                    })
+                        ->orWhere('middle_name', "LIKE", "%".$keyword."%")
+                        ->orWhere('paternal_surname', "LIKE", "%".$keyword."%")
+                        ->orWhere('maternal_surname', "LIKE", "%".$keyword."%");
+                });
+            })
             ->addColumn('student', function (Enrollment $enrollment){
                 return $enrollment->student->user->full_name;
             })
             ->addColumn('grade', function (Enrollment $enrollment){
-                return __($enrollment->grade->name). "/" .__($enrollment->grade->level->name);
+                return __($enrollment->grade->name). " / " .__($enrollment->grade->level->custom_name);
             })
             ->addColumn('action', 'enrollment.datatable.action')
             ->rawColumns(['action']);

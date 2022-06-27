@@ -1800,7 +1800,7 @@ class CourseSeeder extends Seeder
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
                 'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
             ]);
-        
+
         // 1 FPB
         Course::factory()
             ->create([

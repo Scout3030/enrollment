@@ -32,7 +32,9 @@ class UsersImport implements ToCollection, WithChunkReading, WithHeadingRow
 
             $levels = [
                 'ESO' => Level::MIDDLE_SCHOOL,
-                'PMAR' => Level::HIGH_SCHOOL
+                'PMAR' => Level::HIGH_SCHOOL,
+                'BACHILLERATO' => Level::BACHELOR,
+                'CICLO FORMATIVO' => Level::EDUCATIONAL_CYCLE,
             ];
 
             $grades = [
@@ -40,6 +42,17 @@ class UsersImport implements ToCollection, WithChunkReading, WithHeadingRow
                 2 => 'Second',
                 3 => 'Third',
                 4 => 'Fourth',
+
+                '1 Ciencias y Tecnologia' => '1° Ciencias y Tecnologia',
+                '1 Humanidades y Ciencias Sociales' => '1° Humanidades y Ciencias Sociales',
+                '1 General' => '1° General',
+                '2 Ciencias' => '2° Ciencias',
+                '2 Humanidades y Ciencias Sociales' => '2° Humanidades y Ciencias Sociales',
+
+                '1 FPB' => '1° FPB',
+                '2 FPB' => '2° FPB',
+                '1 CFGM' => '1° CFGM',
+                '2 CFGM' => '2° CFGM',
             ];
 
             $statuses = [

@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <input type="date" id="birth" class="form-control" name="birth"
-                                                   value="{{ old('birth', $student->birth->format('Y-m-d')) }}" />
+                                                   value="{{ old('birth', $student->birth ? $student->birth->format('Y-m-d') : null) }}" />
                                         </div>
                                     </div>
                                 </div>

@@ -25,11 +25,11 @@ class GradeSeeder extends Seeder
             ['name' => 'Second', 'level_id' => Level::HIGH_SCHOOL],
             ['name' => 'Third', 'level_id' => Level::HIGH_SCHOOL],
 
-            ['name' => 'first science technology', 'level_id' => Level::BACHELOR],
-            ['name' => 'first humanities sciences', 'level_id' => Level::BACHELOR],
-            ['name' => 'first general', 'level_id' => Level::BACHELOR],
-            ['name' => 'second science', 'level_id' => Level::BACHELOR],
-            ['name' => 'second humanities sciences', 'level_id' => Level::BACHELOR],
+            ['name' => '1° Ciencias y Tecnologia', 'level_id' => Level::BACHELOR],
+            ['name' => '1° Humanidades y Ciencias Sociales', 'level_id' => Level::BACHELOR],
+            ['name' => '1° General', 'level_id' => Level::BACHELOR],
+            ['name' => '2° Ciencias', 'level_id' => Level::BACHELOR],
+            ['name' => '2° Humanidades y Ciencias Sociales', 'level_id' => Level::BACHELOR],
 
             ['name' => '1° FPB', 'level_id' => Level::EDUCATIONAL_CYCLE],
             ['name' => '2° FPB', 'level_id' => Level::EDUCATIONAL_CYCLE],
