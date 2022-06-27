@@ -855,6 +855,12 @@ class EnrollmentController extends Controller
         return $pdf->download($pdfName.'.pdf');
     }
 
+    public function exportStudent(Enrollment $enrollment){
+        $pdf = \PDF::loadView('template_pdf.student', ['student' => $enrollment->student]);
+        $pdfName = Str::slug($enrollment->student->user->name.' '.$enrollment->student->paternal_surname.' '.$enrollment->student->maternal_surname,'-');
+        return $pdf->download($pdfName.'.pdf');
+    }
+
     public function signature()
     {
         $baseFrom = request()->sign;
