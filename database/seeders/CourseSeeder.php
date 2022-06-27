@@ -812,7 +812,7 @@ class CourseSeeder extends Seeder
         ]);
         Course::factory()
             ->create([
-                'name' => 'applied anatomy',
+                'name' => 'Applied anatomy',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -820,7 +820,7 @@ class CourseSeeder extends Seeder
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);Course::factory()
         ->create([
-            'name' => 'the classic legacy',
+            'name' => 'The classic legacy',
             'duration'=>'3',
             'group_one'=>Course::GROUP_COURSES_ONE_B,
             'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -828,7 +828,7 @@ class CourseSeeder extends Seeder
             'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
         ]);Course::factory()
         ->create([
-            'name' => 'applied digital technology',
+            'name' => 'Applied digital technology',
             'duration'=>'3',
             'group_one'=>Course::GROUP_COURSES_ONE_B,
             'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -988,7 +988,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'applied anatomy',
+                'name' => 'Applied anatomy',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -996,7 +996,7 @@ class CourseSeeder extends Seeder
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);Course::factory()
         ->create([
-            'name' => 'the classic legacy',
+            'name' => 'The classic legacy',
             'duration'=>'3',
             'group_one'=>Course::GROUP_COURSES_ONE_B,
             'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -1022,7 +1022,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'applied digital technology',
+                'name' => 'Applied digital technology',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -1253,7 +1253,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'applied anatomy',
+                'name' => 'Applied anatomy',
                 'duration'=>'3',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
@@ -1261,7 +1261,7 @@ class CourseSeeder extends Seeder
                 'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
             ]);Course::factory()
         ->create([
-            'name' => 'the classic legacy',
+            'name' => 'The classic legacy',
             'duration'=>'3',
             'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
             'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
@@ -1269,7 +1269,7 @@ class CourseSeeder extends Seeder
             'group_two'=>Course::GROUP_COURSES_TWO_A,
         ]);Course::factory()
         ->create([
-            'name' => 'applied digital technology',
+            'name' => 'Applied digital technology',
             'duration'=>'3',
             'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
             'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,

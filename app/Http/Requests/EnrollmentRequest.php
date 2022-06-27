@@ -36,28 +36,33 @@ class EnrollmentRequest extends FormRequest
              if($this->active1==0){
                  $course_A = $this->core_itinerary_b5;
                  $electiveCoursesFree = [];
-                 foreach($this->core_itinerary_c5 as $key => $electiveCourseFree){
-                     $electiveCourseFree = json_decode($electiveCourseFree);
-                     $electiveCoursesFree[$key]['course_id'] = $electiveCourseFree->id;
-                     $electiveCoursesFree[$key]['order'] = $electiveCourseFree->order;
+                 if($this->core_itinerary_c5){
+                     foreach($this->core_itinerary_c5 as $key => $electiveCourseFree){
+                         $electiveCourseFree = json_decode($electiveCourseFree);
+                         $electiveCoursesFree[$key]['course_id'] = $electiveCourseFree->id;
+                         $electiveCoursesFree[$key]['order'] = $electiveCourseFree->order;
+                     }
                  }
-     
+
                  $this->merge([
                      'elective_courses_free' => $electiveCoursesFree,
                  ]);
              }
              $electiveCourses = [];
-             foreach($course_A as $key => $electiveCourse){
-                 $electiveCourse = json_decode($electiveCourse);
-                 $electiveCourses[$key]['course_id'] = $electiveCourse->id;
-                 $electiveCourses[$key]['order'] = $electiveCourse->order;
+             if($course_A){
+                 foreach($course_A as $key => $electiveCourse){
+                     $electiveCourse = json_decode($electiveCourse);
+                     $electiveCourses[$key]['course_id'] = $electiveCourse->id;
+                     $electiveCourses[$key]['order'] = $electiveCourse->order;
+                 }
              }
- 
+
+
              $this->merge([
                  'elective_courses' => $electiveCourses,
              ]);
         }
-       
+
         if($student->grade_id == Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY || $student->grade_id == Grade::FIRST_HIGH_SCHOOL_GENERAL ||
         $student->grade_id == Grade::SECOND_HIGH_SCHOOL_SCIENCE) {
             if($this->active==1){
@@ -71,7 +76,7 @@ class EnrollmentRequest extends FormRequest
                     $electiveCoursesFree[$key]['course_id'] = $electiveCourseFree->id;
                     $electiveCoursesFree[$key]['order'] = $electiveCourseFree->order;
                 }
-    
+
                 $this->merge([
                     'elective_courses_free' => $electiveCoursesFree,
                 ]);
@@ -170,14 +175,14 @@ class EnrollmentRequest extends FormRequest
             ];
         }
 
-        if( $student->grade_id == Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY || 
+        if( $student->grade_id == Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY ||
         $student->grade_id == Grade::FIRST_HIGH_SCHOOL_GENERAL) {
             return [
                 'bus_stop_id' => [Rule::requiredIf(function () {
                     return $this->transportation == 1;
                 }), 'exists:bus_stops,id'],
                 'active'=> ['required'],
-                'modality'=> ['required'],               
+                'modality'=> ['required'],
                 'one_courses' =>['required'],
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
@@ -195,8 +200,8 @@ class EnrollmentRequest extends FormRequest
                 }), 'exists:bus_stops,id'],
                 'active'=> ['required'],
                 'active1'=> ['required'],
-                'modality'=> ['required'],               
-               
+                'modality'=> ['required'],
+
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
                 'elective_courses_free' => ['required', 'array', new ValidOrderRule()],
@@ -206,7 +211,7 @@ class EnrollmentRequest extends FormRequest
             ];
         }
 
-        if( $student->grade_id == Grade::SECOND_HIGH_SCHOOL_SCIENCE || 
+        if( $student->grade_id == Grade::SECOND_HIGH_SCHOOL_SCIENCE ||
             $student->grade_id == Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES) {
             return [
                 'bus_stop_id' => [Rule::requiredIf(function () {
@@ -223,7 +228,7 @@ class EnrollmentRequest extends FormRequest
             ];
         }
 
-        if( $student->grade_id == Grade::FIRST_EDUCATIONAL_CYCLE_BASIC || 
+        if( $student->grade_id == Grade::FIRST_EDUCATIONAL_CYCLE_BASIC ||
         $student->grade_id == Grade::SECOND_EDUCATIONAL_CYCLE_BASIC) {
         return [
             'bus_stop_id' => [Rule::requiredIf(function () {
@@ -234,7 +239,7 @@ class EnrollmentRequest extends FormRequest
         ];
     }
 
-    if( $student->grade_id == Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM || 
+    if( $student->grade_id == Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM ||
         $student->grade_id == Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM) {
         return [
             'bus_stop_id' => [Rule::requiredIf(function () {
