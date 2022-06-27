@@ -186,10 +186,16 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     });
 
     Route::group(['prefix' => "enrollment"], function() {
-        Route::get('/', [EnrollmentController::class, 'create'])
-            ->name('enrollment.create')
-            ->can('create enrollment')
-            ->middleware(['check.profile', 'active.enrollment']);
+        if(config('app.env') == 'local') {
+            Route::get('/', [EnrollmentController::class, 'create'])
+                ->name('enrollment.create')
+                ->can('create enrollment');
+        } else {
+            Route::get('/', [EnrollmentController::class, 'create'])
+                ->name('enrollment.create')
+                ->can('create enrollment')
+                ->middleware(['check.profile', 'active.enrollment']);
+        }
         Route::post('/store', [EnrollmentController::class, 'store'])
             ->name('enrollment.store')
             ->can('create enrollment');
