@@ -43,13 +43,13 @@ class StudentProfileRequest extends FormRequest
             'letter' => 'nullable|string',
             'postal_code' => 'required|string',
 
-            'first_tutor_dni' => 'required|string|min:8|max:8',
+            'first_tutor_dni' => 'required|string|min:9|max:9',
             'first_tutor_full_name' => 'required|string|min:3',
             'first_tutor_phone_number' => 'required|string|min:6',
             'first_tutor_email' => 'required|email',
             'first_tutor_address' => 'required|string|min:3',
 
-            'second_tutor_dni' => 'nullable|string|min:8|max:8',
+            'second_tutor_dni' => 'nullable|string|min:9|max:9',
             'second_tutor_full_name' => 'nullable|string|min:3',
             'second_tutor_phone_number' => 'nullable|string|min:6',
             'second_tutor_email' => 'nullable|email',

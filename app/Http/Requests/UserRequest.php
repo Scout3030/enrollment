@@ -47,7 +47,7 @@ class UserRequest extends FormRequest
                         'name' => ['required', 'string', 'max:255'],
                         'email' => ['required', 'string', 'email', 'max:255'],
                         'password' => ['sometimes', 'string', 'nullable', 'confirmed', new Password()],
-                        'dni' => 'required|min:8|max:8|unique:students,dni,'. $user->student->id .',id',
+                        'dni' => 'required|min:9|max:9|unique:students,dni,'. $user->student->id .',id',
                         'grade_id' => ['required']
                     ];
                 }
