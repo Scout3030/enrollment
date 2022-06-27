@@ -196,6 +196,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::post('/signature', [EnrollmentController::class, 'signature'])
               ->can('create enrollment')
               ->name('enrollment.signature');
+            
     });
 
     Route::group(['prefix' => "enrollments"], function() {
@@ -208,5 +209,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/export/{enrollment}', [EnrollmentController::class, 'export'])
             ->name('enrollments.export')
             ->can('view enrollments');
+        Route::get('/export-student/{enrollment}', [EnrollmentController::class, 'exportStudent'])
+            ->name('enrollments.export-student')
+            ->can('view students');
     });
 });
