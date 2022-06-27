@@ -1800,8 +1800,7 @@ class CourseSeeder extends Seeder
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
                 'course_type_id' => CourseType::SPECIFIC_FREE_CONFIGURATION,
             ]);
-
-
+        
         // 1 FPB
         Course::factory()
             ->create([
@@ -1923,7 +1922,7 @@ class CourseSeeder extends Seeder
                 'name' => 'Técnicas culinarias',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
-                'duration' => 265,
+                'duration' => 256,
             ]);
         Course::factory()
             ->create([
@@ -1968,7 +1967,7 @@ class CourseSeeder extends Seeder
                 'name' => 'Postres en restauración',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
-                'duration' => 196,
+                'duration' => 198,
             ]);
         Course::factory()
             ->create([
