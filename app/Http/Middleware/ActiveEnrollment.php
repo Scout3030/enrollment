@@ -20,6 +20,10 @@ class ActiveEnrollment
         $lastProcess = AcademicPeriod::latest('id')->first();
         $now = now();
 
+        if(!$lastProcess) {
+            return redirect()->route('dashboard.index')->with('process');
+        }
+
         if ( ! auth()->user()->student->hasActiveProcess() ) {
             return redirect()->route('dashboard.index')->with('process');
         }

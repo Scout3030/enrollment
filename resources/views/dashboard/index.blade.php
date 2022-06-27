@@ -100,6 +100,7 @@
                                     <i data-feather="award" class="font-large-1"></i>
                                 </div>
                             </div>
+                            @if(\App\Models\AcademicPeriod::latest()->first());
                             <div class="text-center">
                                 <h1 class="mb-1 text-white">{{ __('Period') }} {{ \App\Models\AcademicPeriod::latest()->first()->name }}</h1>
 
@@ -120,6 +121,7 @@
                                     </a>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

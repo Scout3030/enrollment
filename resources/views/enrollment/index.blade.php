@@ -15,6 +15,7 @@
 @section('content')
     <section class="app-user-list">
         <div class="row">
+            @if($academicPeriod)
             <div class="col-lg-3 col-sm-6">
                 <div class="card">
                     <div class="card-body d-flex align-items-center justify-content-between">
@@ -30,6 +31,8 @@
                     </div>
                 </div>
             </div>
+            @endif
+            @if($enrollmentsInPeriod)
             <div class="col-lg-3 col-sm-6">
                 <div class="card">
                     <div class="card-body d-flex align-items-center justify-content-between">
@@ -45,6 +48,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
         <!-- list and filter start -->
         <div class="card">

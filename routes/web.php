@@ -59,7 +59,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         ->name('upload.files');
 
     Route::view('/profile/edit', 'user.profile.edit')
-        ->name('user.profile.edit');
+        ->name('user.profile.edit')
+        ->middleware('active.enrollment');
     Route::put('student/profile', [StudentController::class, 'profile'])
         ->name('student.profile.update');
     Route::put('user/profile', [UserController::class, 'profile'])
@@ -188,15 +189,13 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/', [EnrollmentController::class, 'create'])
             ->name('enrollment.create')
             ->can('create enrollment')
-            ->middleware('check.profile');
-          //  ->middleware('active.enrollment');
+            ->middleware(['check.profile', 'active.enrollment']);
         Route::post('/store', [EnrollmentController::class, 'store'])
             ->name('enrollment.store')
             ->can('create enrollment');
         Route::post('/signature', [EnrollmentController::class, 'signature'])
               ->can('create enrollment')
               ->name('enrollment.signature');
-            
     });
 
     Route::group(['prefix' => "enrollments"], function() {

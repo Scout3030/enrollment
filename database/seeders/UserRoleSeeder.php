@@ -18,12 +18,14 @@ class UserRoleSeeder extends Seeder
         $adminUser = User::whereEmail('admin@mail.com')->first();
         $adminUser->assignRole('administrator');
 
-        $users = User::factory()
-            ->count(10)
-            ->create();
+        if(config('app.env') == 'local'){
+            $users = User::factory()
+                ->count(10)
+                ->create();
 
-        foreach ($users as $user){
-            $user->assignRole('manager');
-        }
+            foreach ($users as $user){
+                $user->assignRole('manager');
+            }
+        };
     }
 }

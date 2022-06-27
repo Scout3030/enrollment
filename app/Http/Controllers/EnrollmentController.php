@@ -22,7 +22,10 @@ class EnrollmentController extends Controller
     public function index(EnrollmentDataTable $dataTable)
     {
         $academicPeriod = AcademicPeriod::latest()->first();
-        $enrollmentsInPeriod = Enrollment::whereAcademicPeriodId($academicPeriod->id)->get();
+        $enrollmentsInPeriod = null;
+        if($academicPeriod) {
+            $enrollmentsInPeriod = Enrollment::whereAcademicPeriodId($academicPeriod->id)->get();
+        }
         return $dataTable->render('enrollment.index', compact('academicPeriod', 'enrollmentsInPeriod'));
     }
 
@@ -789,7 +792,7 @@ class EnrollmentController extends Controller
 
         if( $grade->id == Grade::FIRST_EDUCATIONAL_CYCLE_BASIC || $grade->id == Grade::SECOND_EDUCATIONAL_CYCLE_BASIC) {
 
-            
+
                 $commonCourses = Course::whereGradeId($student->grade_id)
                 ->whereCourseTypeId(CourseType::ASSOCIATED_UNITS_OF_COMPETENCES)
                 ->get();
