@@ -1833,7 +1833,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Communication and society',
+                'name' => 'Communication and society I',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_COMMON_BLOCKS,
                 'duration' => 6,
@@ -1841,7 +1841,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Forming in workspaces',
+                'name' => 'Forming in workspaces I',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::FORMATION_WORKSPACE,
                 'duration' => 120,
@@ -1865,14 +1865,14 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Procesos básicos de produccion culinaria',
+                'name' => 'Procesos básicos de producción culinaria',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 6,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Aprovisionamiento y conservacion de materias primas e higiene en la manipulación',
+                'name' => 'Aprovisionamiento y conservación de materias primas e higiene en la manipulación',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 4,
@@ -1902,7 +1902,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Formación en centros de trabajo II',
+                'name' => 'Formación en centros de trabajo I',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::FORMATION_WORKSPACE,
                 'duration' => 120,

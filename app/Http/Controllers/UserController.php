@@ -47,7 +47,8 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'remember_token' => Str::random(24)
+            'remember_token' => Str::random(24),
+            'email_verified_at' => now()
         ]);
 
         if(!$request->filled('role')){
@@ -89,7 +90,7 @@ class UserController extends Controller
             $user->student->dni = $request->dni;
             $user->student->grade_id = $request->grade_id;
             $user->student->save();
-            
+
             $data['email'] = $request->email;
             $user->fill($data)->save();
 
