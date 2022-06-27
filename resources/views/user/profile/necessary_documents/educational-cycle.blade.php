@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h4 class="card-title">{{ __('student DNI') }}</h4>
-                        <p>{{ __('student DNI description') }}</p>
+                        <p>{{ __('mandatory for students younger than 28 years') }}</p>
                         <div>
                             <form action="#" class="dropzone dropzone-area" id="dniDocument">
                                 @csrf
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h4 class="card-title">{{ __('Proof of payment of school insurance') }}</h4>
-                        <p>{{ __('mandatory') }}</p>
+                        <p>{{ __('mandatory for students younger than 28 years') }}</p>
                         <div>
                             <form action="#" class="dropzone dropzone-area" id="paymentDocument">
                                 @csrf

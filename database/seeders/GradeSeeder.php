@@ -31,10 +31,10 @@ class GradeSeeder extends Seeder
             ['name' => 'second science', 'level_id' => Level::BACHELOR],
             ['name' => 'second humanities sciences', 'level_id' => Level::BACHELOR],
 
-            ['name' => '1 FPB', 'level_id' => Level::EDUCATIONAL_CYCLE],
-            ['name' => '2 FPB', 'level_id' => Level::EDUCATIONAL_CYCLE],
-            ['name' => '1 CFGM', 'level_id' => Level::EDUCATIONAL_CYCLE],
-            ['name' => '2 CFGM', 'level_id' => Level::EDUCATIONAL_CYCLE],
+            ['name' => '1° FPB', 'level_id' => Level::EDUCATIONAL_CYCLE],
+            ['name' => '2° FPB', 'level_id' => Level::EDUCATIONAL_CYCLE],
+            ['name' => '1° CFGM', 'level_id' => Level::EDUCATIONAL_CYCLE],
+            ['name' => '2° CFGM', 'level_id' => Level::EDUCATIONAL_CYCLE],
         ];
 
         foreach ($grades as $grade){

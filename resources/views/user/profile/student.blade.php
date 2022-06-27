@@ -431,9 +431,11 @@
     @if (auth()->user()->student->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL)
         @include('user.profile.necessary_documents.first-middle')
     @endif
+
     @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL)
         @include('user.profile.necessary_documents.second-middle')
     @endif
+
     @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL || auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
         @include('user.profile.necessary_documents.third-fourth-middle')
     @endif
@@ -441,17 +443,19 @@
     @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)
         @include('user.profile.necessary_documents.high-school')
     @endif
+
     @if (auth()->user()->student->grade->id == App\Models\Grade::THIRD_HIGH_SCHOOL)
         @include('user.profile.necessary_documents.high-school')
     @endif
+
     @if (auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
         @include('user.profile.necessary_documents.third-fourth-middle')
     @endif
-
+    {{--BACHELOR--}}
     @if (auth()->user()->student->grade->level->id == App\Models\Level::BACHELOR)
         @include('user.profile.necessary_documents.bachelor')
     @endif
-
+    {{--EDUCATIONAL CYCLE--}}
     @if (auth()->user()->student->grade->level->id == App\Models\Level::EDUCATIONAL_CYCLE)
         @include('user.profile.necessary_documents.educational-cycle')
     @endif

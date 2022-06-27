@@ -1859,28 +1859,28 @@ class CourseSeeder extends Seeder
         // 2 FPB
         Course::factory()
             ->create([
-                'name' => 'Tecnicas elementales de preelaboracion',
+                'name' => 'Técnicas elementales de preelaboración',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 5,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Procesos basicos de produccion culinaria',
+                'name' => 'Procesos básicos de produccion culinaria',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 6,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Aprovisionamiento y conservacion de materias primas e higiene en la manipulacion',
+                'name' => 'Aprovisionamiento y conservacion de materias primas e higiene en la manipulación',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 4,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Atencion al cliente',
+                'name' => 'Atención al cliente',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_UNITS_OF_COMPETENCES,
                 'duration' => 2,
@@ -1895,7 +1895,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Comunicacion y sociedad II',
+                'name' => 'Comunicación y sociedad II',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::ASSOCIATED_COMMON_BLOCKS,
                 'duration' => 6,
@@ -1903,7 +1903,7 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
-                'name' => 'Formacion en centros de trabajo II',
+                'name' => 'Formación en centros de trabajo II',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_BASIC,
                 'course_type_id' => CourseType::FORMATION_WORKSPACE,
                 'duration' => 120,
@@ -1913,35 +1913,35 @@ class CourseSeeder extends Seeder
         // 1 CFGM
         Course::factory()
             ->create([
-                'name' => 'Preelaboracion y conservacion de alimentos',
+                'name' => 'Preelaboración y conservación de alimentos',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 320,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Tecnicas culinarias',
+                'name' => 'Técnicas culinarias',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 265,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Procesos basicos de pasteleria y reposteria',
+                'name' => 'Procesos básicos de pastelería y repostería',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 192,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Seguridad e higiene en la manipulacion de alimentos',
+                'name' => 'Seguridad e higiene en la manipulación de alimentos',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 96,
             ]);
         Course::factory()
             ->create([
-                'name' => 'Formacion y orientacion laboral',
+                'name' => 'Formación y orientación laboral',
                 'grade_id' => Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 96,
@@ -1951,7 +1951,7 @@ class CourseSeeder extends Seeder
         // 2 CFGM
         Course::factory()
             ->create([
-                'name' => 'Ofertas gastronomicas',
+                'name' => 'Ofertas gastrónomicas',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 66,
@@ -1965,7 +1965,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Postres en restauracion',
+                'name' => 'Postres en restauración',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 196,
@@ -1979,7 +1979,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Formacion en centros de trabajo',
+                'name' => 'Formación en centros de trabajo',
                 'grade_id' => Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM,
                 'course_type_id' => CourseType::CF_COMMON,
                 'duration' => 380,
