@@ -36,7 +36,7 @@
                         </div>
                         <div class="text-center">
                             <h1 class="mb-1 text-white">{{ __('You have a pending enrollment process') }}</h1>
-                            <a href="{{ route('user.profile.edit') }}" class="btn btn-relief-info">{{ __('Start here') }}</a>
+                            <a href="{{ route('user.grade') }}" class="btn btn-relief-info">{{ __('Start here') }}</a>
                         </div>
                     </div>
                 </div>

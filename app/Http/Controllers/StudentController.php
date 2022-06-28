@@ -6,6 +6,7 @@ use App\DataTables\StudentDataTable;
 use App\Http\Requests\StudentImportRequest;
 use App\Http\Requests\StudentProfileRequest;
 use App\Http\Requests\StudentRequest;
+use App\Http\Requests\GradeRequest;
 use App\Http\Resources\StudentResource;
 use App\Models\Level;
 use App\Models\Student;
@@ -183,5 +184,17 @@ class StudentController extends Controller
         }
 
         return back()->with('message', ['type' => 'success', 'description' => __('Emails sent successfully')]);
+    }
+
+    public function optionGrade(){
+        $grades = Grade::get();
+        $grades->load('level');
+        return view('student.grade-option',compact('grades'));
+    }
+    
+    public function updateGrade(GradeRequest $grade){
+        $student = auth()->user()->student;
+        $student->fill($grade->all())->save();
+       return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Grade saved successfully')]);
     }
 }

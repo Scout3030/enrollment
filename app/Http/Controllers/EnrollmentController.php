@@ -881,7 +881,6 @@ class EnrollmentController extends Controller
 
     public function downloadDocument(Enrollment $enrollment,$field)
     {
-       // dd( $enrollment->student->grade_id); 
         $attachDocument = $enrollment->student->grade_id;
         $attachDocument1 = $enrollment->student->grade->level->id;
         if($attachDocument1 == Level::BACHELOR || $attachDocument1 == Level::EDUCATIONAL_CYCLE){

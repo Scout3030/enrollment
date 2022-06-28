@@ -64,6 +64,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         ->name('student.profile.update');
     Route::put('user/profile', [UserController::class, 'profile'])
         ->name('user.profile.update');
+    Route::get('/profile/grade', [StudentController::class, 'optionGrade'])
+        ->name('user.grade');
+               
+    
 
     Route::group(['prefix' => "students"], function() {
         Route::get('/', [StudentController::class, 'index'])
@@ -98,6 +102,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             ->can('view students');
         Route::get('/notification/reset-password', [StudentController::class, 'notificationResetPassword'])
             ->name('students.notification.reset-password');
+        Route::post('/update-grade', [StudentController::class, 'updateGrade'])
+            ->name('students.update-grade');
     });
 
     Route::group(['prefix' => "courses"], function() {
