@@ -37,7 +37,44 @@
                                 <div class="col-md-12 pt-2">
                                     {{ __('Select one option') }} <b>({{ __('mandatory') }})</b>
                                 </div>
-                                @foreach($grades as $course)
+                                 <h4 class="card-title">{{ __('ESO') }}</h4>
+                                @foreach($gradesEso as $course)
+                                    <div class="col-md-3">
+                                        <input
+                                            class="custom-option-item-check"
+                                            type="radio"
+                                            name="grade_id"
+                                            id="grade_id_{{ $course->id }}"
+                                            value="{{ $course->id }}"
+                                            {{ old('grade_id') == $course->id ? 'checked' : ''}}
+                                        />
+                                        <label class="custom-option-item p-1" for="grade_id_{{ $course->id }}">
+                                            <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                <span class="fw-bolder">{{ __($course->level->name).' '.$course->name }}</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endforeach
+                                 <h4 class="card-title">{{ __('BACHELOR') }}</h4>
+                                @foreach($gradesBachelor as $course)
+                                    <div class="col-md-3">
+                                        <input
+                                            class="custom-option-item-check"
+                                            type="radio"
+                                            name="grade_id"
+                                            id="grade_id_{{ $course->id }}"
+                                            value="{{ $course->id }}"
+                                            {{ old('grade_id') == $course->id ? 'checked' : ''}}
+                                        />
+                                        <label class="custom-option-item p-1" for="grade_id_{{ $course->id }}">
+                                            <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                <span class="fw-bolder">{{ __($course->level->name).' '.$course->name }}</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endforeach
+                                <h4 class="card-title">{{ __('EDUCATIONAL_CYCLE') }}</h4>
+                                @foreach($gradesCycle as $course)
                                     <div class="col-md-3">
                                         <input
                                             class="custom-option-item-check"

@@ -187,9 +187,16 @@ class StudentController extends Controller
     }
 
     public function optionGrade(){
-        $grades = Grade::get();
-        $grades->load('level');
-        return view('student.grade-option',compact('grades'));
+        $gradesEso = Grade::whereHas('level', function ($query) {
+            $query->whereId(Level::MIDDLE_SCHOOL);
+        })->get();
+        $gradesBachelor= Grade::whereHas('level', function ($query) {
+            $query->whereId(Level::BACHELOR);
+        })->get();
+        $gradesCycle= Grade::whereHas('level', function ($query) {
+            $query->whereId(Level::EDUCATIONAL_CYCLE);
+        })->get(); 
+        return view('student.grade-option',compact('gradesCycle','gradesEso','gradesBachelor'));
     }
     
     public function updateGrade(GradeRequest $grade){
