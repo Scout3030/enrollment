@@ -728,13 +728,16 @@
                 $( "#sortable4" ).sortable( "option", "disabled", true );
                 $('.row35').each(function(index, element) {
                     document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).checked = false;
+                     document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).disabled = true;
                     
                 });
                 $('.row45').each(function(index, element) {
                     document.getElementById("core_itinerary_d5_"+$(this).attr('course_id')).checked = false;
+                    
                 });
                 $('.row25').each(function(index, element) {
                     document.getElementById("core_itinerary_b5_"+$(this).attr('course_id')).checked = false;
+                     document.getElementById("core_itinerary_b5_"+$(this).attr('course_id')).disabled = true;
                 });
                 $('.row15').each(function(index, element) {
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = true;
@@ -760,6 +763,7 @@
                 });
                 $('.row15').each(function(index, element) {
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = false;
+                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).disabled = true;
                      
                 });
             }

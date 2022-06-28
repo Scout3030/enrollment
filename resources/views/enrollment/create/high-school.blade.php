@@ -605,6 +605,7 @@
         });
         $('.row4').each(function(index, element) {
             document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
+            document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).disabled = true;
         });
 
         function activeOption(){
@@ -635,6 +636,7 @@
                 });
                 $('.row4').each(function(index, element) {
                     document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
+                    document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).disabled = true;
                 });
             }else{
                 document.getElementById("active_option_1").disabled = true;
@@ -646,6 +648,7 @@
                 });
                 $('.row4').each(function(index, element) {
                     document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = true;
+                    document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).disabled = false;
                 });
                 $('.row1').each(function(index, element) {
                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
