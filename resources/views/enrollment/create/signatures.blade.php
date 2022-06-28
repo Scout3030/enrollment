@@ -20,7 +20,7 @@
     <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-header d-block">
-                <h4 class="card-title">{{ __('Student signature') }}</h4>
+                <h4 class="card-title">{{ __('Student signature') }} ({{  __('mandatory') }})</h4>
             </div>
             <div class="card-body">
                 <div class="col-12">
@@ -155,7 +155,7 @@
     <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-header d-block">
-                <h4 class="card-title">{{ __('Tutor 01 signature') }}</h4>
+                <h4 class="card-title">{{ __('Tutor 01 signature') }} ({{  __('mandatory for younger than 18 years old') }})</h4>
             </div>
             <div class="card-body">
                 <div class="col-12">
@@ -289,7 +289,7 @@
     <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-header d-block">
-                <h4 class="card-title">{{ __('Tutor 02 signature') }}</h4>
+                <h4 class="card-title">{{ __('Tutor 02 signature') }} ({{  __('optional') }})</h4>
             </div>
             <div class="card-body">
                 <div class="col-12">

@@ -22,7 +22,7 @@
         <div class="card mb-4">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">{{ __('Once you send the data, you can\'t edit anymore')}}.</li>
-                <li class="list-group-item">{{ __('Student and first tutor signatures are required') }}</li>
+                <li class="list-group-item">{{ __('Students younger than 18 year old, first tutor signatures is required') }}</li>
                 <li class="list-group-item">{{ __('You can draw or upload the signatures') }}</li>
             </ul>
         </div>
