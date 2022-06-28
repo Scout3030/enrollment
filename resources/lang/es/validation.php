@@ -170,6 +170,10 @@ return [
         'middle_name' => 'segundo nombre',
         "previous_school" => 'colegio anterior',
         "parents_condition" => 'condición de los padres',
-        'academic_history' => 'historial académico'
+        'academic_history' => 'historial académico',
+        'finished_at' => 'finalización',
+        'started_at' => 'inicio',
+        'level_id' => 'nivel',
+        'name' => 'nombre',
     ],
 ];

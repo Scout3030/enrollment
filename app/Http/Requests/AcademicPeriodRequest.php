@@ -40,6 +40,7 @@ class AcademicPeriodRequest extends FormRequest
     {
         return [
             "name" => "required|string",
+            "level_id" => "required|exists:levels,id",
             "description" => "nullable|string",
             "started_at" => "required|date",
             "finished_at" => "required|date|after:started_at",

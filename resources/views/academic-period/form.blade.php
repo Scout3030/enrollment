@@ -7,6 +7,8 @@
 @push('vendor-styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/pickers/pickadate/pickadate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/pickers/flatpickr/flatpickr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendors/css/vendors.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
 @endpush
 
 @section('content')
@@ -97,6 +99,21 @@
                                 <div class="col-12">
                                     <div class="mb-1 row">
                                         <div class="col-sm-2">
+                                            <label class="col-form-label" for="level_id">{{ __('Level') }}</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <select class="select2 form-select" id="level_id" name="level_id">
+                                                <option value="">{{ __("Select") }}</option>
+                                                @foreach(\App\Models\Level::get() as $level)
+                                                    <option value="{{ $level->id }}" {{ $level->id == $academicPeriod->level_id ? 'selected': '' }}>{{ __($level->custom_name) }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-1 row">
+                                        <div class="col-sm-2">
                                             <label class="col-form-label" for="type">{{ __('Active') }}</label>
                                         </div>
                                         <div class="col-sm-10">
@@ -150,7 +167,8 @@
     <script src="{{ asset('vendors/js/pickers/pickadate/picker.time.js') }}"></script>
     <script src="{{ asset('vendors/js/pickers/pickadate/legacy.js') }}"></script>
     <script src="{{ asset('vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
-
+    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('js/scripts/forms/form-select2.js') }}"></script>
     <script src="{{ asset('js/scripts/forms/pickers/form-pickers.js') }}"></script>
 @endpush
 @push('scripts')

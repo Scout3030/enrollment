@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\AcademicPeriod;
+use App\Models\Level;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AcademicPeriodFactory extends Factory
@@ -16,6 +17,7 @@ class AcademicPeriodFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
+            'level_id' => Level::all()->random()->id,
             'description' => $this->faker->paragraph,
             'status' => $this->faker->randomElement([AcademicPeriod::INACTIVE, AcademicPeriod::ACTIVE]),
             'started_at' => $this->faker->dateTimeBetween('+10 days', '+30 days'),

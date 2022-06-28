@@ -16,6 +16,7 @@ class CreateAcademicPeriodsTable extends Migration
         Schema::create('academic_periods', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('level_id')->constrained();
             $table->text('description')->nullable();
             $table->tinyInteger('status');
             $table->dateTime('started_at');
