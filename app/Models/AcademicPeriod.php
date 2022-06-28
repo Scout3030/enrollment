@@ -40,6 +40,7 @@ class AcademicPeriod extends Model
     protected $fillable = [
         'name',
         'started_at',
+        'level_id',
         'finished_at',
         'status',
         'description',
@@ -50,4 +51,9 @@ class AcademicPeriod extends Model
         'finished_at' => 'datetime:d-m-Y H:i',
         'status' => 'boolean'
     ];
+
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
 }

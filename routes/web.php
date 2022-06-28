@@ -64,7 +64,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     } else {
         Route::view('/profile/edit', 'user.profile.edit')
             ->name('user.profile.edit')
-            ->middleware(['has.grade']);
+            ->middleware(['has.grade', 'active.enrollment']);
     }
 
     Route::put('student/profile', [StudentController::class, 'profile'])

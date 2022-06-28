@@ -17,14 +17,17 @@ class ActiveEnrollment
      */
     public function handle(Request $request, Closure $next)
     {
-        $lastProcess = AcademicPeriod::latest('id')->first();
+        $student = auth()->user()->student;
+        $lastProcess = AcademicPeriod::whereLevelId($student->grade->level_id)
+            ->latest('id')
+            ->first();
         $now = now();
 
         if(!$lastProcess) {
             return redirect()->route('dashboard.index')->with('process');
         }
 
-        if ( ! auth()->user()->student->hasActiveProcess() ) {
+        if ( ! $student->hasActiveProcess() ) {
             return redirect()->route('dashboard.index')->with('process');
         }
 
