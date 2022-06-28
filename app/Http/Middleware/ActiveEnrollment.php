@@ -19,8 +19,9 @@ class ActiveEnrollment
     {
         $student = auth()->user()->student;
         $lastProcess = AcademicPeriod::whereLevelId($student->grade->level_id)
-            ->latest('id')
+            ->latest()
             ->first();
+
         $now = now();
 
         if(!$lastProcess) {

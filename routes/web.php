@@ -200,12 +200,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             Route::get('/', [EnrollmentController::class, 'create'])
                 ->name('enrollment.create')
                 ->can('create enrollment')
-                ->middleware(['check.profile']);
+                ->middleware(['has.grade', 'check.profile']);
         } else {
             Route::get('/', [EnrollmentController::class, 'create'])
                 ->name('enrollment.create')
                 ->can('create enrollment')
-                ->middleware(['check.profile', 'active.enrollment']);
+                ->middleware(['has.grade', 'check.profile', 'active.enrollment']);
         }
         Route::post('/store', [EnrollmentController::class, 'store'])
             ->name('enrollment.store')

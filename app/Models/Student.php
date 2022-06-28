@@ -172,6 +172,6 @@ class Student extends Model
 
     public function hasActiveProcess()
     {
-        return !$this->enrollments->contains('grade_id', $this->grade_id);
+        return $this->enrollments->count() == 0;
     }
 }
