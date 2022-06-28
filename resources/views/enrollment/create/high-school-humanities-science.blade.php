@@ -642,19 +642,31 @@
         });
         $('.row15').each(function(index, element) {
             document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = false;
+            document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).disabled = true;
         });
         $('.row25').each(function(index, element) {
             document.getElementById("core_itinerary_b5_"+$(this).attr('course_id')).checked = false;
+             document.getElementById("core_itinerary_b5_"+$(this).attr('course_id')).disabled = true;
         });
         $('.row35').each(function(index, element) {
             document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).checked = false;
+             document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).disabled  = true;
         });
         $('.row45').each(function(index, element) {
             document.getElementById("core_itinerary_d5_"+$(this).attr('course_id')).checked = false;
         });
 
+         $( "#sortable5" ).sortable();
+        $( "#sortable5" ).sortable( "option", "disabled", true );
+         $( "#sortable6" ).sortable();
+        $( "#sortable6" ).sortable( "option", "disabled", true );
+        $( "#sortable4" ).sortable();
+        $( "#sortable4" ).sortable( "option", "disabled", true );
+
+
         function active(){
             if($('input:radio[name=active]:checked').val()==1){
+               
 
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
@@ -680,7 +692,7 @@
                 });
 
             }else{
-
+              
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = true;
                 });
@@ -708,8 +720,15 @@
         }
         function active1(){
             if($('input:radio[name=active1]:checked').val()==1){
+                  $( "#sortable5" ).sortable();
+                $( "#sortable5" ).sortable( "option", "disabled", false );
+                 $( "#sortable6" ).sortable();
+                $( "#sortable6" ).sortable( "option", "disabled", true );
+                $( "#sortable4" ).sortable();
+                $( "#sortable4" ).sortable( "option", "disabled", true );
                 $('.row35').each(function(index, element) {
                     document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).checked = false;
+                    
                 });
                 $('.row45').each(function(index, element) {
                     document.getElementById("core_itinerary_d5_"+$(this).attr('course_id')).checked = false;
@@ -719,19 +738,29 @@
                 });
                 $('.row15').each(function(index, element) {
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = true;
+                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).disabled = false;
                 });
             }else{
+                 $( "#sortable5" ).sortable();
+                $( "#sortable5" ).sortable( "option", "disabled", true );
+                 $( "#sortable6" ).sortable();
+                $( "#sortable6" ).sortable( "option", "disabled", false );
+                $( "#sortable4" ).sortable();
+                $( "#sortable4" ).sortable( "option", "disabled", false );
                 $('.row35').each(function(index, element) {
                     document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).checked = true;
+                      document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).disabled = false;
                 });
                 $('.row45').each(function(index, element) {
                     document.getElementById("core_itinerary_d5_"+$(this).attr('course_id')).checked = true;
                 });
                 $('.row25').each(function(index, element) {
                     document.getElementById("core_itinerary_b5_"+$(this).attr('course_id')).checked = true;
+                      document.getElementById("core_itinerary_b5_"+$(this).attr('course_id')).disabled = false;
                 });
                 $('.row15').each(function(index, element) {
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = false;
+                     
                 });
             }
         }

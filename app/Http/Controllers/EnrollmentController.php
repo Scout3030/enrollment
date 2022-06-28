@@ -873,4 +873,35 @@ class EnrollmentController extends Controller
         Storage::put('signatures/' . $imageName, $img);
         return response()->json(['status' => __('Signature register successfully'), 'name'=> $imageName]);
     }
+
+    public function attachDocument(Enrollment $enrollment){
+        return view('enrollment.attach-document',
+        compact('enrollment'));
+    }
+
+    public function downloadDocument(Enrollment $enrollment,$field)
+    {
+       // dd( $enrollment->student->grade_id); 
+        $attachDocument = $enrollment->student->grade_id;
+        $attachDocument1 = $enrollment->student->grade->level->id;
+        if($attachDocument1 == Level::BACHELOR || $attachDocument1 == Level::EDUCATIONAL_CYCLE){
+            $file='bachelor';
+        }
+        if($attachDocument == Grade::FOURTH_MIDDLE_SCHOOL){
+            $file='third_fourth_middle';
+        }
+        if($attachDocument == Grade::SECOND_HIGH_SCHOOL || $attachDocument == Grade::THIRD_HIGH_SCHOOL){
+            $file='high_school';
+        }
+        if($attachDocument == Grade::THIRD_MIDDLE_SCHOOL || $attachDocument == Grade::FOURTH_MIDDLE_SCHOOL){
+            $file='third_fourth_middle';
+        }
+        if($attachDocument == Grade::SECOND_MIDDLE_SCHOOL){
+            $file='second_middle';
+        }
+        if($attachDocument == Grade::FIRST_MIDDLE_SCHOOL){
+            $file='first_middle';
+        }
+      return Storage::download($file.'/'.$field);
+    }
 }

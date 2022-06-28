@@ -59,8 +59,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         ->name('upload.files');
 
     Route::view('/profile/edit', 'user.profile.edit')
-        ->name('user.profile.edit')
-        ->middleware('active.enrollment');
+        ->name('user.profile.edit');
+       // ->middleware('active.enrollment');
     Route::put('student/profile', [StudentController::class, 'profile'])
         ->name('student.profile.update');
     Route::put('user/profile', [UserController::class, 'profile'])
@@ -189,7 +189,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/', [EnrollmentController::class, 'create'])
             ->name('enrollment.create')
             ->can('create enrollment')
-            ->middleware(['check.profile', 'active.enrollment']);
+    ->middleware(['check.profile'/*, 'active.enrollment'*/]);
         Route::post('/store', [EnrollmentController::class, 'store'])
             ->name('enrollment.store')
             ->can('create enrollment');
@@ -210,6 +210,12 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             ->can('view enrollments');
         Route::get('/export-student/{enrollment}', [EnrollmentController::class, 'exportStudent'])
             ->name('enrollments.export-student')
-            ->can('view students');
+            ->can('view enrollments');
+        Route::get('/attach-document/{enrollment}', [EnrollmentController::class, 'attachDocument'])
+            ->name('enrollments.attach-document')
+            ->can('view enrollments');
+        Route::get('/download-document/{enrollment}/{field}', [EnrollmentController::class, 'downloadDocument'])
+            ->name('enrollments.download-document')
+            ->can('view enrollments');
     });
 });
