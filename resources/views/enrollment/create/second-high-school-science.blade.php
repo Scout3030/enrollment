@@ -73,7 +73,7 @@
                             <div class="col-4">
                                 <div class="card">
                                     <div class="card-header">
-                                        <div class="form-check form-check-inline" onclick="active1()">
+                                        <div class="form-check form-check-inline" onclick="active11()">
                                             <input
                                                 class="form-check-input  active_1"
                                                 type="radio"
@@ -92,9 +92,10 @@
                                                     <input
                                                         class="custom-option-item-check"
                                                         type="checkbox"
-                                                        name="modaly_course1"
+                                                        name="modaly_course1[]"
                                                         id="modaly_course1_{{ $course->id }}"
                                                         disabled
+                                                        checked
                                                     />
                                                     <label class="custom-option-item p-1" for="modaly_course1_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
@@ -112,7 +113,7 @@
                             <div class="col-4">
                                 <div class="card">
                                     <div class="card-header">
-                                        <div class="form-check form-check-inline" onclick="active1()">
+                                        <div class="form-check form-check-inline" onclick="active12()">
                                             <input
                                                 class="form-check-input  active_1"
                                                 type="radio"
@@ -131,9 +132,10 @@
                                                     <input
                                                         class="custom-option-item-check"
                                                         type="checkbox"
-                                                        name="modaly_course2"
+                                                        name="modaly_course2[]"
                                                         id="modaly_course2_{{ $course->id }}"
                                                         disabled
+                                                        checked
                                                     />
                                                     <label class="custom-option-item p-1" for="modaly_course2_{{ $course->id }}">
                                                         <span class="d-flex justify-content-between flex-wrap mb-50">
@@ -149,7 +151,7 @@
                             <div class="col-4">
                                 <div class="card">
                                     <div class="card-header">
-                                        <div class="form-check form-check-inline" onclick="active1()">
+                                        <div class="form-check form-check-inline" onclick="active13()">
                                             <input
                                                 class="form-check-input  active_1"
                                                 type="radio"
@@ -168,8 +170,9 @@
                                                     <input
                                                         class="custom-option-item-check"
                                                         type="checkbox"
-                                                        name="modaly_course3"
+                                                        name="modaly_course3[]"
                                                         id="modaly_course3_{{ $course->id }}"
+                                                        checked
                                                         disabled
                                                     />
                                                     <label class="custom-option-item p-1" for="modaly_course3_{{ $course->id }}">
@@ -190,7 +193,7 @@
                             <div class="col-6">
                                 <div class="card">
                                     <div class="card-header">
-                                        <div class="form-check form-check-inline" onclick="active1()">
+                                        <div class="form-check form-check-inline" onclick="active14()">
                                             <input
                                                 class="form-check-input  active_1"
                                                 type="radio"
@@ -207,10 +210,11 @@
                                             @forelse($modalitiesCourses4 as $course)
                                                 <div class="row-md-3">
                                                     <input
-                                                        class="custom-option-item-check"
+                                                        class="custom-option-item-check myClass"
                                                         type="checkbox"
-                                                        name="modaly_course4"
+                                                        name="modaly_course4[]"
                                                         id="modaly_course4_{{ $course->id }}"
+                                                        checked
                                                         disabled
                                                     />
                                                     <label class="custom-option-item p-1" for="modaly_course4_{{ $course->id }}">
@@ -229,7 +233,7 @@
                             <div class="col-6">
                                 <div class="card">
                                     <div class="card-header">
-                                        <div class="form-check form-check-inline" onclick="active1()">
+                                        <div class="form-check form-check-inline" onclick="active15()">
                                             <input
                                                 class="form-check-input  active_1"
                                                 type="radio"
@@ -248,8 +252,9 @@
                                                     <input
                                                         class="custom-option-item-check"
                                                         type="checkbox"
-                                                        name="modaly_course5"
+                                                        name="modaly_course5[]"
                                                         id="modaly_course5_{{ $course->id }}"
+                                                        checked
                                                         disabled
                                                     />
                                                     <label class="custom-option-item p-1" for="modaly_course5_{{ $course->id }}">
@@ -565,58 +570,193 @@
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script>// Default Spin
 
+       
+           
+        var allChkBox4 = document.getElementsByName('modaly_course4[]');
+        for(var i =0, len = allChkBox4.length; i < len; i++) {
+        allChkBox4[i].checked = false;
+        }
+         var allChkBox5 = document.getElementsByName('modaly_course5[]');
+        for(var i =0, len = allChkBox5.length; i < len; i++) {
+        allChkBox5[i].checked = false;
+        }
+         var allChkBox3 = document.getElementsByName('modaly_course3[]');
+        for(var i =0, len = allChkBox3.length; i < len; i++) {
+        allChkBox3[i].checked = false;
+        }
+         var allChkBox2 = document.getElementsByName('modaly_course2[]');
+        for(var i =0, len = allChkBox2.length; i < len; i++) {
+        allChkBox2[i].checked = false;
+        }
+         var allChkBox1 = document.getElementsByName('modaly_course1[]');
+        for(var i =0, len = allChkBox1.length; i < len; i++) {
+        allChkBox1[i].checked = false;
+        } 
+
+         function active11(){ 
+             for(var i =0, len = allChkBox1.length; i < len; i++) {
+            allChkBox1[i].checked = true;
+            }
+            for(var i =0, len = allChkBox4.length; i < len; i++) {
+            allChkBox4[i].checked = false;
+            }
+            for(var i =0, len = allChkBox5.length; i < len; i++) {
+            allChkBox5[i].checked = false;
+            }
+            for(var i =0, len = allChkBox3.length; i < len; i++) {
+            allChkBox3[i].checked = false;
+            }
+            for(var i =0, len = allChkBox2.length; i < len; i++) {
+            allChkBox2[i].checked = false; 
+            }  
+         } 
+          function active12(){ 
+             for(var i =0, len = allChkBox1.length; i < len; i++) {
+            allChkBox1[i].checked = false;
+            }
+            for(var i =0, len = allChkBox4.length; i < len; i++) {
+            allChkBox4[i].checked = false;
+            }
+            for(var i =0, len = allChkBox5.length; i < len; i++) {
+            allChkBox5[i].checked = false;
+            }
+            for(var i =0, len = allChkBox3.length; i < len; i++) {
+            allChkBox3[i].checked = false;
+            }
+            for(var i =0, len = allChkBox2.length; i < len; i++) {
+            allChkBox2[i].checked = true; 
+            }  
+         } 
+          function active13(){ 
+             for(var i =0, len = allChkBox1.length; i < len; i++) {
+            allChkBox1[i].checked = false;
+            }
+            for(var i =0, len = allChkBox4.length; i < len; i++) {
+            allChkBox4[i].checked = false;
+            }
+            for(var i =0, len = allChkBox5.length; i < len; i++) {
+            allChkBox5[i].checked = false;
+            }
+            for(var i =0, len = allChkBox3.length; i < len; i++) {
+            allChkBox3[i].checked = true;
+            }
+            for(var i =0, len = allChkBox2.length; i < len; i++) {
+            allChkBox2[i].checked = false; 
+            }  
+         }
+         function active14(){ 
+             for(var i =0, len = allChkBox1.length; i < len; i++) {
+            allChkBox1[i].checked = false;
+            }
+            for(var i =0, len = allChkBox4.length; i < len; i++) {
+            allChkBox4[i].checked = true;
+            }
+            for(var i =0, len = allChkBox5.length; i < len; i++) {
+            allChkBox5[i].checked = false;
+            }
+            for(var i =0, len = allChkBox3.length; i < len; i++) {
+            allChkBox3[i].checked = false;
+            }
+            for(var i =0, len = allChkBox2.length; i < len; i++) {
+            allChkBox2[i].checked = false; 
+            }  
+         }
+          function active15(){ 
+             for(var i =0, len = allChkBox1.length; i < len; i++) {
+            allChkBox1[i].checked = false;
+            }
+            for(var i =0, len = allChkBox4.length; i < len; i++) {
+            allChkBox4[i].checked = false;
+            }
+            for(var i =0, len = allChkBox5.length; i < len; i++) {
+            allChkBox5[i].checked = true;
+            }
+            for(var i =0, len = allChkBox3.length; i < len; i++) {
+            allChkBox3[i].checked = false;
+            }
+            for(var i =0, len = allChkBox2.length; i < len; i++) {
+            allChkBox2[i].checked = false; 
+            }  
+         } 
+    
+
         $('.row51').each(function(index, element) {
             document.getElementById("modaly_course1_"+$(this).attr('course_id')).checked = false;
         });
         $('.row1').each(function(index, element) {
             document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
+              document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = true;
         });
         $('.row2').each(function(index, element) {
             document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
+              document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).disabled = true;
         });
         $('.row3').each(function(index, element) {
             document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
+              document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).disabled = true;
         });
         $('.row4').each(function(index, element) {
             document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
         });
+         $( "#sortable5" ).sortable();
+        $( "#sortable5" ).sortable( "option", "disabled", true );
+         $( "#sortable6" ).sortable();
+        $( "#sortable6" ).sortable( "option", "disabled", true );
+        $( "#sortable4" ).sortable();
+        $( "#sortable4" ).sortable( "option", "disabled", true );
 
         function activeOption(){
 
         }
         function active(){
             if($('input:radio[name=active]:checked').val()==1){
+                  $( "#sortable5" ).sortable();
+                $( "#sortable5" ).sortable( "option", "disabled", false );
+                 $( "#sortable6" ).sortable();
+                $( "#sortable6" ).sortable( "option", "disabled", true );
+                $( "#sortable4" ).sortable();
+                $( "#sortable4" ).sortable( "option", "disabled", true );
 
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
+                    document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).disabled = true;
                 });
                 $('.row4').each(function(index, element) {
                     document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
+                   
                 });
                 $('.row2').each(function(index, element) {
                     document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
+                     document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).disabled = true;
                 });
                 $('.row1').each(function(index, element) {
                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = true;
+                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = false;
                 });
             }else{
+                 $( "#sortable5" ).sortable();
+                $( "#sortable5" ).sortable( "option", "disabled", true );
+                 $( "#sortable6" ).sortable();
+                $( "#sortable6" ).sortable( "option", "disabled", false );
+                $( "#sortable4" ).sortable();
+                $( "#sortable4" ).sortable( "option", "disabled", false );
 
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = true;
+                    document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).disabled = false;
                 });
                 $('.row4').each(function(index, element) {
                     document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = true;
                 });
                 $('.row1').each(function(index, element) {
                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
+                    document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = true;
                 });
                 $('.row2').each(function(index, element) {
                     document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = true;
+                     document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).disabled = false;
                 });
-                $('.row1').each(function(index, element) {
-                    document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
-                });
-            }
+               }
         }
         $(function() {
             $("#sortable5").sortable({
