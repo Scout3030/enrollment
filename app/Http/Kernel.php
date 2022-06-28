@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\ActiveEnrollment;
 use App\Http\Middleware\CheckProfile;
+use App\Http\Middleware\HasGradeMiddleware;
 use App\Http\Middleware\LanguageMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -68,6 +69,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'active.enrollment' => ActiveEnrollment::class,
-        'check.profile'=>CheckProfile::class,
+        'check.profile' => CheckProfile::class,
+        'has.grade' => HasGradeMiddleware::class
     ];
 }

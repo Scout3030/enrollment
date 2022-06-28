@@ -57,17 +57,22 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::post('/upload-files/{path?}', [FileController::class, 'upload'])
         ->name('upload.files');
 
-    Route::view('/profile/edit', 'user.profile.edit')
-        ->name('user.profile.edit');
-       // ->middleware('active.enrollment');
+    if(config('app.env') == 'local') {
+        Route::view('/profile/edit', 'user.profile.edit')
+            ->name('user.profile.edit')
+            ->middleware(['has.grade']);
+    } else {
+        Route::view('/profile/edit', 'user.profile.edit')
+            ->name('user.profile.edit')
+            ->middleware(['has.grade']);
+    }
+
     Route::put('student/profile', [StudentController::class, 'profile'])
         ->name('student.profile.update');
     Route::put('user/profile', [UserController::class, 'profile'])
         ->name('user.profile.update');
     Route::get('/profile/grade', [StudentController::class, 'optionGrade'])
         ->name('user.grade');
-               
-    
 
     Route::group(['prefix' => "students"], function() {
         Route::get('/', [StudentController::class, 'index'])
@@ -194,7 +199,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         if(config('app.env') == 'local') {
             Route::get('/', [EnrollmentController::class, 'create'])
                 ->name('enrollment.create')
-                ->can('create enrollment');
+                ->can('create enrollment')
+                ->middleware(['check.profile']);
         } else {
             Route::get('/', [EnrollmentController::class, 'create'])
                 ->name('enrollment.create')

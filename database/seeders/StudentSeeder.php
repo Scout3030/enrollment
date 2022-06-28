@@ -21,23 +21,24 @@ class StudentSeeder extends Seeder
             ->count(1)
             ->create([
                 'name' => 'Student student',
-                'email' => 'student1@mail.com',
+                'email' => 'student@mail.com',
                 'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG', //secret
             ])->each(function (\App\Models\User $u) {
                 Student::factory([
                     'user_id' => $u->id,
-                    'dni' => "11111111"
+                    'dni' => "11111111",
+                    'grade_id' => null
                 ])
                     ->count(1)
                     ->create();
-            });      
+            });
 
         User::factory()
             ->count(99)
             ->create()
             ->each(function (\App\Models\User $u) {
                 Student::factory([
-                    'user_id' => $u->id,                    
+                    'user_id' => $u->id,
                 ])
                     ->count(1)
                     ->create();
