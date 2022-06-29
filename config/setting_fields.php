@@ -29,8 +29,8 @@ return [
                 'label' => 'App Logo',
                 'rules' => 'nullable|min:2|max:500',
                 'class' => 'w-auto px-2',
-                'value' => '/images/ico/favicon.ico'
+                'value' => '/logo.jpeg'
             ]
         ]
-    ],   
+    ],
 ];
