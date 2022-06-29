@@ -19,21 +19,28 @@ class ActiveEnrollment
     {
         $student = auth()->user()->student;
         $lastProcess = AcademicPeriod::whereLevelId($student->grade->level_id)
-            ->latest()
+            ->latest('id')
             ->first();
 
         $now = now();
 
+        $passed = true;
+
         if(!$lastProcess) {
-            return redirect()->route('dashboard.index')->with('process');
+            $passed = false;
         }
 
         if ( !($lastProcess->started_at<= $now && $now <= $lastProcess->finished_at) ) {
-            return redirect()->route('dashboard.index')->with('process');
+            $passed = false;
         }
 
         if ( !$lastProcess->status ) {
-            return redirect()->route('dashboard.index')->with('process');
+            $passed = false;
+        }
+
+        if(!$passed) {
+            return redirect()->route('dashboard.index')
+            ->with('message', ['type' => 'warning', 'description' => __('There is not an active process for this level at the moment')]);
         }
 
         return $next($request);
