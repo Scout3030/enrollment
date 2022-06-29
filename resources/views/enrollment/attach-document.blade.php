@@ -61,113 +61,164 @@
             </div>
             <!--/ User Sidebar -->
 
-            
+
             <!-- User Content -->
             <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
                 <div class="card">
                     <h4 class="card-header">{{ __('Attach document') }}</h4>
                     <div class="card-body">
                         <div class="info-container">
-                           <div class="col-lg-6">
-                            <div class="card">
-                              <!--  <div class="card-header">
-                                    <h4 class="card-title">Basic</h4>
-                                </div>-->
-                                <div class="card-body">
-                                    <ul class="timeline">
-                                        @if($enrollment->student->dni_document)
-                                            <li class="timeline-item">
-                                                <span class="timeline-point timeline-point-indicator"></span>
-                                                <div class="timeline-event">
-                                                    <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                                                        <h6>{{ __('student DNI') }}</h6>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <!--  <div class="card-header">
+                                          <h4 class="card-title">Basic</h4>
+                                      </div>-->
+                                    <div class="card-body">
+                                        <ul class="timeline">
+                                            @if($enrollment->dni_document)
+                                                <li class="timeline-item">
+                                                    <span class="timeline-point timeline-point-indicator"></span>
+                                                    <div class="timeline-event">
+                                                        <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
+                                                            <h6>{{ __('student DNI') }}</h6>
+                                                        </div>
+                                                        <div class="media align-items-center">
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $enrollment->dni_document]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
+                                                                {{ __('Download') }}
+                                                                <div class="media-body"></div>
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                    <div class="media align-items-center">
-                                                        <a href="{{ route('enrollments.download-document', ['enrollment'=>$enrollment,'field'=>$enrollment->student->dni_document]) }}" target="_blank">
-                                                            <i data-feather='paperclip'></i>
+                                                </li>
+                                            @endif
+                                            @if($enrollment->payment_document)
+                                                <li class="timeline-item">
+                                                    <span class="timeline-point timeline-point-secondary timeline-point-indicator"></span>
+                                                    <div class="timeline-event">
+                                                        <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
+                                                            <h6>{{ __('Proof of payment of school insurance') }}</h6>
+
+                                                        </div>
+                                                        <div class="media align-items-center">
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $enrollment->payment_document]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
                                                                 {{ __('Download') }}
                                                                 <div class="media-body"></div>
-                                                        </a>
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </li>
-                                        @endif
-                                         @if($enrollment->student->payment_document)
-                                        <li class="timeline-item">
-                                            <span class="timeline-point timeline-point-secondary timeline-point-indicator"></span>
-                                            <div class="timeline-event">
-                                                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                                                    <h6>{{ __('Proof of payment of school insurance') }}</h6>
-                                                    
-                                                </div>
-                                                <div class="media align-items-center">
-                                                 <a href="{{ route('enrollments.download-document', ['enrollment'=>$enrollment,'field'=>$enrollment->student->payment_document]) }}" target="_blank">
-                                                            <i data-feather='paperclip'></i>
+                                                </li>
+                                            @endif
+                                            @if($enrollment->agreement_document)
+                                                <li class="timeline-item">
+                                                    <span class="timeline-point timeline-point-success timeline-point-indicator"></span>
+                                                    <div class="timeline-event">
+                                                        <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
+                                                            <h6>{{ __('Minor Custody Regulatory Agreement') }}</h6>
+                                                        </div>
+                                                        <div class="media align-items-center">
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $enrollment->agreement_document]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
                                                                 {{ __('Download') }}
                                                                 <div class="media-body"></div>
-                                                        </a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        @endif
-                                        @if($enrollment->student->agreement_document)
-                                        <li class="timeline-item">
-                                            <span class="timeline-point timeline-point-success timeline-point-indicator"></span>
-                                            <div class="timeline-event">
-                                                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                                                    <h6>{{ __('Minor Custody Regulatory Agreement') }}</h6>
-                                                </div>
-                                                <div class="media align-items-center">
-                                                 <a href="{{ route('enrollments.download-document', ['enrollment'=>$enrollment,'field'=>$enrollment->student->agreement_document]) }}" target="_blank">
-                                                            <i data-feather='paperclip'></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                            @if($enrollment->certificate_document)
+                                                <li class="timeline-item">
+                                                    <span class="timeline-point timeline-point-warning timeline-point-indicator"></span>
+                                                    <div class="timeline-event">
+                                                        <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
+                                                            <h6>{{ __('Official Academic Certificate of Studies') }}</h6>
+                                                        </div>
+                                                        <div class="media align-items-center">
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $enrollment->certificate_document]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
                                                                 {{ __('Download') }}
                                                                 <div class="media-body"></div>
-                                                        </a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                         @endif
-                                          @if($enrollment->student->certificate_document)
-                                        <li class="timeline-item">
-                                            <span class="timeline-point timeline-point-warning timeline-point-indicator"></span>
-                                            <div class="timeline-event">
-                                                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                                                     <h6>{{ __('Official Academic Certificate of Studies') }}</h6>
-                                                </div>
-                                               <div class="media align-items-center">
-                                                 <a href="{{ route('enrollments.download-document', ['enrollment'=>$enrollment,'field'=>$enrollment->student->certificate_document]) }}" target="_blank">
-                                                            <i data-feather='paperclip'></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                            @if($enrollment->academic_history)
+                                                <li class="timeline-item">
+                                                    <span class="timeline-point timeline-point-danger timeline-point-indicator"></span>
+                                                    <div class="timeline-event">
+                                                        <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
+                                                            <h6>{{ __('Academic history') }}</h6>
+                                                        </div>
+                                                        <div class="media align-items-center">
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $enrollment->academic_history]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
                                                                 {{ __('Download') }}
                                                                 <div class="media-body"></div>
-                                                        </a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                         @endif
-                                         @if($enrollment->student->academic_history)
-                                        <li class="timeline-item">
-                                            <span class="timeline-point timeline-point-danger timeline-point-indicator"></span>
-                                            <div class="timeline-event">
-                                                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                                                     <h6>{{ __('Academic history') }}</h6>
-                                                </div>
-                                                 <div class="media align-items-center">
-                                                 <a href="{{ route('enrollments.download-document', ['enrollment'=>$enrollment,'field'=>$enrollment->student->certificate_document]) }}" target="_blank">
-                                                            <i data-feather='paperclip'></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                            @if($enrollment->student_signature)
+                                                <li class="timeline-item">
+                                                    <span class="timeline-point timeline-point-success timeline-point-indicator"></span>
+                                                    <div class="timeline-event">
+                                                        <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
+                                                            <h6>{{ __('Student signature') }}</h6>
+                                                        </div>
+                                                        <div class="media align-items-center">
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'signatures', 'file' => $enrollment->student_signature]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
                                                                 {{ __('Download') }}
                                                                 <div class="media-body"></div>
-                                                        </a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                         @endif                                        
-                                    </ul>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                            @if($enrollment->first_tutor_signature)
+                                                <li class="timeline-item">
+                                                    <span class="timeline-point timeline-point-success timeline-point-indicator"></span>
+                                                    <div class="timeline-event">
+                                                        <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
+                                                            <h6>{{ __('First tutor signature') }}</h6>
+                                                        </div>
+                                                        <div class="media align-items-center">
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'signatures', 'file' => $enrollment->first_tutor_signature]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
+                                                                {{ __('Download') }}
+                                                                <div class="media-body"></div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                            @if($enrollment->first_tutor_signature)
+                                                <li class="timeline-item">
+                                                    <span class="timeline-point timeline-point-success timeline-point-indicator"></span>
+                                                    <div class="timeline-event">
+                                                        <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
+                                                            <h6>{{ __('Second tutor signature') }}</h6>
+                                                        </div>
+                                                        <div class="media align-items-center">
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'signatures', 'file' => $enrollment->first_tutor_signature]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
+                                                                {{ __('Download') }}
+                                                                <div class="media-body"></div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
-                </div>                
+                </div>
             </div>
             <!--/ User Content -->
         </div>

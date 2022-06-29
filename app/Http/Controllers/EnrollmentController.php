@@ -510,7 +510,8 @@ class EnrollmentController extends Controller
             'bus_stop_id' => $request->transportation == 1 ? $request->bus_stop_id : null,
         ])->save();
 
-        $academicPeriodId = AcademicPeriod::latest('id')->first();
+        $academicPeriod = AcademicPeriod::whereLevelId($student->grade->level->id)
+            ->first();
 
         $enrollment = Enrollment::create([
             'student_id' => $student->id,
@@ -522,8 +523,20 @@ class EnrollmentController extends Controller
             'student_signature' => $request->student_signature,
             'second_tutor_signature' => $request->second_tutor_signature,
             'first_tutor_signature' => $request->first_tutor_signature,
-            'academic_period_id' => $academicPeriodId->id
+            'academic_period_id' => $academicPeriod->id,
+            'certificate_document' => $student->certificate_document,
+            'agreement_document' => $student->agreement_document,
+            'dni_document' => $student->dni_document,
+            'payment_document' => $student->payment_document,
+            'academic_history' => $student->academic_history,
         ]);
+
+        $enrollment->student->certificate_document = null;
+        $enrollment->student->agreement_document = null;
+        $enrollment->student->dni_document = null;
+        $enrollment->student->payment_document = null;
+        $enrollment->student->academic_history = null;
+        $enrollment->student->save();
 
         if($student->grade_id == Grade::FIRST_MIDDLE_SCHOOL || $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL) {
             $levelCourses = Course::whereGradeId($student->grade_id)
@@ -581,8 +594,7 @@ class EnrollmentController extends Controller
                         ->get();
                     $enrollment->courses()->attach($coursesItineraryB);
                 }
-            }
-            else{
+            } else{
                 $coursesItineraryC = Course::whereGradeId($student->grade_id)
                     ->whereGroupOne(Course::GROUP_COURSES_ONE_B)
                     ->whereGroupTwo(Course::GROUP_COURSES_TWO_A)
@@ -592,7 +604,6 @@ class EnrollmentController extends Controller
                 $coursesItineraryD  = $request->core_itinerary_d;
                 $enrollment->courses()->attach($coursesItineraryC);
                 $enrollment->courses()->attach($coursesItineraryD);
-
             }
 
             $commonCoursesCore = Course::whereGradeId($student->grade_id)
@@ -603,21 +614,16 @@ class EnrollmentController extends Controller
             $enrollment->courses()->attach($request->common_courses);
             $enrollment->courses()->attach($request->elective_courses);
             $enrollment->courses()->attach($request->elective_courses_free);
-
         }
 
         if($grade->id == Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY || $grade->id == Grade::FIRST_HIGH_SCHOOL_GENERAL){
 
-
-            if($request->active==1)
-            {
+            if($request->active ==1) {
                 $enrollment->courses()->attach($request->elective_courses);
-            }
-            else{
+            } else{
                 $enrollment->courses()->attach($request->elective_courses);
                 $enrollment->courses()->attach($request->elective_courses_free);
             }
-
 
             $commonCourses = Course::whereGradeId($student->grade_id)
                 ->whereCourseTypeId(CourseType::COMMON)
@@ -639,33 +645,26 @@ class EnrollmentController extends Controller
         }
 
         if($grade->id == Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES){
-
-
-            if($request->active==1)
-            {
+            if($request->active==1) {
                 $enrollment->courses()->attach($request->elective_courses);
-            }
-            else{
+            } else{
                 $enrollment->courses()->attach($request->elective_courses);
                 $enrollment->courses()->attach($request->elective_courses_free);
             }
 
-            if($request->active1==1)
-            {
+            if($request->active1==1) {
                 $modalitiesCourses = Course::whereGradeId($student->grade_id)
                     ->whereCourseTypeId(CourseType::ITINERARY_HUMANITIES)
                     ->get();
                 $enrollment->courses()->attach($modalitiesCourses);
                 $enrollment->courses()->attach($request->one_courses);
-            }
-            else{
+            } else{
                 $modalityOption = Course::whereGradeId($student->grade_id)
                     ->whereCourseTypeId(CourseType::ITINERARY_SCIENCES)
                     ->get();
                 $enrollment->courses()->attach($modalityOption);
                 $enrollment->courses()->attach($request->one_courses2);
             }
-
 
             $commonCourses = Course::whereGradeId($student->grade_id)
                 ->whereCourseTypeId(CourseType::COMMON)
@@ -687,17 +686,12 @@ class EnrollmentController extends Controller
         }
 
         if($grade->id == Grade::SECOND_HIGH_SCHOOL_SCIENCE){
-
-
-            if($request->active==1)
-            {
+            if($request->active==1) {
                 $enrollment->courses()->attach($request->elective_courses);
-            }
-            else{
+            } else{
                 $enrollment->courses()->attach($request->elective_courses);
                 $enrollment->courses()->attach($request->elective_courses_free);
             }
-
 
             $commonCourses = Course::whereGradeId($student->grade_id)
                 ->whereCourseTypeId(CourseType::CORE)
@@ -738,21 +732,15 @@ class EnrollmentController extends Controller
                     ->get();
                 $enrollment->courses()->attach($modalitiesCourses5);
             }
-
         }
 
         if($grade->id == Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES){
-
-
-            if($request->active1==1)
-            {
+            if($request->active1==1) {
                 $enrollment->courses()->attach($request->elective_courses);
-            }
-            else{
+            } else{
                 $enrollment->courses()->attach($request->elective_courses);
                 $enrollment->courses()->attach($request->elective_courses_free);
             }
-
 
             $commonCourses = Course::whereGradeId($student->grade_id)
                 ->whereCourseTypeId(CourseType::CORE)
@@ -768,9 +756,7 @@ class EnrollmentController extends Controller
                 $enrollment->courses()->attach($request->one_courses);
                 $enrollment->courses()->attach($request->one_coursesB);
 
-            }
-            else{
-
+            } else{
                 $modalityOption = Course::whereGradeId($student->grade_id)
                     ->whereGroupOne(null)
                     ->whereCourseTypeId(CourseType::ITINERARY_SCIENCES)
@@ -781,36 +767,29 @@ class EnrollmentController extends Controller
             }
         }
 
-       if( $grade->id == Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM || $grade->id == Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM) {
-
+        if( $grade->id == Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM || $grade->id == Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM) {
             $commonCourses = Course::whereGradeId($student->grade_id)
                 ->whereCourseTypeId(CourseType::CF_COMMON)
                 ->get();
-                $enrollment->courses()->attach($commonCourses);
-
+            $enrollment->courses()->attach($commonCourses);
         }
 
         if( $grade->id == Grade::FIRST_EDUCATIONAL_CYCLE_BASIC || $grade->id == Grade::SECOND_EDUCATIONAL_CYCLE_BASIC) {
-
-
-                $commonCourses = Course::whereGradeId($student->grade_id)
+            $commonCourses = Course::whereGradeId($student->grade_id)
                 ->whereCourseTypeId(CourseType::ASSOCIATED_UNITS_OF_COMPETENCES)
                 ->get();
 
-                $commonCourses1 = Course::whereGradeId($student->grade_id)
-                    ->whereCourseTypeId(CourseType::ASSOCIATED_COMMON_BLOCKS)
-                    ->get();
+            $commonCourses1 = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::ASSOCIATED_COMMON_BLOCKS)
+                ->get();
 
-                $commonCourses2 = Course::whereGradeId($student->grade_id)
-                    ->whereCourseTypeId(CourseType::FORMATION_WORKSPACE)
-                    ->get();
-                $enrollment->courses()->attach($commonCourses);
-                $enrollment->courses()->attach($commonCourses1);
-                $enrollment->courses()->attach($commonCourses2);
-
+            $commonCourses2 = Course::whereGradeId($student->grade_id)
+                ->whereCourseTypeId(CourseType::FORMATION_WORKSPACE)
+                ->get();
+            $enrollment->courses()->attach($commonCourses);
+            $enrollment->courses()->attach($commonCourses1);
+            $enrollment->courses()->attach($commonCourses2);
         }
-
-
 
         return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
     }
@@ -875,32 +854,16 @@ class EnrollmentController extends Controller
     }
 
     public function attachDocument(Enrollment $enrollment){
-        return view('enrollment.attach-document',
-        compact('enrollment'));
+        return view('enrollment.attach-document', compact('enrollment'));
     }
 
-    public function downloadDocument(Enrollment $enrollment,$field)
+    /**
+     * @param $path
+     * @param $file
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function downloadDocument($path, $file)
     {
-        $attachDocument = $enrollment->student->grade_id;
-        $attachDocument1 = $enrollment->student->grade->level->id;
-        if($attachDocument1 == Level::BACHELOR || $attachDocument1 == Level::EDUCATIONAL_CYCLE){
-            $file='bachelor';
-        }
-        if($attachDocument == Grade::FOURTH_MIDDLE_SCHOOL){
-            $file='third_fourth_middle';
-        }
-        if($attachDocument == Grade::SECOND_HIGH_SCHOOL || $attachDocument == Grade::THIRD_HIGH_SCHOOL){
-            $file='high_school';
-        }
-        if($attachDocument == Grade::THIRD_MIDDLE_SCHOOL || $attachDocument == Grade::FOURTH_MIDDLE_SCHOOL){
-            $file='third_fourth_middle';
-        }
-        if($attachDocument == Grade::SECOND_MIDDLE_SCHOOL){
-            $file='second_middle';
-        }
-        if($attachDocument == Grade::FIRST_MIDDLE_SCHOOL){
-            $file='first_middle';
-        }
-      return Storage::download($file.'/'.$field);
+        return Storage::download($path.'/'.$file);
     }
 }

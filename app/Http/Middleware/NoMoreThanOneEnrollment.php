@@ -2,11 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\AcademicPeriod;
 use Closure;
 use Illuminate\Http\Request;
 
-class ActiveEnrollment
+class NoMoreThanOneEnrollment
 {
     /**
      * Handle an incoming request.
@@ -18,24 +17,9 @@ class ActiveEnrollment
     public function handle(Request $request, Closure $next)
     {
         $student = auth()->user()->student;
-        $lastProcess = AcademicPeriod::whereLevelId($student->grade->level_id)
-            ->latest()
-            ->first();
-
-        $now = now();
-
-        if(!$lastProcess) {
+        if ( $student->enrollments->count() > 0 ) {
             return redirect()->route('dashboard.index')->with('process');
         }
-
-        if ( !($lastProcess->started_at<= $now && $now <= $lastProcess->finished_at) ) {
-            return redirect()->route('dashboard.index')->with('process');
-        }
-
-        if ( !$lastProcess->status ) {
-            return redirect()->route('dashboard.index')->with('process');
-        }
-
         return $next($request);
     }
 }

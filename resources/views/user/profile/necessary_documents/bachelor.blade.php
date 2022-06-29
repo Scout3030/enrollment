@@ -142,7 +142,7 @@
         // 1 hidden input
         const imageInput = $('input[name=dni_document]');
         const imageDropzone = new Dropzone("#dniDocument", {
-            url: "{{ route('upload.files', 'bachelor') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -171,7 +171,7 @@
         // 1 hidden input
         const agreementInput = $('input[name=agreement_document]');
         const agreementDropzone = new Dropzone("#agreementDocument", {
-            url: "{{ route('upload.files', 'bachelor') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -200,7 +200,7 @@
         // 1 hidden input
         const certificateInput = $('input[name=certificate_document]');
         const certificateDropzone = new Dropzone("#certificateDocument", {
-            url: "{{ route('upload.files', 'bachelor') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -229,7 +229,7 @@
         // 1 hidden input
         const paymentInput = $('input[name=payment_document]');
         const paymentDropzone = new Dropzone("#paymentDocument", {
-            url: "{{ route('upload.files', 'bachelor') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -258,7 +258,7 @@
         // 1 hidden input
         const academicHistoryInput = $('input[name=academic_history]');
         const academicHistoryDropzone = new Dropzone("#academicHistory", {
-            url: "{{ route('upload.files', 'bachelor') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",

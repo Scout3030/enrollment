@@ -64,11 +64,21 @@ class EnrollmentRequest extends FormRequest
         }
 
         if($student->grade_id == Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY || $student->grade_id == Grade::FIRST_HIGH_SCHOOL_GENERAL ||
-        $student->grade_id == Grade::SECOND_HIGH_SCHOOL_SCIENCE) {
-            if($this->active==1){
+        $student->grade_id == Grade::SECOND_HIGH_SCHOOL_SCIENCE ) {
+            if($this->active==1 && $this->core_itinerary_a){
                 $course_A = $this->core_itinerary_a;
+                $electiveCourses = [];
+            foreach($course_A as $key => $electiveCourse){
+                $electiveCourse = json_decode($electiveCourse);
+                $electiveCourses[$key]['course_id'] = $electiveCourse->id;
+                $electiveCourses[$key]['order'] = $electiveCourse->order;
             }
-            if($this->active==0){
+
+            $this->merge([
+                'elective_courses' => $electiveCourses,
+            ]);
+            }
+            if($this->active==0 && $this->core_itinerary_b && $this->core_itinerary_c){
                 $course_A = $this->core_itinerary_b;
                 $electiveCoursesFree = [];
                 foreach($this->core_itinerary_c as $key => $electiveCourseFree){
@@ -80,8 +90,7 @@ class EnrollmentRequest extends FormRequest
                 $this->merge([
                     'elective_courses_free' => $electiveCoursesFree,
                 ]);
-            }
-            $electiveCourses = [];
+                $electiveCourses = [];
             foreach($course_A as $key => $electiveCourse){
                 $electiveCourse = json_decode($electiveCourse);
                 $electiveCourses[$key]['course_id'] = $electiveCourse->id;
@@ -91,6 +100,8 @@ class EnrollmentRequest extends FormRequest
             $this->merge([
                 'elective_courses' => $electiveCourses,
             ]);
+            }
+        
        }
 
         if($student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
@@ -155,7 +166,7 @@ class EnrollmentRequest extends FormRequest
                 'common_optional_course' => ['required', 'exists:courses,id'],
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
-                'first_tutor_signature'=>['required'],
+                'first_tutor_signature'=>['nullable'],
                 'student_signature'=>['required'],
             ];
         }
@@ -170,7 +181,7 @@ class EnrollmentRequest extends FormRequest
                 'elective_courses.*.course_id' => 'exists:courses,id',
                 'elective_courses_free' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses_free.*.course_id' => 'exists:courses,id',
-                'first_tutor_signature'=>['required'],
+                'first_tutor_signature'=>['nullable'],
                 'student_signature'=>['required'],
             ];
         }
@@ -186,7 +197,7 @@ class EnrollmentRequest extends FormRequest
                 'one_courses' =>['required'],
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
-                'first_tutor_signature'=>['required'],
+                'first_tutor_signature'=>['nullable'],
                'student_signature'=>['required'],
             ];
         }
@@ -202,7 +213,7 @@ class EnrollmentRequest extends FormRequest
 
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
-                'first_tutor_signature'=>['required'],
+                'first_tutor_signature'=>['nullable'],
                 'student_signature'=>['required'],
             ];
         }
@@ -217,7 +228,7 @@ class EnrollmentRequest extends FormRequest
                 'active1'=> ['required'],
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
-                'first_tutor_signature'=>['required'],
+                'first_tutor_signature'=>['nullable'],
                 'student_signature'=>['required'],
             ];
         }
@@ -228,7 +239,7 @@ class EnrollmentRequest extends FormRequest
             'bus_stop_id' => [Rule::requiredIf(function () {
                 return $this->transportation == 1;
             }), 'exists:bus_stops,id'],
-            'first_tutor_signature'=>['required'],
+            'first_tutor_signature'=>['nullable'],
             'student_signature'=>['required'],
         ];
     }
@@ -239,7 +250,7 @@ class EnrollmentRequest extends FormRequest
             'bus_stop_id' => [Rule::requiredIf(function () {
                 return $this->transportation == 1;
             }), 'exists:bus_stops,id'],
-            'first_tutor_signature'=>['required'],
+            'first_tutor_signature'=>['nullable'],
             'student_signature'=>['required'],
         ];
     }
