@@ -24,17 +24,6 @@
                             <div class="col-12">
                                 <div class="mb-1 row">
                                     <div class="col-sm-2">
-                                        <label class="col-form-label" for="middle_name">{{ __('Middle name') }}</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <input type="text" id="middle_name" class="form-control" name="middle_name"
-                                               value="{{ old('middle_name', auth()->user()->student->middle_name) }}" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mb-1 row">
-                                    <div class="col-sm-2">
                                         <label class="col-form-label" for="paternal_surname">{{ __('First surname') }}</label>
                                     </div>
                                     <div class="col-sm-10">
