@@ -195,7 +195,7 @@
                                                     </div>
                                                 </li>
                                             @endif
-                                            @if($enrollment->first_tutor_signature)
+                                            @if($enrollment->second_tutor_signature)
                                                 <li class="timeline-item">
                                                     <span class="timeline-point timeline-point-success timeline-point-indicator"></span>
                                                     <div class="timeline-event">
@@ -203,7 +203,7 @@
                                                             <h6>{{ __('Second tutor signature') }}</h6>
                                                         </div>
                                                         <div class="media align-items-center">
-                                                            <a href="{{ route('enrollments.download-document', ['path' => 'signatures', 'file' => $enrollment->first_tutor_signature]) }}" target="_blank">
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'signatures', 'file' => $enrollment->second_tutor_signature]) }}" target="_blank">
                                                                 <i data-feather='paperclip'></i>
                                                                 {{ __('Download') }}
                                                                 <div class="media-body"></div>
