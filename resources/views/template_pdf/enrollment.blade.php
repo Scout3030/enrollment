@@ -215,13 +215,45 @@
 
                     <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS OPTATIVAS</td></tr>
                     @foreach ( $enrollment->courses as $course )
+                    
                     @if(App\Models\CourseType::COMMON_OPTIONAL_ONE == $course->course_type_id)
-                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
-                     @if(App\Models\CourseType::COMMON_OPTIONAL_TWO == $course->course_type_id)
-                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
-                     @if(App\Models\CourseType::COMMON_OPTIONAL == $course->course_type_id)
-                    <tr><td colspan="6">{{ __($course->name) }}</td></tr>@endif
+                    @if($course->pivot->order==1)
+                    <tr><td colspan="6"><h5>{{ __('4H COURSES') }}</h5></td></tr>
+                    @endif
+                    <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
                     @endforeach
+                
+                
+                     @foreach ( $enrollment->courses as $course )
+                    
+                     @if(App\Models\CourseType::COMMON_OPTIONAL_TWO == $course->course_type_id &&
+                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&  
+                        App\Models\Course::GROUP_COURSES_TWO_A ==  $course->group_two )
+                        @if($course->pivot->order==1)
+                    <tr><td colspan="6"><h5>{{ __('3H COURSES') }}</h5></td></tr>
+                    @endif
+                    <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
+                    
+                    @endforeach
+                     @foreach ( $enrollment->courses as $course )
+                    
+                     @if(App\Models\CourseType::COMMON_OPTIONAL_TWO == $course->course_type_id &&
+                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&  
+                        App\Models\Course::GROUP_COURSES_TWO_B ==  $course->group_two )
+                        @if($course->pivot->order==1)
+                    <tr><td colspan="6"><h5>{{ __('1H COURSES') }}</h5></td></tr>
+                    @endif
+                    <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
+                    
+                    @endforeach
+
+                      @foreach ( $enrollment->courses as $course )
+                    @if(App\Models\CourseType::COMMON_OPTIONAL == $course->course_type_id)
+                         <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS OPTATIVAS</td></tr>
+                         <tr><td colspan="6"> {{ __($course->name) }}</td></tr>
+                    @endif
+                    @endforeach
+                
             @endif
             @if ($enrollment->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES)
                     <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS COMUNES</td></tr>
@@ -350,11 +382,11 @@
 
             <tr><td colspan="6">(A propuesta del equipo docente del centro de Primaria y/o del IES se puede cursar en este bloque <b> REFUERZO EDUCATIVO DE LAS COMPETENCIAS MATEMÁTICAS Y/O LINGUISTICA)</b></td></tr>
             <tr><td colspan="3">Fecha:</td><td align="center">Alumno/a</td  align="center"><td>Tutor 1</td><td  align="center">Tutor 2</td></tr>
-            <tr><td colspan="3">Firma:</td><td></td><td></td><td></td></tr>
+            <tr><td colspan="3">Firma:</td><td> <img src="{{$enrollment->student_signature }}" with="5px" hight="5px" alt="{{ $enrollment->student->user->name }}" ></td><td></td><td></td></tr>
             </table>
              <center><h5>IES Leopoldo Alas Clarín</h5></center>
               <center><h6><u>leopoldo@educastur.org</u> Tel: 985 20 75 54 Fax: 985 21 08 68</h6></center>
-
+                <!-- class="rounded-full h-20 w-20 object-cover" -->
 
             </div>
         </div>
