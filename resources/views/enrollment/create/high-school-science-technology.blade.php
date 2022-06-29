@@ -156,7 +156,7 @@
                                             <div class="card">
                                                 <div class="row">
                                                     <h5>{{ __('4H COURSES') }}</h5>
-                                                    <p>{{ __('Ordena segun preferencia, solo un curso sera seleccionado.') }}</p>
+                                                    <p>{{ __('Ordena según preferencia, solo un curso será seleccionado.') }}</p>
                                                 </div>
                                                 <div class="mb-1 row">
                                                     <div class="col-2 col-md-1">
@@ -255,7 +255,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <h5>{{ __('3H COURSES') }}</h5>
-                                        <p>{{ __('Ordena segun preferencia, solo un curso sera seleccionado.') }}</p>
+                                        <p>{{ __('Ordena según preferencia, solo un curso será seleccionado.') }}</p>
                                     </div>
                                     <div class="row">
                                         <div class="col-2 col-md-1">
@@ -323,7 +323,7 @@
                                     </div>
                                     <div class="row">
                                         <h5>{{ __('1H COURSES') }}</h5>
-                                        <p>{{ __('Ordena segun preferencia, solo un curso sera seleccionado.') }}</p>
+                                        <p>{{ __('Ordena según preferencia, solo un curso será seleccionado.') }}</p>
                                     </div>
                                     <div class="row">
                                         <div class="col-2 col-md-1">
@@ -620,10 +620,10 @@
                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = true;
                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = false;
                 });
-                
-               
-               
-        
+
+
+
+
 
             }else{
                  $( "#sortable5" ).sortable();

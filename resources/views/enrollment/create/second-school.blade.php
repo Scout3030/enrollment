@@ -173,7 +173,7 @@
                 <div class="col-sm-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Free configuration') }}</h4>
+                            <h4 class="card-title">{{ __('Free configuration') }}  ({{ __('Order by preference') }})</h4>
                             <p>{{ __('optional courses info') }}</p>
                         </div>
                         <div class="card-body">

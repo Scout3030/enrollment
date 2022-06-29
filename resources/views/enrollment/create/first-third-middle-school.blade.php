@@ -36,7 +36,7 @@
                         </div>
                         <div class="card-body">
                             <div  class="row custom-options-checkable g-1">
-                                @forelse($commonCourses as $course)
+                                @foreach($commonCourses as $course)
                                     <div class="col-md-3">
                                         <input
                                             class="custom-option-item-check"
@@ -52,9 +52,7 @@
                                             </span>
                                         </label>
                                     </div>
-                                @empty
-                                    {{ __('Select level and grade') }}
-                                @endforelse
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -67,7 +65,7 @@
                 <div class="col-sm-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Optional subjects') }}</h4>
+                            <h4 class="card-title">{{ __('Optional subjects') }} ({{ __('Order by preference') }})</h4>
                             <p>{{ __('optional courses info') }}</p>
                         </div>
                         <div class="card-body">

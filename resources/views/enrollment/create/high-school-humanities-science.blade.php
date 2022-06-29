@@ -265,7 +265,7 @@
                                                 value="1"
                                                 {{ old('active1') == "1" ? 'checked' : ''}}
                                             />
-                                            <label class="form-check-label" for="active_si1">{{ __('MODALITY SUBJECTS NOT STUDIED') }}</label>
+                                            <label class="form-check-label" for="active_si1">{{ __('MODALITY SUBJECTS NOT STUDIED') }} <b>({{ __('Order by preference') }})</b></label>
                                         </div>
                                     </div>
                                 </div>
@@ -357,7 +357,7 @@
                                                 value="0"
                                                 {{ old('active1') == "0" ? 'checked' : ''}}
                                             />
-                                            <label class="form-check-label" for="active_no1">{{ __('COURSES THE 3 h') }}</label>
+                                            <label class="form-check-label" for="active_no1">{{ __('COURSES THE 3 h') }} <b>({{ __('Order by preference') }})</b></label>
                                         </div>
                                     </div>
                                 </div>
@@ -427,7 +427,7 @@
                                         </div>
                                     </div>
                                     <div class="card-header">
-                                        <h5>{{ __('COURSES THE 1 h') }}</h5>
+                                        <h5>{{ __('COURSES THE 1 h') }} <b>({{ __('Order by preference') }})</b></h5>
                                     </div>
                                     <div class="row">
                                         <div class="col-2 col-md-1">
@@ -666,7 +666,7 @@
 
         function active(){
             if($('input:radio[name=active]:checked').val()==1){
-               
+
 
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
@@ -692,7 +692,7 @@
                 });
 
             }else{
-              
+
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = true;
                 });
@@ -729,11 +729,11 @@
                 $('.row35').each(function(index, element) {
                     document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).checked = false;
                      document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).disabled = true;
-                    
+
                 });
                 $('.row45').each(function(index, element) {
                     document.getElementById("core_itinerary_d5_"+$(this).attr('course_id')).checked = false;
-                    
+
                 });
                 $('.row25').each(function(index, element) {
                     document.getElementById("core_itinerary_b5_"+$(this).attr('course_id')).checked = false;
@@ -764,7 +764,7 @@
                 $('.row15').each(function(index, element) {
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = false;
                      document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).disabled = true;
-                     
+
                 });
             }
         }

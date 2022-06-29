@@ -149,7 +149,7 @@
                                                 value="1"
                                                 {{ old('active') == "1" ? 'checked' : ''}}
                                             />
-                                            <label class="form-check-label" for="active_si">{{ __('MODALITY SUBJECTS NOT STUDIED') }}</label>
+                                            <label class="form-check-label" for="active_si">{{ __('MODALITY SUBJECTS NOT STUDIED') }} <b>({{ __('Order by preference') }})</b></label>
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +242,7 @@
                                                 value="0"
                                                 {{ old('active') == "0" ? 'checked' : ''}}
                                             />
-                                            <label class="form-check-label" for="active_no">{{ __('COURSES THE 3 h') }}</label>
+                                            <label class="form-check-label" for="active_no">{{ __('COURSES THE 3 h') }} <b>({{ __('Order by preference') }})</b></label>
                                         </div>
                                     </div>
                                 </div>
@@ -312,7 +312,7 @@
                                             </div>
                                         </div>
                                         <div class="card-header">
-                                            <h5>{{ __('COURSES THE 1 h') }}</h5>
+                                            <h5>{{ __('COURSES THE 1 h') }} <b>({{ __('Order by preference') }})</b></h5>
                                         </div>
                                         <div class="row">
                                             <div class="col-2 col-md-1">
