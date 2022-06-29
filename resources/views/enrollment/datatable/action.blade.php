@@ -25,7 +25,7 @@
                 <line x1="16" y1="17" x2="8" y2="17"></line>
                 <polyline points="10 9 9 9 8 9"></polyline>
             </svg>
-            {{ __('Export enrollmet') }}
+            {{ __('Export enrollment') }}
         </a>
          @can('view enrollments')
         <a href="{{ route('enrollments.export-student', $id) }}" target="_blank" class="dropdown-item">

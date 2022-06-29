@@ -440,6 +440,10 @@
         @include('user.profile.necessary_documents.third-fourth-middle')
     @endif
     {{--PMAR--}}
+    @if (auth()->user()->student->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL)
+        @include('user.profile.necessary_documents.third-fourth-middle')
+    @endif
+
     @if (auth()->user()->student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL)
         @include('user.profile.necessary_documents.high-school')
     @endif
@@ -448,9 +452,6 @@
         @include('user.profile.necessary_documents.high-school')
     @endif
 
-    @if (auth()->user()->student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
-        @include('user.profile.necessary_documents.third-fourth-middle')
-    @endif
     {{--BACHELOR--}}
     @if (auth()->user()->student->grade->level->id == App\Models\Level::BACHELOR)
         @include('user.profile.necessary_documents.bachelor')

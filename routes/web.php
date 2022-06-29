@@ -235,10 +235,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/export-student/{enrollment}', [EnrollmentController::class, 'exportStudent'])
             ->name('enrollments.export-student')
             ->can('view enrollments');
-        Route::get('/attach-document/{enrollment}', [EnrollmentController::class, 'attachDocument'])
+        Route::get('/attached-document/{enrollment}', [EnrollmentController::class, 'attachDocument'])
             ->name('enrollments.attach-document')
             ->can('view enrollments');
-        Route::get('/download-document/{enrollment}/{field}', [EnrollmentController::class, 'downloadDocument'])
+        Route::get('/download-document/{path}/{file}', [EnrollmentController::class, 'downloadDocument'])
             ->name('enrollments.download-document')
             ->can('view enrollments');
     });

@@ -98,7 +98,7 @@
         // 1 hidden input
         const imageInput = $('input[name=dni_document]');
         const imageDropzone = new Dropzone("#dniDocument", {
-            url: "{{ route('upload.files', 'second_middle') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -129,7 +129,7 @@
         // 1 hidden input
         const agreementInput = $('input[name=agreement_document]');
         const agreementDropzone = new Dropzone("#agreementDocument", {
-            url: "{{ route('upload.files', 'second_middle') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -160,7 +160,7 @@
         // 1 hidden input
         const certificateInput = $('input[name=certificate_document]');
         const certificateDropzone = new Dropzone("#certificateDocument", {
-            url: "{{ route('upload.files', 'second_middle') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",

@@ -59,6 +59,11 @@ class Enrollment extends Model
         'second_tutor_signature',
         'first_tutor_signature',
         'academic_period_id',
+        'certificate_document',
+        'agreement_document',
+        'dni_document',
+        'payment_document',
+        'academic_history',
     ];
 
     protected $casts = [

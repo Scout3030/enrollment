@@ -4,7 +4,7 @@
 @endpush
 
 <div class="row">
-    <div class="col-sm-12 col-xl-6">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="col-sm-12 col-xl-6">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -73,7 +73,7 @@
         // 1 hidden input
         const imageInput = $('input[name=dni_document]');
         const imageDropzone = new Dropzone("#dniDocument", {
-            url: "{{ route('upload.files', 'first_middle') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -104,7 +104,7 @@
         // 1 hidden input
         const agreementInput = $('input[name=agreement_document]');
         const agreementDropzone = new Dropzone("#agreementDocument", {
-            url: "{{ route('upload.files', 'first_middle') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",

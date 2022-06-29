@@ -4,7 +4,7 @@
 @endpush
 
 <div class="row">
-    <div class="col-sm-12 col-xl-6">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="col-sm-12 col-xl-6">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -56,9 +56,7 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12 col-xl-6">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -84,7 +82,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-12 col-xl-6">
+    <div class="col-sm-12 col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -116,7 +114,7 @@
         // 1 hidden input
         const imageInput = $('input[name=dni_document]');
         const imageDropzone = new Dropzone("#dniDocument", {
-            url: "{{ route('upload.files', 'third_fourth_middle') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -147,7 +145,7 @@
         // 1 hidden input
         const agreementInput = $('input[name=agreement_document]');
         const agreementDropzone = new Dropzone("#agreementDocument", {
-            url: "{{ route('upload.files', 'third_fourth_middle') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -178,7 +176,7 @@
         // 1 hidden input
         const certificateInput = $('input[name=certificate_document]');
         const certificateDropzone = new Dropzone("#certificateDocument", {
-            url: "{{ route('upload.files', 'third_fourth_middle') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",
@@ -209,7 +207,7 @@
         // 1 hidden input
         const paymentInput = $('input[name=payment_document]');
         const paymentDropzone = new Dropzone("#paymentDocument", {
-            url: "{{ route('upload.files', 'third_fourth_middle') }}",
+            url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
             acceptedFiles: ".jpeg,.jpg,.png,.pdf",

@@ -195,10 +195,10 @@ class StudentController extends Controller
         })->get();
         $gradesCycle= Grade::whereHas('level', function ($query) {
             $query->whereId(Level::EDUCATIONAL_CYCLE);
-        })->get(); 
+        })->get();
         return view('student.grade-option',compact('gradesCycle','gradesEso','gradesBachelor'));
     }
-    
+
     public function updateGrade(GradeRequest $grade){
         $student = auth()->user()->student;
         $student->fill($grade->all())->save();

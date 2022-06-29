@@ -25,6 +25,11 @@ class CreateEnrollmentsTable extends Migration
             $table->string('second_tutor_signature')->nullable();
             $table->string('first_tutor_signature')->nullable();
             $table->tinyInteger('repeat_course')->default(config('constants.NO'));
+            $table->string('certificate_document')->nullable();
+            $table->string('agreement_document')->nullable();
+            $table->string('dni_document')->nullable();
+            $table->string('payment_document')->nullable();
+            $table->string('academic_history')->nullable();
             $table->timestamps();
         });
     }

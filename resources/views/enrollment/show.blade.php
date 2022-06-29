@@ -105,6 +105,19 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="card">
+                    <h4 class="card-header">{{ __('Attached documents and signatures') }}</h4>
+                    <div class="card-body">
+                        <div class="info-container">
+                            <ul class="list-unstyled">
+                                <li class="mb-75">
+                                    <a href="{{ route('enrollments.attach-document', $enrollment) }}">{{ __('See more') }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <!-- Project table -->
                 <div class="card">
                     <h4 class="card-header">{{ __('Tutor 01 details') }}</h4>
