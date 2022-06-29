@@ -474,9 +474,9 @@
 
             <tr><td colspan="6">(A propuesta del equipo docente del centro de Primaria y/o del IES se puede cursar en este bloque <b> REFUERZO EDUCATIVO DE LAS COMPETENCIAS MATEMÁTICAS Y/O LINGUISTICA)</b></td></tr>
             <tr><td colspan="3">Fecha:</td><td align="center">Alumno/a</td  align="center"><td>Tutor 1</td><td  align="center">Tutor 2</td></tr>
-            <tr><td colspan="3">Firma:</td><td> <img src="{{ asset($enrollment->student_signature) }}" with="10px" hight="10px" ></td><td><img src="{{ asset($enrollment->first_tutor_signature) }}" with="10px" hight="10px" ></td><td><img src="{{ asset($enrollment->second_tutor_signature) }}" with="10px" hight="10px" ></td></tr>
+            <tr><td colspan="3">Firma:</td><td> <img src="{{ asset('storage/signatures/'.$enrollment->student_signature) }}" width="60" height="60" ></td><td><img src="{{ asset('storage/signatures/'.$enrollment->first_tutor_signature) }}" width="60" height="60"  ></td><td><img src="{{ asset('storage/signatures/'.$enrollment->second_tutor_signature) }}" width="60" height="60"  ></td></tr>
             </table>
-             <center><h5>IES Leopoldo Alas Clarín</h5></center>
+             <center><h5>IES Leopoldo Alas Clarín </h5></center>
               <center><h6><u>leopoldo@educastur.org</u> Tel: 985 20 75 54 Fax: 985 21 08 68</h6></center>
                 <!-- class="rounded-full h-20 w-20 object-cover" -->
 
