@@ -503,6 +503,7 @@ class EnrollmentController extends Controller
      */
     public function store(EnrollmentRequest $request)
     {
+       // dd($request->all(),$request->elective_courses_free);
         $student = auth()->user()->student;
         $grade = $student->grade;
         $student->fill([
@@ -641,7 +642,7 @@ class EnrollmentController extends Controller
         if($grade->id == Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES){
 
 
-            if($request->active==1)
+            if($request->active1==1)
             {
                 $enrollment->courses()->attach($request->elective_courses);
             }
@@ -650,7 +651,7 @@ class EnrollmentController extends Controller
                 $enrollment->courses()->attach($request->elective_courses_free);
             }
 
-            if($request->active1==1)
+            if($request->active==1)
             {
                 $modalitiesCourses = Course::whereGradeId($student->grade_id)
                     ->whereCourseTypeId(CourseType::ITINERARY_HUMANITIES)
