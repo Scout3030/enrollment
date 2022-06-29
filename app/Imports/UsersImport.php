@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\Student;
 use App\Models\User;
-use App\Models\Grade;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 
 class UsersImport implements ToCollection, WithChunkReading, WithHeadingRow
@@ -24,93 +23,37 @@ class UsersImport implements ToCollection, WithChunkReading, WithHeadingRow
         foreach ($collection as $row)
         {
             $headers = $row->toArray();
-            if(!array_key_exists('email', $headers) || !array_key_exists('dni', $headers)
-                || !array_key_exists('nombre', $headers) || !array_key_exists('nivel', $headers)
-                || !array_key_exists('grado', $headers )|| !array_key_exists('estado', $headers)){
+            if( !array_key_exists('dni', $headers)
+                || !array_key_exists('nombre', $headers) || !array_key_exists('usuario', $headers)
+                || !array_key_exists('e_mail', $headers )){
                 throw ValidationException::withMessages([__('Invalid excel format, please import a valid file.')]);
             }
-
-            $levels = [
-                'ESO' => Level::MIDDLE_SCHOOL,
-                'PMAR' => Level::HIGH_SCHOOL,
-                'BACHILLERATO' => Level::BACHELOR,
-                'CICLO FORMATIVO' => Level::EDUCATIONAL_CYCLE,
-            ];
-
-            $grades = [
-                1 => 'First',
-                2 => 'Second',
-                3 => 'Third',
-                4 => 'Fourth',
-
-                '1 Ciencias y Tecnologia' => '1° Ciencias y Tecnologia',
-                '1 Humanidades y Ciencias Sociales' => '1° Humanidades y Ciencias Sociales',
-                '1 General' => '1° General',
-                '2 Ciencias' => '2° Ciencias',
-                '2 Humanidades y Ciencias Sociales' => '2° Humanidades y Ciencias Sociales',
-
-                '1 FPB' => '1° FPB',
-                '2 FPB' => '2° FPB',
-                '1 CFGM' => '1° CFGM',
-                '2 CFGM' => '2° CFGM',
-            ];
-
-            $statuses = [
-                'INACTIVO' => User::INACTIVE,
-                'ACTIVO' => User::ACTIVE,
-            ];
-
-            if(!array_key_exists($row['nivel'], $levels)) {
-                throw ValidationException::withMessages([__('Invalid levels, please import a valid content')]);
-            }
-
-            if(!array_key_exists($row['grado'], $grades)) {
-                throw ValidationException::withMessages([__('Invalid grades, please import a valid content')]);
-            }
-
-            if(!array_key_exists($row['estado'], $statuses)) {
-                throw ValidationException::withMessages([__('Invalid statuses, please import a valid content')]);
-            }
-
-            $levelId = $levels[$row['nivel']];
-            $gradeName = $grades[$row['grado']];
-
-            $grade = Grade::whereName($gradeName)
-                ->whereLevelId($levelId)
-                ->first();
-
-            if(!$grade) {
-                throw ValidationException::withMessages([__('Invalid grade by level, please import a valid content')]);
-            }
-
-            $user = User::whereEmail($row['email'])->first();
-
+          
+            $user = User::whereEmail($row['usuario'].$row['e_mail'])->first();
             if ($user) {
                 $user->update([
-                    'email' => $row['email'],
+                    'email' => $row['usuario'].$row['e_mail'],
                     'name' => $row['nombre'],
-                    'status' => $statuses[$row['estado']],
                     'email_verified_at' => now(),
+                                    
                 ]);
                 $user->student->fill([
-                    "grade_id" => $grade->id,
-                    "dni" => $row['dni'],
+                    'dni' => $row['dni'], 
                 ])->save();
             } else {
                 $user = User::create([
-                    'email' => $row['email'],
-                    'name' => $row['nombre'],
-                    'status' => $statuses[$row['estado']],
-                    'email_verified_at' => now(),
-                    'password' => Hash::make(Str::random(10))
+                    'email' => $row['usuario'].$row['e_mail'],
+                    'name' => $row['nombre'], 
+                    'password' => Hash::make(Str::random(10)),
+                    'email_verified_at' => now(),                  
                 ]);
 
                 Student::create([
                     'user_id' => $user->id,
-                    'grade_id' => $grade->id,
                     'dni' => $row['dni'],
                 ]);
             }
+            
         }
     }
 

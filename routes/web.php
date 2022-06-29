@@ -64,8 +64,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         ->name('student.profile.update');
     Route::put('user/profile', [UserController::class, 'profile'])
         ->name('user.profile.update');
-    Route::get('/profile/grade', [StudentController::class, 'optionGrade'])
-        ->name('user.grade');
+    
                
     
 
@@ -228,5 +227,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/download-document/{enrollment}/{field}', [EnrollmentController::class, 'downloadDocument'])
             ->name('enrollments.download-document')
             ->can('view enrollments');
+            Route::get('/profile/grade', [StudentController::class, 'optionGrade'])
+             ->name('user.grade');
     });
 });

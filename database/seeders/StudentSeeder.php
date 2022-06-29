@@ -21,7 +21,7 @@ class StudentSeeder extends Seeder
             ->count(1)
             ->create([
                 'name' => 'Student student',
-                'email' => 'student1@mail.com',
+                'email' => 'student@mail.com',
                 'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG', //secret
             ])->each(function (\App\Models\User $u) {
                 Student::factory([
