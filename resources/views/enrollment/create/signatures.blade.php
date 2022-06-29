@@ -160,7 +160,7 @@
                     </div>
                 </div>
             </div>
-            <input type="text" id="draw-dataUrltutor2" name="second_tutor_signature"/>
+            <input type="hidden" id="draw-dataUrltutor2" name="second_tutor_signature"/>
         </div>
     </div>
 </div>

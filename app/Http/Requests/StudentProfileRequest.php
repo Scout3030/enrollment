@@ -31,7 +31,6 @@ class StudentProfileRequest extends FormRequest
         $rules = [
             'name' => 'required|string|min:3',
             'country_id' => 'required|exists:countries,id',
-            'middle_name' => 'required|string|min:3',
             'paternal_surname' => 'required|string|min:3',
             'maternal_surname' => 'required|string|min:3',
             'birth' => 'required|date',

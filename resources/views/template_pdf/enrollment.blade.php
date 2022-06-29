@@ -59,12 +59,17 @@
             <tr><td colspan="3">DATOS TUTOR/A 1: Apellidos y nombre: {{  $enrollment->student->first_tutor_full_name }}</td><td colspan="3" style="background-color:#d4e3e5;">DATOS TUTOR/A 2: Apellidos y nombre: {{  $enrollment->student->second_tutor_full_name }}</td></tr>
             <tr><td colspan="1">DNI: {{  $enrollment->student->first_tutor_dni }}<td colspan="2">Teléfono: {{  $enrollment->student->first_tutor_phone_number }}</td><td colspan="1">DNI: {{  $enrollment->student->second_tutor_dni }}</td><td colspan="2">Télefono: {{  $enrollment->student->second_tutor_phone_number }}</tr>
             <tr><td colspan="3">Domicilio: {{  $enrollment->student->first_tutor_address }}</td><td colspan="3">Domicilio: {{  $enrollment->student->second_tutor_address }}</td></tr>
+            @if($enrollment->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL || $enrollment->grade->id == App\Models\Grade::SECOND_MIDDLE_SCHOOL
+                || $enrollment->grade->id == App\Models\Grade::THIRD_MIDDLE_SCHOOL || $enrollment->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL
+                || $enrollment->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL || $enrollment->grade->id == App\Models\Grade::THIRD_HIGH_SCHOOL
+                || $enrollment->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL )
             <tr><td colspan="6">SOLICITA TRANSPORTE: @if($enrollment->student->bus_stop_id) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif</td></tr>
             <tr><td colspan="3">Ruta solicitada:  @if($enrollment->student->bus_stop_id){{  $enrollment->student->busStop->route->id }}@else   --- @endif</td><td colspan="3">Parada solicitada: @if($enrollment->student->bus_stop_id){{  $enrollment->student->busStop->name }}@else   --- @endif</td></tr>
             @foreach ( App\Models\Route::all() as $route )
             <tr><td colspan="6">{{ $route->id }}. {{  $route->name  }}</td></tr>
             @endforeach
             <tr style="background-color:#d4e3e5;"><td colspan="4">BILINGUE INGLES: Materias marcadas con *</td><td colspan="2"> @if($enrollment->bilingual) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif</td></tr>
+            @endif
             <tr><td colspan="2">REPITE CURSO: @if($enrollment->repeat_course) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif</td><td colspan="4">COLEGIO DE PROCEDENCIA: {{  $enrollment->previous_school }}</td></tr>
 
 
