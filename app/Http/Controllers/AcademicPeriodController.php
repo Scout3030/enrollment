@@ -32,6 +32,7 @@ class AcademicPeriodController extends Controller
     {
         AcademicPeriod::create([
             'name' => $request->name,
+            'level_id' => $request->level_id,
             'description' => $request->description,
             'status' => $request->status,
             'started_at' => $request->started_at,

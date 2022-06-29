@@ -26,18 +26,19 @@ class StudentSeeder extends Seeder
             ])->each(function (\App\Models\User $u) {
                 Student::factory([
                     'user_id' => $u->id,
-                    'dni' => "11111111"
+                    'dni' => "11111111",
+                    'grade_id' => null
                 ])
                     ->count(1)
                     ->create();
-            });      
+            });
 
         User::factory()
             ->count(99)
             ->create()
             ->each(function (\App\Models\User $u) {
                 Student::factory([
-                    'user_id' => $u->id,                    
+                    'user_id' => $u->id,
                 ])
                     ->count(1)
                     ->create();

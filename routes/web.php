@@ -57,16 +57,29 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::post('/upload-files/{path?}', [FileController::class, 'upload'])
         ->name('upload.files');
 
-    Route::view('/profile/edit', 'user.profile.edit')
-        ->name('user.profile.edit');
-       // ->middleware('active.enrollment');
-    Route::put('student/profile', [StudentController::class, 'profile'])
-        ->name('student.profile.update');
+    if(config('app.env') == 'local') {
+        Route::view('/profile/edit', 'user.profile.edit')
+            ->name('user.profile.edit')
+            ->middleware(['has.grade']);
+    } else {
+        Route::view('/profile/edit', 'user.profile.edit')
+            ->name('user.profile.edit')
+            ->middleware(['one.enrollment', 'has.grade', 'active.enrollment']);
+    }
+
     Route::put('user/profile', [UserController::class, 'profile'])
         ->name('user.profile.update');
-    
-               
-    
+    Route::put('student/profile', [StudentController::class, 'profile'])
+        ->name('student.profile.update');
+
+    if(config('app.env') == 'local') {
+        Route::get('/profile/grade', [StudentController::class, 'optionGrade'])
+            ->name('user.grade');
+    } else  {
+        Route::get('/profile/grade', [StudentController::class, 'optionGrade'])
+            ->name('user.grade')
+            ->middleware('one.enrollment');
+    }
 
     Route::group(['prefix' => "students"], function() {
         Route::get('/', [StudentController::class, 'index'])
@@ -193,12 +206,13 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         if(config('app.env') == 'local') {
             Route::get('/', [EnrollmentController::class, 'create'])
                 ->name('enrollment.create')
-                ->can('create enrollment');
+                ->can('create enrollment')
+                ->middleware(['has.grade', 'check.profile']);
         } else {
             Route::get('/', [EnrollmentController::class, 'create'])
                 ->name('enrollment.create')
                 ->can('create enrollment')
-                ->middleware(['check.profile', 'active.enrollment']);
+                ->middleware(['one.enrollment', 'has.grade', 'check.profile', 'active.enrollment']);
         }
         Route::post('/store', [EnrollmentController::class, 'store'])
             ->name('enrollment.store')
@@ -227,7 +241,5 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('/download-document/{enrollment}/{field}', [EnrollmentController::class, 'downloadDocument'])
             ->name('enrollments.download-document')
             ->can('view enrollments');
-            Route::get('/profile/grade', [StudentController::class, 'optionGrade'])
-             ->name('user.grade');
     });
 });

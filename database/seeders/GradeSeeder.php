@@ -25,7 +25,7 @@ class GradeSeeder extends Seeder
             ['name' => 'Second', 'level_id' => Level::HIGH_SCHOOL],
             ['name' => 'Third', 'level_id' => Level::HIGH_SCHOOL],
 
-            ['name' => '1° Ciencias y Tecnologia', 'level_id' => Level::BACHELOR],
+            ['name' => '1° Ciencias y Tecnología', 'level_id' => Level::BACHELOR],
             ['name' => '1° Humanidades y Ciencias Sociales', 'level_id' => Level::BACHELOR],
             ['name' => '1° General', 'level_id' => Level::BACHELOR],
             ['name' => '2° Ciencias', 'level_id' => Level::BACHELOR],

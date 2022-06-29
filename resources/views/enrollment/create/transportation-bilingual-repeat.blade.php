@@ -1,3 +1,4 @@
+@if( !in_array(auth()->user()->student->grade->level->id, [\App\Models\Level::BACHELOR, \App\Models\Level::EDUCATIONAL_CYCLE]) )
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -94,6 +95,7 @@
         </div>
     </div>
 </div>
+@endif
 
 <div class="row">
     <div class="col-12">

@@ -3,7 +3,7 @@
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item me-auto text-center">
                 <a class="navbar-brand" href="{{url('/')}}">
-                    <img src="https://iesleopoldoalasclarin.com/wp-content/uploads/2020/01/layout_set_logo.jpg" alt="">
+                    <img src="{{ setting('logo') }}" alt="">
 {{--                    <h2 class="brand-text">Vuexy</h2>--}}
                 </a>
             </li>
@@ -118,12 +118,12 @@
             @endcan
 
             @can('create enrollment')
-                <li class="nav-item @if (Request::url() == route('enrollment.create') || Request::url() == route('user.grade') ) active @endif">
+                <li class="nav-item @if (in_array(Request::url(), [route('enrollment.create'), route('user.grade'), route('user.profile.edit') ]) ) active @endif">
                     <a href="{{ route('user.grade') }}" class="d-flex align-items-center" target="_self">
                         <i data-feather="file-text"></i>
                         <span class="menu-title text-truncate">{{ __('Enrollment') }}</span>
                     </a>
-                </li> 
+                </li>
             @endcan
 
             @can('view enrollments')

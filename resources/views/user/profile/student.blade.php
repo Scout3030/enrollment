@@ -168,7 +168,7 @@
                             <div class="col-12">
                                 <div class="mb-1 row">
                                     <div class="col-sm-2">
-                                        <label class="col-form-label" for="country_id">{{ __('Country') }}</label>
+                                        <label class="col-form-label" for="country_id">{{ __('Country of birth') }}</label>
                                     </div>
                                     <div class="col-sm-10">
                                         <select id="country_id" class="form-control select2" name="country_id">

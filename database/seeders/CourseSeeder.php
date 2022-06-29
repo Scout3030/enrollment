@@ -828,7 +828,7 @@ class CourseSeeder extends Seeder
             'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
         ]);Course::factory()
         ->create([
-            'name' => 'Tecnologías Digitales Aplicada I',
+            'name' => 'Tecnología(s) Digital(es) Aplicada(s) I (TIC)',
             'duration'=>'3',
             'group_one'=>Course::GROUP_COURSES_ONE_B,
             'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -1022,7 +1022,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Tecnologías Digitales Aplicada I',
+                'name' => 'Tecnología(s) Digital(es) Aplicada(s) I (TIC)',
                 'duration'=>'3',
                 'group_one'=>Course::GROUP_COURSES_ONE_B,
                 'group_two'=>Course::GROUP_COURSES_TWO_A,
@@ -1269,7 +1269,7 @@ class CourseSeeder extends Seeder
             'group_two'=>Course::GROUP_COURSES_TWO_A,
         ]);Course::factory()
         ->create([
-            'name' => 'Tecnologías Digitales Aplicada I',
+            'name' => 'Tecnología(s) Digital(es) Aplicada(s) I (TIC)',
             'duration'=>'3',
             'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
             'course_type_id' => CourseType::COMMON_OPTIONAL_TWO,
