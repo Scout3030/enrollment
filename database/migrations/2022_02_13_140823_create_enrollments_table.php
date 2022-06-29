@@ -19,7 +19,7 @@ class CreateEnrollmentsTable extends Migration
             $table->foreignId('grade_id')->constrained();
             $table->foreignId('academic_period_id')->constrained();
             $table->foreignId('bus_stop_id')->nullable()->constrained();
-            $table->tinyInteger('bilingual')->default(config('constants.NO'));
+            $table->tinyInteger('bilingual')->nullable();
             $table->string('previous_school')->nullable();
             $table->string('student_signature')->nullable();
             $table->string('second_tutor_signature')->nullable();

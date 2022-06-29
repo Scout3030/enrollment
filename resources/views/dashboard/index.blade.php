@@ -25,7 +25,7 @@
         </div>
         <div class="row match-height">
             <!-- Greetings Card starts -->
-            @if(auth()->user()->student->hasActiveProcess())
+            @if(auth()->user()->student->enrollments && auth()->user()->student->enrollments->count() == 0)
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="card card-congratulations">
                     <div class="card-body text-center">

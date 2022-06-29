@@ -64,15 +64,22 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     } else {
         Route::view('/profile/edit', 'user.profile.edit')
             ->name('user.profile.edit')
-            ->middleware(['has.grade', 'active.enrollment']);
+            ->middleware(['one.enrollment', 'has.grade', 'active.enrollment']);
     }
 
-    Route::put('student/profile', [StudentController::class, 'profile'])
-        ->name('student.profile.update');
     Route::put('user/profile', [UserController::class, 'profile'])
         ->name('user.profile.update');
-    Route::get('/profile/grade', [StudentController::class, 'optionGrade'])
-        ->name('user.grade');
+    Route::put('student/profile', [StudentController::class, 'profile'])
+        ->name('student.profile.update');
+
+    if(config('app.env') == 'local') {
+        Route::get('/profile/grade', [StudentController::class, 'optionGrade'])
+            ->name('user.grade');
+    } else  {
+        Route::get('/profile/grade', [StudentController::class, 'optionGrade'])
+            ->name('user.grade')
+            ->middleware('one.enrollment');
+    }
 
     Route::group(['prefix' => "students"], function() {
         Route::get('/', [StudentController::class, 'index'])
@@ -205,7 +212,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             Route::get('/', [EnrollmentController::class, 'create'])
                 ->name('enrollment.create')
                 ->can('create enrollment')
-                ->middleware(['has.grade', 'check.profile', 'active.enrollment']);
+                ->middleware(['one.enrollment', 'has.grade', 'check.profile', 'active.enrollment']);
         }
         Route::post('/store', [EnrollmentController::class, 'store'])
             ->name('enrollment.store')
