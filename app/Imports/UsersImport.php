@@ -28,24 +28,25 @@ class UsersImport implements ToCollection, WithChunkReading, WithHeadingRow
                 || !array_key_exists('e_mail', $headers )){
                 throw ValidationException::withMessages([__('Invalid excel format, please import a valid file.')]);
             }
-          
-            $user = User::whereEmail($row['usuario'].$row['e_mail'])->first();
+
+            $user = User::whereEmail($row['e_mail'])->first();
             if ($user) {
                 $user->update([
-                    'email' => $row['usuario'].$row['e_mail'],
+                    'username' => $row['usuario'],
+                    'email' => $row['e_mail'],
                     'name' => $row['nombre'],
                     'email_verified_at' => now(),
-                                    
                 ]);
                 $user->student->fill([
-                    'dni' => $row['dni'], 
+                    'dni' => $row['dni'],
                 ])->save();
             } else {
                 $user = User::create([
-                    'email' => $row['usuario'].$row['e_mail'],
-                    'name' => $row['nombre'], 
+                    'username' => $row['usuario'],
+                    'email' => $row['e_mail'],
+                    'name' => $row['nombre'],
                     'password' => Hash::make(Str::random(10)),
-                    'email_verified_at' => now(),                  
+                    'email_verified_at' => now(),
                 ]);
 
                 Student::create([
@@ -53,7 +54,6 @@ class UsersImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'dni' => $row['dni'],
                 ]);
             }
-            
         }
     }
 
