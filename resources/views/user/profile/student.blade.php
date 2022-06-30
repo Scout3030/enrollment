@@ -404,157 +404,145 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                   
+                    </div>
                 </div>
             </div>
-           
-            <div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">{{ __('MECHANISM OF COMMUNICATION AND USE OF IMAGES FOR EDUCATIONAL PURPOSES') }}</h4>
-            </div>
-            <div class="card-body">
-                <div class="col-12">
-                    <div class="mb-1 row">
-                    <label class="form-check-label" for="parents_condition_separated">{{ __('I authorize the sending of notifications to the parents/mothers/guardians through the TOKAPP APPLICATION (indicate the telephone number on which the application is installed and on which you will receive communications)') }}</label>
-                        <div class="demo-inline-spacing">
-                            <div class="form-check form-check-inline">
-                                <input
-                                    class="form-check-input"
-                                    type="radio"
-                                    name="authorization_tokapp"
-                                    id="authorization_tokapp_yes"
-                                    value="1"
-                                />
-                                <label class="form-check-label" for="authorization_tokapp_yes">{{ __('Yes') }}</label>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">{{ __('MECHANISM OF COMMUNICATION AND USE OF IMAGES FOR EDUCATIONAL PURPOSES') }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-12">
+                            <div class="mb-1 row">
+                                <div class="col-sm-12 col-md-7">
+                                    <p>{{ __('I authorize the sending of notifications to the parents/mothers/guardians through the TOKAPP APPLICATION') }}</p>
+                                    <div class="demo-inline-spacing">
+                                        <div class="form-check form-check-inline">
+                                            <input
+                                                class="form-check-input"
+                                                type="radio"
+                                                name="authorization_tokapp"
+                                                id="authorization_tokapp_yes"
+                                                value="1"
+                                            />
+                                            <label class="form-check-label" for="authorization_tokapp_yes">{{ __('Yes') }}</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input
+                                                class="form-check-input"
+                                                type="radio"
+                                                name="authorization_tokapp"
+                                                id="authorization_tokapp_no"
+                                                value="0"
+                                                checked
+                                            />
+                                            <label class="form-check-label" for="authorization_tokapp_no">{{ __('No') }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-5 ">
+                                    <label class="col-form-label" for="authorization_phone">{{ __('Phone number') }} ({{ __('Mandatory if accept to receive mobile notifications') }})</label>
+                                    <input type="text" class="form-control" id="authorization_phone" value="{{  old('authorization_phone') }}" name="authorization_phone" placeholder="{{ __('Type...') }}" />
+                                </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input
-                                    class="form-check-input"
-                                    type="radio"
-                                    name="authorization_tokapp"
-                                    id="authorization_tokapp_no"
-                                    value="0"
-                                    checked
-                                />
-                                <label class="form-check-label" for="authorization_tokapp_no">{{ __('No') }}</label>
-                            </div>                            
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-1 row">
+                                <p>{{ __('I authorize the sending to parents/mothers/guardians of notification by SMS/EMAIL') }}</p>
+                                <div class="demo-inline-spacing">
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="authorization_electronics"
+                                            id="authorization_electronics_yes"
+                                            value="1"
+                                        />
+                                        <label class="form-check-label" for="authorization_electronics_yes">{{ __('Yes') }}</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="authorization_electronics"
+                                            id="authorization_electronics_no"
+                                            value="0"
+                                            checked
+                                        />
+                                        <label class="form-check-label" for="authorization_electronics_no">{{ __('No') }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-1 row">
+                                <p>{{ __('I authorize the use of data and images on the WEB PAGE or other educational publications of the center') }}</p>
+                                <div class="demo-inline-spacing">
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="authorization_data"
+                                            id="authorization_data_yes"
+                                            value="1"
+                                        />
+                                        <label class="form-check-label" for="authorization_data_yes">{{ __('Yes') }}</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="authorization_data"
+                                            id="authorization_data_no"
+                                            value="0"
+                                            checked
+                                        />
+                                        <label class="form-check-label" for="authorization_data_no">{{ __('No') }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">{{ __('AUTHORIZATION FOR EXTRACURRICULAR AND COMPLEMENTARY ACTIVITIES') }}</h4>
                         </div>
                         <div class="card-body">
+                            <div class="col-12">
                                 <div class="mb-1 row">
-                                    <div class="col-sm-2">
-                                        <label class="col-form-label" for="authorization_phone">{{ __('Phone') }}</label>
+                                    <label class="form-check-label" for="parents_condition_separated">{{ __('I authorize my child to participate in extracurricular and complementary activities outside the center, during school hours, scheduled by the IES Leopoldo Alas Clarin, without economic cost (the center will inform about it through the means mentioned in the previous section)') }}</label>
+                                    <div class="demo-inline-spacing">
+                                        <div class="form-check form-check-inline">
+                                            <input
+                                                class="form-check-input"
+                                                type="radio"
+                                                name="authorization_extracurricular"
+                                                id="authorization_extracurricular_yes"
+                                                value="1"
+                                            />
+                                            <label class="form-check-label" for="authorization_extracurricular_yes">{{ __('Yes') }}</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input
+                                                class="form-check-input"
+                                                type="radio"
+                                                name="authorization_extracurricular"
+                                                id="authorization_extracurricular_no"
+                                                value="0"
+                                                checked
+                                            />
+                                            <label class="form-check-label" for="authorization_extracurricular_no">{{ __('No') }}</label>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="authorization_phone" value="{{  old('authorization_phone') }}" name="authorization_phone" placeholder="{{ __('Type...') }}" />
-                                    </div>
                                 </div>
-                            </div>
-                    </div>
-                </div>
-                </div>
-                <div class="card-body">
-                <div class="col-12">
-                    <div class="mb-1 row">
-                        <label class="form-check-label" for="parents_condition_separated">{{ __('I authorize the sending to parents/mothers/guardians of notification by SMS/EMAIL') }}</label>
-                            <div class="demo-inline-spacing">
-                                <div class="form-check form-check-inline">
-                                    <input
-                                        class="form-check-input"
-                                        type="radio"
-                                        name="authorization_electronics"
-                                        id="authorization_electronics_yes"
-                                        value="1"
-                                    />
-                                    <label class="form-check-label" for="authorization_electronics_yes">{{ __('Yes') }}</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input
-                                        class="form-check-input"
-                                        type="radio"
-                                        name="authorization_electronics"
-                                        id="authorization_electronics_no"
-                                        value="0"
-                                        checked
-                                    />
-                                    <label class="form-check-label" for="authorization_tokapp_no">{{ __('No') }}</label>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                </div>
-                <div class="card-body">
-                <div class="col-12">
-                    <div class="mb-1 row">
-                         <label class="form-check-label" for="parents_condition_separated">{{ __('I authorize the use of data and images on the WEB PAGE or other educational publications of the center') }}</label>
-                            <div class="demo-inline-spacing">
-                                <div class="form-check form-check-inline">
-                                    <input
-                                        class="form-check-input"
-                                        type="radio"
-                                        name="authorization_data"
-                                        id="authorization_data_yes"
-                                        value="1"
-                                    />
-                                    <label class="form-check-label" for="authorization_data_yes">{{ __('Yes') }}</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input
-                                        class="form-check-input"
-                                        type="radio"
-                                        name="authorization_data"
-                                        id="authorization_data_no"
-                                        value="0"
-                                        checked
-                                    />
-                                    <label class="form-check-label" for="authorization_data_no">{{ __('No') }}</label>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                 <div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">{{ __('AUTHORIZATION FOR EXTRACURRICULAR AND COMPLEMENTARY ACTIVITIES') }}</h4>
-            </div>
-            <div class="card-body">
-                <div class="col-12">
-                    <div class="mb-1 row">
-                    <label class="form-check-label" for="parents_condition_separated">{{ __('I authorize my child to participate in extracurricular and complementary activities outside the center, during school hours, scheduled by the IES Leopoldo Alas Clarin, without economic cost (the center will inform about it through the means mentioned in the previous section)') }}</label>
-                        <div class="demo-inline-spacing">
-                            <div class="form-check form-check-inline">
-                                <input
-                                    class="form-check-input"
-                                    type="radio"
-                                    name="authorization_extracurricular"
-                                    id="authorization_extracurricular_yes"
-                                    value="1"
-                                />
-                                <label class="form-check-label" for="authorization_extracurricular_yes">{{ __('Yes') }}</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input
-                                    class="form-check-input"
-                                    type="radio"
-                                    name="authorization_extracurricular"
-                                    id="authorization_extracurricular_no"
-                                    value="0"
-                                    checked
-                                />
-                                <label class="form-check-label" for="authorization_extracurricular_no">{{ __('No') }}</label>
                             </div>
                         </div>
                     </div>
-                </div>
-                </div>
-                </div>
-                </div>
                 </div>
         </div>
         <input type="hidden" id="dni_document" name="dni_document" value="">

@@ -10,7 +10,7 @@
             cursor: crosshair;
             cursor: pointer;
         }
-        #draw-dataUrl {
+        #draw-canvasstudent, #draw-canvastutor1, #draw-canvastutor2 {
             width: 100%;
         }
     </style>
@@ -32,7 +32,7 @@
                                 </ul>
                                 <div class="modal-body">
                                     <div class="tab-content">
-                                       
+
                                         <div id="draw" class="tab-pane active text-center">
                                             <p>{{__('Draw your signature')}}.</p>
                                             <div class="row">

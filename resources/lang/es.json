@@ -1002,6 +1002,8 @@
     "Order updated successfully": "Orden actualizado exitosamente",
     "Great": "Bien",
     "I authorize the sending of notifications to the parents/mothers/guardians through the TOKAPP APPLICATION (indicate the telephone number on which the application is installed and on which you will receive communications)":"Autorizo el envio a los padres/madres/tutores/as de notificación mediante APLICACIÓN TOKAPP ( indicar teléfono en el que tiene instalada la aplicación y en el que recibirá las comunicaciones )",
+    "I authorize the sending of notifications to the parents/mothers/guardians through the TOKAPP APPLICATION":"Autorizo el envio a los padres/madres/tutores/as de notificación mediante APLICACIÓN TOKAPP",
+    "Mandatory if accept to receive mobile notifications": "Obligatorio si acepta recibir notificaciones móbiles",
     "I authorize the sending to parents/mothers/guardians of notification by SMS/EMAIL":"Autorizo el envio a los padres/madres/tutores/as de notificación mediante SMS/CORREO ELECTRONICO",
     "I authorize the use of data and images on the WEB PAGE or other educational publications of the center":"Autorizo la utilización de datos e imágenes en la PAGINA WEB u otra publicaciones educativas del centro",
     "Technology":"Tecnología",
