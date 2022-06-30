@@ -870,4 +870,9 @@ class EnrollmentController extends Controller
     {
         return Storage::download($path.'/'.$file);
     }
+
+    public function test()
+    {
+        return view('test');
+    }
 }
