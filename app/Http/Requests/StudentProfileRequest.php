@@ -29,12 +29,10 @@ class StudentProfileRequest extends FormRequest
         $student = auth()->user()->student;
 
         $rules = [
-            
             'authorization_tokapp' => 'required',
             'authorization_electronics'=> 'required',
             'authorization_extracurricular'=> 'required',
             'authorization_data'=>'required',
-           // 'authorization_phone'=>'required|after:started_at',
 
             'name' => 'required|string|min:3',
             'country_id' => 'required|exists:countries,id',
@@ -65,13 +63,23 @@ class StudentProfileRequest extends FormRequest
             'previous_school' => 'nullable|min:10'
         ];
 
+        $phoneRules = [];
         $moreRules = [];
-        $moreRules = [
-           
-            'authorization_phone'=>[Rule::requiredIf(function () {
-                return $this->authorization_tokapp == true;
-            })],
-        ];
+
+        if($this->authorization_tokapp == 1){
+            $phoneRules = [
+                'authorization_phone'=> 'required',
+            ];
+        }
+
+        if($student->grade_id == Grade::FIRST_MIDDLE_SCHOOL) {
+            $moreRules = [
+                'parents_condition' => 'required',
+                'agreement_document'=>[Rule::requiredIf(function () {
+                    return $this->parents_condition == \App\Models\Student::SEPARATED;
+                })],
+            ];
+        }
 
         if($student->grade_id == Grade::SECOND_MIDDLE_SCHOOL) {
             $moreRules = [
@@ -82,7 +90,6 @@ class StudentProfileRequest extends FormRequest
                 'agreement_document'=>[Rule::requiredIf(function () {
                     return $this->parents_condition == \App\Models\Student::SEPARATED;
                 })],
-               
             ];
         }
 
@@ -114,6 +121,6 @@ class StudentProfileRequest extends FormRequest
             ];
         }
 
-        return array_merge($rules, $moreRules);
+        return array_merge($rules, $moreRules, $phoneRules);
     }
 }
