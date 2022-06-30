@@ -873,6 +873,10 @@ class EnrollmentController extends Controller
 
     public function test()
     {
-        return view('test');
+        $commonOptionalOneCourses = Course::whereGradeId(1)
+            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_ONE)
+            ->get();
+
+        return view('test', compact('commonOptionalOneCourses'));
     }
 }
