@@ -143,6 +143,7 @@ return [
         "common_optional_course" => "cursos opcionales",
         "common_courses" => "cursos comunes",
         'dni_document'   => 'documento DNI del alumno/a',
+        'authorization_phone' => 'número de teléfono',
         'payment_document'=> 'Justificante de pago',
         'agreement_document'=> 'Convenio regulador',
         'certificate_document'=> 'Certificado académico',

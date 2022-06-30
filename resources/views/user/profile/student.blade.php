@@ -426,6 +426,8 @@
                                                 name="authorization_tokapp"
                                                 id="authorization_tokapp_yes"
                                                 value="1"
+                                                @if(old('authorization_tokapp') == '1') checked="checked" @endif
+                                                
                                             />
                                             <label class="form-check-label" for="authorization_tokapp_yes">{{ __('Yes') }}</label>
                                         </div>
@@ -436,7 +438,7 @@
                                                 name="authorization_tokapp"
                                                 id="authorization_tokapp_no"
                                                 value="0"
-                                                checked
+                                                @if(old('authorization_tokapp') == '0') checked="checked" @endif
                                             />
                                             <label class="form-check-label" for="authorization_tokapp_no">{{ __('No') }}</label>
                                         </div>
@@ -458,6 +460,7 @@
                                             type="radio"
                                             name="authorization_electronics"
                                             id="authorization_electronics_yes"
+                                             @if(old('authorization_electronics') == '1') checked="checked" @endif
                                             value="1"
                                         />
                                         <label class="form-check-label" for="authorization_electronics_yes">{{ __('Yes') }}</label>
@@ -469,7 +472,7 @@
                                             name="authorization_electronics"
                                             id="authorization_electronics_no"
                                             value="0"
-                                            checked
+                                             @if(old('authorization_electronics') == '0') checked="checked" @endif
                                         />
                                         <label class="form-check-label" for="authorization_electronics_no">{{ __('No') }}</label>
                                     </div>
@@ -487,6 +490,7 @@
                                             name="authorization_data"
                                             id="authorization_data_yes"
                                             value="1"
+                                            @if(old('authorization_data') == '1') checked="checked" @endif
                                         />
                                         <label class="form-check-label" for="authorization_data_yes">{{ __('Yes') }}</label>
                                     </div>
@@ -497,7 +501,7 @@
                                             name="authorization_data"
                                             id="authorization_data_no"
                                             value="0"
-                                            checked
+                                            @if(old('authorization_data') == '0') checked="checked" @endif
                                         />
                                         <label class="form-check-label" for="authorization_data_no">{{ __('No') }}</label>
                                     </div>
@@ -524,6 +528,7 @@
                                                 name="authorization_extracurricular"
                                                 id="authorization_extracurricular_yes"
                                                 value="1"
+                                                @if(old('authorization_extracurricular') == '1') checked="checked" @endif
                                             />
                                             <label class="form-check-label" for="authorization_extracurricular_yes">{{ __('Yes') }}</label>
                                         </div>
@@ -534,7 +539,7 @@
                                                 name="authorization_extracurricular"
                                                 id="authorization_extracurricular_no"
                                                 value="0"
-                                                checked
+                                                @if(old('authorization_extracurricular') == '0') checked="checked" @endif
                                             />
                                             <label class="form-check-label" for="authorization_extracurricular_no">{{ __('No') }}</label>
                                         </div>
