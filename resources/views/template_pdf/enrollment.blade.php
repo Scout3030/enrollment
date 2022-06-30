@@ -32,6 +32,33 @@
                     @if ($enrollment->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
                         MARTRICULA 4º ESO
                     @endif
+                     @if ($student->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY)
+                        GRADO 1° BACHILLERATO CIENCIAS Y TECNOLOGÍA (LOMLOE)
+                      @endif
+                    @if ($student->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES)
+                        GRADO 1° BACHILLERATO HUMANIDADES Y CIENCIAS SOCIALES (LOMLOE)
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL_GENERAL)
+                        GRADO 1° BACHILLERATO GENERAL (LOMLOE)
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL_SCIENCE)
+                        GRADO 2° BACHILLERATO CIENCIAS (LOMCE)
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES)
+                        GRADO 2° BACHILLERATO HUMANIDADES Y CIENCIAS SOCIALES (LOMCE)
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::FIRST_EDUCATIONAL_CYCLE_BASIC)
+                        GRADO 1° CICLO FORMATIVO DE GRADO BÁSICO COCINA Y RESTAURACIÓN (HOT-101)
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::SECOND_EDUCATIONAL_CYCLE_BASIC)
+                        GRADO 2° CICLO FORMATIVO DE GRADO BÁSICO COCINA Y RESTAURACIÓN (HOT-101)
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM)
+                        GRADO 1° CICLO FORMATIVO GRADO MEDIO COCINA Y RESTAURACIÓN
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM)
+                         GRADO 2° CICLO FORMATIVO GRADO MEDIO COCINA Y RESTAURACIÓN
+                     @endif
 
 
 
@@ -478,7 +505,7 @@
             @endif
 
             <tr><td colspan="6">(A propuesta del equipo docente del centro de Primaria y/o del IES se puede cursar en este bloque <b> REFUERZO EDUCATIVO DE LAS COMPETENCIAS MATEMÁTICAS Y/O LINGUISTICA)</b></td></tr>
-            <tr><td colspan="3">Fecha:</td><td align="center">Alumno/a</td  align="center"><td>Tutor 1</td><td  align="center">Tutor 2</td></tr>
+            <tr><td colspan="3">Fecha:  {{ $enrollment->created_at->format('d-m-Y') }}</td><td align="center">Alumno/a</td  align="center"><td>Tutor 1</td><td  align="center">Tutor 2</td></tr>
             <tr><td colspan="3">Firma:</td><td> <img src="{{ asset('storage/signatures/'.$enrollment->student_signature) }}" width="100px" height="100px" ></td><td><img src="{{ asset('storage/signatures/'.$enrollment->first_tutor_signature) }}" width="100px" height="100px"  ></td><td><img src="{{ asset('storage/signatures/'.$enrollment->second_tutor_signature) }}" width="100px" height="100px"  ></td></tr>
             </table>
              <center><h5>IES Leopoldo Alas Clarín </h5></center>
