@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel 8 PDF</title>
+    <title>Ficha de Datos</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -247,36 +247,36 @@
 
                     <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS OPTATIVAS</td></tr>
                     @foreach ( $enrollment->courses as $course )
-                    
+
                     @if(App\Models\CourseType::COMMON_OPTIONAL_ONE == $course->course_type_id)
                     @if($course->pivot->order==1)
                     <tr><td colspan="6"><h5>{{ __('4H COURSES') }}</h5></td></tr>
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
                     @endforeach
-                
-                
+
+
                      @foreach ( $enrollment->courses as $course )
-                    
+
                      @if(App\Models\CourseType::COMMON_OPTIONAL_TWO == $course->course_type_id &&
-                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&  
+                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&
                         App\Models\Course::GROUP_COURSES_TWO_A ==  $course->group_two )
                         @if($course->pivot->order==1)
                     <tr><td colspan="6"><h5>{{ __('3H COURSES') }}</h5></td></tr>
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
-                    
+
                     @endforeach
                      @foreach ( $enrollment->courses as $course )
-                    
+
                      @if(App\Models\CourseType::COMMON_OPTIONAL_TWO == $course->course_type_id &&
-                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&  
+                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&
                         App\Models\Course::GROUP_COURSES_TWO_B ==  $course->group_two )
                         @if($course->pivot->order==1)
                     <tr><td colspan="6"><h5>{{ __('1H COURSES') }}</h5></td></tr>
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
-                    
+
                     @endforeach
 
                       @foreach ( $enrollment->courses as $course )
@@ -285,7 +285,7 @@
                          <tr><td colspan="6"> {{ __($course->name) }}</td></tr>
                     @endif
                     @endforeach
-                
+
             @endif
             @if ($enrollment->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES)
                     <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS COMUNES</td></tr>
@@ -308,36 +308,36 @@
 
                     <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">MATERIAS OPTATIVAS</td></tr>
                     @foreach ( $enrollment->courses as $course )
-                    
+
                     @if(App\Models\CourseType::COMMON_OPTIONAL_ONE == $course->course_type_id)
                     @if($course->pivot->order==1)
                     <tr><td colspan="6"><h5>{{ __('4H COURSES') }}</h5></td></tr>
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
                     @endforeach
-                
-                
+
+
                      @foreach ( $enrollment->courses as $course )
-                    
+
                      @if(App\Models\CourseType::COMMON_OPTIONAL_TWO == $course->course_type_id &&
-                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&  
+                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&
                         App\Models\Course::GROUP_COURSES_TWO_A ==  $course->group_two )
                         @if($course->pivot->order==1)
                     <tr><td colspan="6"><h5>{{ __('3H COURSES') }}</h5></td></tr>
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
-                    
+
                     @endforeach
                      @foreach ( $enrollment->courses as $course )
-                    
+
                      @if(App\Models\CourseType::COMMON_OPTIONAL_TWO == $course->course_type_id &&
-                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&  
+                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&
                         App\Models\Course::GROUP_COURSES_TWO_B ==  $course->group_two )
                         @if($course->pivot->order==1)
                     <tr><td colspan="6"><h5>{{ __('1H COURSES') }}</h5></td></tr>
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
-                    
+
                     @endforeach
 
                       @foreach ( $enrollment->courses as $course )
@@ -369,40 +369,40 @@
 
                     <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">ESPECIFICOS Y LIBRE CONFIGURACION</td></tr>
                     @foreach ( $enrollment->courses as $course )
-                    
+
                     @if(App\Models\CourseType::SPECIFIC_FREE_CONFIGURATION == $course->course_type_id &&
-                    App\Models\Course::GROUP_COURSES_ONE_A ==  $course->group_one &&  
+                    App\Models\Course::GROUP_COURSES_ONE_A ==  $course->group_one &&
                         App\Models\Course::GROUP_COURSES_TWO_A ==  $course->group_two)
                     @if($course->pivot->order==1)
                     <tr><td colspan="6"><h5>{{ __('4H COURSES') }}</h5></td></tr>
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
                     @endforeach
-                
-                
+
+
                      @foreach ( $enrollment->courses as $course )
-                    
+
                      @if(App\Models\CourseType::SPECIFIC_FREE_CONFIGURATION == $course->course_type_id &&
-                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&  
+                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&
                         App\Models\Course::GROUP_COURSES_TWO_A ==  $course->group_two )
                         @if($course->pivot->order==1)
                     <tr><td colspan="6"><h5>{{ __('3H COURSES') }}</h5></td></tr>
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
-                    
+
                     @endforeach
                      @foreach ( $enrollment->courses as $course )
-                    
+
                      @if(App\Models\CourseType::SPECIFIC_FREE_CONFIGURATION == $course->course_type_id &&
-                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&  
+                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&
                         App\Models\Course::GROUP_COURSES_TWO_B ==  $course->group_two )
                         @if($course->pivot->order==1)
                     <tr><td colspan="6"><h5>{{ __('1H COURSES') }}</h5></td></tr>
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
-                    
-                    @endforeach                   
-                   
+
+                    @endforeach
+
             @endif
              @if ($enrollment->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES)
                     <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">CURSOS TRONCALES</td></tr>
@@ -419,39 +419,39 @@
                     @endforeach
                      <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">ESPECIFICOS Y LIBRE CONFIGURACION</td></tr>
                     @foreach ( $enrollment->courses as $course )
-                    
+
                     @if(App\Models\CourseType::SPECIFIC_FREE_CONFIGURATION == $course->course_type_id &&
-                    App\Models\Course::GROUP_COURSES_ONE_A ==  $course->group_one &&  
+                    App\Models\Course::GROUP_COURSES_ONE_A ==  $course->group_one &&
                         App\Models\Course::GROUP_COURSES_TWO_A ==  $course->group_two)
                     @if($course->pivot->order==1)
                     <tr><td colspan="6"><h5>{{ __('4H COURSES') }}</h5></td></tr>
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
                     @endforeach
-                
-                
+
+
                      @foreach ( $enrollment->courses as $course )
-                    
+
                      @if(App\Models\CourseType::SPECIFIC_FREE_CONFIGURATION == $course->course_type_id &&
-                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&  
+                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&
                         App\Models\Course::GROUP_COURSES_TWO_A ==  $course->group_two )
                         @if($course->pivot->order==1)
                     <tr><td colspan="6"><h5>{{ __('3H COURSES') }}</h5></td></tr>
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
-                    
+
                     @endforeach
                      @foreach ( $enrollment->courses as $course )
-                    
+
                      @if(App\Models\CourseType::SPECIFIC_FREE_CONFIGURATION == $course->course_type_id &&
-                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&  
+                        App\Models\Course::GROUP_COURSES_ONE_B ==  $course->group_one &&
                         App\Models\Course::GROUP_COURSES_TWO_B ==  $course->group_two )
                         @if($course->pivot->order==1)
                     <tr><td colspan="6"><h5>{{ __('1H COURSES') }}</h5></td></tr>
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>@endif
-                    
-                    @endforeach 
+
+                    @endforeach
             @endif
              @if ($enrollment->grade->id == App\Models\Grade::FIRST_EDUCATIONAL_CYCLE_BASIC)
                     <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">{{ __('MODULES ASSOCIATED WITH UNITS OF COMPETENCE') }}</td></tr>
