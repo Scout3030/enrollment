@@ -48,6 +48,11 @@ class CreateStudentsTable extends Migration
             $table->string('dni_document')->nullable();
             $table->string('payment_document')->nullable();
             $table->string('academic_history')->nullable();
+            $table->string('authorization_tokapp')->nullable();
+            $table->string('authorization_electronics')->nullable();
+            $table->string('authorization_extracurricular')->nullable();
+            $table->string('authorization_data')->nullable();
+            $table->string('authorization_phone')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
