@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col-sm-12 col-xl-4">
-        <div class="card">
+        <div class="card @error('dni_document') border-danger @enderror">
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
@@ -32,7 +32,7 @@
     </div>
 
     <div class="col-sm-12 col-xl-4">
-        <div class="card">
+        <div class="card @error('payment_document') border-danger @enderror">
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
@@ -57,7 +57,7 @@
         </div>
     </div>
     <div class="col-sm-12 col-xl-4">
-        <div class="card">
+        <div class="card @error('agreement_document') border-danger @enderror">
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">

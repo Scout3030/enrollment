@@ -177,5 +177,6 @@ return [
         'started_at' => 'inicio',
         'level_id' => 'nivel',
         'name' => 'nombre',
+        'file' => 'archivo',
     ],
 ];
