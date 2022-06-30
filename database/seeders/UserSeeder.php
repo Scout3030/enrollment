@@ -14,26 +14,28 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $adminUser = User::whereEmail('admin@mail.com')->first();
-        if(!$adminUser){
-            User::factory()
-                ->count(1)
-                ->create([
-                    'name' => 'Admin',
-                    'email' => 'admin@mail.com',
-                    'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
-                ]);
-        }
-
-        $exampleUser = User::whereEmail('ejemplo@ejemplo.com')->first();
-        if(!$exampleUser){
-            User::factory()
-                ->count(1)
-                ->create([
-                    'name' => 'User',
-                    'email' => 'ejemplo@ejemplo.com',
-                    'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
-                ]);
+        if(config('app.env') == 'local') {
+            $adminUser = User::whereEmail('admin@mail.com')->first();
+            if (!$adminUser) {
+                User::factory()
+                    ->count(1)
+                    ->create([
+                        'name' => 'Admin',
+                        'email' => 'admin@mail.com',
+                        'password' => '$2y$10$nK4EQKL2hz1e6lMNsGUw5O/8lRjCdPRSo6e/te3GgrqUz9sTsl/qG' //secret
+                    ]);
+            }
+        } else {
+            $adminUser = User::whereEmail('admin@iesleopoldoalasclarin.com')->first();
+            if (!$adminUser) {
+                User::factory()
+                    ->count(1)
+                    ->create([
+                        'name' => 'Admin',
+                        'email' => 'admin@mail.com',
+                        'password' => '$2y$10$QE.ru7KQgLhB/KW336Rz.ua9R4PVd5ZVH/8geuh3h/yoTxZtHaluW'
+                    ]);
+            }
         }
     }
 }
