@@ -18,7 +18,7 @@ class NoMoreThanOneEnrollment
     {
         $student = auth()->user()->student;
         if ( $student->enrollments->count() > 0 ) {
-            return redirect()->route('dashboard.index')->with('process');
+            return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Enrollment process finished successfully')]);;
         }
         return $next($request);
     }

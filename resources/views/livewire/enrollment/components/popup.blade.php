@@ -1,0 +1,16 @@
+<div class="modal fade" id="bannerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="bannerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bannerModalLabel">{{ __('Learn about this registration process') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" align="center">
+                <img class="img-fluid rounded mt-3 mb-2" src="{{ asset(setting('image')) }}" alt="" height="100%">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Ok') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
