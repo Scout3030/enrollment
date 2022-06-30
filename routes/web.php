@@ -242,7 +242,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             ->name('enrollments.download-document')
             ->can('view enrollments');
     });
-
-    Route::get('/test', [EnrollmentController::class, 'test'])
-        ->name('enrollments.test');
 });
+
+Route::get('/test', [EnrollmentController::class, 'test'])
+    ->name('enrollments.test');
