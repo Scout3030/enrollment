@@ -4,7 +4,7 @@
     <div class="alert alert-warning mt-2" role="alert">
         <h4 class="alert-heading">Aviso</h4>
         <div class="alert-body">
-            Si tienes problemas para ingresar, resetea tu contrasena.
+            Si tienes problemas para ingresar, resetea tu contraseña.
         </div>
     </div>
     <form method="POST" action="{{ route('login') }}">
