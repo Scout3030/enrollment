@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
                     ->count(1)
                     ->create([
                         'name' => 'Admin',
-                        'email' => 'admin@mail.com',
+                        'email' => 'admin@iesleopoldoalasclarin.com',
                         'password' => '$2y$10$QE.ru7KQgLhB/KW336Rz.ua9R4PVd5ZVH/8geuh3h/yoTxZtHaluW'
                     ]);
             }
