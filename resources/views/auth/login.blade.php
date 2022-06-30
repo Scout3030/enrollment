@@ -1,6 +1,12 @@
 @section('title', __('Login Page'))
 
 <x-guest-layout>
+    <div class="alert alert-warning mt-2" role="alert">
+        <h4 class="alert-heading">Aviso</h4>
+        <div class="alert-body">
+            Si tienes problemas para ingresar, resetea tu contrasena.
+        </div>
+    </div>
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="mb-1">
@@ -12,7 +18,7 @@
                 id="email"
                 type="text"
                 name="email"
-                placeholder="ejemplo@ejemplo.com / 34343434"
+                placeholder="alumno@iesleopoldoalasclarin.com / 34343434G"
                 :value="old('email')"
                 autofocus
             />
