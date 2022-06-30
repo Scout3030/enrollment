@@ -515,7 +515,7 @@
                         <div class="card-body">
                             <div class="col-12">
                                 <div class="mb-1 row">
-                                    <label class="form-check-label" for="parents_condition_separated">{{ __('I authorize my child to participate in extracurricular and complementary activities outside the center, during school hours, scheduled by the IES Leopoldo Alas Clarin, without economic cost (the center will inform about it through the means mentioned in the previous section)') }}</label>
+                                    <p>{{ __('I authorize my child to participate in extracurricular and complementary activities outside the center, during school hours, scheduled by the IES Leopoldo Alas Clarin, without economic cost (the center will inform about it through the means mentioned in the previous section)') }}</p>
                                     <div class="demo-inline-spacing">
                                         <div class="form-check form-check-inline">
                                             <input
