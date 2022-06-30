@@ -23,27 +23,21 @@ class UsersImport implements ToCollection, WithChunkReading, WithHeadingRow
         foreach ($collection as $row)
         {
             $headers = $row->toArray();
-            if( !array_key_exists('dni', $headers)
-                || !array_key_exists('nombre', $headers) || !array_key_exists('usuario', $headers)
-                || !array_key_exists('e_mail', $headers )){
+            if( !array_key_exists('nombre', $headers)
+                || !array_key_exists('correo', $headers )){
                 throw ValidationException::withMessages([__('Invalid excel format, please import a valid file.')]);
             }
 
-            $user = User::whereEmail($row['e_mail'])->first();
+            $user = User::whereEmail($row['correo'])->first();
             if ($user) {
                 $user->update([
-                    'username' => $row['usuario'],
-                    'email' => $row['e_mail'],
+                    'email' => $row['correo'],
                     'name' => $row['nombre'],
                     'email_verified_at' => now(),
                 ]);
-                $user->student->fill([
-                    'dni' => $row['dni'],
-                ])->save();
             } else {
                 $user = User::create([
-                    'username' => $row['usuario'],
-                    'email' => $row['e_mail'],
+                    'email' => $row['correo'],
                     'name' => $row['nombre'],
                     'password' => Hash::make(Str::random(10)),
                     'email_verified_at' => now(),
@@ -51,7 +45,6 @@ class UsersImport implements ToCollection, WithChunkReading, WithHeadingRow
 
                 Student::create([
                     'user_id' => $user->id,
-                    'dni' => $row['dni'],
                 ]);
             }
         }
