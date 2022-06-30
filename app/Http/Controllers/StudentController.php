@@ -112,6 +112,13 @@ class StudentController extends Controller
         $student->second_tutor_phone_number = $request->second_tutor_phone_number;
         $student->second_tutor_email = $request->second_tutor_email;
         $student->second_tutor_address = $request->second_tutor_address;
+        $student->authorization_tokapp = $request->authorization_tokapp;
+        $student->authorization_electronics = $request->authorization_electronics;
+        $student->authorization_extracurricular = $request->authorization_extracurricular;
+        $student->authorization_data = $request->authorization_data;
+        if( $request->authorization_tokapp == 1) {
+            $student->authorization_phone =  $request->authorization_phone;           
+        }
         if($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
             $student->dni_document =  $request->dni_document;
             $student->agreement_document =  $request->agreement_document;

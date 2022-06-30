@@ -45,6 +45,11 @@ class StudentFactory extends Factory
             'second_tutor_email' => $this->faker->email,
             'second_tutor_address' => $this->faker->address,
             'bus_stop_id' => $this->faker->boolean ? BusStop::all()->random()->id : null,
+            'authorization_tokapp' => $this->faker->boolean,
+            'authorization_electronics'=> $this->faker->boolean,
+            'authorization_extracurricular'=> $this->faker->boolean,
+            'authorization_data'=> $this->faker->boolean,
+            'authorization_phone'=>$this->faker->phoneNumber,
             'parents_condition' => $this->faker->randomElement([0, 1, 2]),
         ];
     }

@@ -50,6 +50,34 @@
                     @if ($student->grade->id == App\Models\Grade::FOURTH_MIDDLE_SCHOOL)
                         GRADO 4º ESO
                     @endif
+
+                     @if ($student->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY)
+                        GRADO 1° BACHILLERATO CIENCIAS Y TECNOLOGÍA (LOMLOE)
+                      @endif
+                    @if ($student->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES)
+                        GRADO 1° BACHILLERATO HUMANIDADES Y CIENCIAS SOCIALES (LOMLOE)
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL_GENERAL)
+                        GRADO 1° BACHILLERATO GENERAL (LOMLOE)
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL_SCIENCE)
+                        GRADO 2° BACHILLERATO CIENCIAS (LOMCE)
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES)
+                        GRADO 2° BACHILLERATO HUMANIDADES Y CIENCIAS SOCIALES (LOMCE)
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::FIRST_EDUCATIONAL_CYCLE_BASIC)
+                        GRADO 1° CICLO FORMATIVO DE GRADO BÁSICO COCINA Y RESTAURACIÓN (HOT-101)
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::SECOND_EDUCATIONAL_CYCLE_BASIC)
+                        GRADO 2° CICLO FORMATIVO DE GRADO BÁSICO COCINA Y RESTAURACIÓN (HOT-101)
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM)
+                        GRADO 1° CICLO FORMATIVO GRADO MEDIO COCINA Y RESTAURACIÓN
+                     @endif
+                    @if ($student->grade->id == App\Models\Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM)
+                         GRADO 2° CICLO FORMATIVO GRADO MEDIO COCINA Y RESTAURACIÓN
+                     @endif
                 </td>
             </tr>
             <tr><td colspan="1">DNI:</td>
@@ -85,15 +113,15 @@
         <table class="tftable" border="2">
             <tr align="center" style="background-color:#d4e3e5;"><td colspan="8"><b>MECANISMO DE COMUNICACIÓN Y USO DE IMÁGENES CON FINES EDUCATIVOS:</b></td></tr>
             <tr><td colspan="5">Autorizo el envio alos padres/madres/tutores/as de notificación mediante <b>APLICACIÓN TOKAPP ( indicar teléfono en el que tiene instalada la aplicación y en el que recibirá las comunicaciones ): </b> </td>
-                <td colspan="3" rowspan="2"> Si <input type="checkbox" name="si" > No <input name="no" type="checkbox"> </td></tr>
-            <tr><td colspan="1">N° de teléfono:</td><td colspan="4"></td></tr>
-            <tr><td colspan="5">Autorizo el envio alos padres/madres/tutores/as de notificación mediante <b>SMS/CORREO ELECTRONICO</b> </td>   <td colspan="3">Si <input type="checkbox" name="si" > No <input name="no" type="checkbox">  </td> </tr>
-            <tr><td colspan="5">Autorizo la utilización de datos e imágenes en la <b>PAGINA WEB</b> u otra publicaciones educativas del centro: </td>   <td colspan="3">Si <input type="checkbox" name="si" > No <input name="no" type="checkbox">  </td> </tr>
+                <td colspan="3" rowspan="2"> @if($student->authorization_tokapp) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif </td></tr>
+            <tr><td colspan="1">N° de teléfono:</td><td colspan="4">@if($student->authorization_tokapp) {{ $student->authorization_phone }} @else -- @endif</td></tr>
+            <tr><td colspan="5">Autorizo el envio alos padres/madres/tutores/as de notificación mediante <b>SMS/CORREO ELECTRONICO</b> </td>   <td colspan="3">@if($student->authorization_electronics) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif   </td> </tr>
+            <tr><td colspan="5">Autorizo la utilización de datos e imágenes en la <b>PAGINA WEB</b> u otra publicaciones educativas del centro: </td>   <td colspan="3">@if($student->authorization_data) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif   </td> </tr>
         </table>
         <br>
         <table class="tftable" border="2">
-            <tr align="center" style="background-color:#d4e3e5;"><td colspan="8"><b>AUTORIZACION PARA ACTIVIDADES EXTRAESCOLARES Y COMPLEMEMNTARIAS:</b></td></tr>
-            <tr><td colspan="5">Autorizo a mi hijo a participar en <b>actividades extraescolares y complementarias</b> <u> en el exterior del centro, en horario escolar,</u> programadas por el IES Leopoldo Alas Clarin, <b> sin coste econónomico </b> (el centro informará de ello mediante los medios citados en el apartado anterior) </td>   <td colspan="3">Si <input type="checkbox" name="si" > No <input name="no" type="checkbox">  </td> </tr>
+            <tr align="center" style="background-color:#d4e3e5;"><td colspan="8"><b>AUTORIZACION PARA ACTIVIDADES EXTRAESCOLARES Y COMPLEMENTARIAS:</b></td></tr>
+            <tr><td colspan="5">Autorizo a mi hijo a participar en <b>actividades extraescolares y complementarias</b> <u> en el exterior del centro, en horario escolar,</u> programadas por el IES Leopoldo Alas Clarin, <b> sin coste econónomico </b> (el centro informará de ello mediante los medios citados en el apartado anterior) </td>   <td colspan="3">@if($student->authorization_extracurricular) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif   </td> </tr>
         </table>
         <br>
         <table class="tftable" border="2">

@@ -53,7 +53,7 @@ class CheckProfile
                 return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Complete all the necessary documentation')]);
             }
         }
-        if (!$student->dni_document || !$student->country_id || !$student->paternal_surname || !$student->middle_name ||
+        if (!$student->dni_document || !$student->country_id || !$student->paternal_surname || 
             !$student->maternal_surname || !$student->birth || !$student->address || !$student->address_number ||
             !$student->first_tutor_dni ||
             !$student->postal_code || !$student->first_tutor_full_name || !$student->first_tutor_email ||
