@@ -26,7 +26,7 @@ class StudentSeeder extends Seeder
             ])->each(function (\App\Models\User $u) {
                 Student::factory([
                     'user_id' => $u->id,
-                    'dni' => "11111111",
+                    'dni' => "11111111A",
                     'grade_id' => null
                 ])
                     ->count(1)
