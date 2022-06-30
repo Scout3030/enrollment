@@ -15,7 +15,11 @@ class UserRoleSeeder extends Seeder
      */
     public function run()
     {
-        $adminUser = User::whereEmail('admin@mail.com')->first();
+        if(config('app.env') == 'local') {
+            $adminUser = User::whereEmail('admin@mail.com')->first();
+        } else {
+            $adminUser = User::whereEmail('admin@iesleopoldoalasclarin.com')->first();
+        }
         $adminUser->assignRole('administrator');
 
         if(config('app.env') == 'local'){

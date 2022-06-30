@@ -560,7 +560,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-5 ">
-                                    <label class="col-form-label" for="authorization_phone">{{ __('Phone number') }} ({{ __('Mandatory if accept to receive mobile notifications') }})</label>
+                                    <label class="col-form-label" for="authorization_phone">{{ __('Phone number') }} ({{ __('Mandatory if accept to receive mobile notifications') }}).</label>
                                     <input
                                         type="text"
                                         class="form-control @error('authorization_phone') is-invalid @enderror"

@@ -24,23 +24,19 @@ class ActiveEnrollment
 
         $now = now();
 
-        $passed = true;
-
         if(!$lastProcess) {
-            $passed = false;
+            return redirect()->route('dashboard.index')
+                ->with('message', ['type' => 'warning', 'description' => __('There is not an active process for this level at the moment')]);
         }
 
         if ( !($lastProcess->started_at<= $now && $now <= $lastProcess->finished_at) ) {
-            $passed = false;
+            return redirect()->route('dashboard.index')
+                ->with('message', ['type' => 'warning', 'description' => __('There is not an active process for this level at the moment')]);
         }
 
         if ( !$lastProcess->status ) {
-            $passed = false;
-        }
-
-        if(!$passed) {
             return redirect()->route('dashboard.index')
-            ->with('message', ['type' => 'warning', 'description' => __('There is not an active process for this level at the moment')]);
+                ->with('message', ['type' => 'warning', 'description' => __('There is not an active process for this level at the moment')]);
         }
 
         return $next($request);

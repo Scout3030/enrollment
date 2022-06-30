@@ -6,11 +6,11 @@
 
 @section('content')
     <section id="dashboard-analytics">
-        
-        @role('student')        
+
+        @role('student')
         <div class="row match-height">
             <!-- Greetings Card starts -->
-            @if(auth()->user()->student->enrollments && auth()->user()->student->enrollments->count() == 0)
+            @if($activeProcess->count() > 0)
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="card card-congratulations">
                     <div class="card-body text-center">
@@ -20,13 +20,16 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <h1 class="mb-1 text-white">{{ __('You have a pending enrollment process') }}</h1>
-                            <a href="{{ route('user.grade') }}" class="btn btn-relief-info">{{ __('Start here') }}</a>
+                            <h1 class="mb-1 text-white">{{ __('Active process') }}</h1>
+                            @foreach($activeProcess as $process)
+                                <a href="{{ route('user.grade') }}" class="btn btn-relief-info">{{ $process->level->custom_name }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
-            @else
+            @endif
+            @if(!(auth()->user()->student->enrollments && auth()->user()->student->enrollments->count() == 0))
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="card card-congratulations">
                     <div class="card-body text-center">

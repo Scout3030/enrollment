@@ -14,42 +14,6 @@
 
 @section('content')
     <section class="app-user-list">
-        <div class="row">
-            @if($academicPeriod)
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center justify-content-between">
-                        <div>
-                            <h3 class="fw-bolder mb-75">{{ $academicPeriod->name }}</h3>
-                            <span>{{ __('Current period') }}</span>
-                        </div>
-                        <div class="avatar bg-light-danger p-50">
-                            <span class="avatar-content">
-                              <i data-feather="box" class="avatar-icon"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
-            @if($enrollmentsInPeriod)
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center justify-content-between">
-                        <div>
-                            <h3 class="fw-bolder mb-75">{{ $enrollmentsInPeriod->count() }}</h3>
-                            <span>{{ __('Enrollments in the current period') }}</span>
-                        </div>
-                        <div class="avatar bg-light-primary p-50">
-                            <span class="avatar-content">
-                              <i data-feather="trending-up" class="avatar-icon"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
-        </div>
         <!-- list and filter start -->
         <div class="card">
             <div class="card-body border-bottom">
