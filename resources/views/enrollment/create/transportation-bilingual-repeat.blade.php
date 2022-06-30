@@ -27,7 +27,8 @@
                                     name="transportation"
                                     id="transportation_no"
                                     value="0"
-                                     @if(old('transportation') == '0') checked="checked" @endif
+                                    @if(old('transportation') == '0') checked="checked" @endif
+                                    @if(!old('transportation')) checked="checked" @endif
                                 />
                                 <label class="form-check-label" for="transportation_no">{{ __('No') }}</label>
                             </div>
@@ -87,7 +88,8 @@
                                     name="bilingual"
                                     id="bilingual_no"
                                     value="0"
-                                     @if(old('bilingual') == '0') checked="checked" @endif
+                                    @if(old('bilingual') == '0') checked="checked" @endif
+                                    @if(!old('bilingual')) checked="checked" @endif
                                 />
                                 <label class="form-check-label" for="bilingual_no">{{ __('No') }}</label>
                             </div>
@@ -129,6 +131,7 @@
                                     id="repeat_course_no"
                                     value="0"
                                     @if(old('repeat_course') == '0') checked="checked" @endif
+                                    @if(!old('repeat_course')) checked="checked" @endif
                                 />
                                 <label class="form-check-label" for="repeat_course_no">{{ __('No') }}</label>
                             </div>
