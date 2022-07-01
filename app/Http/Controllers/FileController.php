@@ -18,7 +18,7 @@ class FileController extends Controller
         $extension = $request->file->getClientOriginalExtension();
 
        // $videoExtensions = ['mp4', 'avi', 'mpeg', 'quicktime'];
-        $imageExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'JPEG', 'PNG', 'JPG'];
         $fileExtensions = ['pdf', 'xlsx', 'doc', 'docx'];
 
         if /*(in_array($extension, $videoExtensions)) {
