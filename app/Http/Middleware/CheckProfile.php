@@ -7,6 +7,7 @@ use App\Models\Student;
 use App\Models\Grade;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class CheckProfile
 {
@@ -21,36 +22,54 @@ class CheckProfile
     {
         $student = auth()->user()->student;
 
+        if ( $student->grade_id == Grade::FIRST_MIDDLE_SCHOOL ||  $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL ||
+            $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||  $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
+            if($student->parents_condition == Student::SEPARATED && !$student->agreement_document){
+                return redirect()->route('user.profile.edit')
+                    ->withErrors([__('Adjunte el convenio de custodia de menores')]);
+            }
+        }
+
         if ( $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL || $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||
             $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
 
             if(!$student->previous_school && !$student->certificate_document){
-                return redirect()->route('user.profile.edit')->with('message', ['type' => 'danger', 'description' => __('Complete all the necessary documentation')]);
+                return redirect()->route('user.profile.edit')
+                    ->withErrors([__('Adjunte el historial académico')]);
             }
         }
 
         if ($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
             if(!$student->payment_document){
-                return redirect()->route('user.profile.edit')->with('message', ['type' => 'danger', 'description' => __('Complete all the necessary documentation')]);
+                return redirect()->route('user.profile.edit')
+                    ->withErrors([__('Es necesario adjuntar el certificado de pago')]);
             }
         }
 
         if ($student->grade->level->id == Level::BACHELOR){
             if(!$student->payment_document || !$student->academic_history){
-                return redirect()->route('user.profile.edit')->with('message', ['type' => 'danger', 'description' => __('Complete all the necessary documentation')]);
+                return redirect()->route('user.profile.edit')
+                    ->withErrors([__('Adjunte el certificado de pago y el historial académico')]);
             }
         }
 
         if ($student->grade->level->id == Level::EDUCATIONAL_CYCLE){
             if(!$student->payment_document){
-                return redirect()->route('user.profile.edit')->with('message', ['type' => 'danger', 'description' => __('Complete all the necessary documentation')]);
+                return redirect()->route('user.profile.edit')
+                    ->withErrors([__('Es necesario adjuntar el certificado de pago')]);
             }
         }
-        if (!$student->dni_document || !$student->country_id || !$student->paternal_surname ||
+
+        if (!$student->dni_document) {
+            return redirect()->route('user.profile.edit')
+                ->withErrors([__('Adjunte el documento DNI')]);
+        }
+
+        if (!$student->country_id || !$student->paternal_surname ||
             !$student->birth || !$student->address || !$student->address_number || !$student->postal_code
         ) {
-
-            return redirect()->route('user.profile.edit')->with('message', ['type' => 'danger', 'description' => __('Complete all the necessary documentation')]);
+            return redirect()->route('user.profile.edit')
+                ->withErrors([__('Complete la infomación del alumno')]);
         }
         return $next($request);
     }
