@@ -54,11 +54,7 @@ class CheckProfile
             }
         }
         if (!$student->dni_document || !$student->country_id || !$student->paternal_surname ||
-            !$student->maternal_surname || !$student->birth || !$student->address || !$student->address_number ||
-            !$student->first_tutor_dni ||
-            !$student->postal_code || !$student->first_tutor_full_name || !$student->first_tutor_email ||
-            !$student->first_tutor_phone_number || !$student->first_tutor_full_name || !$student->first_tutor_email ||
-            !$student->first_tutor_address
+            !$student->birth || !$student->address || !$student->address_number || !$student->postal_code
         ) {
 
             return redirect()->route('user.profile.edit')->with('message', ['type' => 'danger', 'description' => __('Complete all the necessary documentation')]);

@@ -27,7 +27,7 @@
                     <div class="mb-1 row">
                         <div class="demo-inline-spacing">
                             <div class="modal-content">
-                                <ul class="head-links nav nav-tabs nav-tabs-custom nav-justified">
+                                <ul class="head-links nav nav-tabs nav-tabs-custom nav-justified d-none">
                                      <li type="draw" class="nav-item active"><a data-toggle="tab"  class="nav-link" aria-selected="false" href="#draw"></a></li>
                                 </ul>
                                 <div class="modal-body">
@@ -52,7 +52,7 @@
                                             <br>
                                             <div class="row" align="right">
                                                 <div class="col-md-12">
-                                                    <button type="button" id="draw-submitBtnstudent" class="btn btn-primary">{{ __('Signature student') }}</button>
+                                                    <button type="button" id="draw-submitBtnstudent" class="btn btn-primary">{{ __('Save signature') }}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -77,7 +77,7 @@
                     <div class="mb-1 row">
                         <div class="demo-inline-spacing">
                             <div class="modal-content">
-                                <ul class="head-links-tutor1 nav nav-tabs nav-tabs-custom nav-justified">
+                                <ul class="head-links-tutor1 nav nav-tabs nav-tabs-custom nav-justified d-none">
                                     <li type="drawtutor1" class="nav-item active"><a data-toggle="tab"  class="nav-link" aria-selected="false" href="#drawtutor1"></a></li>
                                 </ul>
                                 <div class="modal-body">
@@ -100,7 +100,7 @@
                                             <br>
                                             <div class="row" align="right">
                                                 <div class="col-md-12">
-                                                    <button type="button" id="draw-submitBtntutor1" class="btn btn-primary">{{ __('Signature tutor 1') }}</button>
+                                                    <button type="button" id="draw-submitBtntutor1" class="btn btn-primary">{{ __('Save signature') }}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,7 +125,7 @@
                     <div class="mb-1 row">
                         <div class="demo-inline-spacing">
                             <div class="modal-content">
-                                <ul class="head-links-tutor2 nav nav-tabs nav-tabs-custom nav-justified">
+                                <ul class="head-links-tutor2 nav nav-tabs nav-tabs-custom nav-justified d-none">
                                     <li type="drawtutor2" class="nav-item active"><a data-toggle="tab"  class="nav-link" aria-selected="false" href="#drawtutor2"></a></li>
                                 </ul>
                                 <div class="modal-body">
@@ -149,7 +149,7 @@
                                             <br>
                                             <div class="row" align="right">
                                                 <div class="col-md-12">
-                                                    <button type="button" id="draw-submitBtntutor2" class="btn btn-primary">{{ __('Signature tutor 2') }}</button>
+                                                    <button type="button" id="draw-submitBtntutor2" class="btn btn-primary">{{ __('Save signature') }}</button>
                                                 </div>
                                             </div>
                                         </div>
