@@ -77,7 +77,7 @@
                                     id="bilingual_yes"
                                     value="1"
                                      @if(old('bilingual') == '1') checked="checked" @endif
-                                    
+
                                 />
                                 <label class="form-check-label" for="bilingual_yes">{{ __('Yes') }}</label>
                             </div>
@@ -134,12 +134,6 @@
                                     @if(!old('repeat_course')) checked="checked" @endif
                                 />
                                 <label class="form-check-label" for="repeat_course_no">{{ __('No') }}</label>
-                            </div>
-                            <div class="offset-xl-1 col-xl-6 col-md-6 col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="previous_school">{{ __('Previous school') }}</label>
-                                    <input type="text" class="form-control" id="previous_school" value="{{  old('previous_school',auth()->user()->student->previous_school) }}" name="previous_school" placeholder="{{ __('Type...') }}" />
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -520,7 +520,7 @@ class EnrollmentController extends Controller
             'bus_stop_id' => $request->transportation == 1 ? $request->bus_stop_id : null,
             'repeat_course' => $request->repeat_course,
             'bilingual' => $request->bilingual,
-            'previous_school' => $request->previous_school,
+            'previous_school' => $student->previous_school,
             'student_signature' => $request->student_signature,
             'second_tutor_signature' => $request->second_tutor_signature,
             'first_tutor_signature' => $request->first_tutor_signature,

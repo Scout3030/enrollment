@@ -37,7 +37,7 @@ class StudentProfileRequest extends FormRequest
             'name' => 'required|string|min:3',
             'country_id' => 'required|exists:countries,id',
             'paternal_surname' => 'required|string|min:3',
-            'maternal_surname' => 'required|string|min:3',
+            'maternal_surname' => 'nullable|string|min:3',
             'birth' => 'required|date',
             'address' => 'required|string|min:3',
             'address_number' => 'required|string',
@@ -60,7 +60,7 @@ class StudentProfileRequest extends FormRequest
             'second_tutor_address' => 'nullable|string|min:3',
 
             'dni_document'=>'required',
-            'previous_school' => 'nullable|min:10'
+            'previous_school' => 'nullable|string'
         ];
 
         $phoneRules = [];
@@ -74,7 +74,7 @@ class StudentProfileRequest extends FormRequest
 
         if($student->grade_id == Grade::FIRST_MIDDLE_SCHOOL) {
             $moreRules = [
-                'parents_condition' => 'required',
+                'parents_condition' => 'nullable',
                 'agreement_document'=>[Rule::requiredIf(function () {
                     return $this->parents_condition == \App\Models\Student::SEPARATED;
                 })],
@@ -83,7 +83,7 @@ class StudentProfileRequest extends FormRequest
 
         if($student->grade_id == Grade::SECOND_MIDDLE_SCHOOL) {
             $moreRules = [
-                'parents_condition' => 'required',
+                'parents_condition' => 'nullable',
                 'certificate_document'=>[Rule::requiredIf(function () {
                     return $this->previous_school;
                 })],
@@ -95,7 +95,7 @@ class StudentProfileRequest extends FormRequest
 
         if($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
             $moreRules = [
-                'parents_condition' => 'required',
+                'parents_condition' => 'nullable',
                 'payment_document' => 'required',
                 'agreement_document'=>[Rule::requiredIf(function () {
                     return $this->parents_condition == \App\Models\Student::SEPARATED;
@@ -105,7 +105,7 @@ class StudentProfileRequest extends FormRequest
 
         if($student->grade->level->id == Level::BACHELOR) {
             $moreRules = [
-                'parents_condition' => 'required',
+                'parents_condition' => 'nullable',
                 'payment_document' => 'required',
                 'academic_history' => 'required',
                 'agreement_document'=>[Rule::requiredIf(function () {
