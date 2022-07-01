@@ -21,13 +21,6 @@ class CheckProfile
     {
         $student = auth()->user()->student;
 
-        if ( $student->grade_id == Grade::FIRST_MIDDLE_SCHOOL ||  $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL ||
-            $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||  $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
-            if($student->parents_condition == 0 && !$student->agreement_document){
-                return redirect()->route('user.profile.edit')->with('message', ['type' => 'danger', 'description' => __('Complete all the necessary documentation')]);
-            }
-        }
-
         if ( $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL || $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||
             $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
 
