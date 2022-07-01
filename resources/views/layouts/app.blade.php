@@ -68,7 +68,7 @@
             });
 
             //div list
-            $('.list.parent').sortable({container: '.list', nodes: ':not(.list)'});
+            $('.list').sortable();
 
             //draggable
             $('.drag').draggable();

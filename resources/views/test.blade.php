@@ -139,6 +139,7 @@
                         @endforeach
                     @endforeach
                 @else
+               <div class="list">
                     @foreach($commonOptionalOneCourses as $key => $course)
                         <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                             <div class="col-md-12">
@@ -159,6 +160,7 @@
                             </div>
                         </div>
                     @endforeach
+                    </div>
                 @endif
             </div>
         </div>
