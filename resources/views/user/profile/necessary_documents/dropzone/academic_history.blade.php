@@ -24,7 +24,7 @@
     </div>
 </div>
 
-@push('script')
+@push('scripts')
     <script>
         // 1 hidden input
         const academicHistoryInput = $('input[name=academic_history]');

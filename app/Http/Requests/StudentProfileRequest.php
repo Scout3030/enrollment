@@ -65,6 +65,7 @@ class StudentProfileRequest extends FormRequest
 
         $phoneRules = [];
         $moreRules = [];
+        $documentRules = [];
 
         if($this->authorization_tokapp == 1){
             $phoneRules = [
@@ -107,11 +108,16 @@ class StudentProfileRequest extends FormRequest
             $moreRules = [
                 'parents_condition' => 'nullable',
                 'payment_document' => 'required',
-                'academic_history' => 'required',
                 'agreement_document'=>[Rule::requiredIf(function () {
                     return $this->parents_condition == \App\Models\Student::SEPARATED;
                 })],
             ];
+
+            if(!in_array($student->grade->id, [Grade::SECOND_HIGH_SCHOOL_SCIENCE, Grade::SECOND_HIGH_SCHOOL_SCIENCE])){
+                $documentRules = [
+                    'academic_history' => 'required',
+                ];
+            }
         }
 
         if($student->grade->level->id == Level::EDUCATIONAL_CYCLE) {
@@ -121,6 +127,6 @@ class StudentProfileRequest extends FormRequest
             ];
         }
 
-        return array_merge($rules, $moreRules, $phoneRules);
+        return array_merge($rules, $moreRules, $phoneRules, $documentRules);
     }
 }

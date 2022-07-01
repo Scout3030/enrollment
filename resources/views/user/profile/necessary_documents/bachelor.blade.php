@@ -9,5 +9,7 @@
     @include('user.profile.necessary_documents.dropzone.payment')
     @include('user.profile.necessary_documents.dropzone.agreement')
     @include('user.profile.necessary_documents.dropzone.certificate')
+    @if(!in_array(auth()->user()->student->grade_id, [\App\Models\Grade::SECOND_HIGH_SCHOOL_SCIENCE, \App\Models\Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES]))
     @include('user.profile.necessary_documents.dropzone.academic_history')
+    @endif
 </div>
