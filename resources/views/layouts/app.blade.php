@@ -33,32 +33,6 @@
             max-height: 45px;
         }
     </style>
-
-
-    <link href="{{ asset('drag-and-drop/demo.css')}}" rel='stylesheet' type='text/css'>
-    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <link href="{{ asset('drag-and-drop/draganddrop.css') }}" rel='stylesheet' type='text/css'>
-    <link href="https://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
-    <style>
-        body { background-color:#fafafa;}
-        .container { margin:150px auto;}
-    </style>
-    <script type='text/javascript'>
-        $(function() {
-           
-            $('.list').sortable({container: '.list'});
-
-            //off switch
-            $('.off').on('click', function() {
-                $('.sortable').each(function() { $(this).sortable('destroy'); });
-                $('.draggable').each(function() { $(this).draggable('destroy'); });
-            });
-        });
-    </script>
-
-
 </head>
 <!-- END: Head-->
 
@@ -97,6 +71,7 @@
 
 {{-- include footer --}}
 @include('panels.footer')
+<script src="{{ asset('vendors/js/vendors.min.js') }}"></script>
 <script src="{{ asset('vendors/js/ui/jquery.sticky.js') }}"></script>
 @stack('vendor-scripts')
 <script src="{{ asset('js/core/app-menu.js') }}"></script>
@@ -115,7 +90,6 @@
         }
     })
 </script>
-
 @stack('scripts')
 </body>
 </html>

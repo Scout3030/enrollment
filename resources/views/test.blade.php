@@ -1,8 +1,13 @@
 @extends('layouts.app')
 
+@push('styles')
+    <link href="{{ asset('drag-and-drop/demo.css')}}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset('drag-and-drop/draganddrop.css') }}" rel='stylesheet' type='text/css'>
+@endpush
+
 @section('content')
     <h3>Draggables</h3>
-  
+
 
     <h3>Off Switch</h3>
     <button class="btn btn-primary off">All off</button>
@@ -42,8 +47,22 @@
                             </div>
                         </div>
                     @endforeach
-                    </div>               
+                    </div>
             </div>
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
+    <script type='text/javascript'>
+        $(function() {
+            $('.list').sortable({container: '.list'});
+            //off switch
+            $('.off').on('click', function() {
+                $('.sortable').each(function() { $(this).sortable('destroy'); });
+                $('.draggable').each(function() { $(this).draggable('destroy'); });
+            });
+        });
+    </script>
+@endpush
