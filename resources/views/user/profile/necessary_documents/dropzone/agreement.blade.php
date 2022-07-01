@@ -33,7 +33,7 @@
             url: "{{ route('upload.files', 'documents') }}",
             addRemoveLinks: true,
             maxFilesize: 20,
-            acceptedFiles: ".jpeg,.jpg,.png,.pdf",
+            acceptedFiles: ".jpeg,.jpg,.png,.pdf,.JPEG,.PNG,.JPG",
             init: function () {
                 this.on("success", function (file, response) {
                     agreementInput.val(response)
