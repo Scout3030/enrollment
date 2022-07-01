@@ -91,9 +91,9 @@
                 <td colspan="3">  {{ $student->user->student->country ? $student->user->student->country->name : '-' }}</td>
             </tr>
             <tr><td colspan="1">DOMICILIO ACTUAL:</td>
-                <td colspan="7">{{  $student->address }}, Calle {{ $student->address_number }}</td>
+                <td colspan="7">{{  $student->address }}, Número {{ $student->address_number }}</td>
             </tr>
-            <tr><td colspan="1">TELEFONOS PARA URGENCIAS:</td>
+            <tr><td colspan="1">TELÉFONOS PARA URGENCIAS:</td>
                 <td colspan="7"></td>
             </tr>
         </table>
@@ -112,22 +112,22 @@
         <br>
         <table class="tftable" border="2">
             <tr align="center" style="background-color:#d4e3e5;"><td colspan="8"><b>MECANISMO DE COMUNICACIÓN Y USO DE IMÁGENES CON FINES EDUCATIVOS:</b></td></tr>
-            <tr><td colspan="5">Autorizo el envio alos padres/madres/tutores/as de notificación mediante <b>APLICACIÓN TOKAPP ( indicar teléfono en el que tiene instalada la aplicación y en el que recibirá las comunicaciones ): </b> </td>
+            <tr><td colspan="5">Autorizo el envío a los padres/madres/tutores/as de notificación mediante <b> APLICACIÓN TOKAPP (indicar teléfono en el que tiene instalada la aplicación y en el que recibirá las comunicaciones): </b> </td>
                 <td colspan="3" rowspan="2"> @if($student->authorization_tokapp) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif </td></tr>
             <tr><td colspan="1">N° de teléfono:</td><td colspan="4">@if($student->authorization_tokapp) {{ $student->authorization_phone }} @else -- @endif</td></tr>
-            <tr><td colspan="5">Autorizo el envio alos padres/madres/tutores/as de notificación mediante <b>SMS/CORREO ELECTRONICO</b> </td>   <td colspan="3">@if($student->authorization_electronics) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif   </td> </tr>
-            <tr><td colspan="5">Autorizo la utilización de datos e imágenes en la <b>PAGINA WEB</b> u otra publicaciones educativas del centro: </td>   <td colspan="3">@if($student->authorization_data) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif   </td> </tr>
+            <tr><td colspan="5">Autorizo el envío a los padres/madres/tutores/as de notificación mediante <b> SMS/CORREO ELECTRÓNICO.</b> </td>   <td colspan="3">@if($student->authorization_electronics) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif   </td> </tr>
+            <tr><td colspan="5">Autorizo la utilización de datos e imágenes en la <b> PAGINA WEB</b> u otras publicaciones educativas del Centro. </td>   <td colspan="3">@if($student->authorization_data) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif   </td> </tr>
         </table>
         <br>
         <table class="tftable" border="2">
-            <tr align="center" style="background-color:#d4e3e5;"><td colspan="8"><b>AUTORIZACION PARA ACTIVIDADES EXTRAESCOLARES Y COMPLEMENTARIAS:</b></td></tr>
-            <tr><td colspan="5">Autorizo a mi hijo a participar en <b>actividades extraescolares y complementarias</b> <u> en el exterior del centro, en horario escolar,</u> programadas por el IES Leopoldo Alas Clarin, <b> sin coste econónomico </b> (el centro informará de ello mediante los medios citados en el apartado anterior) </td>   <td colspan="3">@if($student->authorization_extracurricular) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif   </td> </tr>
+            <tr align="center" style="background-color:#d4e3e5;"><td colspan="8"><b>AUTORIZACIÓN PARA ACTIVIDADES EXTRAESCOLARES Y COMPLEMENTARIAS:</b></td></tr>
+            <tr><td colspan="5">Autorizo a mi hijo a participar en <b>actividades extraescolares y complementarias</b> <u> en el exterior del Centro, en horario escolar,</u> programadas por el IES Leopoldo Alas Clarín, <b> sin coste económico </b> (el Centro informará de ello mediante los medios citados en el apartado anterior) </td>   <td colspan="3">@if($student->authorization_extracurricular) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif   </td> </tr>
         </table>
         <br>
         <table class="tftable" border="2">
-            <tr style="background-color:#d4e3e5;"><td colspan="8"><center><b>PADRES/MADRES SEPARADOS</b> (sólo contestar familias en esta situación)</center><br>
-                    Es obligación de los padres/madres comunicar al centro, durante el proceso de matricula a lo largo del curso escolar, las circustancia de separación o no convivencia de los progenitores, asi como la de aportar la sentencia judicial correspondiente en la que haya un pronunciamiento acerca de la titularidad y el ejercicio de la patria potestad. Asimismo, es obligatorio comunicar al centro cualquier incidencia que altere o modifique dicha situacion legal.
-                    Declaro la necesidad de enviar las comunicaciones alas siguientes direcciones.
+            <tr style="background-color:#d4e3e5;"><td colspan="8"><center><b>PADRES/MADRES SEPARADOS</b> (solo contestar familias en esta situación)</center><br>
+                    Es obligación de los padres/madres comunicar al Centro, durante el proceso de matrícula a lo largo del curso escolar, las circustancia de separación o no convivencia de los progenitores, así como la de aportar la sentencia judicial correspondiente en la que haya un pronunciamiento acerca de la titularidad y el ejercicio de la patria potestad. Asimismo, es obligatorio comunicar al Centro cualquier incidencia que altere o modifique dicha situación legal.
+                    Declaro la necesidad de enviar las comunicaciones a las siguientes direcciones.
                 </td></tr>
             <tr  align="center">
                 <td colspan="1">Tutor/A 1 </td> <td colspan="1"><input type="checkbox" name="si" ></td>
@@ -143,19 +143,19 @@
         </table>
         <br>
         <table class="tftable" border="2">
-            <tr align="center" style="background-color:#d4e3e5;"><td colspan="8"><b>FIRMAS AUTORIZADAS</b> (Solo para quien tenga firma digital, el resto lo foirmarán al comienzo del curso)</td></tr>
+            <tr align="center" style="background-color:#d4e3e5;"><td colspan="8"><b>FIRMAS AUTORIZADAS</b> (Solo para quien tenga firma digital, el resto lo firmarán al comienzo del curso)</td></tr>
             <tr><td  colspan="3">Tutor 1: </td><td  colspan="3">Tutor 2:</td><td colspan="2">Fecha:  </td></tr>
             <tr><td  colspan="3"> </td><td  colspan="3"></td><td colspan="2"> </td></tr>
         </table>
         <br>
         <table class="tftable" border="2">
-            <tr style="background-color:#d4e3e5;"><td colspan="8"><b>PROTECCION DE DATOS</b></td></tr>
-            <tr><td  colspan="3">Actividad de tratamiento: </td><td  colspan="5">Registro de datos para la tutoria y gestión educativa del centro.  </td></tr>
-            <tr><td  colspan="3">Identidad del responsable del tratamiento: </td><td  colspan="5">Dirección del IES Leopoldo Alas Clarin.  </td></tr>
-            <tr><td  colspan="3">Finalidad: </td><td  colspan="5">Los datos personales recabados a través del presente formulario seran tratados confidencialmente para la labor tutorial y la actividad docente y educativa del centro.  </td></tr>
-            <tr><td  colspan="3">Legitimación: </td><td  colspan="5">Cumplimiento de una tarea realizada en el ejercicio de un servicio publico.  </td></tr>
-            <tr><td  colspan="3">Destinatario de ceciones: </td><td  colspan="5">Tutor/a, equipo docente, equipo directivo y Dpto. de Orientación del IES Leopoldo Alas Clarin. </td></tr>
-            <tr><td  colspan="3">Derechos: </td><td  colspan="5">Puede ejercer los derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad, solicitandolo a traves de la secretaria del  IES Leopoldo Alas Clarin. Puede solicitar información adicional dirigiendose al delegado de protección de datos: delegadoprotecciondatos@asturias.org  </td></tr>
+            <tr style="background-color:#d4e3e5;"><td colspan="8"><b>PROTECCIÓN DE DATOS</b></td></tr>
+            <tr><td  colspan="3">Actividad de tratamiento: </td><td  colspan="5">Registro de datos para la tutoría y gestión educativa del Centro.  </td></tr>
+            <tr><td  colspan="3">Identidad del responsable del tratamiento: </td><td  colspan="5">Dirección del IES Leopoldo Alas Clarín.  </td></tr>
+            <tr><td  colspan="3">Finalidad: </td><td  colspan="5">Los datos personales recabados a través del presente formulario serán tratados confidencialmente para la labor tutorial y la actividad docente y educativa del Centro.  </td></tr>
+            <tr><td  colspan="3">Legitimación: </td><td  colspan="5">Cumplimiento de una tarea realizada en el ejercicio de un servicio público.  </td></tr>
+            <tr><td  colspan="3">Destinatario de cesiones: </td><td  colspan="5">Tutor/a, equipo docente, equipo directivo y Dpto. de Orientación del IES Leopoldo Alas Clarín. </td></tr>
+            <tr><td  colspan="3">Derechos: </td><td  colspan="5">Puede ejercer los derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad, solicitándolo a traves de la secretaría del  IES Leopoldo Alas Clarín. Puede solicitar información adicional dirigiéndose al delegado de protección de datos: delegadoprotecciondatos@asturias.org  </td></tr>
         </table>
     </div>
 </div>
