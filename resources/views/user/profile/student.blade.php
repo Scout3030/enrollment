@@ -220,7 +220,11 @@
                                             name="country_id"
                                         >
                                             @foreach ( App\Models\Country::all() as $country )
-                                                <option value="{{ $country->id }}" @if( old('country_id', auth()->user()->student->country_id) == $country->id) selected @endif>{{ $country->name }}</option>
+                                                <option
+                                                    value="{{ $country->id }}"
+                                                    @if( old('country_id', auth()->user()->student->country_id) == $country->id) selected @endif
+                                                    @if( !old('country_id') && $country->iso == 'ES') selected @endif
+                                                >{{ $country->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
