@@ -18,7 +18,7 @@ class HasGradeMiddleware
     {
         $user = auth()->user();
         if($user->hasRole('student') && !$user->student->grade_id) {
-            return redirect()->route('user.grade')->with('message', ['type' => 'success', 'description' => __('Select an option')]);
+            return redirect()->route('user.grade')->with('message', ['type' => 'danger', 'description' => __('Select an option')]);
         }
 
         return $next($request);
