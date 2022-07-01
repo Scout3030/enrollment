@@ -47,41 +47,8 @@
     </style>
     <script type='text/javascript'>
         $(function() {
-            //grouped lists
-            $('ul.grouped').sortable({
-                group: true
-            });
-
-            //normal list
-            $('ul.normal').sortable({
-                autocreate: true,
-                update: function(evt) {
-                    console.log(JSON.stringify($(this).sortable('serialize')));
-                }
-            });
-
-            //remaining lists
-            $('ul.float, ul.inline').sortable({
-                update: function(evt) {
-                    console.log(JSON.stringify($(this).sortable('serialize')));
-                }
-            });
-
-            //div list
-            $('.list').sortable();
-
-            //draggable
-            $('.drag').draggable();
-            $('.draggables').draggable({delegate: 'button', placeholder: true});
-            $('.draghandle').draggable({handle: '.handle', placeholder: true});
-            $('.dragdrop').draggable({
-                revert: true,
-                placeholder: true,
-                droptarget: '.drop',
-                drop: function(evt, droptarget) {
-                    $(this).appendTo(droptarget).draggable('destroy');
-                }
-            });
+           
+            $('.list').sortable({container: '.list'});
 
             //off switch
             $('.off').on('click', function() {
@@ -149,20 +116,6 @@
     })
 </script>
 
-<script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-36251023-1']);
-    _gaq.push(['_setDomainName', 'jqueryscript.net']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-</script>
 @stack('scripts')
 </body>
 </html>
