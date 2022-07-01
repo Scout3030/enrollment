@@ -109,7 +109,7 @@ class EnrollmentRequest extends FormRequest
             foreach($this->elective_courses as $key => $electiveCourse){
                 $electiveCourse = json_decode($electiveCourse);
                 $electiveCourses[$key]['course_id'] = $electiveCourse->id;
-                $electiveCourses[$key]['order'] = $electiveCourse->order;
+                $electiveCourses[$key]['order'] = $key+1;
             }
 
             $this->merge([
@@ -120,7 +120,7 @@ class EnrollmentRequest extends FormRequest
             foreach($this->elective_courses_free as $key => $electiveCourseFree){
                 $electiveCourseFree = json_decode($electiveCourseFree);
                 $electiveCoursesFree[$key]['course_id'] = $electiveCourseFree->id;
-                $electiveCoursesFree[$key]['order'] = $electiveCourseFree->order;
+                $electiveCoursesFree[$key]['order'] = $key+1;
             }
 
             $this->merge([
@@ -137,7 +137,7 @@ class EnrollmentRequest extends FormRequest
             foreach($this->elective_courses as $key => $electiveCourse){
                 $electiveCourse = json_decode($electiveCourse);
                 $electiveCourses[$key]['course_id'] = $electiveCourse->id;
-                $electiveCourses[$key]['order'] = $electiveCourse->order;
+                $electiveCourses[$key]['order'] = $key+1;
             }
 
             $this->merge([
@@ -166,8 +166,8 @@ class EnrollmentRequest extends FormRequest
                 'common_optional_course' => ['required', 'exists:courses,id'],
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
-                'first_tutor_signature'=>['nullable'],
-                'student_signature'=>['required'],
+              //  'first_tutor_signature'=>['nullable'],
+               // 'student_signature'=>['required'],
             ];
         }
         if( $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
@@ -181,8 +181,8 @@ class EnrollmentRequest extends FormRequest
                 'elective_courses.*.course_id' => 'exists:courses,id',
                 'elective_courses_free' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses_free.*.course_id' => 'exists:courses,id',
-                'first_tutor_signature'=>['nullable'],
-                'student_signature'=>['required'],
+              //  'first_tutor_signature'=>['nullable'],
+                //'student_signature'=>['required'],
             ];
         }
 
