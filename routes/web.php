@@ -242,4 +242,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             ->name('enrollments.download-document')
             ->can('view enrollments');
     });
+
+    Route::get('/files/{hash}', [EnrollmentController::class, 'exportEnrollmentPdf']);
+    Route::get('/files/{hash}/student', [EnrollmentController::class, 'exportStudentPdf']);
 });

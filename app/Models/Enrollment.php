@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Helpers;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -70,6 +71,10 @@ class Enrollment extends Model
         'created_at' => 'datetime:Y-m-d H:i',
     ];
 
+    protected $appends = [
+        'hash_id'
+    ];
+
     public function courses()
     {
         return $this->belongsToMany(Course::class)->withPivot('order');
@@ -83,5 +88,10 @@ class Enrollment extends Model
     public function grade()
     {
         return $this->belongsTo(Grade::class);
+    }
+
+    public function getHashIdAttribute()
+    {
+        return Helpers::encrypt($this->id);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\EnrollmentDataTable;
+use App\Helpers\Helpers;
 use App\Http\Requests\EnrollmentRequest;
 use App\Mail\EnrollmentCompleted;
 use App\Models\Course;
@@ -796,12 +797,12 @@ class EnrollmentController extends Controller
             $enrollment->courses()->attach($commonCourses2);
         }
 
-//        try {
+        try {
             Mail::to($student->user->email)->send(new EnrollmentCompleted($enrollment));
-//        }catch (\Exception  $exception) {
-//            Log::debug('Could not send mail to '.$student->user->email);
-//        }
-        dd(1);
+        }catch (\Exception  $exception) {
+            Log::debug('Could not send mail to '.$student->user->email);
+        }
+        
         return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
     }
 
@@ -876,5 +877,21 @@ class EnrollmentController extends Controller
     public function downloadDocument($path, $file)
     {
         return Storage::download($path.'/'.$file);
+    }
+
+    public function exportEnrollmentPdf($hash){
+        $enrollmentId = Helpers::decrypt($hash);
+        $enrollment = Enrollment::find($enrollmentId);
+        $pdf = \PDF::loadView('template_pdf.enrollment', ['enrollment' => $enrollment]);
+        $pdfName = Str::slug($enrollment->student->user->name.' '.$enrollment->student->paternal_surname.' '.$enrollment->student->maternal_surname,'-');
+        return $pdf->download($pdfName.'.pdf');
+    }
+
+    public function exportStudentPdf($hash){
+        $enrollmentId = Helpers::decrypt($hash);
+        $enrollment = Enrollment::find($enrollmentId);
+        $pdf = \PDF::loadView('template_pdf.student', ['student' => $enrollment->student]);
+        $pdfName = Str::slug($enrollment->student->user->name.' '.$enrollment->student->paternal_surname.' '.$enrollment->student->maternal_surname,'-');
+        return $pdf->download($pdfName.'.pdf');
     }
 }
