@@ -99,6 +99,13 @@
     <h3>Off Switch</h3>
     <button class="btn btn-primary off">All off</button>
 
+    <div class="col-sm-12 col-xl-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">{{ __('Optional subjects') }} ({{ __('Order by preference') }})</h4>
+                <p>{{ __('optional courses info') }}</p>
+            </div>
+            <div class="card-body">
     <div class="row">
         <div class="col-2 col-md-1">
             <div class="card mb-4">
@@ -112,54 +119,30 @@
             </div>
         </div>
         <div class="col-10 col-md-11">
-            <div id="sortable2" class="row custom-options-checkable g-1">
-                @if(old('elective_courses'))
-                    @foreach(old('elective_courses') as $order)
-                        @foreach($commonOptionalOneCourses as $key => $course)
-                            @if(json_decode($order)->id == $course->id)
-                                <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                    <div class="col-md-12">
-                                        <input
-                                            class="custom-option-item-check"
-                                            type="checkbox"
-                                            name="elective_courses[]"
-                                            id="elective_course_{{ $course->id }}"
-                                            value='{"id":"{{ $course->id }}", "order":"{{ json_decode($order)->order }}"}'
-                                            checked
-                                            onclick="this.checked = true"
-                                        />
-                                        <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
-                                                            <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                                <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
-                                                            </span>
-                                        </label>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    @endforeach
-                @else
-                    @foreach($commonOptionalOneCourses as $key => $course)
-                        <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                            <div class="col-md-12">
-                                <input
-                                    class="custom-option-item-check"
-                                    type="checkbox"
-                                    name="elective_courses[]"
-                                    id="elective_course_{{ $course->id }}"
-                                    value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
-                                    checked
-                                    onclick="this.checked = true"
-                                />
-                                <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
-                                                        <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                            <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
-                                                        </span>
-                                </label>
-                            </div>
+            <div id="sortable2" class="row custom-options-checkable g-1 list parent">
+                @foreach($commonOptionalOneCourses as $key => $course)
+                    <div class="row3 list" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                        <div class="col-md-12">
+                            <input
+                                class="custom-option-item-check"
+                                type="checkbox"
+                                name="elective_courses[]"
+                                id="elective_course_{{ $course->id }}"
+                                value='{"id":"{{ $course->id }}", "order":"{{ $key + 1 }}"}'
+                                checked
+                                onclick="this.checked = true"
+                            />
+                            <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
+                                <span class="d-flex justify-content-between flex-wrap mb-50">
+                                    <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
+                                </span>
+                            </label>
                         </div>
-                    @endforeach
-                @endif
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
             </div>
         </div>
     </div>
