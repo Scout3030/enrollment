@@ -220,7 +220,11 @@
                                             name="country_id"
                                         >
                                             @foreach ( App\Models\Country::all() as $country )
-                                                <option value="{{ $country->id }}" @if( old('country_id', auth()->user()->student->country_id) == $country->id) selected @endif>{{ $country->name }}</option>
+                                                <option
+                                                    value="{{ $country->id }}"
+                                                    @if( old('country_id', auth()->user()->student->country_id) == $country->id) selected @endif
+                                                    @if( !old('country_id') && $country->iso == 'ES') selected @endif
+                                                >{{ $country->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -675,11 +679,11 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" id="dni_document" name="dni_document" value="">
-        <input type="hidden" id="agreement_document" name="agreement_document" value="">
-        <input type="hidden" id="payment_document" name="payment_document" value="">
-        <input type="hidden" id="certificate_document" name="certificate_document" value="">
-        <input type="hidden" id="academic_history" name="academic_history" value="">
+        <input type="hidden" id="dni_document" name="dni_document" value="{{ old('dni_document') }}">
+        <input type="hidden" id="agreement_document" name="agreement_document" value="{{ old('agreement_document') }}">
+        <input type="hidden" id="payment_document" name="payment_document" value="{{ old('payment_document') }}">
+        <input type="hidden" id="certificate_document" name="certificate_document" value="{{ old('certificate_document') }}">
+        <input type="hidden" id="academic_history" name="academic_history" value="{{ old('academic_history') }}">
     </form>
 
     {{--ESO--}}
