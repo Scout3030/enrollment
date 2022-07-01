@@ -8,7 +8,15 @@
 
 @if (session('message'))
     <div class="alert alert-{{ session('message')['type'] }}" role="alert">
-        <h4 class="alert-heading">{{ __('Well done!') }}</h4>
+        @if(session('message')['type'] == 'success')
+            <h4 class="alert-heading">{{ __('Well done!') }}</h4>
+        @endif
+        @if(session('message')['type'] == 'warning')
+            <h4 class="alert-heading">{{ __('Alert!') }}</h4>
+        @endif
+        @if(session('message')['type'] == 'danger')
+            <h4 class="alert-heading">{{ __('Something went wrong!') }}</h4>
+        @endif
         <div class="alert-body">
             <ul class="mt-1 list-disc list-inside text-sm text-red-600">
                 <li>{{ session('message')['description'] }}</li>
