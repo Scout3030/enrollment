@@ -19,9 +19,16 @@ class SettingController extends Controller
             $file = uploadFile('img', 'settings');
             $request->merge(['image' => 'storage/settings/'.$file]);
         }
+
+        if ($request->filled('modal')) {
+            $request->merge(['modal' => 1]);
+        } else {
+            $request->merge(['modal' => 0]);
+        }
+
         $data = $this->validate($request, $rules);
         $validSettings = array_keys($rules);
-
+      
         foreach ($data as $key => $val) {
             if (in_array($key, $validSettings)) {
                 Setting::add($key, $val, Setting::getDataType($key));
