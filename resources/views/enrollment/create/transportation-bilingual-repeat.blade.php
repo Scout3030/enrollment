@@ -77,7 +77,6 @@
                                     id="bilingual_yes"
                                     value="1"
                                      @if(old('bilingual') == '1') checked="checked" @endif
-
                                 />
                                 <label class="form-check-label" for="bilingual_yes">{{ __('Yes') }}</label>
                             </div>
@@ -142,3 +141,60 @@
         </div>
     </div>
 </div>
+
+@push('vendor-scripts')
+    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/spinner/jquery.bootstrap-touchspin.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            const routeNode = $("#route_id")
+            const busStopNode = $("#bus_stop_id")
+            $('.select2').select2();
+
+            let firstRouteId = routeNode.select2().val()
+            populateBusStopSelect(firstRouteId)
+
+            routeNode.on('change', function(){
+                const levelId = $(this).val()
+                populateBusStopSelect(levelId)
+            })
+
+            $('input[name=transportation]').change(function(){
+                let value = $( 'input[name=transportation]:checked' ).val();
+                const transportationBlockNode = $('#transportationBlock')
+                if(parseInt(value) === 1){
+                    transportationBlockNode.removeClass('d-none')
+                }else{
+                    transportationBlockNode.addClass('d-none')
+                }
+            });
+
+            $('#confirmEnrollmentButton').on('click', function(){
+                $('#enrollmentForm').submit()
+            })
+
+            @if(old('route_id'))
+            routeNode.val({{old('route_id')}}).trigger('change')
+            populateBusStopSelect({{old('route_id')}})
+            setTimeout(function (){
+                busStopNode.val({{old('bus_stop_id')}}).trigger('change')
+            }, 1000)
+            @endif
+
+            function populateBusStopSelect(routeId){
+                $.ajax({
+                    url: `{{ route('busStop.index') }}/route/${routeId}`,
+                    type: 'GET',
+                    success: (data, textStatus, xhr) => {
+                        if(xhr.status === 200) {
+                            busStopNode.empty();
+                            busStopNode.select2({
+                                data: data.data
+                            });
+                        }
+                    }
+                })
+            }
+        });
+    </script>
+@endpush
