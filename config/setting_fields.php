@@ -33,4 +33,20 @@ return [
             ]
         ]
     ],
+    'modal' => [
+        'title' => 'General',
+        'desc' => 'All the general settings for application.',
+        'icon' => 'glyphicon glyphicon-sunglasses',
+        'elements' => [
+            [
+                'type' => 'string',
+                'data' => 'string',
+                'name' => 'modal',
+                'label' => 'App modal',
+                'rules' => 'nullable',
+                'class' => 'w-auto px-2',
+                'value' => '0'
+            ]
+        ]
+    ],
 ];

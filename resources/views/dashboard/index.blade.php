@@ -139,6 +139,15 @@
                 </div>
             </div>
             @endrole
-             @include('livewire.enrollment.components.popup')
+            @include('livewire.enrollment.components.popup')
     </section>
 @endsection
+@push('scripts')
+  @if(setting('modal'))
+    <script>  
+         $(document).ready(function() {
+            $('#bannerModal').modal('show');
+        })
+    </script>
+    @endif
+@endpush
