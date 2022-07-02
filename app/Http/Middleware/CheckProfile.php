@@ -30,12 +30,10 @@ class CheckProfile
             }
         }
 
-        if ( $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL || $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||
-            $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
-
-            if(!$student->previous_school && !$student->certificate_document){
+        if ( $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL){
+            if($student->previous_school && !$student->certificate_document){
                 return redirect()->route('user.profile.edit')
-                    ->withErrors([__('Adjunte el historial académico')]);
+                    ->withErrors([__('Adjunte el certificado académico oficial de estudios')]);
             }
         }
 
