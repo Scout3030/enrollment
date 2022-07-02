@@ -453,10 +453,37 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="row">                                    
+                                     <div class="card-header">
+                                        <h4 class="card-title">{{ __('Other specific subject of the previous block') }}</h4>
+                                    </div>
+                                         <div class="col-2 col-md-1">
+                                            <div class="card mb-4">
+                                                <ul class="list-group list-group-flush">
+                                                    @foreach($coursesfree as $course)                                                    
+                                                        @if($loop->last)
+                                                        <li class="list-group-item numerator">
+                                                        <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration+1 }}</span>
+                                                        </li>
+                                                        @endif   
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                         </div>
+                                         <div class="col-10 col-md-10">
+                                            <div class="mb-1 row">
+                                            <div class="col-sm-10">
+                                                <input type="text" id="free_info" class="form-control" name="free_info"
+                                                    value="{{ old('free_info') }}" />
+                                            </div>
+                                        </div>
+                                               
+                                         </div>
+                                    </div>                                
+                                </div>                            
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div>  
                 <!-- / basic custom options -->
             </div>
 

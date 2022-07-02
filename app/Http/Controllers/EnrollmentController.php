@@ -530,6 +530,7 @@ class EnrollmentController extends Controller
             'certificate_document' => $student->certificate_document,
             'agreement_document' => $student->agreement_document,
             'dni_document' => $student->dni_document,
+            'free_info'=>$request->free_info,
             'payment_document' => $student->payment_document,
             'academic_history' => $student->academic_history,
         ]);
