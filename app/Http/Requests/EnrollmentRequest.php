@@ -180,6 +180,7 @@ class EnrollmentRequest extends FormRequest
                 'elective_courses_free' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses_free.*.course_id' => 'exists:courses,id',
                 'first_tutor_signature'=>['nullable'],
+                'free_info'=>['nullable'],
                 'student_signature'=>['required'],
             ];
         }

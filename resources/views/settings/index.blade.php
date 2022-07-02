@@ -17,21 +17,23 @@
                     >
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="image">{{ __('Banner') }}</label>
                                     <input type="file" id="image" class="form-control" value="{{ setting('image') }}"
                                            name="img" placeholder="{{ __('Banner') }}">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="logo">{{ __('Logo') }}</label>
                                     <input type="file" id="logo" class="form-control" value="{{ setting('logo') }}"
                                            name="logos" placeholder="{{ __('Logo') }}">
                                 </div>
-                            </div>
-                            <div class="col-md-4">
+                            </div>                            
+                        </div>
+                        <div class="row"> 
+                        <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="image">{{ __('Show modal on startup') }}</label>
                                      <div class="form-check form-check-success form-switch ">
