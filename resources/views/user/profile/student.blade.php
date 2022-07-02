@@ -1,3 +1,22 @@
+<section id="card-style-variation">
+    <!-- Solid -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-warning">
+                <h6 class="card-header">Aviso</h6>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>
+                            Alumnado de nuevo ingreso que no proviene de centros adscritos debe presentar de manera presencial el Certificado Académico. No es necesario para alumnos de 1° de ESO de San Lázaro, Escuelas Blancas, Tudela Veguín, Veneranda Manzano y Villafría.
+                        </p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
 <section id="basic-horizontal-layouts">
     <form class="form form-horizontal" name="formProfile"  enctype="multipart/form-data" method="POST" action="{{ route('student.profile.update') }}">
         @csrf

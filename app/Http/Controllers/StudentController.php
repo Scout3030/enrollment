@@ -117,7 +117,7 @@ class StudentController extends Controller
         $student->authorization_extracurricular = $request->authorization_extracurricular;
         $student->authorization_data = $request->authorization_data;
         if( $request->authorization_tokapp == 1) {
-            $student->authorization_phone =  $request->authorization_phone;           
+            $student->authorization_phone =  $request->authorization_phone;
         }
         if($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
             $student->dni_document =  $request->dni_document;
@@ -209,6 +209,6 @@ class StudentController extends Controller
     public function updateGrade(GradeRequest $grade){
         $student = auth()->user()->student;
         $student->fill($grade->all())->save();
-       return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Grade saved successfully')]);
+       return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Data saved successfully')]);
     }
 }
