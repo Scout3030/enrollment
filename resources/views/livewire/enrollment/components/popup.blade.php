@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" align="center" style="height: 80vh">
-                <img class="img-fluid" src="{{ asset(setting('image')) }}" alt="" height="100%">
+                <img src="{{ asset(setting('image')) }}" style="height: 80vh">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Ok') }}</button>
