@@ -4,9 +4,9 @@
 
 ## {{ __('You can check the details in the next links') }}:
 <p>
-    <a href="{{ url('/files/'.$enrollment->hash_id)}}">{{ __('Student file') }}</a>
+    <a href="{{ url('/files/'.$enrollment->hash_id.'/student')}}">{{ __('Student file') }}</a>
 </p>
 <p>
-    <a href="{{ url('/files/'.$enrollment->hash_id.'/student')}}">{{ __('Enrollment file') }}</a>
+    <a href="{{ url('/files/'.$enrollment->hash_id)}}">{{ __('Enrollment file') }}</a>
 </p>
 @endcomponent
