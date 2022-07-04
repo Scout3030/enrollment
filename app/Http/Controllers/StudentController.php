@@ -207,9 +207,6 @@ class StudentController extends Controller
         $gradesCycle= Grade::whereHas('level', function ($query) {
             $query->whereId(Level::EDUCATIONAL_CYCLE);
         })->get();
-       // dd($gradesPmar);
-       // const FIRST_HIGH_SCHOOL = 5;
-    //const SECOND_HIGH_SCHOOL = 6;
         return view('student.grade-option',compact('gradesCycle','gradesEso','gradesPmar','gradesBachelor'));
     }
 
