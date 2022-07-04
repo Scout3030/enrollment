@@ -90,7 +90,7 @@
                 @foreach ( App\Models\Route::all() as $route )
                     <tr><td colspan="6">{{ $route->id }}. {{  $route->name  }}</td></tr>
                 @endforeach
-                <tr style="background-color:#d4e3e5;"><td colspan="4">BILINGUE INGLES: Materias marcadas con *</td><td colspan="2"> @if($enrollment->bilingual) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif</td></tr>
+                <tr style="background-color:#d4e3e5;"><td colspan="4">BILINGÜE INGLES: Materias marcadas con *</td><td colspan="2"> @if($enrollment->bilingual) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif</td></tr>
             @endif
             <tr><td colspan="2">REPITE CURSO: @if($enrollment->repeat_course) Si <input type="checkbox" name="si" checked> No <input name="no" type="checkbox"> @else Si <input name="si1" type="checkbox"> No <input type="checkbox" name="no1"  checked> @endif</td><td colspan="4">COLEGIO DE PROCEDENCIA: {{  $enrollment->previous_school }}</td></tr>
             @if ($enrollment->grade->id == App\Models\Grade::FIRST_MIDDLE_SCHOOL)
@@ -120,19 +120,19 @@
                         <tr><td colspan="6">{{ __($course->name) }}</td></tr>
                     @endif
                 @endforeach
-                <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">ESPECIFICAS (Obligatorias)</td></tr>
+                <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">ESPECÍFICAS (Obligatorias)</td></tr>
                 @foreach ( $enrollment->courses as $course )
                     @if(App\Models\CourseType::SPECIFIC == $course->course_type_id)
                         <tr><td colspan="6">{{ __($course->name) }}</td></tr>
                     @endif
                 @endforeach
-                <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">ESPECIFICA (Seleccionada)</td></tr>
+                <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">ESPECÍFICA (Seleccionada)</td></tr>
                 @foreach ( $enrollment->courses as $course )
                     @if(App\Models\CourseType::SPECIFIC_FREE_CONFIGURATION == $course->course_type_id)
                         <tr><td colspan="6">{{ __($course->name) }}</td></tr>
                     @endif
                 @endforeach
-                <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">LIBRE CONFIGURACION (Númeradas por orden de preferencia)</td></tr>
+                <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">LIBRE CONFIGURACIÓN (Númeradas por orden de preferencia)</td></tr>
                 @foreach ( $enrollment->courses as $course )
                     @if(App\Models\CourseType::FREE_CONFIGURATION == $course->course_type_id)
                         <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>
