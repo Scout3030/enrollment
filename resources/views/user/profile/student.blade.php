@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
                         <p>
-                            Alumnado de nuevo ingreso que no proviene de centros adscritos debe presentar de manera presencial el Certificado Académico. No es necesario para alumnos de 1° de ESO de San Lázaro, Escuelas Blancas, Tudela Veguín, Veneranda Manzano y Villafría.
+                            Alumnado de nuevo ingreso que no proviene de centros adscritos debe presentar de manera presencial el Historial Académico. No es necesario para alumnos de 1° de ESO de San Lázaro, Escuelas Blancas, Tudela Veguín, Veneranda Manzano y Villafría.
                         </p>
                     </blockquote>
                 </div>
