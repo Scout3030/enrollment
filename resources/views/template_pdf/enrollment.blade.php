@@ -556,7 +556,7 @@
             @endif
 
             <tr>
-                <td colspan="6">(A propuesta del equipo docente del centro de Primaria y/o del IES se puede cursar en este bloque <b> REFUERZO EDUCATIVO DE LAS COMPETENCIAS MATEMÁTICAS Y/O LINGUISTICA)</b></td>
+                <td colspan="6">(A propuesta del equipo docente del centro de Primaria y/o del IES se puede cursar en este bloque &nbsp &nbsp<b>REFUERZO EDUCATIVO DE LAS COMPETENCIAS MATEMÁTICAS Y/O LINGÜÍSTICA)</b></td>
             </tr>
             <tr>
                 <td colspan="3">Fecha:  {{ $enrollment->created_at->format('d-m-Y') }}</td>
