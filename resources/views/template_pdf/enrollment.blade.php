@@ -236,13 +236,16 @@
                         <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>
                     @endif
                 @endforeach
-                <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">CURSOS LIBRES CONFIGURARCION ITINERARIOS (Númeradas por orden de preferencia)</td></tr>
-                @foreach ( $enrollment->courses as $course )
-                    @if(App\Models\CourseType::FREE_CONFIGURATION_ITINERARY == $course->course_type_id)
-                        <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>
+                <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">CURSOS LIBRE CONFIGURACION ITINERARIOS (Númeradas por orden de preferencia)</td></tr>
+                @foreach ( $enrollment->courses->where('course_type_id', App\Models\CourseType::FREE_CONFIGURATION_ITINERARY) as $course )
+                    @if ($enrollment->free_info_order == ($loop->iteration))
+                    <tr><td colspan="6">{{ $enrollment->free_info_order }}. {{ $enrollment->free_info ? __($enrollment->free_info) : '---' }} <b>(Materia específica del bloque anterior) </b></td></tr>
                     @endif
+                    <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>
                 @endforeach
-
+                @if ($enrollment->courses->where('course_type_id', App\Models\CourseType::FREE_CONFIGURATION_ITINERARY)->count() + 1 == $enrollment->free_info_order)
+                <tr><td colspan="6">{{ $enrollment->free_info_order }}. {{ $enrollment->free_info ? __($enrollment->free_info) : '---' }} <b>(Materia específica del bloque anterior) </b></td></tr>
+                @endif
             @endif
             @if ($enrollment->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY ||
                 $enrollment->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL_GENERAL)
@@ -553,7 +556,7 @@
             @endif
 
             <tr>
-                <td colspan="6">(A propuesta del equipo docente del centro de Primaria y/o del IES se puede cursar en este bloque <b> REFUERZO EDUCATIVO DE LAS COMPETENCIAS MATEMÁTICAS Y/O LINGUISTICA)</b></td>
+                <td colspan="6">(A propuesta del equipo docente del centro de Primaria y/o del IES se puede cursar en este bloque &nbsp &nbsp<b>REFUERZO EDUCATIVO DE LAS COMPETENCIAS MATEMÁTICAS Y/O LINGÜÍSTICA)</b></td>
             </tr>
             <tr>
                 <td colspan="3">Fecha:  {{ $enrollment->created_at->format('d-m-Y') }}</td>
