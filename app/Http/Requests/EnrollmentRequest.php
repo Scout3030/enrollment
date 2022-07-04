@@ -117,8 +117,15 @@ class EnrollmentRequest extends FormRequest
             $electiveCoursesFree = [];
             foreach($this->elective_courses_free as $key => $electiveCourseFree){
                 $electiveCourseFree = json_decode($electiveCourseFree);
-                $electiveCoursesFree[$key]['course_id'] = $electiveCourseFree->id;
-                $electiveCoursesFree[$key]['order'] = $electiveCourseFree->order;
+                if($electiveCourseFree->id == "0"){
+                    $this->merge([
+                        'free_info_order' => $electiveCourseFree->order,
+                    ]);
+                } else {
+                    $electiveCoursesFree[$key]['course_id'] = $electiveCourseFree->id;
+                    $electiveCoursesFree[$key]['order'] = $electiveCourseFree->order;
+                }
+
             }
 
             $this->merge([
@@ -177,7 +184,7 @@ class EnrollmentRequest extends FormRequest
                 'common_courses' =>['required'],
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
-                'elective_courses_free' => ['required', 'array', new ValidOrderRule()],
+                'elective_courses_free' => ['required', 'array'],
                 'elective_courses_free.*.course_id' => 'exists:courses,id',
                 'first_tutor_signature'=>['nullable'],
                 'free_info'=>['nullable'],
