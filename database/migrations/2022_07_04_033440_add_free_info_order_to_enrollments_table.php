@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFreeInfoToEnrollmentsTable extends Migration
+class AddFreeInfoOrderToEnrollmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddFreeInfoToEnrollmentsTable extends Migration
     public function up()
     {
         Schema::table('enrollments', function (Blueprint $table) {
-            $table->string('free_info')->nullable()->after('academic_history');
+            $table->string('free_info_order')->nullable()->after('free_info');
         });
     }
 
@@ -26,7 +26,7 @@ class AddFreeInfoToEnrollmentsTable extends Migration
     public function down()
     {
         Schema::table('enrollments', function (Blueprint $table) {
-            $table->dropColumn('free_info');
+            $table->dropColumn('free_info_order');
         });
     }
 }
