@@ -65,7 +65,8 @@ class Enrollment extends Model
         'dni_document',
         'payment_document',
         'academic_history',
-        'free_info'
+        'free_info',
+        'free_info_order',
     ];
 
     protected $casts = [

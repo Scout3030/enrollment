@@ -532,6 +532,7 @@ class EnrollmentController extends Controller
             'agreement_document' => $student->agreement_document,
             'dni_document' => $student->dni_document,
             'free_info'=>$request->free_info,
+            'free_info_order'=>$request->free_info_order,
             'payment_document' => $student->payment_document,
             'academic_history' => $student->academic_history,
         ]);
@@ -804,7 +805,7 @@ class EnrollmentController extends Controller
         }catch (\Exception  $exception) {
             Log::debug('Could not send mail to '.$student->user->email);
         }
-        
+
         return redirect()->route('dashboard.index')->with('message', ['type' => 'success', 'description' => __('Registration process successfully finished')]);
     }
 

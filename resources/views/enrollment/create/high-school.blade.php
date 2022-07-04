@@ -399,6 +399,9 @@
                                                     <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
                                                 </li>
                                             @endforeach
+                                            <li class="list-group-item numerator">
+                                                <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $coursesfree->count() + 1 }}</span>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -427,6 +430,30 @@
                                                             </div>
                                                         </div>
                                                     @endif
+                                                    @if(json_decode($order)->id == "0")
+                                                    @once
+                                                    <div class="row6" order="{{ json_decode($order)->order }}" course_id="0">
+                                                        <label for="">{{ __('Other specific subject of the previous block') }}</label>
+                                                        <div class="col-md-12">
+                                                            <input
+                                                                type="text"
+                                                                id="free_info"
+                                                                class="form-control"
+                                                                name="free_info"
+                                                                value="{{ old('free_info') }}"
+                                                                placeholder="{{ __('Type...') }}"
+                                                                autocomplete="off"
+                                                            />
+                                                            <input
+                                                                id="elective_course_free_0"
+                                                                type="hidden"
+                                                                name="elective_courses_free[]"
+                                                                value='{"id":"0", "order":"{{ $coursesfree->count() + 1 }}"}'
+                                                            >
+                                                        </div>
+                                                    </div>
+                                                    @endonce
+                                                    @endif
                                                 @endforeach
                                             @endforeach
                                         @else
@@ -450,40 +477,32 @@
                                                 </div>
                                             </div>
                                             @endforeach
+                                            <div class="row6" order="{{ $coursesfree->count() + 1 }}" course_id="0">
+                                                <label for="">{{ __('Other specific subject of the previous block') }}</label>
+                                                <div class="col-md-12">
+                                                    <input
+                                                        type="text"
+                                                        id="free_info"
+                                                        class="form-control"
+                                                        name="free_info"
+                                                        value="{{ old('free_info') }}"
+                                                        placeholder="{{ __('Type...') }}"
+                                                    />
+                                                    <input
+                                                        id="elective_course_free_0"
+                                                        type="hidden"
+                                                        name="elective_courses_free[]"
+                                                        value='{"id":"0", "order":"{{ $coursesfree->count() + 1 }}"}'
+                                                    >
+                                                </div>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="row">                                    
-                                     <div class="card-header">
-                                        <h4 class="card-title">{{ __('Other specific subject of the previous block') }}</h4>
-                                    </div>
-                                         <div class="col-2 col-md-1">
-                                            <div class="card mb-4">
-                                                <ul class="list-group list-group-flush">
-                                                    @foreach($coursesfree as $course)                                                    
-                                                        @if($loop->last)
-                                                        <li class="list-group-item numerator">
-                                                        <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration+1 }}</span>
-                                                        </li>
-                                                        @endif   
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                         </div>
-                                         <div class="col-10 col-md-10">
-                                            <div class="mb-1 row">
-                                            <div class="col-sm-10">
-                                                <input type="text" id="free_info" class="form-control" name="free_info"
-                                                    value="{{ old('free_info') }}" />
-                                            </div>
-                                        </div>
-                                               
-                                         </div>
-                                    </div>                                
-                                </div>                            
                             </div>
                         </div>
-                    </div>  
+                    </div>
+                </div>
                 <!-- / basic custom options -->
             </div>
 
