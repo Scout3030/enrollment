@@ -237,14 +237,11 @@
                     @endif
                 @endforeach
                 <tr align="center"  style="background-color:#d4e3e5;"><td colspan="6">CURSOS LIBRE CONFIGURACION ITINERARIOS (Númeradas por orden de preferencia)</td></tr>
-                @foreach ( $enrollment->courses as $course )
-
-                    @if(App\Models\CourseType::FREE_CONFIGURATION_ITINERARY == $course->course_type_id)
-                        <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>
-                        @if ($enrollment->free_info && $enrollment->free_info_order == $course->pivot->order+1)
-                        <tr><td colspan="6">{{ $enrollment->free_info_order }}. {{ __($enrollment->free_info) }} <b>(Materia específica del bloque anterior) </b></td></tr>
-                        @endif
+                @foreach ( $enrollment->courses->where('course_type_id', App\Models\CourseType::FREE_CONFIGURATION_ITINERARY) as $course )
+                    @if ($enrollment->free_info_order == ($loop->iteration))
+                    <tr><td colspan="6">{{ $enrollment->free_info_order }}. {{ $enrollment->free_info ? __($enrollment->free_info) : '---' }} <b>(Materia específica del bloque anterior) </b></td></tr>
                     @endif
+                    <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>
                 @endforeach
 
             @endif
