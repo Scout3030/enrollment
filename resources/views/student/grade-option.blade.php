@@ -69,7 +69,7 @@
                                         />
                                         <label class="custom-option-item p-1" for="grade_id_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                <span class="fw-bolder">{{ __($course->level->name).' '.$course->name }}</span>
+                                                <span class="fw-bolder">{{$course->name }}</span>
                                             </span>
                                         </label>
                                     </div>

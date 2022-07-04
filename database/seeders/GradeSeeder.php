@@ -21,9 +21,9 @@ class GradeSeeder extends Seeder
             ['name' => 'Third', 'level_id' => Level::MIDDLE_SCHOOL],
             ['name' => 'Fourth', 'level_id' => Level::MIDDLE_SCHOOL],
 
-            ['name' => 'First', 'level_id' => Level::HIGH_SCHOOL],
-            ['name' => 'Second', 'level_id' => Level::HIGH_SCHOOL],
-            ['name' => 'Third', 'level_id' => Level::HIGH_SCHOOL],
+            ['name' => 'Primero ESO PMAR', 'level_id' => Level::HIGH_SCHOOL],
+            ['name' => 'Segundo ESO PMAR', 'level_id' => Level::HIGH_SCHOOL],
+            ['name' => 'Tercero ESO PMAR', 'level_id' => Level::HIGH_SCHOOL],
 
             ['name' => '1° Ciencias y Tecnología', 'level_id' => Level::BACHELOR],
             ['name' => '1° Humanidades y Ciencias Sociales', 'level_id' => Level::BACHELOR],
