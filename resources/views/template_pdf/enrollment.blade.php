@@ -243,7 +243,9 @@
                     @endif
                     <tr><td colspan="6">{{ $course->pivot->order }}. {{ __($course->name) }}</td></tr>
                 @endforeach
-
+                @if ($enrollment->courses->where('course_type_id', App\Models\CourseType::FREE_CONFIGURATION_ITINERARY)->count() + 1 == $enrollment->free_info_order)
+                <tr><td colspan="6">{{ $enrollment->free_info_order }}. {{ $enrollment->free_info ? __($enrollment->free_info) : '---' }} <b>(Materia específica del bloque anterior) </b></td></tr>
+                @endif
             @endif
             @if ($enrollment->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY ||
                 $enrollment->grade->id == App\Models\Grade::FIRST_HIGH_SCHOOL_GENERAL)
