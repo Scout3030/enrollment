@@ -22,7 +22,8 @@ class CheckProfile
     {
         $student = auth()->user()->student;
 
-        if ( $student->grade_id == Grade::FIRST_MIDDLE_SCHOOL ||  $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL ||
+        if ($student->grade_id == Grade::SECOND_HIGH_SCHOOL || $student->grade_id == Grade::FIRST_MIDDLE_SCHOOL ||
+            $student->grade_id == Grade::THIRD_HIGH_SCHOOL || $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL ||
             $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||  $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
             if($student->parents_condition == Student::SEPARATED && !$student->agreement_document){
                 return redirect()->route('user.profile.edit')
@@ -30,7 +31,8 @@ class CheckProfile
             }
         }
 
-        if ($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
+        if ( $student->grade_id == Grade::SECOND_HIGH_SCHOOL || $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||
+             $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL || $student->grade_id == Grade::THIRD_HIGH_SCHOOL){
             if(!$student->payment_document){
                 return redirect()->route('user.profile.edit')
                     ->withErrors([__('Es necesario adjuntar el certificado de pago')]);
