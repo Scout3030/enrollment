@@ -30,13 +30,6 @@ class CheckProfile
             }
         }
 
-        if ( $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL){
-            if($student->previous_school && !$student->certificate_document){
-                return redirect()->route('user.profile.edit')
-                    ->withErrors([__('Adjunte el certificado académico oficial de estudios')]);
-            }
-        }
-
         if ($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
             if(!$student->payment_document){
                 return redirect()->route('user.profile.edit')
@@ -48,13 +41,6 @@ class CheckProfile
             if(!$student->payment_document){
                 return redirect()->route('user.profile.edit')
                     ->withErrors([__('Adjunte el certificado de pago')]);
-            }
-
-            if(!$student->academic_history){
-                if(!in_array($student->grade->id, [Grade::SECOND_HIGH_SCHOOL_SCIENCE, Grade::SECOND_HIGH_SCHOOL_SCIENCE])){
-                    return redirect()->route('user.profile.edit')
-                        ->withErrors([__('Adjunte el historial académico')]);
-                }
             }
         }
 

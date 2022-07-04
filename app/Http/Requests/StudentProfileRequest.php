@@ -85,9 +85,6 @@ class StudentProfileRequest extends FormRequest
         if($student->grade_id == Grade::SECOND_MIDDLE_SCHOOL) {
             $moreRules = [
                 'parents_condition' => 'nullable',
-                'certificate_document'=>[Rule::requiredIf(function () {
-                    return $this->previous_school;
-                })],
                 'agreement_document'=>[Rule::requiredIf(function () {
                     return $this->parents_condition == \App\Models\Student::SEPARATED;
                 })],
@@ -112,12 +109,6 @@ class StudentProfileRequest extends FormRequest
                     return $this->parents_condition == \App\Models\Student::SEPARATED;
                 })],
             ];
-
-            if(!in_array($student->grade->id, [Grade::SECOND_HIGH_SCHOOL_SCIENCE, Grade::SECOND_HIGH_SCHOOL_SCIENCE])){
-                $documentRules = [
-                    'academic_history' => 'required',
-                ];
-            }
         }
 
         if($student->grade->level->id == Level::EDUCATIONAL_CYCLE) {
