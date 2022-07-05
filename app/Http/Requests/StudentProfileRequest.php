@@ -101,6 +101,16 @@ class StudentProfileRequest extends FormRequest
             ];
         }
 
+        if($student->grade_id == Grade::SECOND_HIGH_SCHOOL || $student->grade_id == Grade::THIRD_HIGH_SCHOOL) {
+            $moreRules = [
+                'parents_condition' => 'nullable',
+                'payment_document' => 'required',
+                'agreement_document'=>[Rule::requiredIf(function () {
+                    return $this->parents_condition == \App\Models\Student::SEPARATED;
+                })],
+            ];
+        }
+
         if($student->grade->level->id == Level::BACHELOR) {
             $moreRules = [
                 'parents_condition' => 'nullable',

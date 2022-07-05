@@ -508,6 +508,7 @@ class EnrollmentController extends Controller
        // dd($request->all(),$request->elective_courses_free);
         $student = auth()->user()->student;
         $grade = $student->grade;
+       // dd($student->grade_id);
         $student->fill([
             'grade_id' => $grade->id,
             'bus_stop_id' => $request->transportation == 1 ? $request->bus_stop_id : null,
@@ -551,7 +552,7 @@ class EnrollmentController extends Controller
             $enrollment->courses()->attach($request->common_optional_course);
             $enrollment->courses()->attach($request->elective_courses);
         }
-
+           
         if($student->grade_id == Grade::SECOND_MIDDLE_SCHOOL || $student->grade_id == Grade::SECOND_HIGH_SCHOOL) {
             $commonCoursesCore = Course::whereGradeId($student->grade_id)
                 ->whereCourseTypeId(CourseType::CORE)
