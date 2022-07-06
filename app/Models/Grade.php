@@ -67,4 +67,9 @@ class Grade extends Model
     {
         return $this->hasMany(Course::class);
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', ACTIVE);
+    }
 }
