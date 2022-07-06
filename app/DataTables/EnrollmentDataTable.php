@@ -7,6 +7,7 @@ namespace App\DataTables;
 // https://yajrabox.com/docs/laravel-datatables/master/order-column
 
 use App\Models\Enrollment;
+use App\Models\Level;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -61,6 +62,11 @@ class EnrollmentDataTable extends DataTable
      */
     public function html()
     {
+        $levelHtml = '';
+        foreach (Level::get() as $level){
+            $levelHtml .= '<option value="'.$level->id.'" class="text-capitalize">'.$level->custom_name.'</option>';
+        }
+
         return $this->builder()
             ->parameters([
                 'paging' => true,
@@ -73,6 +79,35 @@ class EnrollmentDataTable extends DataTable
             ->setTableId('course-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
+            ->initComplete('function() {
+                this.api().columns(2).every((function() {
+                    var e = this,
+                        t = ($(\'<label class="form-label" for="level_id">'.__('Level').'</label>\').appendTo(".student_level"),
+                        $(\'<select id="level_id" class="form-select text-capitalize mb-md-0 mb-2 select2"><option value=""> '.__('Select level').' </option></select>\')
+                        .appendTo(".student_level"));
+
+                    t.append(\''.$levelHtml.'\');
+
+                })), this.api().columns(3).every((function() {
+                    var e = this,
+                        t = ($(\'<label class="form-label" for="UserPlan">Plan</label>\').appendTo(".user_plan"), $(\'<select id="UserPlan" class="form-select text-capitalize mb-md-0 mb-2"><option value=""> Select Plan </option></select>\').appendTo(".user_plan").on("change", (function() {
+                            var t = $.fn.dataTable.util.escapeRegex($(this).val());
+                            e.search(t ? "^" + t + "$" : "", !0, !1).draw()
+                        })));
+                    e.data().unique().sort().each((function(e, a) {
+                        t.append(\'<option value="\' + e + \'" class="text-capitalize">\' + e + "</option>")
+                    }))
+                })), this.api().columns(5).every((function() {
+                    var e = this,
+                        t = ($(\'<label class="form-label" for="FilterTransaction">Status</label>\').appendTo(".user_status"), $(\'<select id="FilterTransaction" class="form-select text-capitalize mb-md-0 mb-2xx"><option value=""> Select Status </option></select>\').appendTo(".user_status").on("change", (function() {
+                            var t = $.fn.dataTable.util.escapeRegex($(this).val());
+                            e.search(t ? "^" + t + "$" : "", !0, !1).draw()
+                        })));
+                    e.data().unique().sort().each((function(e, a) {
+                        t.append(\'<option value="\' + l[e].title + \'" class="text-capitalize">\' + l[e].title + "</option>")
+                    }))
+                }))
+            }')
             ->dom('<"card-header border-bottom p-1"<"head-label">
                     <"dt-action-buttons text-right"B>>
                     <"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l>

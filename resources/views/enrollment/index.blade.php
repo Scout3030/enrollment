@@ -19,7 +19,7 @@
             <div class="card-body border-bottom">
                 <h4 class="card-title">{{ __('Search & Filter')}} </h4>
                 <div class="row">
-                    <div class="col-md-4 user_role"></div>
+                    <div class="col-md-4 student_level"></div>
                     <div class="col-md-4 user_plan"></div>
                     <div class="col-md-4 user_status"></div>
                 </div>
@@ -51,6 +51,8 @@
 
 @push('scripts')
     <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
+    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('js/scripts/forms/form-select2.js') }}"></script>
     {!! $dataTable->scripts() !!}
 @endpush
 
