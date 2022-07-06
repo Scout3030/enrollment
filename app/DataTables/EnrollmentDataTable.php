@@ -24,15 +24,35 @@ class EnrollmentDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->filterColumn('student', function($query, $keyword) {
-                $query->whereHas('student', function($q) use ($keyword){
-                    $q->whereHas('user', function($q) use ($keyword){
-                        $q->where('name', "LIKE", "%".$keyword."%");
-                    })
-                        ->orWhere('middle_name', "LIKE", "%".$keyword."%")
-                        ->orWhere('paternal_surname', "LIKE", "%".$keyword."%")
-                        ->orWhere('maternal_surname', "LIKE", "%".$keyword."%");
-                });
+            ->filter(function ($query) {
+                $keyword = request()->search['value'];
+                if (request()->filled('levels')) {
+                    if (request()->filled('grades')) {
+                        $grades = request()->input('grades');
+                        $query = $query->whereHas('grade', function($q) use ($grades){
+                            $q->whereIn('id', $grades);
+                        });
+                    } else {
+                        $levels = request()->input('levels');
+                        $query = $query->whereHas('grade', function($q) use ($levels){
+                            $q->whereHas('level', function($q) use ($levels){
+                                $q->whereIn('id', $levels);
+                            });
+                        });
+                    }
+                }
+                if ($keyword) {
+                    $query = $query->where(function ($q) use ($keyword) {
+                        $q->whereHas('student', function($q) use ($keyword){
+                            $q->whereHas('user', function($q) use ($keyword){
+                                $q->where('name', "LIKE", "%".$keyword."%");
+                            })
+                                ->orWhere('middle_name', "LIKE", "%".$keyword."%")
+                                ->orWhere('paternal_surname', "LIKE", "%".$keyword."%")
+                                ->orWhere('maternal_surname', "LIKE", "%".$keyword."%");
+                        });
+                    });
+                }
             })
             ->addColumn('student', function (Enrollment $enrollment){
                 return $enrollment->student->user->full_name;
@@ -62,11 +82,6 @@ class EnrollmentDataTable extends DataTable
      */
     public function html()
     {
-        $levelHtml = '';
-        foreach (Level::get() as $level){
-            $levelHtml .= '<option value="'.$level->id.'" class="text-capitalize">'.$level->custom_name.'</option>';
-        }
-
         return $this->builder()
             ->parameters([
                 'paging' => true,
@@ -76,38 +91,9 @@ class EnrollmentDataTable extends DataTable
             ->language([
                 'url' => '//cdn.datatables.net/plug-ins/1.10.16/i18n/'.config('languages')[session('applocale')][0].'.json',
             ])
-            ->setTableId('course-table')
+            ->setTableId('enrollmentDatatable')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->initComplete('function() {
-                this.api().columns(2).every((function() {
-                    var e = this,
-                        t = ($(\'<label class="form-label" for="level_id">'.__('Level').'</label>\').appendTo(".student_level"),
-                        $(\'<select id="level_id" class="form-select text-capitalize mb-md-0 mb-2 select2"><option value=""> '.__('Select level').' </option></select>\')
-                        .appendTo(".student_level"));
-
-                    t.append(\''.$levelHtml.'\');
-
-                })), this.api().columns(3).every((function() {
-                    var e = this,
-                        t = ($(\'<label class="form-label" for="UserPlan">Plan</label>\').appendTo(".user_plan"), $(\'<select id="UserPlan" class="form-select text-capitalize mb-md-0 mb-2"><option value=""> Select Plan </option></select>\').appendTo(".user_plan").on("change", (function() {
-                            var t = $.fn.dataTable.util.escapeRegex($(this).val());
-                            e.search(t ? "^" + t + "$" : "", !0, !1).draw()
-                        })));
-                    e.data().unique().sort().each((function(e, a) {
-                        t.append(\'<option value="\' + e + \'" class="text-capitalize">\' + e + "</option>")
-                    }))
-                })), this.api().columns(5).every((function() {
-                    var e = this,
-                        t = ($(\'<label class="form-label" for="FilterTransaction">Status</label>\').appendTo(".user_status"), $(\'<select id="FilterTransaction" class="form-select text-capitalize mb-md-0 mb-2xx"><option value=""> Select Status </option></select>\').appendTo(".user_status").on("change", (function() {
-                            var t = $.fn.dataTable.util.escapeRegex($(this).val());
-                            e.search(t ? "^" + t + "$" : "", !0, !1).draw()
-                        })));
-                    e.data().unique().sort().each((function(e, a) {
-                        t.append(\'<option value="\' + l[e].title + \'" class="text-capitalize">\' + l[e].title + "</option>")
-                    }))
-                }))
-            }')
             ->dom('<"card-header border-bottom p-1"<"head-label">
                     <"dt-action-buttons text-right"B>>
                     <"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l>
@@ -115,6 +101,12 @@ class EnrollmentDataTable extends DataTable
                     <"col-sm-12 col-md-6"p>
                     >')
             ->orderBy(0)
+            ->ajax([
+                'data' => 'function(d) {
+                            d.levels = $("#levels").val();
+                            d.grades = $("#grades").val();
+                        }',
+            ])
             ->buttons(
                 Button::make([])
                     ->extend('collection')
