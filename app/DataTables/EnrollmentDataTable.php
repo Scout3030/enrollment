@@ -51,7 +51,7 @@ class EnrollmentDataTable extends DataTable
                         });
                     }
                 }
-                
+
                 if ($keyword) {
                     $query = $query->where(function ($q) use ($keyword) {
                         $q->whereHas('student', function($q) use ($keyword){
