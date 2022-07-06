@@ -8,6 +8,7 @@ namespace App\DataTables;
 
 use App\Models\Enrollment;
 use App\Models\Level;
+use Carbon\Carbon;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -26,6 +27,15 @@ class EnrollmentDataTable extends DataTable
             ->eloquent($query)
             ->filter(function ($query) {
                 $keyword = request()->search['value'];
+
+                if (request()->filled('dates')) {
+                    $dates = request()->input('dates');
+                    $from = Carbon::parse($dates[0]);
+                    $to = Carbon::parse($dates[1])->addDay();
+                    $query = $query->where('created_at', '>=', $from)
+                        ->where('created_at', '<', $to);
+                }
+
                 if (request()->filled('levels')) {
                     if (request()->filled('grades')) {
                         $grades = request()->input('grades');
@@ -41,6 +51,7 @@ class EnrollmentDataTable extends DataTable
                         });
                     }
                 }
+                
                 if ($keyword) {
                     $query = $query->where(function ($q) use ($keyword) {
                         $q->whereHas('student', function($q) use ($keyword){
@@ -105,6 +116,7 @@ class EnrollmentDataTable extends DataTable
                 'data' => 'function(d) {
                             d.levels = $("#levels").val();
                             d.grades = $("#grades").val();
+                            d.dates = dates;
                         }',
             ])
             ->buttons(
@@ -159,11 +171,11 @@ class EnrollmentDataTable extends DataTable
                 ->orderable(true)
                 ->footer(__('Grade/Level')),
             Column::make('created_at')
-                ->title(__('Created'))
+                ->title(__('Registered'))
                 ->searchable(true)
                 ->orderable(true)
                 ->addClass('text-center')
-                ->footer(__('Created')),
+                ->footer(__('Registered')),
             Column::computed('action')
                 ->title(__('Actions'))
                 ->exportable(false)

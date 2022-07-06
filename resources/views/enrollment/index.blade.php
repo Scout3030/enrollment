@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/responsive.bootstrap5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/buttons.bootstrap5.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/css/tables/datatable/rowGroup.bootstrap5.min.css') }}">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/pickers/flatpickr/flatpickr.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/forms/pickers/form-flat-pickr.min.css')}}">
 @endpush
 
 @section('title')
@@ -33,13 +37,14 @@
                         </select>
                     </div>
                     <div class="col-md-4 user_status">
-                        <div class="col-md-6 mb-1">
-                            <label class="form-label" for="fp-range">{{ __('Dates') }}</label>
+                        <div class="mb-1">
+                            <label class="form-label" for="dates">{{ __('Dates') }}</label>
                             <input
                                 type="text"
-                                id="fp-range"
-                                class="form-control flatpickr-range"
-                                placeholder="YYYY-MM-DD to YYYY-MM-DD"
+                                id="dates"
+                                class="form-control"
+                                placeholder="YYYY-MM-DD {{__('to')}} YYYY-MM-DD"
+                                value=""
                             />
                         </div>
                     </div>
@@ -68,26 +73,51 @@
     <script src="{{ asset('vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('vendors/js/forms/cleave/cleave.min.js') }}"></script>
     <script src="{{ asset('vendors/js/forms/cleave/addons/cleave-phone.us.js') }}"></script>
-
-    <!-- BEGIN: Page Vendor JS-->
-{{--    <script src="{{ asset('vendors/js/pickers/pickadate/picker.js')}}"></script>--}}
-{{--    <script src="{{ asset('vendors/js/pickers/pickadate/picker.date.js')}}"></script>--}}
-{{--    <script src="{{ asset('vendors/js/pickers/pickadate/picker.time.js')}}"></script>--}}
-{{--    <script src="{{ asset('vendors/js/pickers/pickadate/legacy.js')}}"></script>--}}
-{{--    <script src="{{ asset('vendors/js/pickers/flatpickr/flatpickr.min.js')}}"></script>--}}
+    {{--range picker--}}
+    <script src="{{ asset('vendors/js/pickers/flatpickr/flatpickr.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
 @endpush
 
 @push('scripts')
+    <script>
+        let dates = null;
+    </script>
     <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
     <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script src="{{ asset('js/scripts/forms/form-select2.js') }}"></script>
-    <script src="{{ asset('js/scripts/forms/pickers/form-pickers.js')}}"></script>
     {!! $dataTable->scripts() !!}
     <script>
         $(document).ready(function() {
             const enrollmentDatatable = $('#enrollmentDatatable').DataTable();
             const levelsNode = $('#levels');
             const gradesNode = $('#grades');
+
+            $("#dates").flatpickr(
+                {
+                    mode: 'range',
+                    dateFormat: 'd-m-Y',
+                    enableTime: false,
+                    locale: {
+                        firstDayOfWeek: 1,
+                        weekdays: {
+                            shorthand: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+                            longhand: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                        },
+                        months: {
+                            shorthand: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Оct', 'Nov', 'Dic'],
+                            longhand: ['Enero', 'Febreo', 'Мarzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                        },
+                    },
+                    onChange: function(selectedDates, dateStr, instance) {
+                        if(selectedDates.length === 2){
+                            const from = moment(selectedDates[0]).format('YYYY-MM-DD');
+                            const to = moment(selectedDates[1]).format('YYYY-MM-DD');
+                            dates = [from, to];
+                            enrollmentDatatable.draw();
+                        }
+                    }
+                }
+            );
 
             gradesNode.select2({
                 placeholder: "{{ __('Select only one level') }}",
