@@ -6,8 +6,8 @@ namespace App\DataTables;
 // https://yajrabox.com/docs/laravel-datatables/master/filter-column
 // https://yajrabox.com/docs/laravel-datatables/master/order-column
 
+use App\Exports\EnrollmentExport;
 use App\Models\Enrollment;
-use App\Models\Level;
 use Carbon\Carbon;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -15,6 +15,7 @@ use Yajra\DataTables\Services\DataTable;
 
 class EnrollmentDataTable extends DataTable
 {
+    protected $exportClass = EnrollmentExport::class;
     /**
      * Build DataTable class.
      *
