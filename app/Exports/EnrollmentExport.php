@@ -74,6 +74,7 @@ class EnrollmentExport implements FromCollection, WithMapping, WithHeadings
             __('DNI'),
             __('Level'),
             __('Grade'),
+            __('Transportation'),
           //   THIRD_HIGH_SCHOOL
             __('Ámbitos comunes'),
           //  FIRST_MIDDLE_SCHOOL - THIRD_MIDDLE_SCHOOL
@@ -115,9 +116,12 @@ class EnrollmentExport implements FromCollection, WithMapping, WithHeadings
         $list1 = '';$list2 = '';$list3 = '';$list4 = '';$list5 = '';$list6 = '';$list7 = '';$list8 = '';$list8 = '';$list9 = '';
         $list10 = '';$list11 = '';$list12 = '';$list13 = '';$list14 = '';$list15 = '';$list16 = '';$list17 = '';$list18 = '';
         $list19 = '';$list20 = '';$list21 = '';$list22 = '';$list23 = '';$list24 = '';$list25 = '';$list26 = '';
-       
+       if($row['bus_stop_id']){
+        $list21 =$row['student']['busStop']['route']['name']."\r\n".'Parada: '.$row['student']['busStop']['name'];
+       }else{
+        $list21 = '-----------';
+       }
         foreach ($row['courses'] as $course){
-            
              if ($course['grade_id'] == Grade::FIRST_MIDDLE_SCHOOL || $course['grade_id'] == Grade::THIRD_MIDDLE_SCHOOL
                  || $course['grade_id'] == Grade::THIRD_HIGH_SCHOOL){
                  if(CourseType::COMMON == $course['course_type_id']){
@@ -306,6 +310,7 @@ class EnrollmentExport implements FromCollection, WithMapping, WithHeadings
             $row['student']['dni'],
             $row['grade']['level']['custom_name'],
             $row['grade']['name'],
+            $list21,
             $list8,
             $list1,
             $list2,
@@ -325,7 +330,7 @@ class EnrollmentExport implements FromCollection, WithMapping, WithHeadings
             $list17,
             $list18."\r\n".$list19,
             $list20,
-            $list21,
+           
             $list22."\r\n".$list23,
             $list24."\r\n".$list25."\r\n".$list26,
                  
