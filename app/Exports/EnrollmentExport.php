@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Course;
 use App\Models\Enrollment;
 use App\Models\Grade;
 use App\Models\CourseType;
@@ -94,7 +95,16 @@ class EnrollmentExport implements FromCollection, WithMapping, WithHeadings
             __('TRAINING MODULES IN WORK CENTERS'),
         // FIRST_EDUCATIONAL_CYCLE_MEDIUM - SECOND_EDUCATIONAL_CYCLE_MEDIUM
            __('courses required'),
-
+           // SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES
+           __('Cursos troncales'),
+           __('Itinerarios'),
+           __('Específicos y libre configuración'),
+        // SECOND_HIGH_SCHOOL_SCIENCE
+           __('Troncales de modalidad (Seleccionado)'),
+        //  FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY - FIRST_HIGH_SCHOOL_GENERAL
+        __('Materias de modalidad (Seleccionado)'),
+        __('Materias optativas (Seleccionada)'),
+        __('Materias optativas (Númeradas por orden de preferencia)'),
             __('Registered at'),
         ];
     }
@@ -103,95 +113,192 @@ class EnrollmentExport implements FromCollection, WithMapping, WithHeadings
     {
         $student = $row['student']['user']['name']." ".$row['student']['middle_name']." ".$row['student']['paternal_surname']." ".$row['student']['maternal_surname'];
         $list1 = '';$list2 = '';$list3 = '';$list4 = '';$list5 = '';$list6 = '';$list7 = '';$list8 = '';$list8 = '';$list9 = '';
-        $list10 = '';$list11 = '';$list12 = '';$list13 = '';$list14 = '';$list15 = '';
+        $list10 = '';$list11 = '';$list12 = '';$list13 = '';$list14 = '';$list15 = '';$list16 = '';$list17 = '';$list18 = '';
+        $list19 = '';$list20 = '';$list21 = '';$list22 = '';$list23 = '';$list24 = '';$list25 = '';$list26 = '';
        
-        foreach ($row['courses'] as $key => $course){
-           // dd($row['courses'],$course['name'],$course['grade_id'],$course['course_type_id'],$course['pivot']['order']);
-           
-            if ($course['grade_id'] == Grade::FIRST_MIDDLE_SCHOOL || $course['grade_id'] == Grade::THIRD_MIDDLE_SCHOOL
-                || $course['grade_id'] == Grade::THIRD_HIGH_SCHOOL){
+        foreach ($row['courses'] as $course){
+            
+             if ($course['grade_id'] == Grade::FIRST_MIDDLE_SCHOOL || $course['grade_id'] == Grade::THIRD_MIDDLE_SCHOOL
+                 || $course['grade_id'] == Grade::THIRD_HIGH_SCHOOL){
+                 if(CourseType::COMMON == $course['course_type_id']){
+                     $list1 .= $course['name']."\r\n";
+                 }
+                 if(CourseType::COMMON_OPTIONAL_ONE == $course['course_type_id']){
+                     $list2 .= $course['pivot']['order'].". ".$course['name']."\r\n";
+                 }
+                 if(CourseType::COMMON_OPTIONAL_TWO == $course['course_type_id']){
+                     $list3 .= $course['name']."\r\n";
+                 }
+                 if(CourseType::COMMON_AREAS == $course['course_type_id']){
+                     $list8 .= $course['name']."\r\n";
+                 }
+             }else{
+                 $list1 .= '-';
+                 $list2 .= '-';
+                 $list3 .= '-';
+                 $list8 .= '-';
+             }
+ 
+             if ($course['grade_id'] == Grade::SECOND_MIDDLE_SCHOOL || $course['grade_id'] == Grade::SECOND_HIGH_SCHOOL ||
+             $course['grade_id'] == Grade::FOURTH_MIDDLE_SCHOOL){
+                 if(CourseType::CORE == $course['course_type_id']){
+                     $list4 .= $course['name']."\r\n";
+                 }
+                 if(CourseType::SPECIFIC == $course['course_type_id']){
+                     $list5 .= $course['name']."\r\n";
+                 }
+                 if(CourseType::SPECIFIC_FREE_CONFIGURATION == $course['course_type_id']){
+                     $list6 .= $course['name']."\r\n";
+                 }
+                 if(CourseType::FREE_CONFIGURATION == $course['course_type_id']){
+                     $list7 .= $course['pivot']['order'].". ".$course['name']."\r\n";
+                 }
+                 if(CourseType::ITINERARY == $course['course_type_id']){
+                     $list9 .= $course['name']."\r\n";
+                 }
+                 if(CourseType::SPECIFIC_ITINERARY == $course['course_type_id']){
+                     $list10 .= $course['pivot']['order'].". ".$course['name']."\r\n";
+                 }
+                 if(CourseType::FREE_CONFIGURATION_ITINERARY == $course['course_type_id']){
+                     $list11 .= $course['pivot']['order'].". ".$course['name']."\r\n";
+                 }
+             }else{
+                 $list4 .= '-';
+                 $list5 .= '-';
+                 $list6 .= '-';
+                 $list7 .= '-';
+                 $list9 .= '-';
+                 $list10 .= '-';
+                 $list11 .= '-';
+             }
+ 
+             if ($course['grade_id'] == Grade::FIRST_EDUCATIONAL_CYCLE_BASIC || $course['grade_id'] == Grade::SECOND_EDUCATIONAL_CYCLE_BASIC){
+                 if(CourseType::ASSOCIATED_UNITS_OF_COMPETENCES == $course['course_type_id']){
+                     $list12 .= $course['name']."\r\n";
+                 }
+                 if(CourseType::ASSOCIATED_COMMON_BLOCKS == $course['course_type_id']){
+                     $list13 .= $course['name']."\r\n";
+                 }
+                 if(CourseType::FORMATION_WORKSPACE == $course['course_type_id']){
+                     $list14 .= $course['name']."\r\n";
+                 }
+                 
+             }else{
+                 $list12 .= '-';
+                 $list13 .= '-';
+                 $list14 .= '-';
+              
+             }
+             
+             if ($course['grade_id'] == Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM || $course['grade_id'] == Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM){
+                 if(CourseType::CF_COMMON == $course['course_type_id']){
+                     $list15 .= $course['name']."\r\n";
+                 }    
+                 
+             }else{
+                 $list15 .= '-';              
+              
+             }
+ 
+             if ($course['grade_id'] == Grade::SECOND_HIGH_SCHOOL_HUMANITIES_SCIENCES ||
+             $course['grade_id'] == Grade::SECOND_HIGH_SCHOOL_SCIENCE  || $course['grade_id'] == Grade::FIRST_HIGH_SCHOOL_GENERAL ||
+             $course['grade_id'] == Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY ){
+                 if(CourseType::CORE == $course['course_type_id']){
+                     $list16 .= $course['name']."\r\n";
+                 }
+                 if(CourseType::ITINERARY_HUMANITIES == $course['course_type_id']){
+                     $list17 .= $course['name']."\r\n";
+                 }
+                 if(CourseType::ITINERARY_SCIENCES == $course['course_type_id']){
+                     $list17 .= $course['name']."\r\n";
+                 }
+ 
+                 if(CourseType::SPECIFIC_FREE_CONFIGURATION == $course['course_type_id'] &&
+                      Course::GROUP_COURSES_ONE_A ==  $course['group_one'] &&
+                     Course::GROUP_COURSES_TWO_A ==  $course['group_two']){
+                         $list18 .= $course['pivot']['order'].". ".$course['name']."\r\n";
+ 
+                     }
+ 
+                     if(CourseType::SPECIFIC_FREE_CONFIGURATION == $course['course_type_id'] &&
+                     Course::GROUP_COURSES_ONE_B ==  $course['group_one'] &&
+                    Course::GROUP_COURSES_TWO_A ==  $course['group_two']){
+                        $list18 .= $course['pivot']['order'].". ".$course['name']."\r\n";
+ 
+                    }
+                 if(CourseType::SPECIFIC_FREE_CONFIGURATION == $course['course_type_id'] &&
+                    Course::GROUP_COURSES_ONE_B ==  $course['group_one'] &&
+                   Course::GROUP_COURSES_TWO_B ==  $course['group_two']){
+                       $list19 .= $course['pivot']['order'].". ".$course['name']."\r\n";
+ 
+                   }
+                
+                if(CourseType::CORE_MODALITY_OPTION_ONE == $course['course_type_id']){
+                    $list20 .= $course['name']."\r\n";
+                }
+                if(CourseType::CORE_MODALITY_OPTION_TWO == $course['course_type_id']){
+                    $list20 .= $course['name']."\r\n";
+                }
+                if(CourseType::CORE_MODALITY_OPTION_THIRD == $course['course_type_id']){
+                    $list20 .= $course['name']."\r\n";
+                }
+                if(CourseType::CORE_MODALITY_OPTION_FOURTH == $course['course_type_id']){
+                    $list20 .= $course['name']."\r\n";
+                }
+                if(CourseType::CORE_MODALITY_OPTION_FIVE == $course['course_type_id']){
+                    $list20 .= $course['name']."\r\n";
+                }
+
+
                 if(CourseType::COMMON == $course['course_type_id']){
                     $list1 .= $course['name']."\r\n";
+                   
                 }
+                if(CourseType::MODALITY == $course['course_type_id']){
+                    $list22 .= $course['name']."\r\n";
+                }                                                                      //22 - 23
+                if(CourseType::MODALITY_OPTION == $course['course_type_id']){
+                    $list23 .= $course['name']."\r\n";
+                }
+
                 if(CourseType::COMMON_OPTIONAL_ONE == $course['course_type_id']){
-                    $list2 .= $course['pivot']['order'].". ".$course['name']."\r\n";
+                         $list24 .= $course['pivot']['order'].". ".$course['name']."\r\n";
+ 
+                     }
+ 
+                     if(CourseType::COMMON_OPTIONAL_TWO == $course['course_type_id'] &&
+                     Course::GROUP_COURSES_ONE_B ==  $course['group_one'] &&
+                    Course::GROUP_COURSES_TWO_A ==  $course['group_two']){
+                        $list24 .= $course['pivot']['order'].". ".$course['name']."\r\n";
+ 
+                    }
+                 if(CourseType::COMMON_OPTIONAL_TWO == $course['course_type_id'] &&
+                    Course::GROUP_COURSES_ONE_B ==  $course['group_one'] &&
+                   Course::GROUP_COURSES_TWO_B ==  $course['group_two']){
+                       $list25 .= $course['pivot']['order'].". ".$course['name']."\r\n";
+ 
+                   }
+                   if(CourseType::COMMON_OPTIONAL == $course['course_type_id']){
+                    $list26 .= $course['name']."\r\n";
                 }
-                if(CourseType::COMMON_OPTIONAL_TWO == $course['course_type_id']){
-                    $list3 .= $course['name']."\r\n";
-                }
-                if(CourseType::COMMON_AREAS == $course['course_type_id']){
-                    $list8 .= $course['name']."\r\n";
-                }
-            }else{
-                $list1 .= '-';
-                $list2 .= '-';
-                $list3 .= '-';
-                $list8 .= '-';
-            }
-
-            if ($course['grade_id'] == Grade::SECOND_MIDDLE_SCHOOL || $course['grade_id'] == Grade::SECOND_HIGH_SCHOOL ||
-            $course['grade_id'] == Grade::FOURTH_MIDDLE_SCHOOL){
-                if(CourseType::CORE == $course['course_type_id']){
-                    $list4 .= $course['name']."\r\n";
-                }
-                if(CourseType::SPECIFIC == $course['course_type_id']){
-                    $list5 .= $course['name']."\r\n";
-                }
-                if(CourseType::SPECIFIC_FREE_CONFIGURATION == $course['course_type_id']){
-                    $list6 .= $course['name']."\r\n";
-                }
-                if(CourseType::FREE_CONFIGURATION == $course['course_type_id']){
-                    $list7 .= $course['pivot']['order'].". ".$course['name']."\r\n";
-                }
-                if(CourseType::ITINERARY == $course['course_type_id']){
-                    $list9 .= $course['name']."\r\n";
-                }
-                if(CourseType::SPECIFIC_ITINERARY == $course['course_type_id']){
-                    $list10 .= $course['pivot']['order'].". ".$course['name']."\r\n";
-                }
-                if(CourseType::FREE_CONFIGURATION_ITINERARY == $course['course_type_id']){
-                    $list11 .= $course['pivot']['order'].". ".$course['name']."\r\n";
-                }
-            }else{
-                $list4 .= '-';
-                $list5 .= '-';
-                $list6 .= '-';
-                $list7 .= '-';
-                $list9 .= '-';
-                $list10 .= '-';
-                $list11 .= '-';
-            }
-
-            if ($course['grade_id'] == Grade::FIRST_EDUCATIONAL_CYCLE_BASIC || $course['grade_id'] == Grade::SECOND_EDUCATIONAL_CYCLE_BASIC){
-                if(CourseType::ASSOCIATED_UNITS_OF_COMPETENCES == $course['course_type_id']){
-                    $list12 .= $course['name']."\r\n";
-                }
-                if(CourseType::ASSOCIATED_COMMON_BLOCKS == $course['course_type_id']){
-                    $list13 .= $course['name']."\r\n";
-                }
-                if(CourseType::FORMATION_WORKSPACE == $course['course_type_id']){
-                    $list14 .= $course['pivot']['order'].". ".$course['name']."\r\n";
-                }
-                
-            }else{
-                $list12 .= '-';
-                $list13 .= '-';
-                $list14 .= '-';
+                 
+             }else{
+                 $list16 .= '-';
+                 $list17 .= '-';
+                 $list18 .= '-';
+                 $list19 .= '-';
+                 $list20 .= '-';
+                 $list1 .= '-';
+                 $list22 .= '-';
+                 $list23 .= '-';
+                 $list24 .= '-';                           
+                 $list25 .= '-';
+                 $list26 .= '-';
+             }
              
-            }
-            
-            if ($course['grade_id'] == Grade::FIRST_EDUCATIONAL_CYCLE_MEDIUM || $course['grade_id'] == Grade::SECOND_EDUCATIONAL_CYCLE_MEDIUM){
-                if(CourseType::CF_COMMON == $course['course_type_id']){
-                    $list15 .= $course['name']."\r\n";
-                }    
-                
-            }else{
-                $list15 .= '-';              
-             
-            }
-         
-        }
-
+          
+         }
+         $list1 = preg_replace('([-])', '', $list1);
         return [
             $row['id'],
             $student,
@@ -213,8 +320,16 @@ class EnrollmentExport implements FromCollection, WithMapping, WithHeadings
             $list12,
             $list13,
             $list14,
-            $list15,      
-
+            $list15, 
+            $list16,
+            $list17,
+            $list18."\r\n".$list19,
+            $list20,
+            $list21,
+            $list22."\r\n".$list23,
+            $list24."\r\n".$list25."\r\n".$list26,
+                 
+            
             $row['created_at']->format('Y-m-d H:i'),
         ];
     }
