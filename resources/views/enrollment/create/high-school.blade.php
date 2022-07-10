@@ -325,7 +325,7 @@
                                     </div>
                                 </div>
                                 <div class="col-10 col-md-11">
-                                    <div id="sortable5" class="row custom-options-checkable g-1">
+                                    <div id="sortable5" class="row list1 custom-options-checkable g-1">
                                         @if(old('elective_courses'))
                                             @foreach(old('elective_courses') as $order)
                                                 @foreach($coursesSpecific as $key => $course)
@@ -406,7 +406,7 @@
                                     </div>
                                 </div>
                                 <div class="col-10 col-md-11">
-                                    <div id="sortable6" class="row custom-options-checkable g-1">
+                                    <div id="sortable6" class="row list2 custom-options-checkable g-1">
                                         @if(old('elective_courses_free'))
                                             @foreach(old('elective_courses_free') as $order)
                                                 @foreach($coursesfree as $key => $course)
@@ -507,7 +507,7 @@
             </div>
 
             @include('enrollment.create.transportation-bilingual-repeat')
-            @include('enrollment.create.signatures')
+           
 
             <div class="row">
                 <div class="col-12">
@@ -534,8 +534,7 @@
 @endsection
 
 @push('scripts')
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+     <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
     <script>// Default Spin
         document.getElementById("active_option_1").disabled = true;
         document.getElementById("active_option_2").disabled = true;
@@ -604,9 +603,17 @@
             }
         }
         $(function() {
+            $('.list1').sortable({container: '.list1', update: function() {
+                    hour4Course();
+                    toast.show();
+                }});
+                $('.list2').sortable({container: '.list2', update: function() {
+                    electiveCourse();
+                    toast.show();
+                }});
             $("#sortable5").sortable({
                 update: function() {
-                    hour4Course();
+                    hour3Course();
                     toast.show();
                 }
             });

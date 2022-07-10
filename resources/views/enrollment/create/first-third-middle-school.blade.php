@@ -82,7 +82,7 @@
                                     </div>
                                 </div>
                                 <div class="col-10 col-md-11">
-                                    <div id="sortable2" class="row custom-options-checkable g-1">
+                                    <div id="sortable2" class="list1 row custom-options-checkable g-1">
                                         @if(old('elective_courses'))
                                             @foreach(old('elective_courses') as $order)
                                                 @foreach($commonOptionalOneCourses as $key => $course)
@@ -162,7 +162,7 @@
             </div>
 
             @include('enrollment.create.transportation-bilingual-repeat')
-            @include('enrollment.create.signatures')
+            
 
             <div class="row">
                 <div class="col-12">
@@ -189,10 +189,13 @@
 @endsection
 
 @push('scripts')
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
     <script>// Default Spin
         $(function() {
+             $('.list1').sortable({container: '.list1', update: function() {
+                    electiveCourse();
+                    toast.show();
+                }});
             $("#sortable").sortable({
                 update: function() {
                     academicCourse();

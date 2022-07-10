@@ -552,7 +552,7 @@ class EnrollmentController extends Controller
             $enrollment->courses()->attach($request->common_optional_course);
             $enrollment->courses()->attach($request->elective_courses);
         }
-           
+
         if($student->grade_id == Grade::SECOND_MIDDLE_SCHOOL || $student->grade_id == Grade::SECOND_HIGH_SCHOOL) {
             $commonCoursesCore = Course::whereGradeId($student->grade_id)
                 ->whereCourseTypeId(CourseType::CORE)
@@ -880,6 +880,15 @@ class EnrollmentController extends Controller
     public function downloadDocument($path, $file)
     {
         return Storage::download($path.'/'.$file);
+    }
+
+    public function test()
+    {
+        $commonOptionalOneCourses = Course::whereGradeId(1)
+            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_ONE)
+            ->get();
+
+        return view('test', compact('commonOptionalOneCourses'));
     }
 
     public function exportEnrollmentPdf($hash){
