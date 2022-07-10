@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Helpers;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -64,10 +65,16 @@ class Enrollment extends Model
         'dni_document',
         'payment_document',
         'academic_history',
+        'free_info',
+        'free_info_order',
     ];
 
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i',
+    ];
+
+    protected $appends = [
+        'hash_id'
     ];
 
     public function courses()
@@ -83,5 +90,10 @@ class Enrollment extends Model
     public function grade()
     {
         return $this->belongsTo(Grade::class);
+    }
+
+    public function getHashIdAttribute()
+    {
+        return Helpers::encrypt($this->id);
     }
 }

@@ -2,6 +2,14 @@
 
 use App\Models\Setting;
 
+if (!defined('INACTIVE')) {
+    define("INACTIVE", 0);
+}
+
+if (!defined('ACTIVE')) {
+    define("ACTIVE", 1);
+}
+
 if (! function_exists('setting')) {
     function setting($key, $default = null)
     {

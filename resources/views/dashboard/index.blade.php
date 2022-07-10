@@ -68,11 +68,16 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row match-height">
             <div class="col-lg-6 col-md-12 col-sm-12">
-                <div class="card bg-success">
-
+                <div class="card border-warning">
+                    <h6 class="card-header">Aviso</h6>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p>
+                                Alumnado de nuevo ingreso que no proviene de centros adscritos debe presentar de manera presencial el Certificado Académico. No es necesario para alumnos de 1° de ESO de San Lázaro, Escuelas Blancas, Tudela Veguín, Veneranda Manzano y Villafría.
+                            </p>
+                        </blockquote>
+                    </div>
                 </div>
             </div>
         </div>
@@ -139,6 +144,15 @@
                 </div>
             </div>
             @endrole
-             @include('livewire.enrollment.components.popup')
+            @include('livewire.enrollment.components.popup')
     </section>
 @endsection
+@push('scripts')
+  @if(setting('modal'))
+    <script>
+         $(document).ready(function() {
+            $('#bannerModal').modal('show');
+        })
+    </script>
+    @endif
+@endpush

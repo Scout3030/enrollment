@@ -21,47 +21,47 @@ class CheckProfile
     {
         $student = auth()->user()->student;
 
-        if ( $student->grade_id == Grade::FIRST_MIDDLE_SCHOOL ||  $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL ||
+        if ($student->grade_id == Grade::SECOND_HIGH_SCHOOL || $student->grade_id == Grade::FIRST_MIDDLE_SCHOOL ||
+            $student->grade_id == Grade::THIRD_HIGH_SCHOOL || $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL ||
             $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||  $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
-            if($student->parents_condition == 0 && !$student->agreement_document){
-                return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Complete all the necessary documentation')]);
+            if($student->parents_condition == Student::SEPARATED && !$student->agreement_document){
+                return redirect()->route('user.profile.edit')
+                    ->withErrors([__('Adjunte el convenio de custodia de menores')]);
             }
         }
 
-        if ( $student->grade_id == Grade::SECOND_MIDDLE_SCHOOL || $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||
-            $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
-
-            if(!$student->previous_school && !$student->certificate_document){
-                return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Complete all the necessary documentation')]);
-            }
-        }
-
-        if ($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL){
+        if ( $student->grade_id == Grade::SECOND_HIGH_SCHOOL || $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL ||
+             $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL || $student->grade_id == Grade::THIRD_HIGH_SCHOOL){
             if(!$student->payment_document){
-                return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Complete all the necessary documentation')]);
+                return redirect()->route('user.profile.edit')
+                    ->withErrors([__('Es necesario adjuntar el certificado de pago')]);
             }
         }
 
         if ($student->grade->level->id == Level::BACHELOR){
-            if(!$student->payment_document || !$student->academic_history){
-                return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Complete all the necessary documentation')]);
+            if(!$student->payment_document){
+                return redirect()->route('user.profile.edit')
+                    ->withErrors([__('Adjunte el certificado de pago')]);
             }
         }
 
         if ($student->grade->level->id == Level::EDUCATIONAL_CYCLE){
             if(!$student->payment_document){
-                return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Complete all the necessary documentation')]);
+                return redirect()->route('user.profile.edit')
+                    ->withErrors([__('Es necesario adjuntar el certificado de pago')]);
             }
         }
-        if (!$student->dni_document || !$student->country_id || !$student->paternal_surname || 
-            !$student->maternal_surname || !$student->birth || !$student->address || !$student->address_number ||
-            !$student->first_tutor_dni ||
-            !$student->postal_code || !$student->first_tutor_full_name || !$student->first_tutor_email ||
-            !$student->first_tutor_phone_number || !$student->first_tutor_full_name || !$student->first_tutor_email ||
-            !$student->first_tutor_address
-        ) {
 
-            return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Complete all the necessary documentation')]);
+        if (!$student->dni_document) {
+            return redirect()->route('user.profile.edit')
+                ->withErrors([__('Adjunte el documento DNI')]);
+        }
+
+        if (!$student->country_id || !$student->paternal_surname ||
+            !$student->birth || !$student->address || !$student->address_number || !$student->postal_code
+        ) {
+            return redirect()->route('user.profile.edit')
+                ->withErrors([__('Complete la infomación del alumno')]);
         }
         return $next($request);
     }

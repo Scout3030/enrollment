@@ -1188,7 +1188,7 @@ class CourseSeeder extends Seeder
             ]);
         Course::factory()
             ->create([
-                'name' => 'Economía, Entrepreneurship and business activity',
+                'name' => 'Economía, emprendimiento y actividad de negocio',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::MODALITY_OPTION,
                 'duration'=>'4',

@@ -117,9 +117,10 @@ class StudentController extends Controller
         $student->authorization_extracurricular = $request->authorization_extracurricular;
         $student->authorization_data = $request->authorization_data;
         if( $request->authorization_tokapp == 1) {
-            $student->authorization_phone =  $request->authorization_phone;           
+            $student->authorization_phone =  $request->authorization_phone;
         }
-        if($student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
+        if($student->grade_id == Grade::SECOND_HIGH_SCHOOL || $student->grade_id == Grade::THIRD_MIDDLE_SCHOOL || 
+           $student->grade_id == Grade::THIRD_HIGH_SCHOOL || $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
             $student->dni_document =  $request->dni_document;
             $student->agreement_document =  $request->agreement_document;
             $student->certificate_document =  $request->certificate_document;
@@ -197,18 +198,21 @@ class StudentController extends Controller
         $gradesEso = Grade::whereHas('level', function ($query) {
             $query->whereId(Level::MIDDLE_SCHOOL);
         })->get();
+        $gradesPmar = Grade::whereHas('level', function ($query) {
+            $query->whereId(Level::HIGH_SCHOOL);
+        })->get();
         $gradesBachelor= Grade::whereHas('level', function ($query) {
             $query->whereId(Level::BACHELOR);
         })->get();
         $gradesCycle= Grade::whereHas('level', function ($query) {
             $query->whereId(Level::EDUCATIONAL_CYCLE);
         })->get();
-        return view('student.grade-option',compact('gradesCycle','gradesEso','gradesBachelor'));
+        return view('student.grade-option',compact('gradesCycle','gradesEso','gradesPmar','gradesBachelor'));
     }
 
     public function updateGrade(GradeRequest $grade){
         $student = auth()->user()->student;
         $student->fill($grade->all())->save();
-       return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Grade saved successfully')]);
+       return redirect()->route('user.profile.edit')->with('message', ['type' => 'success', 'description' => __('Data saved successfully')]);
     }
 }

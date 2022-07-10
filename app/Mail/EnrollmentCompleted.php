@@ -2,27 +2,25 @@
 
 namespace App\Mail;
 
+use App\Models\Enrollment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NotificationResetPassword extends Mailable
+class EnrollmentCompleted extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $remember_token;
-    public $email;
-
+    private $enrollment;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($remember_token, $email)
+    public function __construct(Enrollment $enrollment)
     {
-        $this->remember_token = $remember_token;
-        $this->email = $email;
+        $this->enrollment = $enrollment;
     }
 
     /**
@@ -32,7 +30,8 @@ class NotificationResetPassword extends Mailable
      */
     public function build()
     {
-        return $this->subject(__('User created! Sign in resetting your password'))
-            ->markdown('mails.notification_reset_password');
+        return $this->subject(__('Enrollment process finished successfully'))
+            ->markdown('mails.enrollment_completed')
+            ->with(['enrollment' => $this->enrollment]);
     }
 }

@@ -29,6 +29,8 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     use HasFactory;
+    const INACTIVE = 0;
+    const ACTIVE = 1;
 
     /**
      * The attributes that aren't mass assignable.

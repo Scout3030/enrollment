@@ -1,3 +1,22 @@
+<section id="card-style-variation">
+    <!-- Solid -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-warning">
+                <h6 class="card-header">Aviso</h6>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>
+                            Alumnado de nuevo ingreso que no proviene de centros adscritos debe presentar de manera presencial el Historial Académico. No es necesario para alumnos de 1° de ESO de San Lázaro, Escuelas Blancas, Tudela Veguín, Veneranda Manzano y Villafría.
+                        </p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
 <section id="basic-horizontal-layouts">
     <form class="form form-horizontal" name="formProfile"  enctype="multipart/form-data" method="POST" action="{{ route('student.profile.update') }}">
         @csrf
@@ -220,7 +239,11 @@
                                             name="country_id"
                                         >
                                             @foreach ( App\Models\Country::all() as $country )
-                                                <option value="{{ $country->id }}" @if( old('country_id', auth()->user()->student->country_id) == $country->id) selected @endif>{{ $country->name }}</option>
+                                                <option
+                                                    value="{{ $country->id }}"
+                                                    @if( old('country_id', auth()->user()->student->country_id) == $country->id) selected @endif
+                                                    @if( !old('country_id') && $country->iso == 'ES') selected @endif
+                                                >{{ $country->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -675,11 +698,11 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" id="dni_document" name="dni_document" value="">
-        <input type="hidden" id="agreement_document" name="agreement_document" value="">
-        <input type="hidden" id="payment_document" name="payment_document" value="">
-        <input type="hidden" id="certificate_document" name="certificate_document" value="">
-        <input type="hidden" id="academic_history" name="academic_history" value="">
+        <input type="hidden" id="dni_document" name="dni_document" value="{{ old('dni_document') }}">
+        <input type="hidden" id="agreement_document" name="agreement_document" value="{{ old('agreement_document') }}">
+        <input type="hidden" id="payment_document" name="payment_document" value="{{ old('payment_document') }}">
+        <input type="hidden" id="certificate_document" name="certificate_document" value="{{ old('certificate_document') }}">
+        <input type="hidden" id="academic_history" name="academic_history" value="{{ old('academic_history') }}">
     </form>
 
     {{--ESO--}}

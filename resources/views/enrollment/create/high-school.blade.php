@@ -399,6 +399,9 @@
                                                     <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
                                                 </li>
                                             @endforeach
+                                            <li class="list-group-item numerator">
+                                                <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $coursesfree->count() + 1 }}</span>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -427,6 +430,30 @@
                                                             </div>
                                                         </div>
                                                     @endif
+                                                    @if(json_decode($order)->id == "0")
+                                                    @once
+                                                    <div class="row6" order="{{ json_decode($order)->order }}" course_id="0">
+                                                        <label for="">{{ __('Other specific subject of the previous block') }}</label>
+                                                        <div class="col-md-12">
+                                                            <input
+                                                                type="text"
+                                                                id="free_info"
+                                                                class="form-control"
+                                                                name="free_info"
+                                                                value="{{ old('free_info') }}"
+                                                                placeholder="{{ __('Type...') }}"
+                                                                autocomplete="off"
+                                                            />
+                                                            <input
+                                                                id="elective_course_free_0"
+                                                                type="hidden"
+                                                                name="elective_courses_free[]"
+                                                                value='{"id":"0", "order":"{{ $coursesfree->count() + 1 }}"}'
+                                                            >
+                                                        </div>
+                                                    </div>
+                                                    @endonce
+                                                    @endif
                                                 @endforeach
                                             @endforeach
                                         @else
@@ -450,6 +477,25 @@
                                                 </div>
                                             </div>
                                             @endforeach
+                                            <div class="row6" order="{{ $coursesfree->count() + 1 }}" course_id="0">
+                                                <label for="">{{ __('Other specific subject of the previous block') }}</label>
+                                                <div class="col-md-12">
+                                                    <input
+                                                        type="text"
+                                                        id="free_info"
+                                                        class="form-control"
+                                                        name="free_info"
+                                                        value="{{ old('free_info') }}"
+                                                        placeholder="{{ __('Type...') }}"
+                                                    />
+                                                    <input
+                                                        id="elective_course_free_0"
+                                                        type="hidden"
+                                                        name="elective_courses_free[]"
+                                                        value='{"id":"0", "order":"{{ $coursesfree->count() + 1 }}"}'
+                                                    >
+                                                </div>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
@@ -486,107 +532,6 @@
         @include('layouts.partials.toast', ['message' => __('Great'), 'description' => __('Order updated successfully')])
     </section>
 @endsection
-
-@push('vendor-scripts')
-    <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
-    <script src="{{ asset('vendors/js/forms/spinner/jquery.bootstrap-touchspin.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            const levelNode = $('#level_id')
-            const gradeNode = $("#grade_id")
-            const routeNode = $("#route_id")
-            const busStopNode = $("#bus_stop_id")
-            $('.select2').select2();
-
-            @if(!auth()->user()->student->grade_id)
-            let firstLevelId = levelNode.select2().val()
-            populateSelect(firstLevelId)
-            @endif
-
-            let firstRouteId = routeNode.select2().val()
-            populateBusStopSelect(firstRouteId)
-
-            levelNode.on('change', function(){
-                const levelId = $(this).val()
-                populateSelect(levelId)
-            })
-
-            routeNode.on('change', function(){
-                const levelId = $(this).val()
-                populateBusStopSelect(levelId)
-            })
-
-            $('input[name=transportation]').change(function(){
-                let value = $( 'input[name=transportation]:checked' ).val();
-                const transportationBlockNode = $('#transportationBlock')
-                if(parseInt(value) === 1){
-                    transportationBlockNode.removeClass('d-none')
-                }else{
-                    transportationBlockNode.addClass('d-none')
-                }
-            });
-
-            gradeNode.on('change', function(){
-                const gradeId = $(this).val()
-                Livewire.emit('getCourses', gradeId)
-                let levelId = levelNode.select2().val() || levelNode.val()
-                setTimeout(function (){
-                    populateLevelSelect()
-                    populateSelect(levelId)
-                }, 200)
-            })
-
-            $('#confirmEnrollmentButton').on('click', function(){
-                $('#enrollmentForm').submit()
-            })
-
-            function populateSelect(levelId){
-                $.ajax({
-                    url: `{{ route('grades.index') }}/level/${levelId}`,
-                    type: 'GET',
-                    success: (data, textStatus, xhr) => {
-                        if(xhr.status === 200) {
-                            gradeNode.empty();
-                            gradeNode.select2({
-                                data: data.data
-                            });
-                        }
-                    }
-                })
-            }
-
-            function populateLevelSelect(){
-                $.ajax({
-                    url: `{{ route('levels.index') }}`,
-                    type: 'GET',
-                    success: (data, textStatus, xhr) => {
-                        if(xhr.status === 200) {
-                            levelNode.empty();
-                            levelNode.select2({
-                                data: data.data
-                            });
-                        }
-                    }
-                })
-            }
-
-            function populateBusStopSelect(routeId){
-                $.ajax({
-                    url: `{{ route('busStop.index') }}/route/${routeId}`,
-                    type: 'GET',
-                    success: (data, textStatus, xhr) => {
-                        if(xhr.status === 200) {
-                            busStopNode.empty();
-                            busStopNode.select2({
-                                data: data.data
-                            });
-                        }
-                    }
-                })
-            }
-        });
-    </script>
-@endpush
 
 @push('scripts')
      <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>

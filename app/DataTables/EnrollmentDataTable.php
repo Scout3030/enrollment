@@ -6,13 +6,16 @@ namespace App\DataTables;
 // https://yajrabox.com/docs/laravel-datatables/master/filter-column
 // https://yajrabox.com/docs/laravel-datatables/master/order-column
 
+use App\Exports\EnrollmentExport;
 use App\Models\Enrollment;
+use Carbon\Carbon;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
 class EnrollmentDataTable extends DataTable
 {
+    protected $exportClass = EnrollmentExport::class;
     /**
      * Build DataTable class.
      *
@@ -23,15 +26,45 @@ class EnrollmentDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->filterColumn('student', function($query, $keyword) {
-                $query->whereHas('student', function($q) use ($keyword){
-                    $q->whereHas('user', function($q) use ($keyword){
-                        $q->where('name', "LIKE", "%".$keyword."%");
-                    })
-                        ->orWhere('middle_name', "LIKE", "%".$keyword."%")
-                        ->orWhere('paternal_surname', "LIKE", "%".$keyword."%")
-                        ->orWhere('maternal_surname', "LIKE", "%".$keyword."%");
-                });
+            ->filter(function ($query) {
+                $keyword = request()->search['value'];
+
+                if (request()->filled('dates')) {
+                    $dates = request()->input('dates');
+                    $from = Carbon::parse($dates[0]);
+                    $to = Carbon::parse($dates[1])->addDay();
+                    $query = $query->where('created_at', '>=', $from)
+                        ->where('created_at', '<', $to);
+                }
+
+                if (request()->filled('levels')) {
+                    if (request()->filled('grades')) {
+                        $grades = request()->input('grades');
+                        $query = $query->whereHas('grade', function($q) use ($grades){
+                            $q->whereIn('id', $grades);
+                        });
+                    } else {
+                        $levels = request()->input('levels');
+                        $query = $query->whereHas('grade', function($q) use ($levels){
+                            $q->whereHas('level', function($q) use ($levels){
+                                $q->whereIn('id', $levels);
+                            });
+                        });
+                    }
+                }
+
+                if ($keyword) {
+                    $query = $query->where(function ($q) use ($keyword) {
+                        $q->whereHas('student', function($q) use ($keyword){
+                            $q->whereHas('user', function($q) use ($keyword){
+                                $q->where('name', "LIKE", "%".$keyword."%");
+                            })
+                                ->orWhere('middle_name', "LIKE", "%".$keyword."%")
+                                ->orWhere('paternal_surname', "LIKE", "%".$keyword."%")
+                                ->orWhere('maternal_surname', "LIKE", "%".$keyword."%");
+                        });
+                    });
+                }
             })
             ->addColumn('student', function (Enrollment $enrollment){
                 return $enrollment->student->user->full_name;
@@ -70,7 +103,7 @@ class EnrollmentDataTable extends DataTable
             ->language([
                 'url' => '//cdn.datatables.net/plug-ins/1.10.16/i18n/'.config('languages')[session('applocale')][0].'.json',
             ])
-            ->setTableId('course-table')
+            ->setTableId('enrollmentDatatable')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('<"card-header border-bottom p-1"<"head-label">
@@ -80,6 +113,13 @@ class EnrollmentDataTable extends DataTable
                     <"col-sm-12 col-md-6"p>
                     >')
             ->orderBy(0)
+            ->ajax([
+                'data' => 'function(d) {
+                            d.levels = $("#levels").val();
+                            d.grades = $("#grades").val();
+                            d.dates = dates;
+                        }',
+            ])
             ->buttons(
                 Button::make([])
                     ->extend('collection')
@@ -132,11 +172,11 @@ class EnrollmentDataTable extends DataTable
                 ->orderable(true)
                 ->footer(__('Grade/Level')),
             Column::make('created_at')
-                ->title(__('Created'))
+                ->title(__('Registered'))
                 ->searchable(true)
                 ->orderable(true)
                 ->addClass('text-center')
-                ->footer(__('Created')),
+                ->footer(__('Registered')),
             Column::computed('action')
                 ->title(__('Actions'))
                 ->exportable(false)

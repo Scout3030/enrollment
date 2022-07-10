@@ -55,6 +55,26 @@
                                         </label>
                                     </div>
                                 @endforeach
+                                 <h4 class="card-title">{{ __('PMAR') }}</h4>
+                                @foreach($gradesPmar as $course)
+                                @if( $course->id == App\Models\Grade::SECOND_HIGH_SCHOOL || $course->id == App\Models\Grade::THIRD_HIGH_SCHOOL)
+                                    <div class="col-md-3">
+                                        <input
+                                            class="custom-option-item-check"
+                                            type="radio"
+                                            name="grade_id"
+                                            id="grade_id_{{ $course->id }}"
+                                            value="{{ $course->id }}"
+                                            {{ old('grade_id') == $course->id ? 'checked' : ''}}
+                                        />
+                                        <label class="custom-option-item p-1" for="grade_id_{{ $course->id }}">
+                                            <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                <span class="fw-bolder">{{$course->name }}</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endif
+                                @endforeach
                                  <h4 class="card-title">{{ __('BACHELOR') }}</h4>
                                 @foreach($gradesBachelor as $course)
                                     <div class="col-md-3">
