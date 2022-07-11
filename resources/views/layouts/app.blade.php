@@ -91,5 +91,6 @@
     })
 </script>
 @stack('scripts')
+@stack('signatures')
 </body>
 </html>
