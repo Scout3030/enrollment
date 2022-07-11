@@ -3,17 +3,17 @@
     <link href="{{ asset('signature/fonts/ionicons/css/ionicons.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('signature/css/simcify.min.css') }}">
     <link rel="stylesheet" href="{{ asset('signature/css/style.css') }}">
-{{--    <style>--}}
-{{--        #draw-canvas {--}}
-{{--            border: 2px dotted #CCCCCC;--}}
-{{--            border-radius: 5px;--}}
-{{--            cursor: crosshair;--}}
-{{--            cursor: pointer;--}}
-{{--        }--}}
-{{--        #draw-canvasstudent, #draw-canvastutor1, #draw-canvastutor2 {--}}
-{{--            width: 100%;--}}
-{{--        }--}}
-{{--    </style>--}}
+    <style>
+        #draw-canvas {
+            border: 2px dotted #CCCCCC;
+            border-radius: 5px;
+            cursor: crosshair;
+            cursor: pointer;
+        }
+        #draw-canvasstudent, #draw-canvastutor1, #draw-canvastutor2 {
+            width: 100%;
+        }
+    </style>
 @endpush
 
 <div class="row">
@@ -172,11 +172,11 @@
     <script src="{{ asset('signature/libs/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('signature/libs/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('signature/js/jquery.slimscroll.min.js') }}"></script>
-{{--    <script src="{{ asset('signature/libs/html2canvas/html2canvas.js') }}"></script>--}}
-{{--    <script src="{{ asset('signature/libs/jcanvas/jcanvas.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('signature/libs/jcanvas/signaturetutor1.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('signature/libs/jcanvas/signaturetutor2.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('signature/libs/jcanvas/signaturestudent.min.js') }}"></script>--}}
+    <script src="{{ asset('signature/libs/html2canvas/html2canvas.js') }}"></script>
+    <script src="{{ asset('signature/libs/jcanvas/jcanvas.min.js') }}"></script>
+    <script src="{{ asset('signature/libs/jcanvas/signaturetutor1.min.js') }}"></script>
+    <script src="{{ asset('signature/libs/jcanvas/signaturetutor2.min.js') }}"></script>
+    <script src="{{ asset('signature/libs/jcanvas/signaturestudent.min.js') }}"></script>
 {{--    <script src="{{ asset('signature/js/simcify.min.js') }}"></script>--}}
 {{--    <script src="{{ asset('signature/js/app.js')}}"></script>--}}
 {{--    <script>--}}
