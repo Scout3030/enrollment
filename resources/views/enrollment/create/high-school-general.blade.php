@@ -429,7 +429,7 @@
             </div>
 
             @include('enrollment.create.transportation-bilingual-repeat')
-         
+            @include('enrollment.create.signatures')
 
             <div class="row">
                 <div class="col-12">
@@ -456,9 +456,9 @@
 @endsection
 
 @push('scripts')
-    <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>    
+    <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
     <script>// Default Spin
-    
+
         $('.row1').each(function(index, element) {
             document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
              document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = true;
