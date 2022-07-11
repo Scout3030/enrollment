@@ -174,9 +174,9 @@
     <script src="{{ asset('signature/js/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('signature/libs/html2canvas/html2canvas.js') }}"></script>
     <script src="{{ asset('signature/libs/jcanvas/jcanvas.min.js') }}"></script>
-    <script src="{{ asset('signature/libs/jcanvas/signaturetutor1.min.js') }}"></script>
-    <script src="{{ asset('signature/libs/jcanvas/signaturetutor2.min.js') }}"></script>
-    <script src="{{ asset('signature/libs/jcanvas/signaturestudent.min.js') }}"></script>
+{{--    <script src="{{ asset('signature/libs/jcanvas/signaturetutor1.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('signature/libs/jcanvas/signaturetutor2.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('signature/libs/jcanvas/signaturestudent.min.js') }}"></script>--}}
 {{--    <script src="{{ asset('signature/js/simcify.min.js') }}"></script>--}}
 {{--    <script src="{{ asset('signature/js/app.js')}}"></script>--}}
 {{--    <script>--}}
