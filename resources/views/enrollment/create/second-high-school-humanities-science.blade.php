@@ -351,7 +351,7 @@
                                     </div>
                                 </div>
                                 <div class="col-10 col-md-11">
-                                    <div id="sortable5" class="row custom-options-checkable g-1">
+                                    <div id="sortable5" class="row list5 custom-options-checkable g-1">
                                         @if(old('core_itinerary_a5'))
                                             @foreach(old('core_itinerary_a5') as $order)
                                                 @foreach($coursesItineraryC as $key => $course)
@@ -442,7 +442,7 @@
                                             </div>
                                         </div>
                                         <div class="col-10 col-md-11">
-                                            <div id="sortable6" class="row custom-options-checkable g-1">
+                                            <div id="sortable6" class="row list6 custom-options-checkable g-1">
                                                 @if(old('core_itinerary_b5'))
                                                     @foreach(old('core_itinerary_b5') as $order)
                                                         @foreach($coursesItineraryB as $key => $course)
@@ -511,7 +511,7 @@
                                             </div>
                                         </div>
                                         <div class="col-10 col-md-11">
-                                            <div id="sortable4" class="row custom-options-checkable g-1">
+                                            <div id="sortable4" class="row list4 custom-options-checkable g-1">
                                                 @if(old('core_itinerary_c5'))
                                                     @foreach(old('core_itinerary_c5') as $order)
                                                         @foreach($coursesItineraryD as $key => $course)
@@ -571,7 +571,7 @@
             </div>
 
             @include('enrollment.create.transportation-bilingual-repeat')
-            @include('enrollment.create.signatures')
+          
 
             <div class="row">
                 <div class="col-12">
@@ -598,8 +598,7 @@
 @endsection
 
 @push('scripts')
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script> 
     <script>// Default Spin
 
 
@@ -645,12 +644,9 @@
             document.getElementById("core_itinerary_d5_"+$(this).attr('course_id')).checked = false;
         });
 
-        $( "#sortable5" ).sortable();
-        $( "#sortable5" ).sortable( "option", "disabled", true );
-        $( "#sortable6" ).sortable();
-        $( "#sortable6" ).sortable( "option", "disabled", true );
-        $( "#sortable4" ).sortable();
-        $( "#sortable4" ).sortable( "option", "disabled", true );
+         document.getElementById('sortable5').style.pointerEvents = 'none';
+        document.getElementById('sortable6').style.pointerEvents = 'none';
+        document.getElementById('sortable4').style.pointerEvents = 'none';
 
         function activeOption(){
 
@@ -730,12 +726,9 @@
         }
         function active1(){
             if($('input:radio[name=active1]:checked').val()==1){
-                $( "#sortable5" ).sortable();
-                $( "#sortable5" ).sortable( "option", "disabled", false );
-                $( "#sortable6" ).sortable();
-                $( "#sortable6" ).sortable( "option", "disabled", true );
-                $( "#sortable4" ).sortable();
-                $( "#sortable4" ).sortable( "option", "disabled", true );
+                document.getElementById('sortable5').style.pointerEvents = 'auto';
+                 document.getElementById('sortable6').style.pointerEvents = 'none';
+                 document.getElementById('sortable4').style.pointerEvents = 'none';
 
                 $('.row35').each(function(index, element) {
                     document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).checked = false;
@@ -755,12 +748,9 @@
 
 
             }else{
-                $( "#sortable5" ).sortable();
-                $( "#sortable5" ).sortable( "option", "disabled", true );
-                $( "#sortable6" ).sortable();
-                $( "#sortable6" ).sortable( "option", "disabled", false );
-                $( "#sortable4" ).sortable();
-                $( "#sortable4" ).sortable( "option", "disabled", false );
+                document.getElementById('sortable5').style.pointerEvents = 'none';
+                  document.getElementById('sortable6').style.pointerEvents = 'auto';
+                document.getElementById('sortable4').style.pointerEvents = 'auto';
 
                 $('.row35').each(function(index, element) {
                     document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).checked = true;
@@ -781,6 +771,18 @@
             }
         }
         $(function() {
+             $('.list5').sortable({container: '.list5', update: function() {
+                    hour4Coue();
+                    toast.show();
+                }});
+                $('.list6').sortable({container: '.list6', update: function() {
+                    hour3Ce();
+                    toast.show();
+                }});
+                $('.list4').sortable({container: '.list4', update: function() {
+                    hour4Course();
+                    toast.show();
+                }});
             $("#sortable5").sortable({
                 update: function() {
                     hour4Coue();

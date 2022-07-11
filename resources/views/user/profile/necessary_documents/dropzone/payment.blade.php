@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="card-title">{{ __('Proof of payment of school insurance') }}</h4>
+                    <h4 class="card-title">{{ __('Proof of payment of school insurance') }} ({{ __('Max weight 20 Mb') }})</h4>
                     <p>{{ __('mandatory') }}</p>
                     <div>
                         <form action="#" class="dropzone dropzone-area" id="paymentDocument">

@@ -159,6 +159,7 @@ class StudentController extends Controller
     {
         try {
             $student->delete();
+            $student->user->delete();
             return back()->with('message', ['type' => 'success', 'description' => __('Student deleted successfully')]);
         } catch (\Exception $e) {
             return back()->withErrors(__('Can not delete this student'));

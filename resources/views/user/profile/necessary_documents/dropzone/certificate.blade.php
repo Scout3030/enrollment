@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="card-title">{{ __('Official Academic Certificate of Studies') }} {{ __('Only if it is a new addition') }}</h4>
+                    <h4 class="card-title">{{ __('Official Academic Certificate of Studies') }} {{ __('Only if it is a new addition') }} ({{ __('Max weight 20 Mb') }})</h4>
                     <p>{{ __('Boletin de notas is not allowed') }}</p>
                     <div>
                         <form action="#" class="dropzone dropzone-area" id="certificateDocument">
