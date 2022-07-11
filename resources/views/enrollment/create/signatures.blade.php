@@ -165,11 +165,10 @@
     </div>
 </div>
 
-@push('signatures')
+@push('scripts')
     <script src="{{ asset('signature/js/jscolor.js') }}"></script>
     <script src="{{ asset('signature/js/jscolortutor1.js') }}"></script>
     <script src="{{ asset('signature/js/savesignature.js') }}"></script>
-    <script src="{{ asset('signature/libs/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('signature/libs/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('signature/js/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('signature/libs/html2canvas/html2canvas.js') }}"></script>
