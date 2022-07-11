@@ -172,7 +172,7 @@ class EnrollmentRequest extends FormRequest
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
                 'first_tutor_signature'=>['nullable'],
-                'student_signature'=>['required'],
+            //    'student_signature'=>['required'],
             ];
         }
         if( $student->grade_id == Grade::FOURTH_MIDDLE_SCHOOL) {
@@ -188,7 +188,7 @@ class EnrollmentRequest extends FormRequest
                 'elective_courses_free.*.course_id' => 'exists:courses,id',
                 'first_tutor_signature'=>['nullable'],
                 'free_info'=>['nullable'],
-                'student_signature'=>['required'],
+            //    'student_signature'=>['required'],
             ];
         }
 
@@ -204,7 +204,7 @@ class EnrollmentRequest extends FormRequest
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
                 'first_tutor_signature'=>['nullable'],
-                'student_signature'=>['required'],
+            //    'student_signature'=>['required'],
             ];
         }
 
@@ -220,7 +220,7 @@ class EnrollmentRequest extends FormRequest
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
                 'first_tutor_signature'=>['nullable'],
-                'student_signature'=>['required'],
+            //    'student_signature'=>['required'],
             ];
         }
 
@@ -235,7 +235,7 @@ class EnrollmentRequest extends FormRequest
                 'elective_courses' => ['required', 'array', new ValidOrderRule()],
                 'elective_courses.*.course_id' => 'exists:courses,id',
                 'first_tutor_signature'=>['nullable'],
-                'student_signature'=>['required'],
+             //   'student_signature'=>['required'],
             ];
         }
 
@@ -246,7 +246,7 @@ class EnrollmentRequest extends FormRequest
                     return $this->transportation == 1;
                 }), 'exists:bus_stops,id'],
                 'first_tutor_signature'=>['nullable'],
-                'student_signature'=>['required'],
+            //    'student_signature'=>['required'],
             ];
         }
 
@@ -257,7 +257,7 @@ class EnrollmentRequest extends FormRequest
                     return $this->transportation == 1;
                 }), 'exists:bus_stops,id'],
                 'first_tutor_signature'=>['nullable'],
-                'student_signature'=>['required'],
+             //   'student_signature'=>['required'],
             ];
         }
 

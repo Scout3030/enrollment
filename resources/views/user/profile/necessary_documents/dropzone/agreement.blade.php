@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="card-title">{{ __('Minor Custody Regulatory Agreement') }}</h4>
+                    <h4 class="card-title">{{ __('Minor Custody Regulatory Agreement') }} ({{ __('Max weight 20 Mb') }})</h4>
                     <p>{{ __('Only if the parents are separated') }}</p>
                     <div>
                         <form action="#" class="dropzone dropzone-area" id="agreementDocument">

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Laravel\Fortify\Rules\Password;
 
@@ -31,14 +32,28 @@ class UserRequest extends FormRequest
             case 'DELETE':
                 return [];
             case 'POST': {
-                return [
-                    'name' => ['required', 'string', 'max:255'],
-                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                    'password' => $this->passwordRules(),
-                    'role' => ['nullable', 'exists:roles,name'],
-                    'dni' => ['nullable', 'unique:students,dni'],
-                    'grade_id' => ['required_with:level_id']
-                ];
+                $email = User::onlyTrashed()->where('email',$this->email)->first();
+                if($email){
+                    return [
+                        'name' => ['required', 'string', 'max:255'],
+                        'email_unique' => ['required', 'string', 'email', 'max:255'],
+                        'password' => $this->passwordRules(),
+                        'role' => ['nullable', 'exists:roles,name'],
+                        'dni' => ['nullable', 'unique:students,dni'],
+                        'grade_id' => ['required_with:level_id']
+                    ];
+                }
+                else
+                {
+                    return [
+                        'name' => ['required', 'string', 'max:255'],
+                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                        'password' => $this->passwordRules(),
+                        'role' => ['nullable', 'exists:roles,name'],
+                        'dni' => ['nullable', 'unique:students,dni'],
+                        'grade_id' => ['required_with:level_id']
+                    ];
+                }
             }
             case 'PUT': {
                 $user = $this->route('user');

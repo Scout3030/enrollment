@@ -52,6 +52,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::delete('/{user}', [UserController::class, 'destroy'])
             ->name('users.destroy')
             ->can('delete users');
+        Route::post('/active-user', [UserController::class, 'activeUser'])
+            ->name('users.active-user')
+            ->can('edit users');
     });
 
     Route::post('/upload-files/{path?}', [FileController::class, 'upload'])

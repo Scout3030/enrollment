@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="card-title">{{ __('student DNI') }}</h4>
+                    <h4 class="card-title">{{ __('student DNI') }} ({{ __('Max weight 20 Mb') }})</h4>
                     <p>{{ __('student DNI description') }}</p>
                     <div>
                         <form action="#" class="dropzone dropzone-area" id="dniDocument">

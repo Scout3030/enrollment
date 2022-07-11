@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Log;
 use Mail;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -137,5 +138,13 @@ class UserController extends Controller
         $user->fill($data)->save();
 
         return back()->with('message', ['type' => 'success', 'description' => __('Profile edited successfully')]);
+    }
+
+    public function ActiveUser( Request $request)
+    {
+       $user = User::onlyTrashed()->where('email',$request->email)->first();
+        $user->restore();
+        Student::where('user_id',$user->id)->restore();
+        return back()->with('message', ['type' => 'success', 'description' => __('El estudiante ha sido restaurado correctamente')]);
     }
 }

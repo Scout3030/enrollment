@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="card-title">{{ __('Academic history') }} ({{ __('Original') }})</h4>
+                    <h4 class="card-title">{{ __('Academic history') }} ({{ __('Original') }}) ({{ __('Max weight 20 Mb') }}) </h4>
                     <div>
                         <form action="#" class="dropzone dropzone-area" id="academicHistory">
                             @csrf
