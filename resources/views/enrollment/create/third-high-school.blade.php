@@ -146,7 +146,6 @@
                                         @else
                                             @foreach($commonOptionalOneCourses as $key => $course)
                                             <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                <div class="col-md-12">
                                                     <input
                                                         class="custom-option-item-check"
                                                         type="checkbox"
@@ -157,11 +156,10 @@
                                                         onclick="this.checked = true"
                                                     />
                                                     <label class="custom-option-item p-1" for="elective_course_{{ $course->id }}">
-                                                <span class="d-flex justify-content-between flex-wrap mb-50">
-                                                    <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
-                                                </span>
-                                                    </label>
-                                                </div>
+                                                    <span class="d-flex justify-content-between flex-wrap mb-50">
+                                                        <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
+                                                    </span>
+                                                    </label>                                               
                                             </div>
                                             @endforeach
                                         @endif
@@ -197,7 +195,7 @@
             </div>
 
             @include('enrollment.create.transportation-bilingual-repeat')
-           
+            @include('enrollment.create.signatures')
 
             <div class="row">
                 <div class="col-12">
