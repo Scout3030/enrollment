@@ -174,38 +174,38 @@
     <script src="{{ asset('signature/js/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('signature/libs/html2canvas/html2canvas.js') }}"></script>
 {{--    <script src="{{ asset('signature/libs/jcanvas/jcanvas.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('signature/libs/jcanvas/signaturetutor1.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('signature/libs/jcanvas/signaturetutor2.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('signature/libs/jcanvas/signaturestudent.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('signature/js/simcify.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('signature/js/app.js')}}"></script>--}}
-{{--    <script>--}}
-{{--        function saveSignature(signature, singData){--}}
-{{--            $.ajax({--}}
-{{--                url: `{{ route('enrollment.signature') }}`,--}}
-{{--                type: 'post',--}}
-{{--                headers: {--}}
-{{--                    'x-csrf-token': $("meta[name=csrf-token]").attr('content')--}}
-{{--                },--}}
-{{--                data:{sign:signature},--}}
-{{--                error: function(data, textStatus, xhr) {--}}
-{{--                    toastr.error(`{{ __('error, signature no register') }}`)--}}
-{{--                },--}}
-{{--                success: (data, textStatus, xhr) => {--}}
-{{--                    if(xhr.status === 200) {--}}
-{{--                        if(singData=='drawtutor1'){--}}
-{{--                            $("#draw-dataUrltutor1").val(data.name).val();--}}
-{{--                        }--}}
-{{--                        if(singData=='drawtutor2'){--}}
-{{--                            $("#draw-dataUrltutor2").val(data.name).val();--}}
-{{--                        }--}}
-{{--                        if(singData=='draw'){--}}
-{{--                            $("#draw-dataUrlstudent").val(data.name).val();--}}
-{{--                        }--}}
-{{--                        toastr.success(data.status)--}}
-{{--                    }--}}
-{{--                }--}}
-{{--            })--}}
-{{--        }--}}
-{{--    </script>--}}
+    <script src="{{ asset('signature/libs/jcanvas/signaturetutor1.min.js') }}"></script>
+    <script src="{{ asset('signature/libs/jcanvas/signaturetutor2.min.js') }}"></script>
+    <script src="{{ asset('signature/libs/jcanvas/signaturestudent.min.js') }}"></script>
+    <script src="{{ asset('signature/js/simcify.min.js') }}"></script>
+    <script src="{{ asset('signature/js/app.js')}}"></script>
+    <script>
+        function saveSignature(signature, singData){
+            $.ajax({
+                url: `{{ route('enrollment.signature') }}`,
+                type: 'post',
+                headers: {
+                    'x-csrf-token': $("meta[name=csrf-token]").attr('content')
+                },
+                data:{sign:signature},
+                error: function(data, textStatus, xhr) {
+                    toastr.error(`{{ __('error, signature no register') }}`)
+                },
+                success: (data, textStatus, xhr) => {
+                    if(xhr.status === 200) {
+                        if(singData=='drawtutor1'){
+                            $("#draw-dataUrltutor1").val(data.name).val();
+                        }
+                        if(singData=='drawtutor2'){
+                            $("#draw-dataUrltutor2").val(data.name).val();
+                        }
+                        if(singData=='draw'){
+                            $("#draw-dataUrlstudent").val(data.name).val();
+                        }
+                        toastr.success(data.status)
+                    }
+                }
+            })
+        }
+    </script>
 @endpush
