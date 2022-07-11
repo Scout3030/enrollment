@@ -3,17 +3,17 @@
     <link href="{{ asset('signature/fonts/ionicons/css/ionicons.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('signature/css/simcify.min.css') }}">
     <link rel="stylesheet" href="{{ asset('signature/css/style.css') }}">
-    <style>
-        #draw-canvas {
-            border: 2px dotted #CCCCCC;
-            border-radius: 5px;
-            cursor: crosshair;
-            cursor: pointer;
-        }
-        #draw-canvasstudent, #draw-canvastutor1, #draw-canvastutor2 {
-            width: 100%;
-        }
-    </style>
+{{--    <style>--}}
+{{--        #draw-canvas {--}}
+{{--            border: 2px dotted #CCCCCC;--}}
+{{--            border-radius: 5px;--}}
+{{--            cursor: crosshair;--}}
+{{--            cursor: pointer;--}}
+{{--        }--}}
+{{--        #draw-canvasstudent, #draw-canvastutor1, #draw-canvastutor2 {--}}
+{{--            width: 100%;--}}
+{{--        }--}}
+{{--    </style>--}}
 @endpush
 
 <div class="row">
@@ -179,33 +179,33 @@
     <script src="{{ asset('signature/libs/jcanvas/signaturestudent.min.js') }}"></script>
     <script src="{{ asset('signature/js/simcify.min.js') }}"></script>
     <script src="{{ asset('signature/js/app.js')}}"></script>
-    <script>
-        function saveSignature(signature, singData){
-            $.ajax({
-                url: `{{ route('enrollment.signature') }}`,
-                type: 'post',
-                headers: {
-                    'x-csrf-token': $("meta[name=csrf-token]").attr('content')
-                },
-                data:{sign:signature},
-                error: function(data, textStatus, xhr) {
-                    toastr.error(`{{ __('error, signature no register') }}`)
-                },
-                success: (data, textStatus, xhr) => {
-                    if(xhr.status === 200) {
-                        if(singData=='drawtutor1'){
-                            $("#draw-dataUrltutor1").val(data.name).val();
-                        }
-                        if(singData=='drawtutor2'){
-                            $("#draw-dataUrltutor2").val(data.name).val();
-                        }
-                        if(singData=='draw'){
-                            $("#draw-dataUrlstudent").val(data.name).val();
-                        }
-                        toastr.success(data.status)
-                    }
-                }
-            })
-        }
-    </script>
+{{--    <script>--}}
+{{--        function saveSignature(signature, singData){--}}
+{{--            $.ajax({--}}
+{{--                url: `{{ route('enrollment.signature') }}`,--}}
+{{--                type: 'post',--}}
+{{--                headers: {--}}
+{{--                    'x-csrf-token': $("meta[name=csrf-token]").attr('content')--}}
+{{--                },--}}
+{{--                data:{sign:signature},--}}
+{{--                error: function(data, textStatus, xhr) {--}}
+{{--                    toastr.error(`{{ __('error, signature no register') }}`)--}}
+{{--                },--}}
+{{--                success: (data, textStatus, xhr) => {--}}
+{{--                    if(xhr.status === 200) {--}}
+{{--                        if(singData=='drawtutor1'){--}}
+{{--                            $("#draw-dataUrltutor1").val(data.name).val();--}}
+{{--                        }--}}
+{{--                        if(singData=='drawtutor2'){--}}
+{{--                            $("#draw-dataUrltutor2").val(data.name).val();--}}
+{{--                        }--}}
+{{--                        if(singData=='draw'){--}}
+{{--                            $("#draw-dataUrlstudent").val(data.name).val();--}}
+{{--                        }--}}
+{{--                        toastr.success(data.status)--}}
+{{--                    }--}}
+{{--                }--}}
+{{--            })--}}
+{{--        }--}}
+{{--    </script>--}}
 @endpush
