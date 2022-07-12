@@ -50,20 +50,16 @@
                 });
 
                  @if(old('dni_document'))
-                     thisDropzone = this;
-                     JSON.parse($('#dni_document').val(), function(key,value){                     
-                       if(key==1){
-                        console.log(key,value)
-                        var mockFile = { name: value.name, size: value.size };
-                        thisDropzone.options.addedfile.call(thisDropzone, mockFile);
-                        thisDropzone.options.thumbnail.call(thisDropzone, mockFile,  "{{asset('storage/documents/UBoOvgbtn3MSsMCYSIOzQIVavt0tdplHAOjK8tDn.png')}}");
-                        }                        
-                    });
-                @endif 
-
-                               
+                     @foreach(json_decode(old('dni_document')) as $key => $document)
+                    let mockFile{{$key}} = {name: "Filename", size: 123456};
+                    let callback{{$key}} = null; // Optional callback when it's done
+                    let crossOrigin{{$key}} = null; // Added to the `img` tag for crossOrigin handling
+                    let resizeThumbnail{{$key}} = true; // Tells Dropzone whether it should resize the image first
+                    this.displayExistingFile(mockFile{{$key}}, "{{ asset('storage/documents/'.$document[1]) }}", callback{{$key}}, crossOrigin{{$key}}, resizeThumbnail{{$key}});
+                    @endforeach
+                @endif
             }
-        }); 
+        });
 
           imageDropzone.on("removedfile", function(file) {
                 let filesIndex;
@@ -77,12 +73,12 @@
                 imageInput.val(JSON.stringify(files))
             });
 
-                 
-                 
 
-         
 
-       
+
+
+
+
 
     </script>
 @endpush
