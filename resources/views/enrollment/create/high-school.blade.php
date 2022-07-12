@@ -14,6 +14,32 @@
                 max-width: 100% !important;
             }
         }
+           .deskContent {
+        width: 100%;
+        height: 400px;
+        background-repeat: no-repeat;
+        background-size: contain; 
+        }
+
+        .phoneContent {
+            width: 100%;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        @media all and (min-width: 480px) {
+            .deskContent {display:block;}
+            .phoneContent {display:none;}
+        }
+
+        @media all and (max-width: 479px) {
+            .deskContent {display:none;}
+            .phoneContent {display:block;}
+        }
+         div.space {
+            line-height: 76px;
+         }
     </style>
 @endpush
 
@@ -313,8 +339,19 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-2 col-md-1">
-                                    <div class="card mb-4">
+                                <div class="col-2 col-md-1 phoneContent">
+                                    <div class="card mb-4  ">
+                                        <ul class="list-group list-group-flush">
+                                            @foreach($coursesSpecific as $course)
+                                               <div class="space">
+                                               <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}
+                                                    </div>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-2 col-md-1 deskContent">
+                                    <div class="card mb-4  ">
                                         <ul class="list-group list-group-flush">
                                             @foreach($coursesSpecific as $course)
                                                 <li class="list-group-item numerator">
@@ -331,9 +368,8 @@
                                                 @foreach($coursesSpecific as $key => $course)
                                                     @if(json_decode($order)->id == $course->id)
                                                         <div class="row5" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                            <div class="col-md-12">
                                                                 <input
-                                                                    class="custom-option-item-check"
+                                                                   class="custom-option-item-check"
                                                                     type="checkbox"
                                                                     name="elective_courses[]"
                                                                     id="elective_course_{{ $course->id }}"
@@ -346,7 +382,6 @@
                                                                         <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                     </span>
                                                                 </label>
-                                                            </div>
                                                         </div>
                                                     @endif
                                                 @endforeach
@@ -354,7 +389,6 @@
                                         @else
                                             @foreach($coursesSpecific as $key => $course)
                                             <div class="row5" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                <div class="col-md-12">
                                                     <input
                                                         class="custom-option-item-check"
                                                         type="checkbox"
@@ -369,7 +403,6 @@
                                                             <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
-                                                </div>
                                             </div>
                                             @endforeach
                                         @endif
@@ -507,7 +540,7 @@
             </div>
 
             @include('enrollment.create.transportation-bilingual-repeat')
-           
+           @include('enrollment.create.signatures')
 
             <div class="row">
                 <div class="col-12">
