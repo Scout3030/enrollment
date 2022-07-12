@@ -28,6 +28,8 @@
 @push('scripts')
     <script>
         // 1 hidden input
+        let files = [];
+        let deleteFiles = [];
         const imageInput = $('input[name=dni_document]');
         const imageDropzone = new Dropzone("#dniDocument", {
             url: "{{ route('upload.files', 'documents') }}",
@@ -36,33 +38,51 @@
             acceptedFiles: ".jpeg,.jpg,.png,.pdf,.JPEG,.PNG,.JPG",
             init: function() {
                 this.on("success", function (file, response) {
-                    imageInput.val(response)
-                    file.serverId = response.id;
+                    let uploadedFile = [file.name, response]
+                     files.push(uploadedFile)
+                     imageInput.val(JSON.stringify(files))
+                    file.serverId = response;
                     $(file.previewTemplate).find('.dz-custom-download').attr("href", window.appBaseUrl + "file/download/" + file.serverId);
                     $(file.previewTemplate).find('.dz-custom-delete').off().on("click", function (e) {
                         e.preventDefault();
                         imageDropzone.emit("removedfile", file);
                     });
                 });
-                this.on("addedfile", function() {
-                    if (this.files[1]!=null){
-                        this.removeFile(this.files[0]);
-                    }
-                });
 
-                @if(old('dni_document'))
-                let mockFile = {name: "Filename", size: 12345};
-                let callback = null; // Optional callback when it's done
-                let crossOrigin = null; // Added to the `img` tag for crossOrigin handling
-                let resizeThumbnail = true; // Tells Dropzone whether it should resize the image first
-                this.displayExistingFile(mockFile, "{{asset('storage/documents/'.old('dni_document'))}}", callback, crossOrigin, resizeThumbnail);
-                @endif
+                 @if(old('dni_document'))
+                     thisDropzone = this;
+                     JSON.parse($('#dni_document').val(), function(key,value){                     
+                       if(key==1){
+                        console.log(key,value)
+                        var mockFile = { name: value.name, size: value.size };
+                        thisDropzone.options.addedfile.call(thisDropzone, mockFile);
+                        thisDropzone.options.thumbnail.call(thisDropzone, mockFile,  "{{asset('storage/documents/UBoOvgbtn3MSsMCYSIOzQIVavt0tdplHAOjK8tDn.png')}}");
+                        }                        
+                    });
+                @endif 
+
+                               
             }
-        });
+        }); 
 
-        imageDropzone.on("removedfile", function(file) {
-            imageInput.val('')
-        });
+          imageDropzone.on("removedfile", function(file) {
+                let filesIndex;
+                for (i = 0; i < files.length; i++) {
+                    const index = files.indexOf(file.serverId);
+                    if (index > -1) {
+                        filesIndex = i
+                    }
+                }
+                files.splice(filesIndex, 1);
+                imageInput.val(JSON.stringify(files))
+            });
+
+                 
+                 
+
+         
+
+       
 
     </script>
 @endpush
