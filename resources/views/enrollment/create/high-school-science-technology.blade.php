@@ -14,6 +14,29 @@
                 max-width: 100% !important;
             }
         }
+             .deskContent {
+        width: 100%;
+        height: 400px;
+        background-repeat: no-repeat;
+        background-size: contain; 
+        }
+
+        .phoneContent {
+            width: 100%;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        @media all and (min-width: 480px) {
+            .deskContent {display:block;}
+            .phoneContent {display:none;}
+        }
+
+        @media all and (max-width: 479px) {
+            .deskContent {display:none;}
+            .phoneContent {display:block;}
+        }
     </style>
 @endpush
 
@@ -159,8 +182,19 @@
                                                     <p>{{ __('Ordena según preferencia, solo un curso será seleccionado.') }}</p>
                                                 </div>
                                                 <div class="mb-1 row">
-                                                    <div class="col-2 col-md-1">
-                                                        <div class="card mb-4">
+                                                    <div class="col-2 col-md-1 phoneContent">
+                                                        <div class="card mb-4  ">
+                                                            <ul class="list-group list-group-flush">
+                                                                @foreach($coursesItineraryA as $course)
+                                                                    <li class="list-group-item numerator">
+                                                                    <p>  <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</p>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 col-md-1 deskContent">
+                                                        <div class="card mb-4  ">
                                                             <ul class="list-group list-group-flush">
                                                                 @foreach($coursesItineraryA as $course)
                                                                     <li class="list-group-item numerator">
@@ -200,7 +234,6 @@
                                                             @else
                                                                 @foreach($coursesItineraryA as $key => $course)
                                                                     <div class="row1" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                                        <div class="col-md-12">
                                                                             <input
                                                                                 class="custom-option-item-check"
                                                                                 type="checkbox"
@@ -214,8 +247,7 @@
                                                                 <span class="d-flex justify-content-between flex-wrap mb-50">
                                                                     <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                 </span>
-                                                                            </label>
-                                                                        </div>
+                                                                            </label>                                                            
                                                                     </div>
                                                                 @endforeach
                                                             @endif
@@ -258,8 +290,19 @@
                                         <p>{{ __('Ordena según preferencia, solo un curso será seleccionado.') }}</p>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2 col-md-1">
-                                            <div class="card mb-4">
+                                        <div class="col-2 col-md-1 phoneContent">
+                                            <div class="card mb-4  ">
+                                                <ul class="list-group list-group-flush">
+                                                    @foreach($coursesItineraryB as $course)
+                                                        <li class="list-group-item numerator">
+                                                        <p>  <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</p>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 col-md-1 deskContent">
+                                            <div class="card mb-4  ">
                                                 <ul class="list-group list-group-flush">
                                                     @foreach($coursesItineraryB as $course)
                                                         <li class="list-group-item numerator">
@@ -299,8 +342,7 @@
                                                 @else
                                                     @foreach($coursesItineraryB as $key => $course)
                                                         <div class="row2" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                            <div class="col-md-12">
-                                                                <input
+                                                            <input
                                                                     class="custom-option-item-check"
                                                                     type="checkbox"
                                                                     name="core_itinerary_b[]"
@@ -314,7 +356,6 @@
                                                                         <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                     </span>
                                                                 </label>
-                                                            </div>
                                                         </div>
                                                     @endforeach
                                                 @endif
@@ -326,8 +367,19 @@
                                         <p>{{ __('Ordena según preferencia, solo un curso será seleccionado.') }}</p>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2 col-md-1">
-                                            <div class="card mb-4">
+                                        <div class="col-2 col-md-1 phoneContent">
+                                            <div class="card mb-4  ">
+                                                <ul class="list-group list-group-flush">
+                                                    @foreach($coursesItineraryC as $course)
+                                                        <li class="list-group-item numerator">
+                                                        <p>  <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</p>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 col-md-1 deskContent">
+                                            <div class="card mb-4  ">
                                                 <ul class="list-group list-group-flush">
                                                     @foreach($coursesItineraryC as $course)
                                                         <li class="list-group-item numerator">
@@ -367,8 +419,7 @@
                                                 @else
                                                     @foreach($coursesItineraryC as $key => $course)
                                                         <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                            <div class="col-md-12">
-                                                                <input
+                                                             <input
                                                                     class="custom-option-item-check"
                                                                     type="checkbox"
                                                                     name="core_itinerary_c[]"
@@ -382,7 +433,6 @@
                                                                         <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                     </span>
                                                                 </label>
-                                                            </div>
                                                         </div>
                                                     @endforeach
                                                 @endif
@@ -439,7 +489,7 @@
             </div>
 
             @include('enrollment.create.transportation-bilingual-repeat')
-           
+           @include('enrollment.create.signatures')
             <div class="row">
                 <div class="col-12">
                     <div class="card">
