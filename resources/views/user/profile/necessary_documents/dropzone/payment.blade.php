@@ -59,10 +59,18 @@
                 @endif
             }
         });
+                 paymentDropzone.on("addedfile", function (file) {
+                var maxFiles = 3;
+                for (var i = paymentDropzone.files.length - maxFiles -1; i >= 0; i--) {
+                    var f = paymentDropzone.files[i];
+                    if (f.upload.uuid !== file.upload.uuid)
+                        paymentDropzone.removeFile(f);
+                    }
+                });
         paymentDropzone.on("removedfile", function(file) {
                 
                 let filesIndex;
-                if(files.length){
+                if(files3.length){
                 for (i = 0; i < files3.length; i++) {
                     const index = files.indexOf(file.serverId);
                     if (index > -1) {

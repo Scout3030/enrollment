@@ -61,6 +61,15 @@
             }
         });
 
+                imageDropzone.on("addedfile", function (file) {
+                var maxFiles = 3;
+                for (var i = imageDropzone.files.length - maxFiles -1; i >= 0; i--) {
+                    var f = imageDropzone.files[i];
+                    if (f.upload.uuid !== file.upload.uuid)
+                        imageDropzone.removeFile(f);
+                }
+            });
+
           imageDropzone.on("removedfile", function(file) {
                 
                 let filesIndex;
