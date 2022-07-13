@@ -62,7 +62,9 @@
         });
 
           imageDropzone.on("removedfile", function(file) {
+                
                 let filesIndex;
+                if(files.length){
                 for (i = 0; i < files.length; i++) {
                     const index = files.indexOf(file.serverId);
                     if (index > -1) {
@@ -71,6 +73,20 @@
                 }
                 files.splice(filesIndex, 1);
                 imageInput.val(JSON.stringify(files))
+                }else{
+                    var delfile = file.dataURL                    
+                    var myarr = delfile.split('documents/');
+                    let filesDni = $('#dni_document').val();
+                    for (i = 0; i < filesDni.length; i++) {
+                         const index = filesDni.indexOf( myarr[1]);
+                        if (index > -1) {
+                            filesIndex = i
+                        }
+                   }
+                     filesDni.splice(filesIndex, 1);
+                     imageInput.val(JSON.stringify(filesDni))                   
+                }
+
             });
 
 

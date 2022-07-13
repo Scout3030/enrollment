@@ -28,6 +28,8 @@
 @push('scripts')
     <script>
         // 1 hidden input
+         let files3 = [];
+      
         const paymentInput = $('input[name=payment_document]');
         const paymentDropzone = new Dropzone("#paymentDocument", {
             url: "{{ route('upload.files', 'documents') }}",
@@ -36,7 +38,9 @@
             acceptedFiles: ".jpeg,.jpg,.png,.pdf,.JPEG,.PNG,.JPG",
             init: function() {
                 this.on("success", function (file, response) {
-                    paymentInput.val(response)
+                   let uploadedFile = [file.name, response]
+                     files3.push(uploadedFile)
+                     paymentInput.val(JSON.stringify(files3))
                     file.serverId = response.id;
                     $(file.previewTemplate).find('.dz-custom-download').attr("href", window.appBaseUrl + "file/download/" + file.serverId);
                     $(file.previewTemplate).find('.dz-custom-delete').off().on("click", function (e) {
@@ -44,23 +48,45 @@
                         paymentDropzone.emit("removedfile", file);
                     });
                 });
-                this.on("addedfile", function() {
-                    if (this.files[1]!=null){
-                        this.removeFile(this.files[0]);
-                    }
-                });
-
                 @if(old('payment_document'))
-                let mockFile = {name: "Filename", size: 12345};
-                let callback = null; // Optional callback when it's done
-                let crossOrigin = null; // Added to the `img` tag for crossOrigin handling
-                let resizeThumbnail = true; // Tells Dropzone whether it should resize the image first
-                this.displayExistingFile(mockFile, "{{asset('storage/documents/'.old('payment_document'))}}", callback, crossOrigin, resizeThumbnail);
+                     @foreach(json_decode(old('payment_document')) as $key => $document)
+                    let mockFile{{$key}} = {name: "Filename", size: 123456};
+                    let callback{{$key}} = null; // Optional callback when it's done
+                    let crossOrigin{{$key}} = null; // Added to the `img` tag for crossOrigin handling
+                    let resizeThumbnail{{$key}} = true; // Tells Dropzone whether it should resize the image first
+                    this.displayExistingFile(mockFile{{$key}}, "{{ asset('storage/documents/'.$document[1]) }}", callback{{$key}}, crossOrigin{{$key}}, resizeThumbnail{{$key}});
+                    @endforeach
                 @endif
             }
         });
         paymentDropzone.on("removedfile", function(file) {
-            paymentInput.val('')
-        });
+                
+                let filesIndex;
+                if(files.length){
+                for (i = 0; i < files3.length; i++) {
+                    const index = files.indexOf(file.serverId);
+                    if (index > -1) {
+                        filesIndex = i
+                    }
+                }
+                files3.splice(filesIndex, 1);
+                paymentInput.val(JSON.stringify(files3))
+                }else{
+                    var delfile = file.dataURL 
+                      let filesIndex;                   
+                    var myarr = delfile.split('documents/');
+                    let filesPayment = $('#payment_document').val();
+                    for (i = 0; i < filesPayment.length; i++) {
+                         const index = filesPayment.indexOf( myarr[1]);
+                        if (index > -1) {
+                            filesIndex = i
+                        }
+                   }
+                     filesPayment.splice(filesIndex, 1);
+                     paymentInput.val(JSON.stringify(filesPayment))    
+                 
+                }
+
+            });
     </script>
 @endpush

@@ -83,11 +83,22 @@
                                                             <h6>{{ __('student DNI') }}</h6>
                                                         </div>
                                                         <div class="media align-items-center">
+                                                        
+                                                        @if(json_decode($enrollment->dni_document))
+                                                           @foreach (json_decode($enrollment->dni_document) as $fil )
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $fil[1]]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
+                                                                {{ __('Download') }}
+                                                                <div class="media-body"></div>
+                                                            </a>
+                                                             @endforeach
+                                                        @else
                                                             <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $enrollment->dni_document]) }}" target="_blank">
                                                                 <i data-feather='paperclip'></i>
                                                                 {{ __('Download') }}
                                                                 <div class="media-body"></div>
                                                             </a>
+                                                        @endif
                                                         </div>
                                                     </div>
                                                 </li>
@@ -101,11 +112,21 @@
 
                                                         </div>
                                                         <div class="media align-items-center">
+                                                         @if(json_decode($enrollment->payment_document))
+                                                            @foreach (json_decode($enrollment->payment_document) as $fil )
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $fil[1]]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
+                                                                {{ __('Download') }}
+                                                                <div class="media-body"></div>
+                                                            </a>
+                                                            @endforeach
+                                                             @else
                                                             <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $enrollment->payment_document]) }}" target="_blank">
                                                                 <i data-feather='paperclip'></i>
                                                                 {{ __('Download') }}
                                                                 <div class="media-body"></div>
                                                             </a>
+                                                        @endif
                                                         </div>
                                                     </div>
                                                 </li>
@@ -118,11 +139,21 @@
                                                             <h6>{{ __('Minor Custody Regulatory Agreement') }}</h6>
                                                         </div>
                                                         <div class="media align-items-center">
+                                                          @if(json_decode($enrollment->agreement_document))                                                       
+                                                             @foreach (json_decode($enrollment->agreement_document) as $fil )
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $fil[1]]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
+                                                                {{ __('Download') }}
+                                                                <div class="media-body"></div>
+                                                            </a>
+                                                             @endforeach
+                                                              @else
                                                             <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $enrollment->agreement_document]) }}" target="_blank">
                                                                 <i data-feather='paperclip'></i>
                                                                 {{ __('Download') }}
                                                                 <div class="media-body"></div>
                                                             </a>
+                                                        @endif
                                                         </div>
                                                     </div>
                                                 </li>
@@ -135,11 +166,21 @@
                                                             <h6>{{ __('Official Academic Certificate of Studies') }}</h6>
                                                         </div>
                                                         <div class="media align-items-center">
+                                                        @if(json_decode($enrollment->certificate_document))                                                       
+                                                        @foreach (json_decode($enrollment->certificate_document) as $fil )
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $fil[1]]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
+                                                                {{ __('Download') }}
+                                                                <div class="media-body"></div>
+                                                            </a>
+                                                        @endforeach
+                                                         @else
                                                             <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $enrollment->certificate_document]) }}" target="_blank">
                                                                 <i data-feather='paperclip'></i>
                                                                 {{ __('Download') }}
                                                                 <div class="media-body"></div>
                                                             </a>
+                                                        @endif
                                                         </div>
                                                     </div>
                                                 </li>
@@ -152,11 +193,21 @@
                                                             <h6>{{ __('Academic history') }}</h6>
                                                         </div>
                                                         <div class="media align-items-center">
+                                                         @if(json_decode($enrollment->academic_history))                                                       
+                                                         @foreach (json_decode($enrollment->academic_history) as $fil )
+                                                            <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $fil[1]]) }}" target="_blank">
+                                                                <i data-feather='paperclip'></i>
+                                                                {{ __('Download') }}
+                                                                <div class="media-body"></div>
+                                                            </a>
+                                                             @endforeach
+                                                              @else
                                                             <a href="{{ route('enrollments.download-document', ['path' => 'documents', 'file' => $enrollment->academic_history]) }}" target="_blank">
                                                                 <i data-feather='paperclip'></i>
                                                                 {{ __('Download') }}
                                                                 <div class="media-body"></div>
                                                             </a>
+                                                        @endif
                                                         </div>
                                                     </div>
                                                 </li>
