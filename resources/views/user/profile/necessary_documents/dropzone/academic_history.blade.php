@@ -58,6 +58,16 @@
                 @endif
             }
         });
+
+         academicHistoryDropzone.on("addedfile", function (file) {
+                var maxFiles = 3;
+                for (var i = academicHistoryDropzone.files.length - maxFiles -1; i >= 0; i--) {
+                    var f = academicHistoryDropzone.files[i];
+                    if (f.upload.uuid !== file.upload.uuid)
+                        academicHistoryDropzone.removeFile(f);
+                    }
+                });
+
         academicHistoryDropzone.on("removedfile", function(file) {
                 
                 let filesIndex;

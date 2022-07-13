@@ -62,7 +62,7 @@
         paymentDropzone.on("removedfile", function(file) {
                 
                 let filesIndex;
-                if(files.length){
+                if(files3.length){
                 for (i = 0; i < files3.length; i++) {
                     const index = files.indexOf(file.serverId);
                     if (index > -1) {

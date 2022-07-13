@@ -466,8 +466,8 @@
                                                     @if(json_decode($order)->id == "0")
                                                     @once
                                                     <div class="row6" order="{{ json_decode($order)->order }}" course_id="0">
-                                                        <label for="">{{ __('Other specific subject of the previous block') }}</label>
                                                         <div class="col-md-12">
+                                                        <label for="">{{ __('Other specific subject of the previous block') }}</label>
                                                             <input
                                                                 type="text"
                                                                 id="free_info"
@@ -492,7 +492,6 @@
                                         @else
                                             @foreach($coursesfree as $key => $course)
                                             <div class="row6" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                <div class="col-md-12">
                                                     <input
                                                         class="custom-option-item-check"
                                                         type="checkbox"
@@ -508,11 +507,11 @@
                                                         </span>
                                                     </label>
                                                 </div>
-                                            </div>
                                             @endforeach
                                             <div class="row6" order="{{ $coursesfree->count() + 1 }}" course_id="0">
+                                                
+                                               
                                                 <label for="">{{ __('Other specific subject of the previous block') }}</label>
-                                                <div class="col-md-12">
                                                     <input
                                                         type="text"
                                                         id="free_info"
@@ -523,11 +522,11 @@
                                                     />
                                                     <input
                                                         id="elective_course_free_0"
-                                                        type="hidden"
+                                                        type="text"
                                                         name="elective_courses_free[]"
                                                         value='{"id":"0", "order":"{{ $coursesfree->count() + 1 }}"}'
                                                     >
-                                                </div>
+                                               
                                             </div>
                                         @endif
                                     </div>
@@ -641,12 +640,12 @@
                     toast.show();
                 }});
                 $('.list2').sortable({container: '.list2', update: function() {
-                    electiveCourse();
+                    hour3Course();
                     toast.show();
                 }});
             $("#sortable5").sortable({
                 update: function() {
-                    hour3Course();
+                    hour4Course();
                     toast.show();
                 }
             });
