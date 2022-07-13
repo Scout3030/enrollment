@@ -28,6 +28,8 @@
 @push('scripts')
     <script>
         // 1 hidden input
+          let files2 = [];
+       
         const certificateInput = $('input[name=certificate_document]');
         const certificateDropzone = new Dropzone("#certificateDocument", {
             url: "{{ route('upload.files', 'documents') }}",
@@ -36,7 +38,9 @@
             acceptedFiles: ".jpeg,.jpg,.png,.pdf,.JPEG,.PNG,.JPG",
             init: function() {
                 this.on("success", function (file, response) {
-                    certificateInput.val(response)
+                     let uploadedFile = [file.name, response]
+                     files2.push(uploadedFile)
+                     certificateInput.val(JSON.stringify(files2))
                     file.serverId = response.id;
                     $(file.previewTemplate).find('.dz-custom-download').attr("href", window.appBaseUrl + "file/download/" + file.serverId);
                     $(file.previewTemplate).find('.dz-custom-delete').off().on("click", function (e) {
@@ -44,23 +48,47 @@
                         certificateDropzone.emit("removedfile", file);
                     });
                 });
-                this.on("addedfile", function() {
-                    if (this.files[1]!=null){
-                        this.removeFile(this.files[0]);
-                    }
-                });
+             
 
-                @if(old('certificate_document'))
-                let mockFile = {name: "Filename", size: 12345};
-                let callback = null; // Optional callback when it's done
-                let crossOrigin = null; // Added to the `img` tag for crossOrigin handling
-                let resizeThumbnail = true; // Tells Dropzone whether it should resize the image first
-                this.displayExistingFile(mockFile, "{{asset('storage/documents/'.old('certificate_document'))}}", callback, crossOrigin, resizeThumbnail);
+                 @if(old('certificate_document'))
+                     @foreach(json_decode(old('certificate_document')) as $key => $document)
+                    let mockFile{{$key}} = {name: "Filename", size: 123456};
+                    let callback{{$key}} = null; // Optional callback when it's done
+                    let crossOrigin{{$key}} = null; // Added to the `img` tag for crossOrigin handling
+                    let resizeThumbnail{{$key}} = true; // Tells Dropzone whether it should resize the image first
+                    this.displayExistingFile(mockFile{{$key}}, "{{ asset('storage/documents/'.$document[1]) }}", callback{{$key}}, crossOrigin{{$key}}, resizeThumbnail{{$key}});
+                    @endforeach
                 @endif
             }
         });
-        certificateDropzone.on("removedfile", function(file) {
-            certificateInput.val('')
-        });
-    </script>
+  certificateDropzone.on("removedfile", function(file) {
+                
+                let filesIndex;
+                if(files2.length){
+                for (i = 0; i < files2.length; i++) {
+                    const index = files2.indexOf(file.serverId);
+                    if (index > -1) {
+                        filesIndex = i
+                    }
+                }
+                files2.splice(filesIndex, 1);
+                certificateInput.val(JSON.stringify(files2))
+                }else{
+
+                    var delfileCertificate = file.dataURL                    
+                    var myarrCertificate = delfileCertificate.split('documents/');
+                    let filesCertificate = $('#certificate_document').val();
+                    
+                    for (i = 0; i < filesCertificate.length; i++) {
+                         const index = filesCertificate.indexOf( myarrCertificate[1]);
+                        if (index > -1) {
+                            filesIndex = i
+                        }
+                   }
+                     filesCertificate.splice(filesIndex, 1);
+                     certificateInput.val(JSON.stringify( filesCertificate))
+                  
+                }
+
+            });    </script>
 @endpush
