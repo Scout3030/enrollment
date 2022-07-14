@@ -1015,6 +1015,8 @@
     "Sign electronically": "Firma electrónicamente",
     "Technical Drawing I":"Dibujo Técnico",
     "optional":"opcional",
+    "You can only select 2 courses":"Sólo puede seleccionar 2 cursos",
+    "You must select a minimum of 2 modality courses.":"Debe seleccionar minimo 2 cursos de modalidad.",
     "Show modal on startup":"Mostrar modal en inicio",
     "Other specific subject of the previous block":"Otra materia específica del bloque anterior",
     "mandatory for younger than 18 years old": "obligatorio para menores de 18 años",

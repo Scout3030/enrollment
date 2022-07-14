@@ -125,9 +125,10 @@
                                 @foreach($modalityOption as $course)
                                     <div class="col-md-3">
                                         <input
+                                            onclick="check()"
                                             class="custom-option-item-check"
-                                            type="radio"
-                                            name="one_courses"
+                                            type="checkbox"
+                                            name="one_courses[]"
                                             id="one_courses_{{ $course->id }}"
                                             value="{{ $course->id }}"
                                             {{ old('one_courses') == $course->id ? 'checked' : ''}}
@@ -528,6 +529,18 @@
          document.getElementById('sortable5').style.pointerEvents = 'none';
         document.getElementById('sortable6').style.pointerEvents = 'none';
         document.getElementById('sortable4').style.pointerEvents = 'none';
+
+        function check(){         
+            var i=0;          
+            $('input:checkbox[name=one_courses]').each(function(index, element) {
+            if ($(this).prop('checked') ) {
+                 i++
+            }
+            if(i>2){
+                document.getElementById($(this).prop('id')).checked = false;
+            }            
+            });          
+        }
 
         function active(){
             if($('input:radio[name=active]:checked').val()==1){

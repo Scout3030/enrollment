@@ -83,7 +83,7 @@
                     var delfile = file.dataURL 
                       let filesIndex;                   
                     var myarr = delfile.split('documents/');
-                    let filesPayment = $('#payment_document').val();
+                    let filesPayment = JSON.parse($('#payment_document').val());
                     for (i = 0; i < filesPayment.length; i++) {
                          const index = filesPayment.indexOf( myarr[1]);
                         if (index > -1) {

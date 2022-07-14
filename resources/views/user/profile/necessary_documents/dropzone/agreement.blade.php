@@ -86,10 +86,10 @@
 
                     var delfileAgreement = file.dataURL                    
                     var myarrAgreement = delfileAgreement.split('documents/');
-                    let filesAgreement = $('#agreement_document').val();
+                    let filesAgreement = JSON.parse($('#agreement_document').val());
                     
                     for (i = 0; i < filesAgreement.length; i++) {
-                         const index = filesCertificate.indexOf( myarrAgreement[1]);
+                         const index = filesAgreement.indexOf( myarrAgreement[1]);
                         if (index > -1) {
                             filesIndex = i
                         }
