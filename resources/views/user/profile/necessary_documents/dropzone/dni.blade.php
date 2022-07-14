@@ -85,15 +85,15 @@
                 }else{
                     var delfile = file.dataURL                    
                     var myarr = delfile.split('documents/');
-                    let filesDni = $('#dni_document').val();
+                    let filesDni = JSON.parse($('#dni_document').val());
                     for (i = 0; i < filesDni.length; i++) {
-                         const index = filesDni.indexOf( myarr[1]);
-                        if (index > -1) {
-                            filesIndex = i
-                        }
-                   }
-                     filesDni.splice(filesIndex, 1);
-                     imageInput.val(JSON.stringify(filesDni))                   
+                        const index = filesDni.indexOf(myarr[1]);                   
+                    if (index > -1) {
+                        filesIndex = i
+                    }
+                }
+                     filesDni.splice(filesIndex,1);
+                     imageInput.val(JSON.stringify(filesDni))
                 }
 
             });

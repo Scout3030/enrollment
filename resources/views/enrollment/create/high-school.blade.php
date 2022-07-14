@@ -519,10 +519,11 @@
                                                         name="free_info"
                                                         value="{{ old('free_info') }}"
                                                         placeholder="{{ __('Type...') }}"
+                                                        autofocus
                                                     />
                                                     <input
                                                         id="elective_course_free_0"
-                                                        type="text"
+                                                        type="hidden"
                                                         name="elective_courses_free[]"
                                                         value='{"id":"0", "order":"{{ $coursesfree->count() + 1 }}"}'
                                                     >
@@ -641,6 +642,7 @@
                 }});
                 $('.list2').sortable({container: '.list2', update: function() {
                     hour3Course();
+                    $("#free_info").focus();
                     toast.show();
                 }});
             $("#sortable5").sortable({

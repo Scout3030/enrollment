@@ -87,7 +87,7 @@
 
                     var delfileCertificate = file.dataURL                    
                     var myarrCertificate = delfileCertificate.split('documents/');
-                    let filesCertificate = $('#certificate_document').val();
+                    let filesCertificate = JSON.parse($('#certificate_document').val());
                     
                     for (i = 0; i < filesCertificate.length; i++) {
                          const index = filesCertificate.indexOf( myarrCertificate[1]);

@@ -83,7 +83,7 @@
                 }else{
                     var delfileAcademic = file.dataURL                    
                     var myarrAcademic = delfileAcademic.split('documents/');
-                    let filesAcademic = $('#academic_history').val();
+                    let filesAcademic = JSON.parse($('#academic_history').val());
                     
                     for (i = 0; i < filesAcademic.length; i++) {
                          const index = filesAcademic.indexOf( myarrAcademic[1]);

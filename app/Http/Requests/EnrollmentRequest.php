@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\Grade;
 use App\Rules\ValidOrderRule;
+use App\Rules\ArrayCheck;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -192,8 +193,7 @@ class EnrollmentRequest extends FormRequest
             ];
         }
 
-        if( $student->grade_id == Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY ||
-            $student->grade_id == Grade::FIRST_HIGH_SCHOOL_GENERAL) {
+        if( $student->grade_id == Grade::FIRST_HIGH_SCHOOL_SCIENCE_TECHNOLOGY) {
             return [
                 'bus_stop_id' => [Rule::requiredIf(function () {
                     return $this->transportation == 1;
@@ -207,6 +207,20 @@ class EnrollmentRequest extends FormRequest
                 'student_signature'=>['required'],
             ];
         }
+        if($student->grade_id == Grade::FIRST_HIGH_SCHOOL_GENERAL) {
+        return [
+            'bus_stop_id' => [Rule::requiredIf(function () {
+                return $this->transportation == 1;
+            }), 'exists:bus_stops,id'],
+            'active'=> ['required'],
+            'modality'=> ['required'],
+            'one_courses' =>['required', new ArrayCheck],
+            'elective_courses' => ['required', 'array', new ValidOrderRule()],
+            'elective_courses.*.course_id' => 'exists:courses,id',
+            'first_tutor_signature'=>['nullable'],
+            'student_signature'=>['required'],
+        ];
+    }
 
         if( $student->grade_id == Grade::FIRST_HIGH_SCHOOL_HUMANITIES_SCIENCES) {
             return [
