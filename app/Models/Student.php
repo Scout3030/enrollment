@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Models\Student
@@ -90,7 +91,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Student extends Model
 {
-    use HasFactory;
+    use HasFactory; 
+    use SoftDeletes;
 
     const SEPARATED = 1;
     const MARRIED = 2;

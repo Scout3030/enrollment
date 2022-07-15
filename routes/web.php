@@ -52,6 +52,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::delete('/{user}', [UserController::class, 'destroy'])
             ->name('users.destroy')
             ->can('delete users');
+        Route::post('/active-user', [UserController::class, 'activeUser'])
+            ->name('users.active-user')
+            ->can('edit users');
     });
 
     Route::post('/upload-files/{path?}', [FileController::class, 'upload'])
@@ -242,6 +245,9 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             ->name('enrollments.download-document')
             ->can('view enrollments');
     });
+
+    Route::get('/test', [EnrollmentController::class, 'test'])
+        ->name('enrollments.test');
 
     Route::get('/files/{hash}', [EnrollmentController::class, 'exportEnrollmentPdf']);
     Route::get('/files/{hash}/student', [EnrollmentController::class, 'exportStudentPdf']);

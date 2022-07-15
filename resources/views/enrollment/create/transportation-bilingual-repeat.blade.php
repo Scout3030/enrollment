@@ -145,8 +145,11 @@
 @push('vendor-scripts')
     <script src="{{ asset('vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script src="{{ asset('vendors/js/forms/spinner/jquery.bootstrap-touchspin.js') }}"></script>
+   
+
     <script>
         $(document).ready(function() {
+            @if( !in_array(auth()->user()->student->grade->level->id, [\App\Models\Level::BACHELOR, \App\Models\Level::EDUCATIONAL_CYCLE]) ) 
             const routeNode = $("#route_id")
             const busStopNode = $("#bus_stop_id")
             $('.select2').select2();
@@ -169,10 +172,7 @@
                 }
             });
 
-            $('#confirmEnrollmentButton').on('click', function(){
-                $('#enrollmentForm').submit()
-            })
-
+          
             @if(old('route_id'))
             routeNode.val({{old('route_id')}}).trigger('change')
             populateBusStopSelect({{old('route_id')}})
@@ -195,6 +195,11 @@
                     }
                 })
             }
+    @endif
+    $('#confirmEnrollmentButton').on('click', function(){
+                $('#enrollmentForm').submit()
+            })
         });
     </script>
+  
 @endpush

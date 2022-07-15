@@ -1132,6 +1132,14 @@ class CourseSeeder extends Seeder
 
         Course::factory()
             ->create([
+                'name' => 'Economía, Emprendimiento y Actividad Empresarial',
+                'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
+                'course_type_id' => CourseType::MODALITY_OPTION,
+                'duration'=>'4',
+            ]);
+
+        Course::factory()
+            ->create([
                 'name' => 'Literatura Universal',
                 'grade_id' => Grade::FIRST_HIGH_SCHOOL_GENERAL,
                 'course_type_id' => CourseType::MODALITY_OPTION,

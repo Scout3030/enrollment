@@ -14,6 +14,19 @@
                 max-width: 100% !important;
             }
         }
+
+        @media all and (min-width: 480px) {
+            .deskContent {display:block;}
+            .phoneContent {display:none;}
+        }
+
+        @media all and (max-width: 479px) {
+            .deskContent {display:none;}
+            .phoneContent {display:block;}
+        }
+         div.space {
+            line-height: 76px;
+         }
     </style>
 @endpush
 
@@ -313,8 +326,19 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-2 col-md-1">
-                                    <div class="card mb-4">
+                                <div class="col-2 col-md-1 phoneContent">
+                                    <div class="card mb-4  ">
+                                        <ul class="list-group list-group-flush">
+                                            @foreach($coursesSpecific as $course)
+                                               <div class="space">
+                                               <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}
+                                                    </div>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-2 col-md-1 deskContent">
+                                    <div class="card mb-4  ">
                                         <ul class="list-group list-group-flush">
                                             @foreach($coursesSpecific as $course)
                                                 <li class="list-group-item numerator">
@@ -325,15 +349,14 @@
                                     </div>
                                 </div>
                                 <div class="col-10 col-md-11">
-                                    <div id="sortable5" class="row custom-options-checkable g-1">
+                                    <div id="sortable5" class="row list1 custom-options-checkable g-1">
                                         @if(old('elective_courses'))
                                             @foreach(old('elective_courses') as $order)
                                                 @foreach($coursesSpecific as $key => $course)
                                                     @if(json_decode($order)->id == $course->id)
                                                         <div class="row5" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                            <div class="col-md-12">
                                                                 <input
-                                                                    class="custom-option-item-check"
+                                                                   class="custom-option-item-check"
                                                                     type="checkbox"
                                                                     name="elective_courses[]"
                                                                     id="elective_course_{{ $course->id }}"
@@ -346,7 +369,6 @@
                                                                         <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                     </span>
                                                                 </label>
-                                                            </div>
                                                         </div>
                                                     @endif
                                                 @endforeach
@@ -354,7 +376,6 @@
                                         @else
                                             @foreach($coursesSpecific as $key => $course)
                                             <div class="row5" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                <div class="col-md-12">
                                                     <input
                                                         class="custom-option-item-check"
                                                         type="checkbox"
@@ -369,7 +390,6 @@
                                                             <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                     </label>
-                                                </div>
                                             </div>
                                             @endforeach
                                         @endif
@@ -406,7 +426,7 @@
                                     </div>
                                 </div>
                                 <div class="col-10 col-md-11">
-                                    <div id="sortable6" class="row custom-options-checkable g-1">
+                                    <div id="sortable6" class="row list2 custom-options-checkable g-1">
                                         @if(old('elective_courses_free'))
                                             @foreach(old('elective_courses_free') as $order)
                                                 @foreach($coursesfree as $key => $course)
@@ -433,8 +453,8 @@
                                                     @if(json_decode($order)->id == "0")
                                                     @once
                                                     <div class="row6" order="{{ json_decode($order)->order }}" course_id="0">
-                                                        <label for="">{{ __('Other specific subject of the previous block') }}</label>
                                                         <div class="col-md-12">
+                                                        <label for="">{{ __('Other specific subject of the previous block') }}</label>
                                                             <input
                                                                 type="text"
                                                                 id="free_info"
@@ -459,7 +479,6 @@
                                         @else
                                             @foreach($coursesfree as $key => $course)
                                             <div class="row6" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                <div class="col-md-12">
                                                     <input
                                                         class="custom-option-item-check"
                                                         type="checkbox"
@@ -475,11 +494,11 @@
                                                         </span>
                                                     </label>
                                                 </div>
-                                            </div>
                                             @endforeach
                                             <div class="row6" order="{{ $coursesfree->count() + 1 }}" course_id="0">
+
+
                                                 <label for="">{{ __('Other specific subject of the previous block') }}</label>
-                                                <div class="col-md-12">
                                                     <input
                                                         type="text"
                                                         id="free_info"
@@ -487,6 +506,7 @@
                                                         name="free_info"
                                                         value="{{ old('free_info') }}"
                                                         placeholder="{{ __('Type...') }}"
+                                                        autofocus
                                                     />
                                                     <input
                                                         id="elective_course_free_0"
@@ -494,7 +514,7 @@
                                                         name="elective_courses_free[]"
                                                         value='{"id":"0", "order":"{{ $coursesfree->count() + 1 }}"}'
                                                     >
-                                                </div>
+
                                             </div>
                                         @endif
                                     </div>
@@ -507,7 +527,7 @@
             </div>
 
             @include('enrollment.create.transportation-bilingual-repeat')
-            @include('enrollment.create.signatures')
+           @include('enrollment.create.signatures')
 
             <div class="row">
                 <div class="col-12">
@@ -534,8 +554,7 @@
 @endsection
 
 @push('scripts')
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+     <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
     <script>// Default Spin
         document.getElementById("active_option_1").disabled = true;
         document.getElementById("active_option_2").disabled = true;
@@ -604,6 +623,15 @@
             }
         }
         $(function() {
+            $('.list1').sortable({container: '.list1', update: function() {
+                    hour4Course();
+                    toast.show();
+                }});
+                $('.list2').sortable({container: '.list2', update: function() {
+                    hour3Course();
+                    $("#free_info").focus();
+                    toast.show();
+                }});
             $("#sortable5").sortable({
                 update: function() {
                     hour4Course();

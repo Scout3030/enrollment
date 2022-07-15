@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="card-title">{{ __('student DNI') }}</h4>
+                    <h4 class="card-title">{{ __('student DNI') }} ({{ __('Max weight 20 Mb') }})</h4>
                     <p>{{ __('student DNI description') }}</p>
                     <div>
                         <form action="#" class="dropzone dropzone-area" id="dniDocument">
@@ -28,6 +28,8 @@
 @push('scripts')
     <script>
         // 1 hidden input
+        let files = [];
+        let deleteFiles = [];
         const imageInput = $('input[name=dni_document]');
         const imageDropzone = new Dropzone("#dniDocument", {
             url: "{{ route('upload.files', 'documents') }}",
@@ -36,33 +38,72 @@
             acceptedFiles: ".jpeg,.jpg,.png,.pdf,.JPEG,.PNG,.JPG",
             init: function() {
                 this.on("success", function (file, response) {
-                    imageInput.val(response)
-                    file.serverId = response.id;
+                    let uploadedFile = [file.name, response]
+                     files.push(uploadedFile)
+                     imageInput.val(JSON.stringify(files))
+                    file.serverId = response;
                     $(file.previewTemplate).find('.dz-custom-download').attr("href", window.appBaseUrl + "file/download/" + file.serverId);
                     $(file.previewTemplate).find('.dz-custom-delete').off().on("click", function (e) {
                         e.preventDefault();
                         imageDropzone.emit("removedfile", file);
                     });
                 });
-                this.on("addedfile", function() {
-                    if (this.files[1]!=null){
-                        this.removeFile(this.files[0]);
-                    }
-                });
 
-                @if(old('dni_document'))
-                let mockFile = {name: "Filename", size: 12345};
-                let callback = null; // Optional callback when it's done
-                let crossOrigin = null; // Added to the `img` tag for crossOrigin handling
-                let resizeThumbnail = true; // Tells Dropzone whether it should resize the image first
-                this.displayExistingFile(mockFile, "{{asset('storage/documents/'.old('dni_document'))}}", callback, crossOrigin, resizeThumbnail);
+                 @if(old('dni_document'))
+                     @foreach(json_decode(old('dni_document')) as $key => $document)
+                    let mockFile{{$key}} = {name: "Filename", size: 123456};
+                    let callback{{$key}} = null; // Optional callback when it's done
+                    let crossOrigin{{$key}} = null; // Added to the `img` tag for crossOrigin handling
+                    let resizeThumbnail{{$key}} = true; // Tells Dropzone whether it should resize the image first
+                    this.displayExistingFile(mockFile{{$key}}, "{{ asset('storage/documents/'.$document[1]) }}", callback{{$key}}, crossOrigin{{$key}}, resizeThumbnail{{$key}});
+                    @endforeach
                 @endif
             }
         });
 
-        imageDropzone.on("removedfile", function(file) {
-            imageInput.val('')
-        });
+                imageDropzone.on("addedfile", function (file) {
+                var maxFiles = 3;
+                for (var i = imageDropzone.files.length - maxFiles -1; i >= 0; i--) {
+                    var f = imageDropzone.files[i];
+                    if (f.upload.uuid !== file.upload.uuid)
+                        imageDropzone.removeFile(f);
+                }
+            });
+
+          imageDropzone.on("removedfile", function(file) {
+                
+                let filesIndex;
+                if(files.length){
+                for (i = 0; i < files.length; i++) {
+                    const index = files.indexOf(file.serverId);
+                    if (index > -1) {
+                        filesIndex = i
+                    }
+                }
+                files.splice(filesIndex, 1);
+                imageInput.val(JSON.stringify(files))
+                }else{
+                    var delfile = file.dataURL                    
+                    var myarr = delfile.split('documents/');
+                    let filesDni = JSON.parse($('#dni_document').val());
+                    for (i = 0; i < filesDni.length; i++) {
+                        const index = filesDni.indexOf(myarr[1]);                   
+                    if (index > -1) {
+                        filesIndex = i
+                    }
+                }
+                     filesDni.splice(filesIndex,1);
+                     imageInput.val(JSON.stringify(filesDni))
+                }
+
+            });
+
+
+
+
+
+
+
 
     </script>
 @endpush

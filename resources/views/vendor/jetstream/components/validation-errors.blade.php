@@ -10,3 +10,14 @@
         </div>
     </div>
 @endif
+  @include('livewire.enrollment.components.errorModal')
+
+@push('scripts')
+ <script>
+        @if ($errors->has('email_unique'))
+            $(document).ready(function() {              
+                    $('#emailModal').modal('show');
+                })
+         @endif
+  </script>
+  @endpush

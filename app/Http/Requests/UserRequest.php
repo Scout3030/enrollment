@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Laravel\Fortify\Rules\Password;
 
@@ -31,6 +32,17 @@ class UserRequest extends FormRequest
             case 'DELETE':
                 return [];
             case 'POST': {
+                $deletedUser = User::onlyTrashed()->where('email',$this->email)->first();
+                if($deletedUser){
+                    return [
+                        'name' => ['required', 'string', 'max:255'],
+                        'email' => ['required', 'string', 'email', 'max:255'],
+                        'password' => $this->passwordRules(),
+                        'role' => ['nullable', 'exists:roles,name'],
+                        'dni' => ['nullable', 'unique:students,dni'],
+                        'grade_id' => ['required_with:level_id']
+                    ];
+                }
                 return [
                     'name' => ['required', 'string', 'max:255'],
                     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

@@ -14,6 +14,16 @@
                 max-width: 100% !important;
             }
         }
+
+        @media all and (min-width: 480px) {
+            .deskContent {display:block;}
+            .phoneContent {display:none;}
+        }
+
+        @media all and (max-width: 479px) {
+            .deskContent {display:none;}
+            .phoneContent {display:block;}
+        }
     </style>
 @endpush
 
@@ -340,24 +350,36 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-2 col-md-1">
-                                    <div class="card mb-4">
-                                        <ul class="list-group list-group-flush">
-                                            @foreach($coursesItineraryC as $course)
-                                                <li class="list-group-item numerator">
-                                                    <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
-                                                </li>
-                                            @endforeach
-                                        </ul>
+                                    <div class="col-2 col-md-1 phoneContent">
+                                        <div class="card mb-4  ">
+                                            <ul class="list-group list-group-flush">
+                                                @foreach($coursesItineraryC as $course)
+                                                    <li class="list-group-item numerator">
+                                                    <p>  <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</p>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-1 deskContent">
+                                        <div class="card mb-4  ">
+                                            <ul class="list-group list-group-flush">
+                                                @foreach($coursesItineraryC as $course)
+                                                    <li class="list-group-item numerator">
+                                                        <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-10 col-md-11">
-                                    <div id="sortable5" class="row custom-options-checkable g-1">
+                                    <div id="sortable5" class="row list5 custom-options-checkable g-1">
                                         @if(old('core_itinerary_a5'))
                                             @foreach(old('core_itinerary_a5') as $order)
                                                 @foreach($coursesItineraryC as $key => $course)
                                                     @if(json_decode($order)->id == $course->id)
-                                                        <div class="row6" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                            <div class="col-md-12">
+                                                        <div class="row15" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                                 <input
                                                                     class="custom-option-item-check"
                                                                     type="checkbox"
@@ -372,7 +394,6 @@
                                                                     <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                 </span>
                                                                 </label>
-                                                            </div>
                                                         </div>
                                                     @endif
                                                 @endforeach
@@ -380,7 +401,6 @@
                                         @else
                                             @foreach($coursesItineraryC as $key => $course)
                                                 <div class="row15" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                    <div class="col-md-12">
                                                         <input
                                                             class="custom-option-item-check"
                                                             type="checkbox"
@@ -396,7 +416,6 @@
                                                             <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                         </span>
                                                         </label>
-                                                    </div>
                                                 </div>
                                             @endforeach
                                         @endif
@@ -430,24 +449,35 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-2 col-md-1">
-                                            <div class="card mb-4">
-                                                <ul class="list-group list-group-flush">
-                                                    @foreach($coursesItineraryB as $course)
-                                                        <li class="list-group-item numerator">
-                                                            <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
+                                        <div class="col-2 col-md-1 phoneContent">
+                                        <div class="card mb-4  ">
+                                            <ul class="list-group list-group-flush">
+                                                @foreach($coursesItineraryB as $course)
+                                                    <li class="list-group-item numerator">
+                                                    <p>  <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</p>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         </div>
+                                    </div>
+                                    <div class="col-2 col-md-1 deskContent">
+                                        <div class="card mb-4  ">
+                                            <ul class="list-group list-group-flush">
+                                                @foreach($coursesItineraryB as $course)
+                                                    <li class="list-group-item numerator">
+                                                        <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
                                         <div class="col-10 col-md-11">
-                                            <div id="sortable6" class="row custom-options-checkable g-1">
+                                            <div id="sortable6" class="row list6 custom-options-checkable g-1">
                                                 @if(old('core_itinerary_b5'))
                                                     @foreach(old('core_itinerary_b5') as $order)
                                                         @foreach($coursesItineraryB as $key => $course)
                                                             @if(json_decode($order)->id == $course->id)
-                                                                <div class="row6" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                                <div class="row25" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                                     <div class="col-md-12">
                                                                         <input
                                                                             class="custom-option-item-check"
@@ -471,7 +501,6 @@
                                                 @else
                                                     @foreach($coursesItineraryB as $key => $course)
                                                         <div class="row25" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                            <div class="col-md-12">
                                                                 <input
                                                                     class="custom-option-item-check"
                                                                     type="checkbox"
@@ -486,7 +515,6 @@
                                                                     <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                 </span>
                                                                 </label>
-                                                            </div>
                                                         </div>
                                                     @endforeach
                                                 @endif
@@ -499,25 +527,35 @@
                                         <h5>{{ __('COURSES THE 1 h') }} <b>({{ __('Order by preference') }})</b></h5>
                                     </div>
                                     <div class="row">
-                                        <div class="col-2 col-md-1">
-                                            <div class="card mb-4">
-                                                <ul class="list-group list-group-flush">
-                                                    @foreach($coursesItineraryD as $course)
-                                                        <li class="list-group-item numerator">
-                                                            <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
+                                        <div class="col-2 col-md-1 phoneContent">
+                                        <div class="card mb-4  ">
+                                            <ul class="list-group list-group-flush">
+                                                @foreach($coursesItineraryD as $course)
+                                                    <li class="list-group-item numerator">
+                                                    <p>  <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</p>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         </div>
+                                    </div>
+                                    <div class="col-2 col-md-1 deskContent">
+                                        <div class="card mb-4  ">
+                                            <ul class="list-group list-group-flush">
+                                                @foreach($coursesItineraryD as $course)
+                                                    <li class="list-group-item numerator">
+                                                        <span class="badge badge-light-success rounded-pill ms-auto me-2"> {{ $loop->iteration }}</span>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
                                         <div class="col-10 col-md-11">
-                                            <div id="sortable4" class="row custom-options-checkable g-1">
+                                            <div id="sortable4" class="row list4 custom-options-checkable g-1">
                                                 @if(old('core_itinerary_c5'))
                                                     @foreach(old('core_itinerary_c5') as $order)
                                                         @foreach($coursesItineraryD as $key => $course)
                                                             @if(json_decode($order)->id == $course->id)
-                                                                <div class="row6" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                                    <div class="col-md-12">
+                                                                <div class="row35" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                                         <input
                                                                             class="custom-option-item-check"
                                                                             type="checkbox"
@@ -532,7 +570,6 @@
                                                                                 <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                             </span>
                                                                         </label>
-                                                                    </div>
                                                                 </div>
                                                             @endif
                                                         @endforeach
@@ -540,7 +577,6 @@
                                                 @else
                                                     @foreach($coursesItineraryD as $key => $course)
                                                         <div class="row35" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                            <div class="col-md-12">
                                                                 <input
                                                                     class="custom-option-item-check"
                                                                     type="checkbox"
@@ -555,7 +591,6 @@
                                                                         <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                     </span>
                                                                 </label>
-                                                            </div>
                                                         </div>
                                                     @endforeach
                                                 @endif
@@ -598,11 +633,9 @@
 @endsection
 
 @push('scripts')
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
     <script>// Default Spin
-
-
+    $(document).ready(function(){
         $('.row1').each(function(index, element) {
             document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
         });
@@ -627,11 +660,9 @@
         $('.row4').each(function(index, element) {
             document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
         });
-
         $('.row15').each(function(index, element) {
             document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = false;
             document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).disabled = true;
-
         });
         $('.row25').each(function(index, element) {
             document.getElementById("core_itinerary_b5_"+$(this).attr('course_id')).checked = false;
@@ -645,16 +676,39 @@
             document.getElementById("core_itinerary_d5_"+$(this).attr('course_id')).checked = false;
         });
 
-        $( "#sortable5" ).sortable();
-        $( "#sortable5" ).sortable( "option", "disabled", true );
-        $( "#sortable6" ).sortable();
-        $( "#sortable6" ).sortable( "option", "disabled", true );
-        $( "#sortable4" ).sortable();
-        $( "#sortable4" ).sortable( "option", "disabled", true );
+        document.getElementById('sortable5').style.pointerEvents = 'none';
+        document.getElementById('sortable6').style.pointerEvents = 'none';
+        document.getElementById('sortable4').style.pointerEvents = 'none';
 
-        function activeOption(){
+        @if(!is_null(old('active')))
+        active()
+        @endif
 
-        }
+        @if(!is_null(old('active1')))
+        active1()
+        @endif
+
+        @if(!is_null(old('active_option')))
+        activeOption()
+        @endif
+
+        @if(old('one_coursesB'))
+        $("#one_coursesB_{{ old('one_coursesB') }}").prop("checked", true);
+        @endif
+
+        @if(old('one_courses'))
+        $("#one_courses_{{ old('one_courses') }}").prop("checked", true);
+        @endif
+
+        @if(old('one_courses2B'))
+        $("#one_courses2B_{{ old('one_courses2B') }}").prop("checked", true);
+        @endif
+
+        @if(old('one_courses2'))
+        $("#one_courses2_{{ old('one_courses2') }}").prop("checked", true);
+        @endif
+
+    })
         function active(){
             if($('input:radio[name=active]:checked').val()==1){
 
@@ -690,9 +744,7 @@
                 $('.rowone2B').each(function(index, element) {
                     document.getElementById("one_courses2B_"+$(this).attr('course_id')).checked = false;
                 });
-
             }else{
-
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = true;
                 });
@@ -725,17 +777,13 @@
                 $('.rowone2B').each(function(index, element) {
                     document.getElementById("one_courses2B_"+$(this).attr('course_id')).disabled = false;
                 });
-
             }
         }
         function active1(){
             if($('input:radio[name=active1]:checked').val()==1){
-                $( "#sortable5" ).sortable();
-                $( "#sortable5" ).sortable( "option", "disabled", false );
-                $( "#sortable6" ).sortable();
-                $( "#sortable6" ).sortable( "option", "disabled", true );
-                $( "#sortable4" ).sortable();
-                $( "#sortable4" ).sortable( "option", "disabled", true );
+                document.getElementById('sortable5').style.pointerEvents = 'auto';
+                document.getElementById('sortable6').style.pointerEvents = 'none';
+                document.getElementById('sortable4').style.pointerEvents = 'none';
 
                 $('.row35').each(function(index, element) {
                     document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).checked = false;
@@ -752,15 +800,10 @@
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = true;
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).disabled = false;
                 });
-
-
             }else{
-                $( "#sortable5" ).sortable();
-                $( "#sortable5" ).sortable( "option", "disabled", true );
-                $( "#sortable6" ).sortable();
-                $( "#sortable6" ).sortable( "option", "disabled", false );
-                $( "#sortable4" ).sortable();
-                $( "#sortable4" ).sortable( "option", "disabled", false );
+                document.getElementById('sortable5').style.pointerEvents = 'none';
+                document.getElementById('sortable6').style.pointerEvents = 'auto';
+                document.getElementById('sortable4').style.pointerEvents = 'auto';
 
                 $('.row35').each(function(index, element) {
                     document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).checked = true;
@@ -777,10 +820,21 @@
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = false;
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).disabled = true;
                 });
-
             }
         }
         $(function() {
+            $('.list5').sortable({container: '.list5', update: function() {
+                hour4Coue();
+                toast.show();
+            }});
+            $('.list6').sortable({container: '.list6', update: function() {
+                hour3Ce();
+                toast.show();
+            }});
+            $('.list4').sortable({container: '.list4', update: function() {
+                hour4Course();
+                toast.show();
+            }});
             $("#sortable5").sortable({
                 update: function() {
                     hour4Coue();
@@ -803,7 +857,6 @@
                     document.getElementById("core_itinerary_b5_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}"
                 });
             }
-
             $("#sortable4").sortable({
                 update: function() {
                     hour4Course();
@@ -816,16 +869,6 @@
                 });
             }
         });
-
-
-
-        @if(!is_null(old('active')))
-        active()
-        @endif
-
-        @if(!is_null(old('active_option')))
-        activeOption()
-        @endif
     </script>
 @endpush
 

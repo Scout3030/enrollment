@@ -698,7 +698,7 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" id="dni_document" name="dni_document" value="{{ old('dni_document') }}">
+        <input type="hidden" id="dni_document" name="dni_document"value="{{ old('dni_document') }}">
         <input type="hidden" id="agreement_document" name="agreement_document" value="{{ old('agreement_document') }}">
         <input type="hidden" id="payment_document" name="payment_document" value="{{ old('payment_document') }}">
         <input type="hidden" id="certificate_document" name="certificate_document" value="{{ old('certificate_document') }}">
