@@ -27,8 +27,8 @@
 @push('scripts')
     <script>
         // 1 hidden input
-          let files1 = [];
-       
+        let files1 = [];
+
         const academicHistoryInput = $('input[name=academic_history]');
         const academicHistoryDropzone = new Dropzone("#academicHistory", {
             url: "{{ route('upload.files', 'documents') }}",
@@ -47,6 +47,13 @@
                         academicHistoryDropzone.emit("removedfile", file);
                     });
                 });
+
+                this.on("addedfile", function() {
+                    if (this.files[3]!=null){
+                        this.removeFile(this.files[2]);
+                    }
+                });
+
                 @if(old('academic_history'))
                      @foreach(json_decode(old('academic_history')) as $key => $document)
                     let mockFile{{$key}} = {name: "Filename", size: 123456};
@@ -59,19 +66,9 @@
             }
         });
 
-         academicHistoryDropzone.on("addedfile", function (file) {
-                var maxFiles = 3;
-                for (var i = academicHistoryDropzone.files.length - maxFiles -1; i >= 0; i--) {
-                    var f = academicHistoryDropzone.files[i];
-                    if (f.upload.uuid !== file.upload.uuid)
-                        academicHistoryDropzone.removeFile(f);
-                    }
-                });
-
         academicHistoryDropzone.on("removedfile", function(file) {
-                
-                let filesIndex;
-                if(files1.length){
+            let filesIndex;
+            if(files1.length){
                 for (i = 0; i < files1.length; i++) {
                     const index = files1.indexOf(file.serverId);
                     if (index > -1) {
@@ -79,23 +76,22 @@
                     }
                 }
                 files1.splice(filesIndex, 1);
-                academicHistoryInput.val(JSON.stringify(files1))
-                }else{
-                    var delfileAcademic = file.dataURL                    
-                    var myarrAcademic = delfileAcademic.split('documents/');
-                    let filesAcademic = JSON.parse($('#academic_history').val());
-                    
-                    for (i = 0; i < filesAcademic.length; i++) {
-                         const index = filesAcademic.indexOf( myarrAcademic[1]);
-                        if (index > -1) {
-                            filesIndex = i
-                        }
-                   }
-                     filesAcademic.splice(filesIndex, 1);
-                     academicHistoryInput.val(JSON.stringify(filesAcademic))    
+                academicHistoryInput.val(JSON.stringify(files1));
+            } else {
+                var delfileAcademic = file.dataURL
+                var myarrAcademic = delfileAcademic.split('documents/');
+                let filesAcademic = $('#academic_history').val();
+
+                for (i = 0; i < filesAcademic.length; i++) {
+                        const index = filesAcademic.indexOf( myarrAcademic[1]);
+                    if (index > -1) {
+                        filesIndex = i
+                    }
                 }
 
-            });
+                filesAcademic.splice(filesIndex, 1);
+                academicHistoryInput.val(JSON.stringify(filesAcademic))
+            }
+        });
     </script>
-
 @endpush

@@ -14,19 +14,6 @@
                 max-width: 100% !important;
             }
         }
-           .deskContent {
-        width: 100%;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: contain; 
-        }
-
-        .phoneContent {
-            width: 100%;
-            height: 100px;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
 
         @media all and (min-width: 480px) {
             .deskContent {display:block;}
@@ -118,7 +105,7 @@
                             </div>
                         </div>
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Select one option') }}</h4>
+                            <h4 class="card-title">{{ __('Select two options') }}</h4>
                         </div>
                         <div class="card-body">
                             <div class="row custom-options-checkable g-1">
@@ -131,7 +118,7 @@
                                             name="one_courses[]"
                                             id="one_courses_{{ $course->id }}"
                                             value="{{ $course->id }}"
-                                            {{ old('one_courses') == $course->id ? 'checked' : ''}}
+                                            {{ old('one_courses') && in_array($course->id, old('one_courses'))  ? 'checked' : ''}}
                                         />
                                         <label class="custom-option-item p-1" for="one_courses_{{ $course->id }}">
                                             <span class="d-flex justify-content-between flex-wrap mb-50">
@@ -214,7 +201,7 @@
                                             @foreach(old('core_itinerary_a') as $order)
                                                 @foreach($coursesItineraryA as $key => $course)
                                                     @if(json_decode($order)->id == $course->id)
-                                                        <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                        <div class="row1" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                                 <input
                                                                     class="custom-option-item-check"
                                                                     type="checkbox"
@@ -314,7 +301,7 @@
                                                     @foreach(old('core_itinerary_b') as $order)
                                                         @foreach($coursesItineraryB as $key => $course)
                                                             @if(json_decode($order)->id == $course->id)
-                                                                <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                                <div class="row2" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                                         <input
                                                                             class="custom-option-item-check"
                                                                             type="checkbox"
@@ -511,6 +498,9 @@
     <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
     <script>// Default Spin
 
+        $(document).ready(function() {
+
+
         $('.row1').each(function(index, element) {
             document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
              document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = true;
@@ -529,17 +519,17 @@
          document.getElementById('sortable5').style.pointerEvents = 'none';
         document.getElementById('sortable6').style.pointerEvents = 'none';
         document.getElementById('sortable4').style.pointerEvents = 'none';
-
-        function check(){         
-            var i=0;          
-            $('input:checkbox[name=one_courses]').each(function(index, element) {
+    })
+        function check(){
+            var i=0;
+            $("input[name='one_courses[]']").each(function(index, element) {
             if ($(this).prop('checked') ) {
                  i++
             }
             if(i>2){
                 document.getElementById($(this).prop('id')).checked = false;
-            }            
-            });          
+            }
+            });
         }
 
         function active(){
@@ -644,6 +634,7 @@
         @if(!is_null(old('active_option')))
         activeOption()
         @endif
+
     </script>
 @endpush
 

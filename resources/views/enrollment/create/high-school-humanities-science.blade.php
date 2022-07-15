@@ -14,19 +14,6 @@
                 max-width: 100% !important;
             }
         }
-            .deskContent {
-        width: 100%;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: contain; 
-        }
-
-        .phoneContent {
-            width: 100%;
-            height: 100px;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
 
         @media all and (min-width: 480px) {
             .deskContent {display:block;}
@@ -324,7 +311,7 @@
                                             @foreach(old('core_itinerary_a5') as $order)
                                                 @foreach($coursesItineraryC as $key => $course)
                                                     @if(json_decode($order)->id == $course->id)
-                                                        <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                        <div class="row15" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                             <div class="col-md-12">
                                                                 <input
                                                                     class="custom-option-item-check"
@@ -425,7 +412,7 @@
                                                     @foreach(old('core_itinerary_b5') as $order)
                                                         @foreach($coursesItineraryB as $key => $course)
                                                             @if(json_decode($order)->id == $course->id)
-                                                                <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                                <div class="row25" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                                     <div class="col-md-12">
                                                                         <input
                                                                             class="custom-option-item-check"
@@ -449,7 +436,7 @@
                                                 @else
                                                 @foreach($coursesItineraryB as $key => $course)
                                                     <div class="row25" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                     
+
                                                             <input
                                                                 class="custom-option-item-check"
                                                                 type="checkbox"
@@ -464,7 +451,7 @@
                                                                     <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                 </span>
                                                             </label>
-                                                        
+
                                                     </div>
                                                 @endforeach
                                                 @endif
@@ -505,7 +492,7 @@
                                                     @foreach(old('core_itinerary_c5') as $order)
                                                         @foreach($coursesItineraryD as $key => $course)
                                                             @if(json_decode($order)->id == $course->id)
-                                                                <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                                <div class="row35" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                                     <div class="col-md-12">
                                                                         <input
                                                                             class="custom-option-item-check"
@@ -529,7 +516,7 @@
                                                 @else
                                                 @foreach($coursesItineraryD as $key => $course)
                                                     <div class="row35" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
-                                                      
+
                                                             <input
                                                                 class="custom-option-item-check"
                                                                 type="checkbox"
@@ -544,7 +531,7 @@
                                                                     <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                 </span>
                                                             </label>
-                                                       
+
                                                     </div>
                                                 @endforeach
                                                 @endif
@@ -628,7 +615,7 @@
 @endsection
 
 @push('scripts')
-    <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>    
+    <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
     <script>// Default Spin
         $('.row1').each(function(index, element) {
             document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;

@@ -14,19 +14,6 @@
                 max-width: 100% !important;
             }
         }
-             .deskContent {
-        width: 100%;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: contain; 
-        }
-
-        .phoneContent {
-            width: 100%;
-            height: 100px;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
 
         @media all and (min-width: 480px) {
             .deskContent {display:block;}
@@ -364,7 +351,7 @@
                                             @foreach(old('core_itinerary_a') as $order)
                                                 @foreach($coursesItineraryB as $key => $course)
                                                     @if(json_decode($order)->id == $course->id)
-                                                        <div class="row6" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                        <div class="row1" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                                 <input
                                                                     class="custom-option-item-check"
                                                                     type="checkbox"
@@ -461,7 +448,7 @@
                                                     @foreach(old('core_itinerary_b') as $order)
                                                         @foreach($coursesItineraryC as $key => $course)
                                                             @if(json_decode($order)->id == $course->id)
-                                                                <div class="row6" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                                <div class="row2" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                                         <input
                                                                             class="custom-option-item-check"
                                                                             type="checkbox"
@@ -539,7 +526,7 @@
                                                     @foreach(old('core_itinerary_c') as $order)
                                                         @foreach($coursesItineraryD as $key => $course)
                                                             @if(json_decode($order)->id == $course->id)
-                                                                <div class="row6" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                                <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                                         <input
                                                                             class="custom-option-item-check"
                                                                             type="checkbox"

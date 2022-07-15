@@ -14,19 +14,6 @@
                 max-width: 100% !important;
             }
         }
-         .deskContent {
-        width: 100%;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: contain; 
-        }
-
-        .phoneContent {
-            width: 100%;
-            height: 100px;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
 
         @media all and (min-width: 480px) {
             .deskContent {display:block;}
@@ -196,7 +183,7 @@
                 <div class="col-sm-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">{{ __('Free configuration') }}  ({{ __('Order by preference') }})----------</h4>
+                            <h4 class="card-title">{{ __('Free configuration') }}  ({{ __('Order by preference') }})</h4>
                             <p>{{ __('optional courses info') }}</p>
                         </div>
                         <div class="card-body">

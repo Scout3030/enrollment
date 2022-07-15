@@ -44,6 +44,21 @@ class UserController extends Controller
      */
     public function store(UserRequest $request): \Illuminate\Http\RedirectResponse
     {
+        $user = User::onlyTrashed()->where('email',$request->email)->first();
+        if($user) {
+            $user->restore();
+            if(!$request->filled('role')){
+                $student = Student::onlyTrashed()->whereUserId($user->id)->first();
+                $student->restore();
+                $user->student->fill([
+                    'dni' => $request->dni,
+                    'grade_id' => $request->grade_id
+                ])->save();
+                return back()->with('message', ['type' => 'success', 'description' => __('Student deleted previously, data restored successfully.')]);
+            }
+            return back()->with('message', ['type' => 'success', 'description' => __('User restored successfully')]);
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

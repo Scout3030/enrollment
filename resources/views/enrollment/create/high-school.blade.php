@@ -14,19 +14,6 @@
                 max-width: 100% !important;
             }
         }
-           .deskContent {
-        width: 100%;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: contain; 
-        }
-
-        .phoneContent {
-            width: 100%;
-            height: 100px;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
 
         @media all and (min-width: 480px) {
             .deskContent {display:block;}
@@ -509,8 +496,8 @@
                                                 </div>
                                             @endforeach
                                             <div class="row6" order="{{ $coursesfree->count() + 1 }}" course_id="0">
-                                                
-                                               
+
+
                                                 <label for="">{{ __('Other specific subject of the previous block') }}</label>
                                                     <input
                                                         type="text"
@@ -527,7 +514,7 @@
                                                         name="elective_courses_free[]"
                                                         value='{"id":"0", "order":"{{ $coursesfree->count() + 1 }}"}'
                                                     >
-                                               
+
                                             </div>
                                         @endif
                                     </div>

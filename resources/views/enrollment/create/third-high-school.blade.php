@@ -15,20 +15,6 @@
             }
         }
 
-        .deskContent {
-        width: 100%;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: contain; 
-        }
-
-        .phoneContent {
-            width: 100%;
-            height: 100px;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
-
         @media all and (min-width: 480px) {
             .deskContent {display:block;}
             .phoneContent {display:none;}
@@ -194,7 +180,7 @@
                                                     <span class="d-flex justify-content-between flex-wrap mb-50">
                                                         <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                     </span>
-                                                    </label>                                               
+                                                    </label>
                                             </div>
                                             @endforeach
                                         @endif

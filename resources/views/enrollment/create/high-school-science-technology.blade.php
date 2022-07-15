@@ -14,19 +14,6 @@
                 max-width: 100% !important;
             }
         }
-             .deskContent {
-        width: 100%;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: contain; 
-        }
-
-        .phoneContent {
-            width: 100%;
-            height: 100px;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
 
         @media all and (min-width: 480px) {
             .deskContent {display:block;}
@@ -210,7 +197,7 @@
                                                                 @foreach(old('core_itinerary_a') as $order)
                                                                     @foreach($coursesItineraryA as $key => $course)
                                                                         @if(json_decode($order)->id == $course->id)
-                                                                            <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                                            <div class="row1" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                                                 <div class="col-md-12">
                                                                                     <input
                                                                                         class="custom-option-item-check"
@@ -247,7 +234,7 @@
                                                                 <span class="d-flex justify-content-between flex-wrap mb-50">
                                                                     <span class="fw-bolder">{{ __($course->name).' ('.$course->duration.'h)'.($course->bilingual ? '*' : '') }}</span>
                                                                 </span>
-                                                                            </label>                                                            
+                                                                            </label>
                                                                     </div>
                                                                 @endforeach
                                                             @endif
@@ -318,7 +305,7 @@
                                                     @foreach(old('core_itinerary_b') as $order)
                                                         @foreach($coursesItineraryB as $key => $course)
                                                             @if(json_decode($order)->id == $course->id)
-                                                                <div class="row3" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
+                                                                <div class="row2" order="{{ $key + 1 }}" course_id="{{ $course->id }}">
                                                                     <div class="col-md-12">
                                                                         <input
                                                                             class="custom-option-item-check"
@@ -517,13 +504,13 @@
 @push('scripts')
     <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
     <script>// Default Spin
-        
+
 
         $('.row1').each(function(index, element) {
             document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
             document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = true;
         });
-        
+
         $('.row2').each(function(index, element) {
             document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
              document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).disabled = true;
@@ -538,8 +525,8 @@
         document.getElementById('sortable5').style.pointerEvents = 'none';
         document.getElementById('sortable6').style.pointerEvents = 'none';
         document.getElementById('sortable4').style.pointerEvents = 'none';
-       
-        
+
+
 
         function activeOption(){
 
@@ -594,7 +581,7 @@
             }
         }
         $(function() {
-           
+
              $('.list5').sortable({container: '.list5', update: function() {
                     hour4Coue();
                     toast.show();

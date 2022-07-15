@@ -14,21 +14,6 @@
                 max-width: 100% !important;
             }
         }
-         .deskContent {
-        background-image: url(../img/big-pic.png);
-        width: 100%;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: contain; 
-        }
-
-        .phoneContent {
-            background-image: url(../img/small-pic.png);
-            width: 100%;
-            height: 100px;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
 
         @media all and (min-width: 480px) {
             .deskContent {display:block;}

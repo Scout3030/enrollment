@@ -32,28 +32,25 @@ class UserRequest extends FormRequest
             case 'DELETE':
                 return [];
             case 'POST': {
-                $email = User::onlyTrashed()->where('email',$this->email)->first();
-                if($email){
+                $deletedUser = User::onlyTrashed()->where('email',$this->email)->first();
+                if($deletedUser){
                     return [
                         'name' => ['required', 'string', 'max:255'],
-                        'email_unique' => ['required', 'string', 'email', 'max:255'],
+                        'email' => ['required', 'string', 'email', 'max:255'],
                         'password' => $this->passwordRules(),
                         'role' => ['nullable', 'exists:roles,name'],
                         'dni' => ['nullable', 'unique:students,dni'],
                         'grade_id' => ['required_with:level_id']
                     ];
                 }
-                else
-                {
-                    return [
-                        'name' => ['required', 'string', 'max:255'],
-                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                        'password' => $this->passwordRules(),
-                        'role' => ['nullable', 'exists:roles,name'],
-                        'dni' => ['nullable', 'unique:students,dni'],
-                        'grade_id' => ['required_with:level_id']
-                    ];
-                }
+                return [
+                    'name' => ['required', 'string', 'max:255'],
+                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                    'password' => $this->passwordRules(),
+                    'role' => ['nullable', 'exists:roles,name'],
+                    'dni' => ['nullable', 'unique:students,dni'],
+                    'grade_id' => ['required_with:level_id']
+                ];
             }
             case 'PUT': {
                 $user = $this->route('user');
