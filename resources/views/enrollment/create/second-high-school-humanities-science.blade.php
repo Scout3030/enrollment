@@ -635,8 +635,7 @@
 @push('scripts')
     <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
     <script>// Default Spin
-
-
+    $(document).ready(function(){
         $('.row1').each(function(index, element) {
             document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
         });
@@ -661,11 +660,9 @@
         $('.row4').each(function(index, element) {
             document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
         });
-
         $('.row15').each(function(index, element) {
             document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = false;
             document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).disabled = true;
-
         });
         $('.row25').each(function(index, element) {
             document.getElementById("core_itinerary_b5_"+$(this).attr('course_id')).checked = false;
@@ -679,13 +676,39 @@
             document.getElementById("core_itinerary_d5_"+$(this).attr('course_id')).checked = false;
         });
 
-         document.getElementById('sortable5').style.pointerEvents = 'none';
+        document.getElementById('sortable5').style.pointerEvents = 'none';
         document.getElementById('sortable6').style.pointerEvents = 'none';
         document.getElementById('sortable4').style.pointerEvents = 'none';
 
-        function activeOption(){
+        @if(!is_null(old('active')))
+        active()
+        @endif
 
-        }
+        @if(!is_null(old('active1')))
+        active1()
+        @endif
+
+        @if(!is_null(old('active_option')))
+        activeOption()
+        @endif
+
+        @if(old('one_coursesB'))
+        $("#one_coursesB_{{ old('one_coursesB') }}").prop("checked", true);
+        @endif
+
+        @if(old('one_courses'))
+        $("#one_courses_{{ old('one_courses') }}").prop("checked", true);
+        @endif
+
+        @if(old('one_courses2B'))
+        $("#one_courses2B_{{ old('one_courses2B') }}").prop("checked", true);
+        @endif
+
+        @if(old('one_courses2'))
+        $("#one_courses2_{{ old('one_courses2') }}").prop("checked", true);
+        @endif
+
+    })
         function active(){
             if($('input:radio[name=active]:checked').val()==1){
 
@@ -721,9 +744,7 @@
                 $('.rowone2B').each(function(index, element) {
                     document.getElementById("one_courses2B_"+$(this).attr('course_id')).checked = false;
                 });
-
             }else{
-
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = true;
                 });
@@ -756,14 +777,13 @@
                 $('.rowone2B').each(function(index, element) {
                     document.getElementById("one_courses2B_"+$(this).attr('course_id')).disabled = false;
                 });
-
             }
         }
         function active1(){
             if($('input:radio[name=active1]:checked').val()==1){
                 document.getElementById('sortable5').style.pointerEvents = 'auto';
-                 document.getElementById('sortable6').style.pointerEvents = 'none';
-                 document.getElementById('sortable4').style.pointerEvents = 'none';
+                document.getElementById('sortable6').style.pointerEvents = 'none';
+                document.getElementById('sortable4').style.pointerEvents = 'none';
 
                 $('.row35').each(function(index, element) {
                     document.getElementById("core_itinerary_c5_"+$(this).attr('course_id')).checked = false;
@@ -780,11 +800,9 @@
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = true;
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).disabled = false;
                 });
-
-
             }else{
                 document.getElementById('sortable5').style.pointerEvents = 'none';
-                  document.getElementById('sortable6').style.pointerEvents = 'auto';
+                document.getElementById('sortable6').style.pointerEvents = 'auto';
                 document.getElementById('sortable4').style.pointerEvents = 'auto';
 
                 $('.row35').each(function(index, element) {
@@ -802,22 +820,21 @@
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).checked = false;
                     document.getElementById("core_itinerary_a5_"+$(this).attr('course_id')).disabled = true;
                 });
-
             }
         }
         $(function() {
-             $('.list5').sortable({container: '.list5', update: function() {
-                    hour4Coue();
-                    toast.show();
-                }});
-                $('.list6').sortable({container: '.list6', update: function() {
-                    hour3Ce();
-                    toast.show();
-                }});
-                $('.list4').sortable({container: '.list4', update: function() {
-                    hour4Course();
-                    toast.show();
-                }});
+            $('.list5').sortable({container: '.list5', update: function() {
+                hour4Coue();
+                toast.show();
+            }});
+            $('.list6').sortable({container: '.list6', update: function() {
+                hour3Ce();
+                toast.show();
+            }});
+            $('.list4').sortable({container: '.list4', update: function() {
+                hour4Course();
+                toast.show();
+            }});
             $("#sortable5").sortable({
                 update: function() {
                     hour4Coue();
@@ -840,7 +857,6 @@
                     document.getElementById("core_itinerary_b5_"+$(this).attr('course_id')).value = "{"+'"id"'+":"+'"'+$(this).attr('course_id')+'", '+'"order":'+'"'+(index + 1)+'"'+"}"
                 });
             }
-
             $("#sortable4").sortable({
                 update: function() {
                     hour4Course();
@@ -853,16 +869,6 @@
                 });
             }
         });
-
-
-
-        @if(!is_null(old('active')))
-        active()
-        @endif
-
-        @if(!is_null(old('active_option')))
-        activeOption()
-        @endif
     </script>
 @endpush
 

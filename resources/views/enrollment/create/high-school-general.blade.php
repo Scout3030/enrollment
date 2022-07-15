@@ -497,77 +497,84 @@
 @push('scripts')
     <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
     <script>// Default Spin
-
         $(document).ready(function() {
+            $('.row1').each(function(index, element) {
+                document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
+                document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = true;
+            });
+            $('.row2').each(function(index, element) {
+                document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
+                document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).disabled = true;
+            });
+            $('.row3').each(function(index, element) {
+                document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
+                document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).disabled  = true;
+            });
+            $('.row4').each(function(index, element) {
+                document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
+            });
+            document.getElementById('sortable5').style.pointerEvents = 'none';
+            document.getElementById('sortable6').style.pointerEvents = 'none';
+            document.getElementById('sortable4').style.pointerEvents = 'none';
 
+            @if(!is_null(old('active')))
+            active()
+            @endif
 
-        $('.row1').each(function(index, element) {
-            document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
-             document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = true;
-        });
-        $('.row2').each(function(index, element) {
-            document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
-            document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).disabled = true;
-        });
-        $('.row3').each(function(index, element) {
-            document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
-            document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).disabled  = true;
-        });
-        $('.row4').each(function(index, element) {
-            document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
-        });
-         document.getElementById('sortable5').style.pointerEvents = 'none';
-        document.getElementById('sortable6').style.pointerEvents = 'none';
-        document.getElementById('sortable4').style.pointerEvents = 'none';
-    })
+            @if(!is_null(old('active_option')))
+            activeOption()
+            @endif
+        })
+
         function check(){
             var i=0;
             $("input[name='one_courses[]']").each(function(index, element) {
-            if ($(this).prop('checked') ) {
-                 i++
-            }
-            if(i>2){
-                document.getElementById($(this).prop('id')).checked = false;
-            }
+                if ($(this).prop('checked') ) {
+                    i++
+                }
+
+                if(i>2){
+                    document.getElementById($(this).prop('id')).checked = false;
+                }
             });
         }
 
         function active(){
             if($('input:radio[name=active]:checked').val()==1){
                 document.getElementById('sortable5').style.pointerEvents = 'auto';
-                 document.getElementById('sortable6').style.pointerEvents = 'none';
-                 document.getElementById('sortable4').style.pointerEvents = 'none';
+                document.getElementById('sortable6').style.pointerEvents = 'none';
+                document.getElementById('sortable4').style.pointerEvents = 'none';
 
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
-                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).disabled = true;
+                    document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).disabled = true;
                 });
                 $('.row4').each(function(index, element) {
                     document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
                 });
                 $('.row2').each(function(index, element) {
                     document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
-                     document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).disabled = true;
+                    document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).disabled = true;
                 });
                 $('.row1').each(function(index, element) {
                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = true;
-                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = false;
+                    document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = false;
                 });
             }else{
-                  document.getElementById('sortable5').style.pointerEvents = 'none';
-                  document.getElementById('sortable6').style.pointerEvents = 'auto';
+                document.getElementById('sortable5').style.pointerEvents = 'none';
+                document.getElementById('sortable6').style.pointerEvents = 'auto';
                 document.getElementById('sortable4').style.pointerEvents = 'auto';
 
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = true;
-                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).disabled = false;
+                    document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).disabled = false;
                 });
                 $('.row4').each(function(index, element) {
                     document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = true;
                 });
                 $('.row1').each(function(index, element) {
                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
-                     document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = true;
+                    document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = true;
                 });
                 $('.row2').each(function(index, element) {
                     document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = true;
@@ -578,8 +585,9 @@
                 });
             }
         }
+
         $(function() {
-             $('.list5').sortable({container: '.list5', update: function() {
+            $('.list5').sortable({container: '.list5', update: function() {
                     hour4Coue();
                     toast.show();
                 }});
@@ -626,15 +634,6 @@
                 });
             }
         });
-
-        @if(!is_null(old('active')))
-        active()
-        @endif
-
-        @if(!is_null(old('active_option')))
-        activeOption()
-        @endif
-
     </script>
 @endpush
 

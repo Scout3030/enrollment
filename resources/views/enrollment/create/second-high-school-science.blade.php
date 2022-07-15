@@ -130,7 +130,7 @@
                                                 name="active1"
                                                 id="active_option_2"
                                                 value="2"
-                                                {{ old('active1') == "1" ? 'checked' : ''}}
+                                                {{ old('active1') == "2" ? 'checked' : ''}}
                                             />
                                             <label class="form-check-label" for="active_option_2">{{ __('Option 2') }}</label>
                                         </div>
@@ -168,7 +168,7 @@
                                                 name="active1"
                                                 id="active_option_3"
                                                 value="2"
-                                                {{ old('active1') == "1" ? 'checked' : ''}}
+                                                {{ old('active1') == "3" ? 'checked' : ''}}
                                             />
                                             <label class="form-check-label" for="active_option_3">{{ __('Option 3') }}</label>
                                         </div>
@@ -210,7 +210,7 @@
                                                 name="active1"
                                                 id="active_option_4"
                                                 value="4"
-                                                {{ old('active1') == "1" ? 'checked' : ''}}
+                                                {{ old('active1') == "4" ? 'checked' : ''}}
                                             />
                                             <label class="form-check-label" for="active_option_4">{{ __('Option 4') }}</label>
                                         </div>
@@ -250,7 +250,7 @@
                                                 name="active1"
                                                 id="active_option_5"
                                                 value="5"
-                                                {{ old('active1') == "1" ? 'checked' : ''}}
+                                                {{ old('active1') == "5" ? 'checked' : ''}}
                                             />
                                             <label class="form-check-label" for="active_option_5">{{ __('Option 5') }}</label>
                                         </div>
@@ -604,34 +604,86 @@
 @endsection
 
 @push('scripts')
-     <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
+    <script src='{{ asset('drag-and-drop/draganddrop.js') }}' type='text/javascript'></script>
     <script>// Default Spin
-
-
-
         var allChkBox4 = document.getElementsByName('modaly_course4[]');
         for(var i =0, len = allChkBox4.length; i < len; i++) {
-        allChkBox4[i].checked = false;
+            allChkBox4[i].checked = false;
         }
-         var allChkBox5 = document.getElementsByName('modaly_course5[]');
+        var allChkBox5 = document.getElementsByName('modaly_course5[]');
         for(var i =0, len = allChkBox5.length; i < len; i++) {
-        allChkBox5[i].checked = false;
+            allChkBox5[i].checked = false;
         }
-         var allChkBox3 = document.getElementsByName('modaly_course3[]');
+        var allChkBox3 = document.getElementsByName('modaly_course3[]');
         for(var i =0, len = allChkBox3.length; i < len; i++) {
-        allChkBox3[i].checked = false;
+            allChkBox3[i].checked = false;
         }
-         var allChkBox2 = document.getElementsByName('modaly_course2[]');
+        var allChkBox2 = document.getElementsByName('modaly_course2[]');
         for(var i =0, len = allChkBox2.length; i < len; i++) {
-        allChkBox2[i].checked = false;
+            allChkBox2[i].checked = false;
         }
-         var allChkBox1 = document.getElementsByName('modaly_course1[]');
+        var allChkBox1 = document.getElementsByName('modaly_course1[]');
         for(var i =0, len = allChkBox1.length; i < len; i++) {
-        allChkBox1[i].checked = false;
+            allChkBox1[i].checked = false;
         }
 
-         function active11(){
-             for(var i =0, len = allChkBox1.length; i < len; i++) {
+        $('.row51').each(function(index, element) {
+            document.getElementById("modaly_course1_"+$(this).attr('course_id')).checked = false;
+        });
+        $('.row1').each(function(index, element) {
+            document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
+            document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = true;
+        });
+        $('.row2').each(function(index, element) {
+            document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
+            document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).disabled = true;
+        });
+        $('.row3').each(function(index, element) {
+            document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
+            document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).disabled = true;
+        });
+        $('.row4').each(function(index, element) {
+            document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
+        });
+        document.getElementById('sortable5').style.pointerEvents = 'none';
+        document.getElementById('sortable6').style.pointerEvents = 'none';
+        document.getElementById('sortable4').style.pointerEvents = 'none';
+
+        @if(old('active1') && old('active1') == '1')
+        $("#active_option_{{ old('active1') }}").prop("checked", true);
+        active11()
+        @endif
+
+        @if(old('active1') && old('active1') == '2')
+        $("#active_option_{{ old('active1') }}").prop("checked", true);
+        active12()
+        @endif
+
+        @if(old('active1') && old('active1') == '3')
+        $("#active_option_{{ old('active1') }}").prop("checked", true);
+        active13()
+        @endif
+
+        @if(old('active1') && old('active1') == '4')
+        $("#active_option_{{ old('active1') }}").prop("checked", true);
+        active14()
+        @endif
+
+        @if(old('active1') && old('active1') == '5')
+        $("#active_option_{{ old('active1') }}").prop("checked", true);
+        active15()
+        @endif
+
+        @if(!is_null(old('active')))
+        active()
+        @endif
+
+        @if(!is_null(old('active_option')))
+        activeOption()
+        @endif
+
+        function active11(){
+            for(var i =0, len = allChkBox1.length; i < len; i++) {
             allChkBox1[i].checked = true;
             }
             for(var i =0, len = allChkBox4.length; i < len; i++) {
@@ -646,9 +698,10 @@
             for(var i =0, len = allChkBox2.length; i < len; i++) {
             allChkBox2[i].checked = false;
             }
-         }
-          function active12(){
-             for(var i =0, len = allChkBox1.length; i < len; i++) {
+        }
+
+        function active12(){
+            for(var i =0, len = allChkBox1.length; i < len; i++) {
             allChkBox1[i].checked = false;
             }
             for(var i =0, len = allChkBox4.length; i < len; i++) {
@@ -663,9 +716,10 @@
             for(var i =0, len = allChkBox2.length; i < len; i++) {
             allChkBox2[i].checked = true;
             }
-         }
-          function active13(){
-             for(var i =0, len = allChkBox1.length; i < len; i++) {
+        }
+
+        function active13(){
+            for(var i =0, len = allChkBox1.length; i < len; i++) {
             allChkBox1[i].checked = false;
             }
             for(var i =0, len = allChkBox4.length; i < len; i++) {
@@ -680,9 +734,10 @@
             for(var i =0, len = allChkBox2.length; i < len; i++) {
             allChkBox2[i].checked = false;
             }
-         }
-         function active14(){
-             for(var i =0, len = allChkBox1.length; i < len; i++) {
+        }
+
+        function active14(){
+            for(var i =0, len = allChkBox1.length; i < len; i++) {
             allChkBox1[i].checked = false;
             }
             for(var i =0, len = allChkBox4.length; i < len; i++) {
@@ -697,9 +752,10 @@
             for(var i =0, len = allChkBox2.length; i < len; i++) {
             allChkBox2[i].checked = false;
             }
-         }
-          function active15(){
-             for(var i =0, len = allChkBox1.length; i < len; i++) {
+        }
+
+        function active15(){
+            for(var i =0, len = allChkBox1.length; i < len; i++) {
             allChkBox1[i].checked = false;
             }
             for(var i =0, len = allChkBox4.length; i < len; i++) {
@@ -714,40 +770,14 @@
             for(var i =0, len = allChkBox2.length; i < len; i++) {
             allChkBox2[i].checked = false;
             }
-         }
-
-
-        $('.row51').each(function(index, element) {
-            document.getElementById("modaly_course1_"+$(this).attr('course_id')).checked = false;
-        });
-        $('.row1').each(function(index, element) {
-            document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).checked = false;
-              document.getElementById("core_itinerary_a_"+$(this).attr('course_id')).disabled = true;
-        });
-        $('.row2').each(function(index, element) {
-            document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = false;
-              document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).disabled = true;
-        });
-        $('.row3').each(function(index, element) {
-            document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
-              document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).disabled = true;
-        });
-        $('.row4').each(function(index, element) {
-            document.getElementById("core_itinerary_d_"+$(this).attr('course_id')).checked = false;
-        });
-        document.getElementById('sortable5').style.pointerEvents = 'none';
-        document.getElementById('sortable6').style.pointerEvents = 'none';
-        document.getElementById('sortable4').style.pointerEvents = 'none';
-
-        function activeOption(){
-
         }
+
         function active(){
             if($('input:radio[name=active]:checked').val()==1){
                   $( "#sortable5" ).sortable();
-               document.getElementById('sortable5').style.pointerEvents = 'auto';
-                 document.getElementById('sortable6').style.pointerEvents = 'none';
-                 document.getElementById('sortable4').style.pointerEvents = 'none';
+                document.getElementById('sortable5').style.pointerEvents = 'auto';
+                document.getElementById('sortable6').style.pointerEvents = 'none';
+                document.getElementById('sortable4').style.pointerEvents = 'none';
 
                 $('.row3').each(function(index, element) {
                     document.getElementById("core_itinerary_c_"+$(this).attr('course_id')).checked = false;
@@ -767,7 +797,7 @@
                 });
             }else{
                 document.getElementById('sortable5').style.pointerEvents = 'none';
-                  document.getElementById('sortable6').style.pointerEvents = 'auto';
+                document.getElementById('sortable6').style.pointerEvents = 'auto';
                 document.getElementById('sortable4').style.pointerEvents = 'auto';
 
                 $('.row3').each(function(index, element) {
@@ -785,21 +815,21 @@
                     document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).checked = true;
                      document.getElementById("core_itinerary_b_"+$(this).attr('course_id')).disabled = false;
                 });
-               }
+            }
         }
         $(function() {
-             $('.list5').sortable({container: '.list5', update: function() {
-                    hour4Coue();
-                    toast.show();
-                }});
-                $('.list6').sortable({container: '.list6', update: function() {
-                    hour3Ce();
-                    toast.show();
-                }});
-                $('.list4').sortable({container: '.list4', update: function() {
-                    hour4Course();
-                    toast.show();
-                }});
+            $('.list5').sortable({container: '.list5', update: function() {
+                hour4Coue();
+                toast.show();
+            }});
+            $('.list6').sortable({container: '.list6', update: function() {
+                hour3Ce();
+                toast.show();
+            }});
+            $('.list4').sortable({container: '.list4', update: function() {
+                hour4Course();
+                toast.show();
+            }});
             $("#sortable5").sortable({
                 update: function() {
                     hour4Coue();
@@ -835,14 +865,6 @@
                 });
             }
         });
-
-        @if(!is_null(old('active')))
-        active()
-        @endif
-
-        @if(!is_null(old('active_option')))
-        activeOption()
-        @endif
     </script>
 @endpush
 
