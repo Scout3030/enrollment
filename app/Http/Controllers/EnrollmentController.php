@@ -882,15 +882,6 @@ class EnrollmentController extends Controller
         return Storage::download($path.'/'.$file);
     }
 
-    public function test()
-    {
-        $commonOptionalOneCourses = Course::whereGradeId(1)
-            ->whereCourseTypeId(CourseType::COMMON_OPTIONAL_ONE)
-            ->get();
-
-        return view('test', compact('commonOptionalOneCourses'));
-    }
-
     public function exportEnrollmentPdf($hash){
         $enrollmentId = Helpers::decrypt($hash);
         $enrollment = Enrollment::find($enrollmentId);
